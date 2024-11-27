@@ -9,7 +9,19 @@ namespace Backend
     {
         private static readonly string connectionString = "Server=your_server_name;Database=your_database_name;Trusted_Connection=True;";
 
+        public static List<Character> GetAllCharacters()
+        {
+            try 
+            {
 
+            }
+            catch (Exception ex) 
+            {
 
+            }
+
+        }
+
+        
     }
 }
