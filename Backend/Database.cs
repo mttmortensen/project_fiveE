@@ -4,8 +4,9 @@ namespace Backend
 {
     public class Database
     {
-        private static readonly string connectionString = "Server=your_server_name;Database=your_database_name;Trusted_Connection=True;";
+        private static readonly string connectionString = "Server=MORTENSENS-MPC\\SQLEXPRESS;Database=DNDCharacterDB;Trusted_Connection=True;";
 
+        // Putting it all together to get the actual raw data
         public static List<Dictionary<string, object>> FetchRawDataFromDatabase(string query)
         {
             using var connection = OpenConnection();
