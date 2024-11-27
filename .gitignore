@@ -2,9 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Backend/.vs/Backend/FileContentIndex
-/Backend/obj/Debug/net8.0
-/Backend/.vs/
-/Backend/obj/
-/Backend/Backend.csproj
-/Backend/Backend.sln
+# Ignore the `.vs` folder
+.vs/
+
+# Ignore the `obj` folder
+obj/
+
+# Ignore the project and solution files
+*.csproj
+*.sln
