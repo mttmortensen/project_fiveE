@@ -8,7 +8,7 @@ namespace Backend
 {
     public class CharacterMapper
     {
-        private static List<Character> MapToCharacters(List<Dictionary<string, object>> dataRows)
+        public static List<Character> MapToCharacters(List<Dictionary<string, object>> dataRows)
         {
             var characters = new List<Character>();
 
