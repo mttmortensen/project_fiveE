@@ -14,8 +14,5 @@ namespace Backend
         public int Level { get; set; }
         public int HP { get; set; }
         public string AbilityScores { get; set; }
-
-
-
     }
 }

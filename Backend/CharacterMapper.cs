@@ -8,30 +8,23 @@ namespace Backend
 {
     public class CharacterMapper
     {
-
-        // Public method to get all characters
-        public static List<Character> GetAllCharacters()
+        private static List<Character> MapToCharacters(List<Dictionary<string, object>> dataRows)
         {
-            try
+            var characters = new List<Character>();
+
+            foreach (var row in dataRows) 
             {
-                // Step 1: Fetch the RAW Data from the databae 
-                var dataRows = Database.FetchRawDataFromDatabase("SELECT * FROM Characters");
-
-                // Step 2: Map the RAW Data to Character objects 
-                return MapCharacters(dataRows);
-
+                characters.Add(new Character
+                {
+                    Id = Convert.ToInt32(row["id"]),
+                    Name = row["Name"].ToString(),
+                    Level = Convert.ToInt32(row["Level"]),
+                    Class = row["Class"].ToString(),
+                    HP = Convert.ToInt32(row["HP"]),
+                    AbilityScores = row["AbilityScores"].ToString()
+                });
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: fetch characters: {ex.Message}");
-                return new List<Character>();
-            }
-
-        }
-
-        private static List<Character> MapCharacters(object dataRows)
-        {
-            throw new NotImplementedException();
+            return characters;
         }
     }
 }
