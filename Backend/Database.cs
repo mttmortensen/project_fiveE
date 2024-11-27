@@ -12,7 +12,7 @@ namespace Backend
         // Public method to get all characters
         public static List<Character> GetAllCharacters()
         {
-            try 
+            try
             {
                 // Step 1: Fetch the RAW Data from the databae 
                 var dataRows = FetchRawDataFromDatabase("SELECT * FROM Characters");
@@ -21,7 +21,7 @@ namespace Backend
                 return MapCharacters(dataRows);
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error: fetch characters: {ex.Message}");
                 return new List<Character>();
@@ -44,16 +44,40 @@ namespace Backend
 
         }
 
+        // Open a database connection
         private static SqlConnection OpenConnection()
         {
             var connection = new SqlConnection(connectionString);
             connection.Open();
             return connection;
-        }        
+        }
 
+        // Create a SQL Command
         private static SqlCommand CreateCommand(string query, SqlConnection connection)
         {
-            throw new NotImplementedException();
+            return new SqlCommand(query, connection);
+        }
+
+        // Execute the command and get a data reader
+        private static SqlDataReader ExecuteReader(SqlCommand command)
+        {
+            return command.ExecuteReader();
+        }
+
+        // Process the data reader into a list of dictionaries
+        private static List<Dictionary<string, object>> ReadRows(SqlDataReader reader)
+        {
+            var results = new List<Dictionary<string, object>>();
+            while (reader.Read())
+            {
+                var row = new Dictionary<string, object>();
+                for (int i = 0; i < reader.FieldCount; i++) 
+                {
+                    row[reader.GetName(i)] = reader.GetValue(i);
+                }
+                results.Add(row);
+            }
+            return results;
         }
 
     }
