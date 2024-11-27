@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Text.Json;
 
 namespace Backend
@@ -49,6 +49,12 @@ namespace Backend
             var connection = new SqlConnection(connectionString);
             connection.Open();
             return connection;
+        }        
+
+        private static SqlCommand CreateCommand(string query, SqlConnection connection)
+        {
+            throw new NotImplementedException();
         }
+
     }
 }
