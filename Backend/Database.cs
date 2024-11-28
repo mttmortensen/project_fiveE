@@ -7,7 +7,7 @@ namespace Backend
         private static readonly string connectionString = "Server=MORTENSENS-MPC\\SQLEXPRESS;Database=DNDCharacterDB;Trusted_Connection=True;";
 
         // Putting it all together to get the actual raw data
-        public static List<Dictionary<string, object>> GetRawDataFromDatabase(string query)
+        public List<Dictionary<string, object>> GetRawDataFromDatabase(string query)
         {
             using var connection = OpenConnection();
             using var command = CreateCommand(query, connection);
