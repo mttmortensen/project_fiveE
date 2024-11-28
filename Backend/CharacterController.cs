@@ -17,7 +17,7 @@ namespace Backend
             _mapper = mapper;
         }
 
-        public List<Character> GetCharacterList() 
+        public List<Character> GetAllCharacters() 
         {
             // Step 1: Query raw data from Database 
             var rawData = _database.GetRawDataFromDatabase("SELECT * FROM Characters");
