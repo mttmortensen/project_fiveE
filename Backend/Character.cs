@@ -7,7 +7,7 @@
         public string Sex { get; set; }
         public Classes Classes { get; set; }
         public Race Race { get; set; }
-        public List<AbilityScores> AbilityScores { get; set; } = new List<AbilityScores>();
+        public AbilityScores AbilityScores { get; set; }
         public List<string> Skills { get; set; } = new List<string>();
         public List<string> Proficiencies { get; set; } = new List<string>();
         public List<string> Equipment { get; set; } = new List<string>();

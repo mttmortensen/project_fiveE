@@ -7,22 +7,22 @@
         {
             var characters = new List<Character>();
 
-            foreach (var row in dataDictionaryRows) 
+            foreach (var row in dataDictionaryRows)
             {
                 characters.Add(new Character
                 {
                     Id = Convert.ToInt32(row["id"]),
                     Name = row["Name"].ToString(),
                     Level = Convert.ToInt32(row["Level"]),
-                    Classes = row["Class"].ToString(),
+                    Classes = MapClassData(row),
                     HP = Convert.ToInt32(row["HP"]),
-                    AbilityScores = row["AbilityScores"].ToString()
+                    AbilityScores = MapAbilityScores(row)
                 });
             }
             return characters;
         }
 
-        // Taking a Character object and prepping it to be RAW DB data 
+        // Taking a Character object and prepping it to be RAW DB data
         public List<Character> MapFromCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
@@ -42,14 +42,13 @@
                     AC = Convert.ToInt32(row["AC"]),
                     Background = row["Background"].ToString(),
                     Alignment = row["Alignment"].ToString(),
-                    // Any function that starts with "Map" is to create a new object
-                    // or List that has been defined in the Character class. 
+                    // Mapping complex objects
                     Classes = MapClassData(row),
                     Race = MapRaceData(row),
-                    AbilityScores = MapAbilityScores(row["AbilityScores"].ToString()),
-                    Skills = MapSkills(row["Skills"].ToString()),
-                    Proficiencies = MapProficiencies(row["Proficiencies"].ToString()),
-                    Equipment = MapEquipment(row["Equipment"].ToString())
+                    AbilityScores = MapAbilityScores(row),
+                    Skills = MapList(row["Skills"].ToString(), ';'),
+                    Proficiencies = MapList(row["Proficiencies"].ToString(), ';'),
+                    Equipment = MapList(row["Equipment"].ToString(), ';')
                 };
 
                 characters.Add(character);
@@ -58,70 +57,59 @@
             return characters;
         }
 
-        // Creates a new and returns the AbilityScore object 
-        private List<AbilityScores> MapAbilityScores(string abilityScores)
+        // Creates a new and returns the AbilityScores object
+        private AbilityScores MapAbilityScores(Dictionary<string, object> row)
         {
-            var scores = abilityScores.Split(',');
-            var abilityList = new List<AbilityScores>();
-
-            for (int i = 0; i < scores.Length; i++) 
+            return new AbilityScores
             {
-                abilityList.Add(new AbilityScores 
-                {
-                    Name = GetAbilityName(i),
-                    Value = int.Parse(scores[i])
-                });
-            }
-
-            return abilityList;
+                Id = Convert.ToInt32(row["AbilityScoresId"]),
+                CharacterID = Convert.ToInt32(row["CharacterID"]),
+                Strength = Convert.ToInt32(row["Strength"]),
+                Dexterity = Convert.ToInt32(row["Dexterity"]),
+                Constitution = Convert.ToInt32(row["Constitution"]),
+                Intelligence = Convert.ToInt32(row["Intelligence"]),
+                Wisdom = Convert.ToInt32(row["Wisdom"]),
+                Charisma = Convert.ToInt32(row["Charisma"])
+            };
         }
 
-        // A helper function for MapAbilityScores 
-        // Just easier to trace on what the abilities are
-        private string GetAbilityName(int index)
-        {
-            var abilities = new[] { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-            return abilities[index];
-        }
-
-        // Creates a new and returns the Classes object 
+        // Creates a new and returns the Classes object
         private Classes MapClassData(Dictionary<string, object> row)
         {
             return new Classes
             {
-                Name = row["Class"].ToString(),
-                Description = row.ContainsKey("ClassDescription") ? row["ClassDescription"].ToString() : null
+                Id = Convert.ToInt32(row["ClassId"]),
+                ClassName = row["ClassName"].ToString(),
+                HitDie = row["HitDie"].ToString(),
+                PrimaryAbility = row["PrimaryAbility"].ToString(),
+                SavingThrows = MapList(row["SavingThrows"].ToString(), ','),
+                SkillChoices = MapList(row["SkillChoices"].ToString(), ';'),
+                ClassFeatures = MapList(row["ClassFeatures"].ToString(), ';')
             };
         }
 
-        // Creates a new and returns the Race object 
+        // Creates a new and returns the Race object
         private Race MapRaceData(Dictionary<string, object> row)
         {
             return new Race
             {
-                Name = row["Race"].ToString(),
-                Traits = row.ContainsKey("RaceTraits") ? row["RaceTraits"].ToString() : null
+                Id = Convert.ToInt32(row["RaceId"]),
+                RaceName = row["RaceName"].ToString(),
+                RaceSize = row["RaceSize"].ToString(),
+                Speed = row["Speed"].ToString(),
+                AbilityScoreBonuses = MapList(row["AbilityScoreBonuses"].ToString(), ','),
+                Languages = MapList(row["Languages"].ToString(), ';'),
+                RacialFeatures = MapList(row["RacialFeatures"].ToString(), ';')
             };
         }
 
-        // Creates a new and returns the string Skills List 
-        private List<string> MapSkills(string skills)
+        // Helper function to map delimited strings to a List<string>
+        private List<string> MapList(string rawData, char delimiter)
         {
-            return skills.Split(';').ToList();
-        }
+            if (string.IsNullOrWhiteSpace(rawData))
+                return new List<string>();
 
-        // Creates a new and returns the string Proficiencies List
-        private List<string> MapProficiencies(string proficiencies)
-        {
-            return proficiencies.Split(';').ToList();
+            return rawData.Split(delimiter).Select(item => item.Trim()).ToList();
         }
-
-        // Creates a new and returns the string Equipment List
-        private List<string> MapEquipment(string equipment)
-        {
-            return equipment.Split(';').ToList();
-        }
-
-        
     }
 }
