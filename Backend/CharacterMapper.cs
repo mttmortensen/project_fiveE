@@ -87,7 +87,7 @@
         {
             return new Classes
             {
-                ClassesId = Convert.ToInt32(row["ClassesId"]),
+                ClassId = Convert.ToInt32(row["ClassId"]),
                 ClassName = row["ClassName"].ToString(),
                 HitDie = row["HitDie"].ToString(),
                 PrimaryAbility = row["PrimaryAbility"].ToString(),

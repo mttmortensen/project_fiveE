@@ -2,7 +2,7 @@
 {
     public class Classes
     {
-        public int ClassesId { get; set; }
+        public int ClassId { get; set; }
         public string ClassName { get; set; }
         public string HitDie { get; set; }
         public string PrimaryAbility { get; set; }
