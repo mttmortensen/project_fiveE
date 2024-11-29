@@ -26,41 +26,6 @@
             return characters;
         }
 
-        // Converts raw database rows into fully mapped Character objects (including optional fields)
-        public List<Character> MapFromCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
-        {
-            var characters = new List<Character>();
-
-            foreach (var row in dataDictionaryRows)
-            {
-                var character = new Character
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Name = row["Name"].ToString(),
-                    Sex = row["Sex"].ToString(),
-                    Level = Convert.ToInt32(row["Level"]),
-                    HP = Convert.ToInt32(row["HP"]),
-                    XP = Convert.ToInt32(row["XP"]),
-                    MaxHP = Convert.ToInt32(row["MaxHP"]),
-                    Speed = Convert.ToInt32(row["Speed"]),
-                    AC = Convert.ToInt32(row["AC"]),
-                    Background = row["Background"].ToString(),
-                    Alignment = row["Alignment"].ToString(),
-                    // Mapping complex objects
-                    Classes = MapClassData(row),
-                    Race = MapRaceData(row),
-                    AbilityScores = MapAbilityScores(row),
-                    Skills = MapList(row["Skills"].ToString(), ';'),
-                    Proficiencies = MapList(row["Proficiencies"].ToString(), ';'),
-                    Equipment = MapList(row["Equipment"].ToString(), ';')
-                };
-
-                characters.Add(character);
-            }
-
-            return characters;
-        }
-
         // Converts a Character object into a dictionary of Characters for database insertion
         public Dictionary<string, object> MapCharacterToDictionary(Character character)
         {
