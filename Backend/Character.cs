@@ -21,8 +21,18 @@
         public int AC { get; set; }
     }
 
-    internal class Classes()
+    public class Classes
     {
 
     }
+
+    public class Race 
+    { 
+
+    }
+
+    public class AbilityScores 
+    {
+
+    } 
 }
