@@ -6,7 +6,7 @@
                                     /*MAIN METHODS*/
         /************************************************************************/
 
-        // Getting RAW DB Data and "mapping" it to the Character class as a new Character Object
+        // Converts raw database rows into a list of Character objects
         public List<Character> MapToCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
@@ -18,15 +18,15 @@
                     Id = Convert.ToInt32(row["id"]),
                     Name = row["Name"].ToString(),
                     Level = Convert.ToInt32(row["Level"]),
-                    Classes = MapClassData(row),
+                    Classes = MapClassData(row), // Maps related Classes object
                     HP = Convert.ToInt32(row["HP"]),
-                    AbilityScores = MapAbilityScores(row)
+                    AbilityScores = MapAbilityScores(row) // Maps related AbilityScores object
                 });
             }
             return characters;
         }
 
-        // Taking a Character object and prepping it to be RAW DB data
+        // Converts raw database rows into fully mapped Character objects (including optional fields)
         public List<Character> MapFromCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
@@ -61,11 +61,36 @@
             return characters;
         }
 
+        // Converts a Character object into a dictionary of Characters for database insertion
+        public Dictionary<string, object> MapCharacterToDictionary(Character character)
+        {
+            // Preparing the character object for database insertion by flattening it into key-value pairs
+            return new Dictionary<string, object>
+            {
+                { "@Name", character.Name ?? (object)DBNull.Value },
+                { "@Sex", character.Sex ?? (object)DBNull.Value },
+                { "@Level", character.Level },
+                { "@HP", character.HP },
+                { "@XP", character.XP },
+                { "@MaxHP", character.MaxHP },
+                { "@Speed", character.Speed },
+                { "@AC", character.AC },
+                { "@Background", character.Background ?? (object)DBNull.Value },
+                { "@Alignment", character.Alignment ?? (object)DBNull.Value },
+                { "@ClassId", character.Classes?.Id ?? (object)DBNull.Value },
+                { "@RaceId", character.Race?.Id ?? (object)DBNull.Value },
+                { "@AbilityScoresId", character.AbilityScores?.Id ?? (object)DBNull.Value },
+                { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
+                { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
+                { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
+            };
+        }
+
         /************************************************************************/
-                                       /*HELPERS*/
+                                     /*HELPERS*/
         /************************************************************************/
 
-        // Creates a new and returns the AbilityScores object
+        // Maps raw database rows to an AbilityScores object
         private AbilityScores MapAbilityScores(Dictionary<string, object> row)
         {
             return new AbilityScores
@@ -81,7 +106,7 @@
             };
         }
 
-        // Creates a new and returns the Classes object
+        // Maps raw database rows to a Classes object
         private Classes MapClassData(Dictionary<string, object> row)
         {
             return new Classes
@@ -96,7 +121,7 @@
             };
         }
 
-        // Creates a new and returns the Race object
+        // Maps raw database rows to a Race object
         private Race MapRaceData(Dictionary<string, object> row)
         {
             return new Race
@@ -111,7 +136,7 @@
             };
         }
 
-        // Helper function to map delimited strings to a List<string>
+        // Converts a delimited string into a list of strings
         private List<string> MapList(string rawData, char delimiter)
         {
             if (string.IsNullOrWhiteSpace(rawData))
