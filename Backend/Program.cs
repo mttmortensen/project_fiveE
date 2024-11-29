@@ -38,4 +38,30 @@ class Program
         }
     }
 
+
+    static async Task HandleRequest(HttpListenerContext context)
+    {
+        try
+        {
+            // Get the request and response objects
+            HttpListenerRequest request = context.Request;
+            HttpListenerResponse response = context.Response;
+
+            Console.WriteLine($"Received request: {request.HttpMethod} {request.Url}");
+
+            // Delegate request handling to the Router
+            string responseBody = Router.HandleRequest(request);
+
+            // Set up the response
+            byte[] buffer = Encoding.UTF8.GetBytes(responseBody);
+            response.ContentType = "application/json";
+            response.ContentLength64 = buffer.Length;
+            response.StatusCode = (responseBody.Contains("404 not found") || responseBody.Contains("400")) ? 404 : 200;
+
+            // Write the response
+            await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+        }
+
+    }
+
 }
