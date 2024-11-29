@@ -4,7 +4,7 @@ namespace Backend
 {
     public class Database
     {
-        private static readonly string connectionString = "Server=MORTENSENS-MPC\\SQLEXPRESS;Database=DNDCharacterDB;Trusted_Connection=True;";
+        private static readonly string connectionString = "Server=MORTENSENS-MPC\\SQLEXPRESS;Database=DNDCharacterDB;Trusted_Connection=True;;TrustServerCertificate=True;";
 
         /************************************************************************/
                                     /*MAIN METHODS*/
