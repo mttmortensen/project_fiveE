@@ -20,6 +20,11 @@
             return _mapper.MapToCharacterClass(rawData);
         }
 
+        public int AddCharacter(Character newCharacter)
+        {
+            var characterData = _mapper.MapCharacterToDictionary(newCharacter);
 
+
+        }
     }
 }
