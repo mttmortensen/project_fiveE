@@ -55,7 +55,7 @@
                 { "@Alignment", character.Alignment ?? (object)DBNull.Value },
                 { "@ClassId", character.Classes?.ClassId ?? (object)DBNull.Value },
                 { "@RaceId", character.Race?.RaceId ?? (object)DBNull.Value },
-                { "@AbilityScoresId", character.AbilityScores?.AbilityId ?? (object)DBNull.Value },
+                { "@AbilityId", character.AbilityScores?.AbilityId ?? (object)DBNull.Value },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
                 { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
                 { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
@@ -71,7 +71,7 @@
         {
             return new AbilityScores
             {
-                AbilityId = Convert.ToInt32(row["AbilityId"]),
+                AbilityId = Convert.ToInt32(row["AbilityID"]),
                 CharacterID = Convert.ToInt32(row["CharacterID"]),
                 Strength = Convert.ToInt32(row["Strength"]),
                 Dexterity = Convert.ToInt32(row["Dexterity"]),
@@ -87,7 +87,7 @@
         {
             return new Classes
             {
-                ClassId = Convert.ToInt32(row["ClassId"]),
+                ClassId = Convert.ToInt32(row["ClassID"]),
                 ClassName = row["ClassName"].ToString(),
                 HitDie = row["HitDie"].ToString(),
                 PrimaryAbility = row["PrimaryAbility"].ToString(),
@@ -102,7 +102,7 @@
         {
             return new Race
             {
-                RaceId = Convert.ToInt32(row["RaceId"]),
+                RaceId = Convert.ToInt32(row["RaceID"]),
                 RaceName = row["RaceName"].ToString(),
                 RaceSize = row["RaceSize"].ToString(),
                 Speed = row["Speed"].ToString(),
