@@ -2,7 +2,7 @@
 {
     public class AbilityScores 
     {
-        public int Id { get; set; }
+        public int AbilityId { get; set; }
         public int CharacterID { get; set; }
         public int Strength { get; set; }
         public int Dexterity { get; set; }

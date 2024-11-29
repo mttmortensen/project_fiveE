@@ -53,9 +53,9 @@
                 { "@AC", character.AC },
                 { "@Background", character.Background ?? (object)DBNull.Value },
                 { "@Alignment", character.Alignment ?? (object)DBNull.Value },
-                { "@ClassId", character.Classes?.Id ?? (object)DBNull.Value },
-                { "@RaceId", character.Race?.Id ?? (object)DBNull.Value },
-                { "@AbilityScoresId", character.AbilityScores?.Id ?? (object)DBNull.Value },
+                { "@ClassId", character.Classes?.ClassesId ?? (object)DBNull.Value },
+                { "@RaceId", character.Race?.RaceId ?? (object)DBNull.Value },
+                { "@AbilityScoresId", character.AbilityScores?.AbilityId ?? (object)DBNull.Value },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
                 { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
                 { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
@@ -71,7 +71,7 @@
         {
             return new AbilityScores
             {
-                Id = Convert.ToInt32(row["AbilityScoresId"]),
+                AbilityId = Convert.ToInt32(row["AbilityId"]),
                 CharacterID = Convert.ToInt32(row["CharacterID"]),
                 Strength = Convert.ToInt32(row["Strength"]),
                 Dexterity = Convert.ToInt32(row["Dexterity"]),
@@ -87,7 +87,7 @@
         {
             return new Classes
             {
-                Id = Convert.ToInt32(row["ClassId"]),
+                ClassesId = Convert.ToInt32(row["ClassesId"]),
                 ClassName = row["ClassName"].ToString(),
                 HitDie = row["HitDie"].ToString(),
                 PrimaryAbility = row["PrimaryAbility"].ToString(),
@@ -102,7 +102,7 @@
         {
             return new Race
             {
-                Id = Convert.ToInt32(row["RaceId"]),
+                RaceId = Convert.ToInt32(row["RaceId"]),
                 RaceName = row["RaceName"].ToString(),
                 RaceSize = row["RaceSize"].ToString(),
                 Speed = row["Speed"].ToString(),

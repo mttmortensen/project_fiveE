@@ -2,7 +2,7 @@
 {
     public class Race 
     { 
-        public int Id { get; set; }
+        public int RaceId { get; set; }
         public string RaceName { get; set; }
         public string RaceSize { get; set; }
         public string Speed { get; set; }
