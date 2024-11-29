@@ -5,8 +5,9 @@
 # Ignore the `.vs` folder
 .vs/
 
-# Ignore the `obj` folder
+# Ignore the folders
 obj/
+bin/
 
 # Ignore the project and solution files
 *.csproj
