@@ -17,10 +17,21 @@
                 {
                     Id = Convert.ToInt32(row["id"]),
                     Name = row["Name"].ToString(),
+                    Sex = row.ContainsKey("Sex") ? row["Sex"].ToString() : null,
+                    Classes = MapClassData(row), // Assuming MapClassData maps related Classes object
+                    Race = MapRaceData(row), // Assuming MapRaceData maps related Race object
+                    AbilityScores = MapAbilityScores(row), // Assuming MapAbilityScores maps related AbilityScores object
+                    Skills = row.ContainsKey("Skills") ? ParseList(row["Skills"].ToString()) : new List<string>(),
+                    Proficiencies = row.ContainsKey("Proficiencies") ? ParseList(row["Proficiencies"].ToString()) : new List<string>(),
+                    Equipment = row.ContainsKey("Equipment") ? ParseList(row["Equipment"].ToString()) : new List<string>(),
+                    Background = row.ContainsKey("Background") ? row["Background"].ToString() : null,
+                    Alignment = row.ContainsKey("Alignment") ? row["Alignment"].ToString() : null,
                     Level = Convert.ToInt32(row["Level"]),
-                    Classes = MapClassData(row), // Maps related Classes object
                     HP = Convert.ToInt32(row["HP"]),
-                    AbilityScores = MapAbilityScores(row) // Maps related AbilityScores object
+                    XP = row.ContainsKey("XP") ? Convert.ToInt32(row["XP"]) : 0,
+                    MaxHP = row.ContainsKey("MaxHP") ? Convert.ToInt32(row["MaxHP"]) : 0,
+                    Speed = row.ContainsKey("Speed") ? Convert.ToInt32(row["Speed"]) : 0,
+                    AC = row.ContainsKey("AC") ? Convert.ToInt32(row["AC"]) : 0
                 });
             }
             return characters;
@@ -108,6 +119,15 @@
                 return new List<string>();
 
             return rawData.Split(delimiter).Select(item => item.Trim()).ToList();
+        }
+
+        // Parses a comma-separated string into a list of trimmed strings
+        private List<string> ParseList(string listData)
+        {
+            // Assuming listData is a comma-separated string like "Skill1,Skill2,Skill3"
+            return string.IsNullOrWhiteSpace(listData)
+                ? new List<string>()
+                : listData.Split(',').Select(item => item.Trim()).ToList();
         }
     }
 }
