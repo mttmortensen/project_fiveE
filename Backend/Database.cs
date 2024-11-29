@@ -17,6 +17,18 @@ namespace Backend
 
         }
 
+        // Putting it all togther to insert/post actual raw data
+
+        public int InsertRawDataIntoDatabase(string query, Dictionary<string, object> parameters)
+        {
+            using var connection = OpenConnection();
+            using var command = CreateCommand(query, connection);
+
+            AddParameter(command, parameters);
+
+            return ExecuteNonQuery(command);
+        }
+
         // Open a database connection
         private static SqlConnection OpenConnection()
         {
@@ -51,6 +63,21 @@ namespace Backend
                 results.Add(row);
             }
             return results;
+        }
+
+        // Adding Parameters to the SQL Command
+        private static void AddParameter(SqlCommand command, Dictionary<string, object> parameters) 
+        {
+            foreach (var parm in parameters)
+            {
+                command.Parameters.AddWithValue(parm.Key, parm.Value ?? DBNull.Value);
+            }
+        }
+
+        // Execute a non-query command (E.G. INSERT, UPDATE, DELETE)
+        private static int ExecuteNonQuery(SqlCommand command) 
+        {
+            return command.ExecuteNonQuery();
         }
 
     }
