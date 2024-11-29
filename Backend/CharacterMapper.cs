@@ -15,7 +15,7 @@
             {
                 characters.Add(new Character
                 {
-                    Id = Convert.ToInt32(row["id"]),
+                    CharacterID = Convert.ToInt32(row["CharacterID"]),
                     Name = row["Name"].ToString(),
                     Sex = row.ContainsKey("Sex") ? row["Sex"].ToString() : null,
                     Classes = MapClassData(row), 
