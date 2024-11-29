@@ -20,4 +20,9 @@
         public int Speed { get; set; }
         public int AC { get; set; }
     }
+
+    internal class Classes()
+    {
+
+    }
 }
