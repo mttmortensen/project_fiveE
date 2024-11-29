@@ -2,11 +2,11 @@
 {
     public class CharacterMapper
     {
-        public List<Character> MapToCharacters(List<Dictionary<string, object>> dataRows)
+        public List<Character> MapToCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
 
-            foreach (var row in dataRows) 
+            foreach (var row in dataDictionaryRows) 
             {
                 characters.Add(new Character
                 {

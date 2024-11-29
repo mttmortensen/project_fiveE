@@ -7,6 +7,7 @@
         public string Sex { get; set; }
         public string Class { get; set; }
         public string Race { get; set; }
+        public string AbilityScores { get; set; }
         public string Skills { get; set; }
         public string Proficiencies { get; set; }
         public string Equipment { get; set; }
@@ -18,8 +19,5 @@
         public int MaxHP { get; set; }
         public int Speed { get; set; }
         public int AC { get; set; }
-        public string AbilityScores { get; set; }
-
-
     }
 }
