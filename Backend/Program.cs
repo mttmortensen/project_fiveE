@@ -61,6 +61,24 @@ class Program
             // Write the response
             await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error handling request: {ex.Message}");
+
+            // Handle server errors
+            string errorResponse = "500 Internal Server Error";
+            byte[] buffer = Encoding.UTF8.GetBytes(errorResponse);
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "text/plain";
+            context.Response.ContentLength64 = buffer.Length;
+
+            await context.Response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+        }
+        finally
+        {
+            // Close the response stream
+            context.Response.OutputStream.Close();
+        }
 
     }
 
