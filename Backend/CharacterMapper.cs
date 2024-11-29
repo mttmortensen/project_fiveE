@@ -2,6 +2,10 @@
 {
     public class CharacterMapper
     {
+        /************************************************************************/
+                                    /*MAIN METHODS*/
+        /************************************************************************/
+
         // Getting RAW DB Data and "mapping" it to the Character class as a new Character Object
         public List<Character> MapToCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
@@ -56,6 +60,10 @@
 
             return characters;
         }
+
+        /************************************************************************/
+                                       /*HELPERS*/
+        /************************************************************************/
 
         // Creates a new and returns the AbilityScores object
         private AbilityScores MapAbilityScores(Dictionary<string, object> row)
