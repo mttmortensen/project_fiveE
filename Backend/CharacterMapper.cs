@@ -18,9 +18,9 @@
                     Id = Convert.ToInt32(row["id"]),
                     Name = row["Name"].ToString(),
                     Sex = row.ContainsKey("Sex") ? row["Sex"].ToString() : null,
-                    Classes = MapClassData(row), // Assuming MapClassData maps related Classes object
-                    Race = MapRaceData(row), // Assuming MapRaceData maps related Race object
-                    AbilityScores = MapAbilityScores(row), // Assuming MapAbilityScores maps related AbilityScores object
+                    Classes = MapClassData(row), 
+                    Race = MapRaceData(row), 
+                    AbilityScores = MapAbilityScores(row), 
                     Skills = row.ContainsKey("Skills") ? ParseList(row["Skills"].ToString()) : new List<string>(),
                     Proficiencies = row.ContainsKey("Proficiencies") ? ParseList(row["Proficiencies"].ToString()) : new List<string>(),
                     Equipment = row.ContainsKey("Equipment") ? ParseList(row["Equipment"].ToString()) : new List<string>(),
