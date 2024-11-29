@@ -20,42 +20,4 @@
         public int Speed { get; set; }
         public int AC { get; set; }
     }
-
-    public class Classes
-    {
-        public int Id { get; set; }
-        public string ClassName { get; set; }
-        public string HitDie { get; set; }
-        public string PrimaryAbility { get; set; }
-        public List<string> SavingThrows { get; set; }
-        public List<string> SkillChoices { get; set; }
-        public List<string> ClassFeatures { get; set; }
-
-
-    }
-
-    public class Race 
-    { 
-        public int Id { get; set; }
-        public string RaceName { get; set; }
-        public string RaceSize { get; set; }
-        public string Speed { get; set; }
-        public List<string> AbilityScoreBonuses { get; set; }
-        public List<string> Languages { get; set; }
-        public List<string> RacialFeatures { get; set; }
-
-    }
-
-    public class AbilityScores 
-    {
-        public int Id { get; set; }
-        public int CharacterID { get; set; }
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Constitution { get; set; }
-        public int Intelligence { get; set; }
-        public int Wisdom { get; set; }
-        public int Charisma { get; set; }
-
-    } 
 }
