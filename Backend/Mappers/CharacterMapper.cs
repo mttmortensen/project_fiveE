@@ -1,4 +1,6 @@
-﻿namespace Backend
+﻿using Newtonsoft.Json;
+
+namespace Backend
 {
     public class CharacterMapper
     {
@@ -115,12 +117,13 @@
             };
         }
 
-        private Dictionary<string, int> MapAbilityScoreBonuses(string json)
+        private List<string> MapAbilityScoreBonuses(string json)
         {
-            // Assuming `json` is a JSON string like '{"Strength": 1, "Dexterity": 1}'
-            return string.IsNullOrWhiteSpace(json)
-                ? new Dictionary<string, int>()
-                : JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+            if (string.IsNullOrWhiteSpace(json))
+                return new List<string>();
+
+            var bonuses = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+            return bonuses.Select(kv => $"{kv.Key}: {kv.Value}").ToList();
         }
 
         // Converts a delimited string into a list of strings
