@@ -5,8 +5,11 @@
         public int CharacterID { get; set; }
         public string Name { get; set; }
         public string Sex { get; set; }
+        public int ClassesID { get; set; }
         public Classes Classes { get; set; }
+        public int RaceID { get; set; }
         public Race Race { get; set; }
+        public int AbilityID { get; set; }
         public AbilityScores AbilityScores { get; set; }
         public List<string> Skills { get; set; } = new List<string>();
         public List<string> Proficiencies { get; set; } = new List<string>();
