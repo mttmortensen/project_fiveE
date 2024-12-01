@@ -115,6 +115,14 @@
             };
         }
 
+        private Dictionary<string, int> MapAbilityScoreBonuses(string json)
+        {
+            // Assuming `json` is a JSON string like '{"Strength": 1, "Dexterity": 1}'
+            return string.IsNullOrWhiteSpace(json)
+                ? new Dictionary<string, int>()
+                : JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+        }
+
         // Converts a delimited string into a list of strings
         private List<string> MapList(string rawData, char delimiter)
         {
