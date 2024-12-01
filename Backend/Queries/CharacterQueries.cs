@@ -11,6 +11,12 @@ namespace Backend
     public static class CharacterQueries
     {
         // Using a lambda getter expersion here
-        public static string GetAllCharacterAndItsRelatedData => ""; 
+        public static string GetAllCharacterAndItsRelatedData => @"
+            SELECT c.*, 
+                   r.RaceName, r.RaceSize, r.Speed AS RaceSpeed, r.AbilityScoreBonuses, r.Languages, r.RacialFeatures,
+                   cl.ClassName, cl.HitDie, cl.PrimaryAbility, cl.SavingThrows, cl.SkillChoices, cl.ClassFeatures,
+                   a.Strength, a.Dexterity, a.Constitution, a.Intelligence, a.Wisdom, a.Charisma
+
+        "; 
     }
 }
