@@ -53,9 +53,9 @@
                 { "@AC", character.AC },
                 { "@Background", character.Background ?? (object)DBNull.Value },
                 { "@Alignment", character.Alignment ?? (object)DBNull.Value },
-                { "@ClassId", character.Classes?.ClassId ?? (object)DBNull.Value },
-                { "@RaceId", character.Race?.RaceId ?? (object)DBNull.Value },
-                { "@AbilityId", character.AbilityScores?.AbilityId ?? (object)DBNull.Value },
+                { "@ClassId", character.ClassID },
+                { "@RaceId", character.RaceID },
+                { "@AbilityId", character.AbilityID },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
                 { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
                 { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
