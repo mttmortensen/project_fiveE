@@ -111,12 +111,13 @@ namespace Backend
                 RaceName = row.ContainsKey("RaceName") ? row["RaceName"].ToString() : null,
                 RaceSize = row.ContainsKey("RaceSize") ? row["RaceSize"].ToString() : null,
                 Speed = row.ContainsKey("RaceSpeed") ? Convert.ToInt32(row["RaceSpeed"]) : 0,
-                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(row["AbilityScoreBonuses"].ToString()) : new Dictionary<string, int>(),
+                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(row["AbilityScoreBonuses"].ToString()) : new List<string>(),
                 Languages = row.ContainsKey("Languages") ? MapList(row["Languages"].ToString(), ';') : new List<string>(),
                 RacialFeatures = row.ContainsKey("RacialFeatures") ? MapList(row["RacialFeatures"].ToString(), ';') : new List<string>()
             };
         }
 
+        // Lists out the bonuses a race would get in a sting made to look like an object
         private List<string> MapAbilityScoreBonuses(string json)
         {
             if (string.IsNullOrWhiteSpace(json))
