@@ -5,7 +5,7 @@
         public int CharacterID { get; set; }
         public string Name { get; set; }
         public string Sex { get; set; }
-        public int ClassesID { get; set; }
+        public int ClassID { get; set; }
         public Classes Classes { get; set; }
         public int RaceID { get; set; }
         public Race Race { get; set; }
