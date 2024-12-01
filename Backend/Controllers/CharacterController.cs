@@ -13,8 +13,12 @@
 
         public List<Character> GetAllCharacters() 
         {
-            // Step 1: Query raw data from Database 
-            var rawData = _database.GetRawDataFromDatabase("SELECT * FROM Characters");
+
+            // Step 1A: Bring in the query for _database to use
+            var query = CharacterQueries.GetAllCharacterAndItsRelatedData;
+
+            // Step 1B: Query raw data from Database 
+            var rawData = _database.GetRawDataFromDatabase(query);
 
             // Step 2: Map raw data to the Character objects 
             return _mapper.MapToCharacterClass(rawData);

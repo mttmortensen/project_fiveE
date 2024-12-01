@@ -8,7 +8,7 @@ namespace Backend
 {
     // This class is write out the complex queries when dealing with the Character tables
     // AND any other related table data associated with it.
-    public static class CharacterQueries
+    public class CharacterQueries
     {
         // Using a lambda getter expersion here
         public static string GetAllCharacterAndItsRelatedData => @"
