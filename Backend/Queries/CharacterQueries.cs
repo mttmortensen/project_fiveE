@@ -19,7 +19,7 @@ namespace Backend
             FROM Characters c
             LEFT JOIN Races r ON c.RaceID = r.RaceID
             LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
-            LEFT JOIN AbilityScores a ON c.AbilityID = a.AbilityID;
+            LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
         "; 
     }
 }

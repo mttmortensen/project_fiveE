@@ -18,9 +18,9 @@
                     CharacterID = Convert.ToInt32(row["CharacterID"]),
                     Name = row["Name"].ToString(),
                     Sex = row.ContainsKey("Sex") ? row["Sex"].ToString() : null,
-                    ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0, 
-                    RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0, 
-                    AbilityID= row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0, 
+                    ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                    RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
+                    AbilityID = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
                     Skills = row.ContainsKey("Skills") ? ParseList(row["Skills"].ToString()) : new List<string>(),
                     Proficiencies = row.ContainsKey("Proficiencies") ? ParseList(row["Proficiencies"].ToString()) : new List<string>(),
                     Equipment = row.ContainsKey("Equipment") ? ParseList(row["Equipment"].ToString()) : new List<string>(),
@@ -31,7 +31,10 @@
                     XP = row.ContainsKey("XP") ? Convert.ToInt32(row["XP"]) : 0,
                     MaxHP = row.ContainsKey("MaxHP") ? Convert.ToInt32(row["MaxHP"]) : 0,
                     Speed = row.ContainsKey("Speed") ? Convert.ToInt32(row["Speed"]) : 0,
-                    AC = row.ContainsKey("AC") ? Convert.ToInt32(row["AC"]) : 0
+                    AC = row.ContainsKey("AC") ? Convert.ToInt32(row["AC"]) : 0,
+                    Classes = MapClassData(row),
+                    Race = MapRaceData(row),
+                    AbilityScores = MapAbilityScores(row)
                 });
             }
             return characters;
@@ -71,14 +74,14 @@
         {
             return new AbilityScores
             {
-                AbilityId = Convert.ToInt32(row["AbilityID"]),
-                CharacterID = Convert.ToInt32(row["CharacterID"]),
-                Strength = Convert.ToInt32(row["Strength"]),
-                Dexterity = Convert.ToInt32(row["Dexterity"]),
-                Constitution = Convert.ToInt32(row["Constitution"]),
-                Intelligence = Convert.ToInt32(row["Intelligence"]),
-                Wisdom = Convert.ToInt32(row["Wisdom"]),
-                Charisma = Convert.ToInt32(row["Charisma"])
+                AbilityId = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
+                CharacterID = row.ContainsKey("CharacterID") ? Convert.ToInt32(row["CharacterID"]) : 0,
+                Strength = row.ContainsKey("Strength") ? Convert.ToInt32(row["Strength"]) : 0,
+                Dexterity = row.ContainsKey("Dexterity") ? Convert.ToInt32(row["Dexterity"]) : 0,
+                Constitution = row.ContainsKey("Constitution") ? Convert.ToInt32(row["Constitution"]) : 0,
+                Intelligence = row.ContainsKey("Intelligence") ? Convert.ToInt32(row["Intelligence"]) : 0,
+                Wisdom = row.ContainsKey("Wisdom") ? Convert.ToInt32(row["Wisdom"]) : 0,
+                Charisma = row.ContainsKey("Charisma") ? Convert.ToInt32(row["Charisma"]) : 0
             };
         }
 
@@ -87,13 +90,13 @@
         {
             return new Classes
             {
-                ClassId = Convert.ToInt32(row["ClassID"]),
-                ClassName = row["ClassName"].ToString(),
-                HitDie = row["HitDie"].ToString(),
-                PrimaryAbility = row["PrimaryAbility"].ToString(),
-                SavingThrows = MapList(row["SavingThrows"].ToString(), ','),
-                SkillChoices = MapList(row["SkillChoices"].ToString(), ';'),
-                ClassFeatures = MapList(row["ClassFeatures"].ToString(), ';')
+                ClassId = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                ClassName = row.ContainsKey("ClassName") ? row["ClassName"].ToString() : null,
+                HitDie = row.ContainsKey("HitDie") ? row["HitDie"].ToString() : null,
+                PrimaryAbility = row.ContainsKey("PrimaryAbility") ? row["PrimaryAbility"].ToString() : null,
+                SavingThrows = row.ContainsKey("SavingThrows") ? MapList(row["SavingThrows"].ToString(), ',') : new List<string>(),
+                SkillChoices = row.ContainsKey("SkillChoices") ? MapList(row["SkillChoices"].ToString(), ';') : new List<string>(),
+                ClassFeatures = row.ContainsKey("ClassFeatures") ? MapList(row["ClassFeatures"].ToString(), ';') : new List<string>()
             };
         }
 
@@ -102,13 +105,13 @@
         {
             return new Race
             {
-                RaceId = Convert.ToInt32(row["RaceID"]),
-                RaceName = row["RaceName"].ToString(),
-                RaceSize = row["RaceSize"].ToString(),
-                Speed = row["Speed"].ToString(),
-                AbilityScoreBonuses = MapList(row["AbilityScoreBonuses"].ToString(), ','),
-                Languages = MapList(row["Languages"].ToString(), ';'),
-                RacialFeatures = MapList(row["RacialFeatures"].ToString(), ';')
+                RaceId = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
+                RaceName = row.ContainsKey("RaceName") ? row["RaceName"].ToString() : null,
+                RaceSize = row.ContainsKey("RaceSize") ? row["RaceSize"].ToString() : null,
+                Speed = row.ContainsKey("RaceSpeed") ? Convert.ToInt32(row["RaceSpeed"]) : 0,
+                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(row["AbilityScoreBonuses"].ToString()) : new Dictionary<string, int>(),
+                Languages = row.ContainsKey("Languages") ? MapList(row["Languages"].ToString(), ';') : new List<string>(),
+                RacialFeatures = row.ContainsKey("RacialFeatures") ? MapList(row["RacialFeatures"].ToString(), ';') : new List<string>()
             };
         }
 

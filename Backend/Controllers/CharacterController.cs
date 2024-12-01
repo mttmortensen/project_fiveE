@@ -31,8 +31,8 @@
 
             // Step 2: Construct the SQL query
             string query = @"
-            INSERT INTO Characters (Name, Level, HP, AbilityScoresId, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
-            VALUES (@Name, @Level, @HP, @AbilityScoresId, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
+            INSERT INTO Characters (Name, Level, HP, AbilityId, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
+            VALUES (@Name, @Level, @HP, @AbilityId, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
             SELECT SCOPE_IDENTITY();"; // Returns the ID of the new row
 
             // Step 3: Use the database layer to insert the data
