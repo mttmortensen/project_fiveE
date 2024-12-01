@@ -4,6 +4,7 @@
     {
         private readonly Database _database;
         private readonly CharacterMapper _mapper;
+        private readonly CharacterQueries _queries;
 
         public CharacterController(Database database, CharacterMapper mapper)
         {
@@ -15,7 +16,7 @@
         {
 
             // Step 1A: Bring in the query for _database to use
-            var query = CharacterQueries.GetAllCharacterAndItsRelatedData;
+            var query = _queries.GetAllCharacterAndItsRelatedData;
 
             // Step 1B: Query raw data from Database 
             var rawData = _database.GetRawDataFromDatabase(query);
