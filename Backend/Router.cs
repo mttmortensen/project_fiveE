@@ -44,7 +44,7 @@ namespace Backend
                 }
                 catch (Exception ex)
                 {
-                    // Log or handle the error (if needed) and return a 500 response
+                    // Log or handle the error and return a 500 response
                     return $"500 Internal Server Error: {ex.Message}";
                 }
             }
