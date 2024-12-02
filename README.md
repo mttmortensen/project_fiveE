@@ -100,7 +100,7 @@
     "ClassName": "Fighter",
     "HitDie": "d10",
     "PrimaryAbility": "Strength",
- // Rest of Character Data
+<!-- Rest of Character Data -->
 }
 ```
 ### 3. **Create a New Character**
