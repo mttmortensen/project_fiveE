@@ -28,18 +28,32 @@
 
         public int AddCharacter(Character newCharacter)
         {
-            // Step 1A: Insert Ability Scores and get the AbilityID
+            // Step 1: Insert the Character (without AbilityId) and get the CharacterId
+            var characterData = _mapper.MapCharacterToDictionary(newCharacter);
+            string characterQuery = _queries.AddingNewCharacterWithoutAbilityId;
+            int characterId = _database.InsertRawDataIntoDatabase(characterQuery, characterData);
+
+            // Step 2A: Insert Ability Scores with the CharacterId and get the AbilityId
+            // Assign CharacterID to the Character object
+            newCharacter.CharacterID = characterId; 
             var abilityScoresData = _mapper.MapAbilityScoresToDictionary(newCharacter.AbilityScores);
+
+            // Include CharacterID in the AbilityScores data
+            abilityScoresData["@CharacterID"] = characterId;
+
             string abilityScoreQuery = _queries.AddingNewAbilityScoresForCharacter;
             int abilityId = _database.InsertRawDataIntoDatabase(abilityScoreQuery, abilityScoresData);
 
-            // Step 1B: Set the AbilityID for the new character 
+            // Step 2B: Update the Character with the new AbilityId 
             newCharacter.AbilityID = abilityId;
+            var updateCharacterData = new Dictionary<string, object>
+            {
+                {"@AbilityID", abilityId },
+                {"@CharacterID", characterId},
+            };
 
-            // Step 2: Insert the Character and get the CharacterID
-            var characterData = _mapper.MapCharacterToDictionary(newCharacter);
-            string characterQuery = _queries.AddingNewCharacter;
-            int characterId = _database.InsertRawDataIntoDatabase(characterQuery, characterData);
+            string updatedCharacterQuery = _queries.UpdateCharacterWithAbilityId;
+            _database.InsertRawDataIntoDatabase(updatedCharacterQuery, updateCharacterData);
 
             return characterId;
         }
