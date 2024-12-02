@@ -88,7 +88,7 @@
 ### 2. **Get a Single Character**
 **Endpoint:** `GET /api/characters/{id}`  
 **Description:** Retrieve detailed information about a single character by their ID.  
-**Response Example (Not all data is shown):**  
+**Response Example:**  
 ```json
 {
   "CharacterID": 1,
@@ -100,9 +100,7 @@
     "ClassName": "Fighter",
     "HitDie": "d10",
     "PrimaryAbility": "Strength",
-  
-
-
+// (Other class-related properties omitted for brevity)
 }
 ```
 ### 3. **Create a New Character**
