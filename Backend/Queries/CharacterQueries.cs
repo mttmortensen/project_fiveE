@@ -23,7 +23,7 @@
         "; // Returns the ID of the new row
 
         public string AddingNewAbilityScoresForCharacter => @"
-            INSERT INTO AbilityScores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+            INSERT INTO Abilities (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
             VALUES (@Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
             SELECT SCOPE_IDENTITY();
         "; // Returns the ID of the new AbilityScores row
