@@ -67,8 +67,22 @@ namespace Backend
             };
         }
 
+        // Converts the AbilityScore object into a dictionary of ability scores for database insertion
+        public Dictionary<string, object> MapAbilityScoresToDictionary(AbilityScores abilityScores)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@Strength", abilityScores.Strength },
+                { "@Dexterity", abilityScores.Dexterity },
+                { "@Constitution", abilityScores.Constitution },
+                { "@Intelligence", abilityScores.Intelligence },
+                { "@Wisdom", abilityScores.Wisdom },
+                { "@Charisma", abilityScores.Charisma }
+            };
+        }
+
         /************************************************************************/
-                                     /*HELPERS*/
+                                       /*HELPERS*/
         /************************************************************************/
 
         // Maps raw database rows to an AbilityScores object
