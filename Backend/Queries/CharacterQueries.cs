@@ -19,6 +19,13 @@
         public string AddingNewCharacter => @"
             INSERT INTO Characters (Name, Level, HP, AbilityId, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
             VALUES (@Name, @Level, @HP, @AbilityId, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
-            SELECT SCOPE_IDENTITY();"; // Returns the ID of the new row
+            SELECT SCOPE_IDENTITY(); 
+        "; // Returns the ID of the new row
+
+        public string AddingNewAbilityScoresForCharacter => @"
+            INSERT INTO AbilityScores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+            VALUES (@Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
+            SELECT SCOPE_IDENTITY();
+        "; // Returns the ID of the new AbilityScores row
     }
 }
