@@ -1,0 +1,22 @@
+INSERT INTO dbo.Classes (ClassName, HitDie, PrimaryAbility, SavingThrows, SkillChoices, ClassFeatures)
+VALUES
+    ('Barbarian', 'd12', 'Strength', '["Strength", "Constitution"]', 
+     '["Athletics", "Intimidation"]', '["Rage", "Unarmored Defense"]'),
+    ('Bard', 'd8', 'Charisma', '["Dexterity", "Charisma"]', 
+     '["Performance", "Persuasion"]', '["Spellcasting", "Bardic Inspiration"]'),
+    ('Cleric', 'd8', 'Wisdom', '["Wisdom", "Charisma"]', 
+     '["Medicine", "Religion"]', '["Spellcasting", "Divine Domain"]'),
+    ('Druid', 'd8', 'Wisdom', '["Intelligence", "Wisdom"]', 
+     '["Nature", "Survival"]', '["Spellcasting", "Wild Shape"]'),
+    ('Monk', 'd8', 'Dexterity', '["Strength", "Dexterity"]', 
+     '["Acrobatics", "Stealth"]', '["Unarmored Defense", "Martial Arts"]'),
+    ('Paladin', 'd10', 'Strength and Charisma', '["Wisdom", "Charisma"]', 
+     '["Athletics", "Insight"]', '["Divine Sense", "Lay on Hands"]'),
+    ('Ranger', 'd10', 'Dexterity and Wisdom', '["Strength", "Dexterity"]', 
+     '["Nature", "Perception"]', '["Favored Enemy", "Natural Explorer"]'),
+    ('Rogue', 'd8', 'Dexterity', '["Dexterity", "Intelligence"]', 
+     '["Stealth", "Investigation"]', '["Sneak Attack", "Thieves'' Cant"]'),
+    ('Sorcerer', 'd6', 'Charisma', '["Constitution", "Charisma"]', 
+     '["Arcana", "Deception"]', '["Spellcasting", "Sorcerous Origin"]'),
+    ('Warlock', 'd8', 'Charisma', '["Wisdom", "Charisma"]', 
+     '["Arcana", "History"]', '["Pact Magic", "Eldritch Invocations"]');
