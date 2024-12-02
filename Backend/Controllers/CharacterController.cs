@@ -27,14 +27,10 @@
 
         public int AddCharacter(Character newCharacter)
         {
-            // Step 1: Map the Character object to raw data format
-            var characterData = _mapper.MapCharacterToDictionary(newCharacter);
-
-            // Step 2: Construct the SQL query
-            string query = _queries.AddingNewCharacter;
-
-            // Step 3: Use the database layer to insert the data
-            return _database.InsertRawDataIntoDatabase(query, characterData);
+            // Step 1A: Insert Ability Scores and get the AbilityID
+            var abilityScoresData = _mapper.MapAbilityScoresToDictionary(newCharacter.AbilityScores);
+            string abilityScoreQuery = _queries.AddingNewAbilityScoresForCharacter;
+            int abilityId = _database.InsertRawDataIntoDatabase(abilityScoreQuery, abilityScoresData);
         }
     }
 }
