@@ -31,6 +31,16 @@
             var abilityScoresData = _mapper.MapAbilityScoresToDictionary(newCharacter.AbilityScores);
             string abilityScoreQuery = _queries.AddingNewAbilityScoresForCharacter;
             int abilityId = _database.InsertRawDataIntoDatabase(abilityScoreQuery, abilityScoresData);
+
+            // Step 1B: Set the AbilityID for the new character 
+            newCharacter.AbilityID = abilityId;
+
+            // Step 2: Insert the Character and get the CharacterID
+            var characterData = _mapper.MapCharacterToDictionary(newCharacter);
+            string characterQuery = _queries.AddingNewCharacter;
+            int characterId = _database.InsertRawDataIntoDatabase(characterQuery, characterData);
+
+            return characterId;
         }
     }
 }
