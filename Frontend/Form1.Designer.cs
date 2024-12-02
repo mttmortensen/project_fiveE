@@ -32,9 +32,9 @@
             character_info = new Label();
             label2 = new Label();
             textBox1 = new TextBox();
-            label1 = new Label();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
+            label1 = new Label();
             SuspendLayout();
             // 
             // character_title
@@ -74,16 +74,6 @@
             textBox1.Size = new Size(171, 23);
             textBox1.TabIndex = 3;
             // 
-            // label1
-            // 
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(192, 81);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 24);
-            label1.TabIndex = 4;
-            label1.Text = "Sex:";
-            // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
@@ -105,6 +95,16 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Female";
             radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.Location = new Point(192, 81);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 24);
+            label1.TabIndex = 4;
+            label1.Text = "Sex:";
             // 
             // Form1
             // 
@@ -131,7 +131,7 @@
         private Label label2;
         private TextBox textBox1;
         private RadioButton radioButton1;
-        private Label label1;
         private RadioButton radioButton2;
+        private Label label1;
     }
 }

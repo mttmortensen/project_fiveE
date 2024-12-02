@@ -9,6 +9,10 @@
 obj/
 bin/
 
+
 # Ignore the project and solution files
 *.csproj
 *.sln
+/Frontend/*.csproj.user
+/Frontend/*.resx
+/Frontend/*.Designer.cs
