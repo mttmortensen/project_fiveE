@@ -10,6 +10,7 @@
         {
             _database = database;
             _mapper = mapper;
+            _queries = new CharacterQueries();
         }
 
         public List<Character> GetAllCharacters() 
