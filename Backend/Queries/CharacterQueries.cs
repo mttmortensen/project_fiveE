@@ -24,9 +24,17 @@
         "; // Returns the ID of the new row
 
         public string AddingNewAbilityScoresForCharacter => @"
-            INSERT INTO Abilities (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
-            VALUES (@Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
+            INSERT INTO Abilities (CharacterID, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+            VALUES (@CharacterID, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
             SELECT SCOPE_IDENTITY();
         "; // Returns the ID of the new AbilityScores row
+
+        // Now that the AbilityID has been created, update it back to the Character table
+        public string UpdateCharacterWithAbilityId => @"
+            UPDATE Characters
+            SET AbilityId = @AbilityId
+            WHERE CharacterID = @CharacterID;
+        ";
+
     }
 }
