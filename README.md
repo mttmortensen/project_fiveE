@@ -100,7 +100,7 @@
     "ClassName": "Fighter",
     "HitDie": "d10",
     "PrimaryAbility": "Strength",
-  ...
+ // Rest of Character Data
 }
 ```
 ### 3. **Create a New Character**
@@ -125,4 +125,13 @@
   "Level": 1
 }
 ```
+**Response Example:**  
+```json
+{
+  "CharacterID": 2,
+  "Message": "Character created successfully"
+}
+```
 
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
