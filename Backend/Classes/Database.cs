@@ -29,7 +29,8 @@ namespace Backend
 
             AddParameter(command, parameters);
 
-            return ExecuteNonQuery(command);
+            // Execute the command and return the ID of the newly inserted row
+            return Convert.ToInt32(command.ExecuteScalar());
         }
 
         /************************************************************************/
