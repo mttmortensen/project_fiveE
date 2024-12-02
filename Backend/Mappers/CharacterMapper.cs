@@ -58,9 +58,9 @@ namespace Backend
                 { "@AC", character.AC },
                 { "@Background", character.Background ?? (object)DBNull.Value },
                 { "@Alignment", character.Alignment ?? (object)DBNull.Value },
-                { "@ClassId", character.ClassID },
-                { "@RaceId", character.RaceID },
-                { "@AbilityId", character.AbilityID },
+                { "@ClassID", character.ClassID },
+                { "@RaceID", character.RaceID },
+                { "@AbilityID", character.AbilityID },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
                 { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
                 { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
@@ -90,7 +90,7 @@ namespace Backend
         {
             return new AbilityScores
             {
-                AbilityId = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
+                AbilityID = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
                 CharacterID = row.ContainsKey("CharacterID") ? Convert.ToInt32(row["CharacterID"]) : 0,
                 Strength = row.ContainsKey("Strength") ? Convert.ToInt32(row["Strength"]) : 0,
                 Dexterity = row.ContainsKey("Dexterity") ? Convert.ToInt32(row["Dexterity"]) : 0,
@@ -106,7 +106,7 @@ namespace Backend
         {
             return new Classes
             {
-                ClassId = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
                 ClassName = row.ContainsKey("ClassName") ? row["ClassName"].ToString() : null,
                 HitDie = row.ContainsKey("HitDie") ? row["HitDie"].ToString() : null,
                 PrimaryAbility = row.ContainsKey("PrimaryAbility") ? row["PrimaryAbility"].ToString() : null,
@@ -121,7 +121,7 @@ namespace Backend
         {
             return new Race
             {
-                RaceId = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
+                RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
                 RaceName = row.ContainsKey("RaceName") ? row["RaceName"].ToString() : null,
                 RaceSize = row.ContainsKey("RaceSize") ? row["RaceSize"].ToString() : null,
                 Speed = row.ContainsKey("RaceSpeed") ? Convert.ToInt32(row["RaceSpeed"]) : 0,

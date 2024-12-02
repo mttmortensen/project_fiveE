@@ -18,8 +18,8 @@
 
         // Needing to get the CharacterID first before creating the Ability query 
         public string AddingNewCharacterWithoutAbilityId => @"
-            INSERT INTO Characters (Name, Level, HP, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
-            VALUES (@Name, @Level, @HP, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
+            INSERT INTO Characters (Name, Level, HP, RaceID, ClassID, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
+            VALUES (@Name, @Level, @HP, @RaceID, @ClassID, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
             SELECT SCOPE_IDENTITY();
         "; // Returns the ID of the new row
 
@@ -32,7 +32,7 @@
         // Now that the AbilityID has been created, update it back to the Character table
         public string UpdateCharacterWithAbilityId => @"
             UPDATE Characters
-            SET AbilityId = @AbilityId
+            SET AbilityID = @AbilityID
             WHERE CharacterID = @CharacterID;
         ";
 
