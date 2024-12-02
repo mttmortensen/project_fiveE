@@ -100,7 +100,8 @@
     "ClassName": "Fighter",
     "HitDie": "d10",
     "PrimaryAbility": "Strength",
-// (Other class-related properties omitted for brevity)
+
+"...": "Other class-related properties omitted for brevity"
 }
 ```
 ### 3. **Create a New Character**
