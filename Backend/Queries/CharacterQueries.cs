@@ -14,12 +14,13 @@
             LEFT JOIN Races r ON c.RaceID = r.RaceID
             LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
             LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
-        "; 
+        ";
 
-        public string AddingNewCharacter => @"
-            INSERT INTO Characters (Name, Level, HP, AbilityId, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
-            VALUES (@Name, @Level, @HP, @AbilityId, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
-            SELECT SCOPE_IDENTITY(); 
+        // Needing to get the CharacterID first before creating the Ability query 
+        public string AddingNewCharacterWithoutAbilityId => @"
+            INSERT INTO Characters (Name, Level, HP, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
+            VALUES (@Name, @Level, @HP, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
+            SELECT SCOPE_IDENTITY();
         "; // Returns the ID of the new row
 
         public string AddingNewAbilityScoresForCharacter => @"
