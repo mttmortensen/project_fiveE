@@ -15,5 +15,10 @@
             LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
             LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
         "; 
+
+        public string AddingNewCharacter => @"
+            INSERT INTO Characters (Name, Level, HP, AbilityId, RaceId, ClassId, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
+            VALUES (@Name, @Level, @HP, @AbilityId, @RaceId, @ClassId, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
+            SELECT SCOPE_IDENTITY();"; // Returns the ID of the new row
     }
 }
