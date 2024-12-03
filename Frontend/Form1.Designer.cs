@@ -70,18 +70,18 @@
             absb_textBox = new TextBox();
             classes_title = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
+            skillchoices_label = new Label();
+            skillchoices_comboBox = new ComboBox();
             primaryability_label = new Label();
             primaryability_textBox = new TextBox();
-            hitdie_label = new Label();
             hitdie_comboBox = new ComboBox();
             classname_label = new Label();
             classname_comboBox = new ComboBox();
+            hitdie_label = new Label();
             savingthrow_label = new Label();
             savingthrow_textBox = new TextBox();
             classfeatures_textBox = new RichTextBox();
             classfeatures_label = new Label();
-            skillchoices_label = new Label();
-            skillchoices_comboBox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -379,6 +379,7 @@
             // 
             // character_title_label
             // 
+            character_title_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             character_title_label.Location = new Point(12, 9);
             character_title_label.Name = "character_title_label";
@@ -388,6 +389,7 @@
             // 
             // basicInfo_label
             // 
+            basicInfo_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             basicInfo_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             basicInfo_label.Location = new Point(12, 63);
             basicInfo_label.Name = "basicInfo_label";
@@ -397,6 +399,7 @@
             // 
             // raceInfo_title
             // 
+            raceInfo_title.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             raceInfo_title.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             raceInfo_title.Location = new Point(12, 385);
             raceInfo_title.Name = "raceInfo_title";
@@ -568,6 +571,7 @@
             // 
             // classes_title
             // 
+            classes_title.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             classes_title.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             classes_title.Location = new Point(12, 634);
             classes_title.Name = "classes_title";
@@ -608,6 +612,28 @@
             tableLayoutPanel3.Size = new Size(783, 263);
             tableLayoutPanel3.TabIndex = 6;
             // 
+            // skillchoices_label
+            // 
+            skillchoices_label.Anchor = AnchorStyles.Left;
+            skillchoices_label.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(skillchoices_label, 2);
+            skillchoices_label.Font = new Font("Segoe UI", 12F);
+            skillchoices_label.Location = new Point(3, 208);
+            skillchoices_label.Name = "skillchoices_label";
+            skillchoices_label.Size = new Size(100, 21);
+            skillchoices_label.TabIndex = 16;
+            skillchoices_label.Text = "Skill Choices:";
+            // 
+            // skillchoices_comboBox
+            // 
+            skillchoices_comboBox.Anchor = AnchorStyles.Left;
+            tableLayoutPanel3.SetColumnSpan(skillchoices_comboBox, 2);
+            skillchoices_comboBox.FormattingEnabled = true;
+            skillchoices_comboBox.Location = new Point(197, 207);
+            skillchoices_comboBox.Name = "skillchoices_comboBox";
+            skillchoices_comboBox.Size = new Size(188, 23);
+            skillchoices_comboBox.TabIndex = 17;
+            // 
             // primaryability_label
             // 
             primaryability_label.Anchor = AnchorStyles.Left;
@@ -628,17 +654,6 @@
             primaryability_textBox.Name = "primaryability_textBox";
             primaryability_textBox.Size = new Size(188, 23);
             primaryability_textBox.TabIndex = 9;
-            // 
-            // hitdie_label
-            // 
-            hitdie_label.Anchor = AnchorStyles.Left;
-            hitdie_label.AutoSize = true;
-            hitdie_label.Font = new Font("Segoe UI", 12F);
-            hitdie_label.Location = new Point(488, 33);
-            hitdie_label.Name = "hitdie_label";
-            hitdie_label.Size = new Size(60, 21);
-            hitdie_label.TabIndex = 4;
-            hitdie_label.Text = "Hit Die:";
             // 
             // hitdie_comboBox
             // 
@@ -671,6 +686,17 @@
             classname_comboBox.Name = "classname_comboBox";
             classname_comboBox.Size = new Size(188, 23);
             classname_comboBox.TabIndex = 3;
+            // 
+            // hitdie_label
+            // 
+            hitdie_label.Anchor = AnchorStyles.Left;
+            hitdie_label.AutoSize = true;
+            hitdie_label.Font = new Font("Segoe UI", 12F);
+            hitdie_label.Location = new Point(488, 33);
+            hitdie_label.Name = "hitdie_label";
+            hitdie_label.Size = new Size(60, 21);
+            hitdie_label.TabIndex = 4;
+            hitdie_label.Text = "Hit Die:";
             // 
             // savingthrow_label
             // 
@@ -712,28 +738,6 @@
             classfeatures_label.Size = new Size(72, 42);
             classfeatures_label.TabIndex = 14;
             classfeatures_label.Text = "Class Features:";
-            // 
-            // skillchoices_label
-            // 
-            skillchoices_label.Anchor = AnchorStyles.Left;
-            skillchoices_label.AutoSize = true;
-            tableLayoutPanel3.SetColumnSpan(skillchoices_label, 2);
-            skillchoices_label.Font = new Font("Segoe UI", 12F);
-            skillchoices_label.Location = new Point(3, 208);
-            skillchoices_label.Name = "skillchoices_label";
-            skillchoices_label.Size = new Size(100, 21);
-            skillchoices_label.TabIndex = 16;
-            skillchoices_label.Text = "Skill Choices:";
-            // 
-            // skillchoices_comboBox
-            // 
-            skillchoices_comboBox.Anchor = AnchorStyles.Left;
-            tableLayoutPanel3.SetColumnSpan(skillchoices_comboBox, 2);
-            skillchoices_comboBox.FormattingEnabled = true;
-            skillchoices_comboBox.Location = new Point(197, 207);
-            skillchoices_comboBox.Name = "skillchoices_comboBox";
-            skillchoices_comboBox.Size = new Size(188, 23);
-            skillchoices_comboBox.TabIndex = 17;
             // 
             // Form1
             // 
