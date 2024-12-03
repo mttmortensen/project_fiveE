@@ -55,7 +55,17 @@
             character_title_label = new Label();
             basicInfo_label = new Label();
             raceInfo_title = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
+            comboBox2 = new ComboBox();
+            label3 = new Label();
+            textBox2 = new TextBox();
+            label4 = new Label();
+            textBox4 = new TextBox();
             tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -375,11 +385,120 @@
             raceInfo_title.TabIndex = 3;
             raceInfo_title.Text = "Race Info:";
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 8;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Controls.Add(textBox2, 1, 1);
+            tableLayoutPanel2.Controls.Add(label3, 0, 1);
+            tableLayoutPanel2.Controls.Add(comboBox1, 1, 0);
+            tableLayoutPanel2.Controls.Add(label2, 3, 0);
+            tableLayoutPanel2.Controls.Add(comboBox2, 4, 0);
+            tableLayoutPanel2.Controls.Add(label4, 2, 1);
+            tableLayoutPanel2.Controls.Add(textBox4, 4, 1);
+            tableLayoutPanel2.Location = new Point(12, 423);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 5;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.Size = new Size(783, 263);
+            tableLayoutPanel2.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(22, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(52, 21);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
+            // 
+            // comboBox1
+            // 
+            tableLayoutPanel2.SetColumnSpan(comboBox1, 2);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(100, 3);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(188, 23);
+            comboBox1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(313, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 21);
+            label2.TabIndex = 2;
+            label2.Text = "label2";
+            // 
+            // comboBox2
+            // 
+            tableLayoutPanel2.SetColumnSpan(comboBox2, 2);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(391, 3);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(188, 23);
+            comboBox2.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(22, 52);
+            label3.Name = "label3";
+            label3.Size = new Size(52, 21);
+            label3.TabIndex = 4;
+            label3.Text = "label3";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(100, 55);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(91, 23);
+            textBox2.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top;
+            label4.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(label4, 2);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(210, 52);
+            label4.Name = "label4";
+            label4.Size = new Size(162, 21);
+            label4.TabIndex = 6;
+            label4.Text = "Ability Score Bonuses:";
+            // 
+            // textBox4
+            // 
+            tableLayoutPanel2.SetColumnSpan(textBox4, 2);
+            textBox4.Location = new Point(391, 55);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(188, 23);
+            textBox4.TabIndex = 7;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(807, 949);
+            Controls.Add(tableLayoutPanel2);
             Controls.Add(raceInfo_title);
             Controls.Add(basicInfo_label);
             Controls.Add(character_title_label);
@@ -388,6 +507,8 @@
             Name = "Form1";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -420,5 +541,14 @@
         private TextBox maxhp_textBox;
         private TextBox textBox3;
         private Label raceInfo_title;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label2;
+        private ComboBox comboBox2;
+        private Label label1;
+        private ComboBox comboBox1;
+        private TextBox textBox2;
+        private Label label3;
+        private Label label4;
+        private TextBox textBox4;
     }
 }
