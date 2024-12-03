@@ -70,8 +70,15 @@
             racefeatures_label = new Label();
             classes_title = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
+            classname_label = new Label();
+            classname_comboBox = new ComboBox();
+            hitdie_label = new Label();
+            hitdie_comboBox = new ComboBox();
+            primaryability_label = new Label();
+            primaryability_textBox = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -566,6 +573,12 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel3.Controls.Add(primaryability_label, 0, 1);
+            tableLayoutPanel3.Controls.Add(primaryability_textBox, 2, 1);
+            tableLayoutPanel3.Controls.Add(hitdie_label, 4, 0);
+            tableLayoutPanel3.Controls.Add(hitdie_comboBox, 6, 0);
+            tableLayoutPanel3.Controls.Add(classname_label, 0, 0);
+            tableLayoutPanel3.Controls.Add(classname_comboBox, 2, 0);
             tableLayoutPanel3.Location = new Point(12, 686);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
@@ -574,6 +587,68 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel3.Size = new Size(783, 263);
             tableLayoutPanel3.TabIndex = 6;
+            // 
+            // classname_label
+            // 
+            classname_label.Anchor = AnchorStyles.Top;
+            classname_label.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(classname_label, 2);
+            classname_label.Font = new Font("Segoe UI", 12F);
+            classname_label.Location = new Point(49, 0);
+            classname_label.Name = "classname_label";
+            classname_label.Size = new Size(95, 21);
+            classname_label.TabIndex = 2;
+            classname_label.Text = "Class Name:";
+            // 
+            // classname_comboBox
+            // 
+            tableLayoutPanel3.SetColumnSpan(classname_comboBox, 2);
+            classname_comboBox.FormattingEnabled = true;
+            classname_comboBox.Location = new Point(197, 3);
+            classname_comboBox.Name = "classname_comboBox";
+            classname_comboBox.Size = new Size(188, 23);
+            classname_comboBox.TabIndex = 3;
+            // 
+            // hitdie_label
+            // 
+            hitdie_label.Anchor = AnchorStyles.Top;
+            hitdie_label.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(hitdie_label, 2);
+            hitdie_label.Font = new Font("Segoe UI", 12F);
+            hitdie_label.Location = new Point(455, 0);
+            hitdie_label.Name = "hitdie_label";
+            hitdie_label.Size = new Size(60, 21);
+            hitdie_label.TabIndex = 4;
+            hitdie_label.Text = "Hit Die:";
+            // 
+            // hitdie_comboBox
+            // 
+            tableLayoutPanel3.SetColumnSpan(hitdie_comboBox, 2);
+            hitdie_comboBox.FormattingEnabled = true;
+            hitdie_comboBox.Location = new Point(585, 3);
+            hitdie_comboBox.Name = "hitdie_comboBox";
+            hitdie_comboBox.Size = new Size(188, 23);
+            hitdie_comboBox.TabIndex = 5;
+            // 
+            // primaryability_label
+            // 
+            primaryability_label.Anchor = AnchorStyles.Top;
+            primaryability_label.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(primaryability_label, 2);
+            primaryability_label.Font = new Font("Segoe UI", 12F);
+            primaryability_label.Location = new Point(39, 87);
+            primaryability_label.Name = "primaryability_label";
+            primaryability_label.Size = new Size(116, 21);
+            primaryability_label.TabIndex = 8;
+            primaryability_label.Text = "Primary Ability:";
+            // 
+            // primaryability_textBox
+            // 
+            tableLayoutPanel3.SetColumnSpan(primaryability_textBox, 2);
+            primaryability_textBox.Location = new Point(197, 90);
+            primaryability_textBox.Name = "primaryability_textBox";
+            primaryability_textBox.Size = new Size(188, 23);
+            primaryability_textBox.TabIndex = 9;
             // 
             // Form1
             // 
@@ -593,6 +668,8 @@
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -640,5 +717,11 @@
         private RichTextBox r_features_textBox;
         private Label classes_title;
         private TableLayoutPanel tableLayoutPanel3;
+        private Label hitdie_label;
+        private ComboBox hitdie_comboBox;
+        private Label classname_label;
+        private ComboBox classname_comboBox;
+        private Label primaryability_label;
+        private TextBox primaryability_textBox;
     }
 }
