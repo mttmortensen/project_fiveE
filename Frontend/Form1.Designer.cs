@@ -80,6 +80,8 @@
             savingthrow_textBox = new TextBox();
             classfeatures_textBox = new RichTextBox();
             classfeatures_label = new Label();
+            skillchoices_label = new Label();
+            skillchoices_comboBox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -585,6 +587,8 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel3.Controls.Add(skillchoices_label, 0, 2);
+            tableLayoutPanel3.Controls.Add(skillchoices_comboBox, 2, 2);
             tableLayoutPanel3.Controls.Add(primaryability_label, 0, 1);
             tableLayoutPanel3.Controls.Add(primaryability_textBox, 2, 1);
             tableLayoutPanel3.Controls.Add(hitdie_comboBox, 6, 0);
@@ -709,6 +713,28 @@
             classfeatures_label.TabIndex = 14;
             classfeatures_label.Text = "Class Features:";
             // 
+            // skillchoices_label
+            // 
+            skillchoices_label.Anchor = AnchorStyles.Left;
+            skillchoices_label.AutoSize = true;
+            tableLayoutPanel3.SetColumnSpan(skillchoices_label, 2);
+            skillchoices_label.Font = new Font("Segoe UI", 12F);
+            skillchoices_label.Location = new Point(3, 208);
+            skillchoices_label.Name = "skillchoices_label";
+            skillchoices_label.Size = new Size(100, 21);
+            skillchoices_label.TabIndex = 16;
+            skillchoices_label.Text = "Skill Choices:";
+            // 
+            // skillchoices_comboBox
+            // 
+            skillchoices_comboBox.Anchor = AnchorStyles.Left;
+            tableLayoutPanel3.SetColumnSpan(skillchoices_comboBox, 2);
+            skillchoices_comboBox.FormattingEnabled = true;
+            skillchoices_comboBox.Location = new Point(197, 207);
+            skillchoices_comboBox.Name = "skillchoices_comboBox";
+            skillchoices_comboBox.Size = new Size(188, 23);
+            skillchoices_comboBox.TabIndex = 17;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -786,5 +812,7 @@
         private TextBox savingthrow_textBox;
         private RichTextBox classfeatures_textBox;
         private Label classfeatures_label;
+        private Label skillchoices_label;
+        private ComboBox skillchoices_comboBox;
     }
 }
