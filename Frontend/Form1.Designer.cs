@@ -414,15 +414,15 @@
             tableLayoutPanel2.Controls.Add(racename_label, 0, 0);
             tableLayoutPanel2.Controls.Add(r_speed_textBox, 1, 1);
             tableLayoutPanel2.Controls.Add(speed_label, 0, 1);
-            tableLayoutPanel2.Controls.Add(label4, 2, 1);
-            tableLayoutPanel2.Controls.Add(absb_textBox, 4, 1);
             tableLayoutPanel2.Controls.Add(languages_label, 0, 2);
             tableLayoutPanel2.Controls.Add(languages_textBox, 1, 2);
             tableLayoutPanel2.Controls.Add(r_features_textBox, 5, 2);
             tableLayoutPanel2.Controls.Add(racesize_comboBox, 5, 0);
-            tableLayoutPanel2.Controls.Add(racesize_label, 4, 0);
-            tableLayoutPanel2.Controls.Add(racename_comboBox, 2, 0);
+            tableLayoutPanel2.Controls.Add(racename_comboBox, 1, 0);
+            tableLayoutPanel2.Controls.Add(label4, 3, 1);
+            tableLayoutPanel2.Controls.Add(racesize_label, 3, 0);
             tableLayoutPanel2.Controls.Add(racefeatures_label, 3, 2);
+            tableLayoutPanel2.Controls.Add(absb_textBox, 5, 1);
             tableLayoutPanel2.Location = new Point(12, 423);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
@@ -435,41 +435,43 @@
             // 
             // racename_label
             // 
-            racename_label.Anchor = AnchorStyles.Top;
+            racename_label.Anchor = AnchorStyles.Left;
             racename_label.AutoSize = true;
-            tableLayoutPanel2.SetColumnSpan(racename_label, 2);
             racename_label.Font = new Font("Segoe UI", 12F);
-            racename_label.Location = new Point(51, 0);
+            racename_label.Location = new Point(3, 11);
             racename_label.Name = "racename_label";
-            racename_label.Size = new Size(92, 21);
+            racename_label.Size = new Size(55, 42);
             racename_label.TabIndex = 0;
             racename_label.Text = "Race Name:";
+            racename_label.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // r_speed_textBox
             // 
-            r_speed_textBox.Location = new Point(100, 68);
+            r_speed_textBox.Anchor = AnchorStyles.Left;
+            r_speed_textBox.Location = new Point(100, 86);
             r_speed_textBox.Name = "r_speed_textBox";
             r_speed_textBox.Size = new Size(91, 23);
             r_speed_textBox.TabIndex = 5;
             // 
             // speed_label
             // 
-            speed_label.Anchor = AnchorStyles.Top;
+            speed_label.Anchor = AnchorStyles.Left;
             speed_label.AutoSize = true;
             speed_label.Font = new Font("Segoe UI", 12F);
-            speed_label.Location = new Point(20, 65);
+            speed_label.Location = new Point(3, 87);
             speed_label.Name = "speed_label";
             speed_label.Size = new Size(56, 21);
             speed_label.TabIndex = 4;
             speed_label.Text = "Speed:";
+            speed_label.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top;
+            label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             tableLayoutPanel2.SetColumnSpan(label4, 2);
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(210, 65);
+            label4.Location = new Point(294, 87);
             label4.Name = "label4";
             label4.Size = new Size(162, 21);
             label4.TabIndex = 6;
@@ -477,26 +479,28 @@
             // 
             // absb_textBox
             // 
+            absb_textBox.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(absb_textBox, 2);
-            absb_textBox.Location = new Point(391, 68);
+            absb_textBox.Location = new Point(488, 86);
             absb_textBox.Name = "absb_textBox";
             absb_textBox.Size = new Size(188, 23);
             absb_textBox.TabIndex = 7;
             // 
             // languages_label
             // 
-            languages_label.Anchor = AnchorStyles.Top;
+            languages_label.Anchor = AnchorStyles.Left;
             languages_label.AutoSize = true;
             languages_label.Font = new Font("Segoe UI", 12F);
-            languages_label.Location = new Point(4, 130);
+            languages_label.Location = new Point(3, 152);
             languages_label.Name = "languages_label";
             languages_label.Size = new Size(88, 21);
             languages_label.TabIndex = 10;
             languages_label.Text = "Languages:";
+            languages_label.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // languages_textBox
             // 
-            languages_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            languages_textBox.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(languages_textBox, 2);
             languages_textBox.Location = new Point(100, 141);
             languages_textBox.Name = "languages_textBox";
@@ -506,7 +510,7 @@
             // 
             // r_features_textBox
             // 
-            r_features_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            r_features_textBox.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(r_features_textBox, 2);
             r_features_textBox.Location = new Point(488, 141);
             r_features_textBox.Name = "r_features_textBox";
@@ -516,19 +520,20 @@
             // 
             // racesize_comboBox
             // 
+            racesize_comboBox.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(racesize_comboBox, 2);
             racesize_comboBox.FormattingEnabled = true;
-            racesize_comboBox.Location = new Point(488, 3);
+            racesize_comboBox.Location = new Point(488, 21);
             racesize_comboBox.Name = "racesize_comboBox";
             racesize_comboBox.Size = new Size(188, 23);
             racesize_comboBox.TabIndex = 3;
             // 
             // racesize_label
             // 
-            racesize_label.Anchor = AnchorStyles.Top;
+            racesize_label.Anchor = AnchorStyles.Left;
             racesize_label.AutoSize = true;
             racesize_label.Font = new Font("Segoe UI", 12F);
-            racesize_label.Location = new Point(397, 0);
+            racesize_label.Location = new Point(294, 22);
             racesize_label.Name = "racesize_label";
             racesize_label.Size = new Size(78, 21);
             racesize_label.TabIndex = 2;
@@ -536,20 +541,21 @@
             // 
             // racename_comboBox
             // 
+            racename_comboBox.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(racename_comboBox, 2);
             racename_comboBox.FormattingEnabled = true;
-            racename_comboBox.Location = new Point(197, 3);
+            racename_comboBox.Location = new Point(100, 21);
             racename_comboBox.Name = "racename_comboBox";
             racename_comboBox.Size = new Size(188, 23);
             racename_comboBox.TabIndex = 1;
             // 
             // racefeatures_label
             // 
-            racefeatures_label.Anchor = AnchorStyles.Top;
+            racefeatures_label.Anchor = AnchorStyles.Left;
             racefeatures_label.AutoSize = true;
             tableLayoutPanel2.SetColumnSpan(racefeatures_label, 2);
             racefeatures_label.Font = new Font("Segoe UI", 12F);
-            racefeatures_label.Location = new Point(329, 130);
+            racefeatures_label.Location = new Point(294, 152);
             racefeatures_label.Name = "racefeatures_label";
             racefeatures_label.Size = new Size(117, 21);
             racefeatures_label.TabIndex = 12;
