@@ -42,6 +42,10 @@
             richTextBox1 = new RichTextBox();
             character_title_label = new Label();
             basicInfo_label = new Label();
+            equipment_label = new Label();
+            richTextBox2 = new RichTextBox();
+            background_label = new Label();
+            richTextBox3 = new RichTextBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,6 +60,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.Controls.Add(background_label, 3, 2);
+            tableLayoutPanel1.Controls.Add(richTextBox3, 5, 2);
             tableLayoutPanel1.Controls.Add(skill_label, 0, 1);
             tableLayoutPanel1.Controls.Add(level_label, 5, 0);
             tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
@@ -67,6 +73,8 @@
             tableLayoutPanel1.Controls.Add(skill_textBox, 1, 1);
             tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 1);
             tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
+            tableLayoutPanel1.Controls.Add(richTextBox2, 1, 2);
+            tableLayoutPanel1.Controls.Add(equipment_label, 0, 2);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -218,6 +226,49 @@
             basicInfo_label.TabIndex = 2;
             basicInfo_label.Text = "Basic Info:";
             // 
+            // equipment_label
+            // 
+            equipment_label.Anchor = AnchorStyles.Top;
+            equipment_label.AutoSize = true;
+            equipment_label.Font = new Font("Segoe UI", 12F);
+            equipment_label.Location = new Point(4, 130);
+            equipment_label.Name = "equipment_label";
+            equipment_label.Size = new Size(88, 21);
+            equipment_label.TabIndex = 12;
+            equipment_label.Text = "Equipment:";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox2, 2);
+            richTextBox2.Location = new Point(100, 140);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(188, 44);
+            richTextBox2.TabIndex = 13;
+            richTextBox2.Text = "";
+            // 
+            // background_label
+            // 
+            background_label.Anchor = AnchorStyles.Top;
+            background_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(background_label, 2);
+            background_label.Font = new Font("Segoe UI", 12F);
+            background_label.Location = new Point(340, 130);
+            background_label.Name = "background_label";
+            background_label.Size = new Size(96, 21);
+            background_label.TabIndex = 14;
+            background_label.Text = "Background:";
+            // 
+            // richTextBox3
+            // 
+            richTextBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox3, 2);
+            richTextBox3.Location = new Point(488, 140);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(188, 44);
+            richTextBox3.TabIndex = 15;
+            richTextBox3.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,5 +300,9 @@
         private RichTextBox skill_textBox;
         private RichTextBox richTextBox1;
         private Label proficiencies_label;
+        private Label background_label;
+        private RichTextBox richTextBox3;
+        private RichTextBox richTextBox2;
+        private Label equipment_label;
     }
 }
