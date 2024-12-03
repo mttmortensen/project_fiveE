@@ -36,7 +36,6 @@
             level_label = new Label();
             sex_label = new Label();
             textBox1 = new TextBox();
-            sex_m_rButton = new RadioButton();
             sex_f_button = new RadioButton();
             character_name_label = new Label();
             lvl_drop_drown = new ComboBox();
@@ -52,18 +51,23 @@
             maxhp_label = new Label();
             maxhp_textBox = new TextBox();
             textBox3 = new TextBox();
+            sex_m_rButton = new RadioButton();
             character_title_label = new Label();
             basicInfo_label = new Label();
             raceInfo_title = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
             comboBox1 = new ComboBox();
             label2 = new Label();
             comboBox2 = new ComboBox();
-            label3 = new Label();
-            textBox2 = new TextBox();
             label4 = new Label();
             textBox4 = new TextBox();
+            label5 = new Label();
+            richTextBox1 = new RichTextBox();
+            label6 = new Label();
+            richTextBox2 = new RichTextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -187,19 +191,6 @@
             textBox1.PlaceholderText = "First, Last";
             textBox1.Size = new Size(91, 22);
             textBox1.TabIndex = 4;
-            // 
-            // sex_m_rButton
-            // 
-            sex_m_rButton.Anchor = AnchorStyles.Top;
-            sex_m_rButton.AutoSize = true;
-            sex_m_rButton.Font = new Font("Segoe UI", 12F);
-            sex_m_rButton.Location = new Point(308, 3);
-            sex_m_rButton.Name = "sex_m_rButton";
-            sex_m_rButton.Size = new Size(62, 25);
-            sex_m_rButton.TabIndex = 5;
-            sex_m_rButton.TabStop = true;
-            sex_m_rButton.Text = "Male";
-            sex_m_rButton.UseVisualStyleBackColor = true;
             // 
             // sex_f_button
             // 
@@ -358,6 +349,19 @@
             textBox3.Size = new Size(98, 22);
             textBox3.TabIndex = 23;
             // 
+            // sex_m_rButton
+            // 
+            sex_m_rButton.Anchor = AnchorStyles.Top;
+            sex_m_rButton.AutoSize = true;
+            sex_m_rButton.Font = new Font("Segoe UI", 12F);
+            sex_m_rButton.Location = new Point(308, 3);
+            sex_m_rButton.Name = "sex_m_rButton";
+            sex_m_rButton.Size = new Size(62, 25);
+            sex_m_rButton.TabIndex = 5;
+            sex_m_rButton.TabStop = true;
+            sex_m_rButton.Text = "Male";
+            sex_m_rButton.UseVisualStyleBackColor = true;
+            // 
             // character_title_label
             // 
             character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -404,15 +408,18 @@
             tableLayoutPanel2.Controls.Add(comboBox2, 4, 0);
             tableLayoutPanel2.Controls.Add(label4, 2, 1);
             tableLayoutPanel2.Controls.Add(textBox4, 4, 1);
+            tableLayoutPanel2.Controls.Add(label5, 0, 2);
+            tableLayoutPanel2.Controls.Add(richTextBox1, 1, 2);
+            tableLayoutPanel2.Controls.Add(label6, 4, 2);
+            tableLayoutPanel2.Controls.Add(richTextBox2, 5, 2);
             tableLayoutPanel2.Location = new Point(12, 423);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 5;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Size = new Size(783, 263);
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(783, 196);
             tableLayoutPanel2.TabIndex = 4;
             // 
             // label1
@@ -425,6 +432,24 @@
             label1.Size = new Size(52, 21);
             label1.TabIndex = 0;
             label1.Text = "label1";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(100, 68);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(91, 23);
+            textBox2.TabIndex = 5;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(22, 65);
+            label3.Name = "label3";
+            label3.Size = new Size(52, 21);
+            label3.TabIndex = 4;
+            label3.Text = "label3";
             // 
             // comboBox1
             // 
@@ -455,31 +480,13 @@
             comboBox2.Size = new Size(188, 23);
             comboBox2.TabIndex = 3;
             // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(22, 52);
-            label3.Name = "label3";
-            label3.Size = new Size(52, 21);
-            label3.TabIndex = 4;
-            label3.Text = "label3";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(100, 55);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(91, 23);
-            textBox2.TabIndex = 5;
-            // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             tableLayoutPanel2.SetColumnSpan(label4, 2);
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(210, 52);
+            label4.Location = new Point(210, 65);
             label4.Name = "label4";
             label4.Size = new Size(162, 21);
             label4.TabIndex = 6;
@@ -488,10 +495,55 @@
             // textBox4
             // 
             tableLayoutPanel2.SetColumnSpan(textBox4, 2);
-            textBox4.Location = new Point(391, 55);
+            textBox4.Location = new Point(391, 68);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(188, 23);
             textBox4.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(24, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(49, 21);
+            label5.TabIndex = 10;
+            label5.Text = "Skills:";
+            label5.Click += this.label5_Click;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.SetColumnSpan(richTextBox1, 2);
+            richTextBox1.Location = new Point(100, 141);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(188, 44);
+            richTextBox1.TabIndex = 11;
+            richTextBox1.Text = "";
+            richTextBox1.TextChanged += this.richTextBox1_TextChanged;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(412, 130);
+            label6.Name = "label6";
+            label6.Size = new Size(49, 21);
+            label6.TabIndex = 12;
+            label6.Text = "Skills:";
+            label6.Click += label6_Click;
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.SetColumnSpan(richTextBox2, 2);
+            richTextBox2.Location = new Point(488, 141);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(188, 44);
+            richTextBox2.TabIndex = 13;
+            richTextBox2.Text = "";
             // 
             // Form1
             // 
@@ -550,5 +602,9 @@
         private Label label3;
         private Label label4;
         private TextBox textBox4;
+        private Label label5;
+        private RichTextBox richTextBox1;
+        private Label label6;
+        private RichTextBox richTextBox2;
     }
 }
