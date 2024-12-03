@@ -30,7 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             background_label = new Label();
-            richTextBox3 = new RichTextBox();
+            background_textBox = new RichTextBox();
             skill_label = new Label();
             level_label = new Label();
             sex_label = new Label();
@@ -41,8 +41,8 @@
             lvl_drop_drown = new ComboBox();
             skill_textBox = new RichTextBox();
             proficiencies_label = new Label();
-            richTextBox1 = new RichTextBox();
-            richTextBox2 = new RichTextBox();
+            proficiencies_textBox = new RichTextBox();
+            equipment_textBox = new RichTextBox();
             equipment_label = new Label();
             character_title_label = new Label();
             basicInfo_label = new Label();
@@ -50,6 +50,10 @@
             xp_label = new Label();
             hp_label = new Label();
             hp_textbox = new TextBox();
+            maxhp_label = new Label();
+            maxhp_textBox = new TextBox();
+            ac_label = new Label();
+            textBox3 = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,8 +68,9 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.Controls.Add(ac_label, 6, 3);
             tableLayoutPanel1.Controls.Add(background_label, 3, 2);
-            tableLayoutPanel1.Controls.Add(richTextBox3, 5, 2);
+            tableLayoutPanel1.Controls.Add(background_textBox, 5, 2);
             tableLayoutPanel1.Controls.Add(skill_label, 0, 1);
             tableLayoutPanel1.Controls.Add(level_label, 5, 0);
             tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
@@ -76,13 +81,16 @@
             tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 0);
             tableLayoutPanel1.Controls.Add(skill_textBox, 1, 1);
             tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 1);
-            tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
-            tableLayoutPanel1.Controls.Add(richTextBox2, 1, 2);
+            tableLayoutPanel1.Controls.Add(proficiencies_textBox, 5, 1);
+            tableLayoutPanel1.Controls.Add(equipment_textBox, 1, 2);
             tableLayoutPanel1.Controls.Add(equipment_label, 0, 2);
             tableLayoutPanel1.Controls.Add(xp_label, 0, 3);
             tableLayoutPanel1.Controls.Add(xp_textbox, 1, 3);
             tableLayoutPanel1.Controls.Add(hp_label, 2, 3);
             tableLayoutPanel1.Controls.Add(hp_textbox, 3, 3);
+            tableLayoutPanel1.Controls.Add(maxhp_label, 4, 3);
+            tableLayoutPanel1.Controls.Add(maxhp_textBox, 5, 3);
+            tableLayoutPanel1.Controls.Add(textBox3, 7, 3);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -105,15 +113,15 @@
             background_label.TabIndex = 14;
             background_label.Text = "Background:";
             // 
-            // richTextBox3
+            // background_textBox
             // 
-            richTextBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox3, 2);
-            richTextBox3.Location = new Point(488, 140);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(188, 44);
-            richTextBox3.TabIndex = 15;
-            richTextBox3.Text = "";
+            background_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(background_textBox, 2);
+            background_textBox.Location = new Point(488, 140);
+            background_textBox.Name = "background_textBox";
+            background_textBox.Size = new Size(188, 44);
+            background_textBox.TabIndex = 15;
+            background_textBox.Text = "";
             // 
             // skill_label
             // 
@@ -228,25 +236,25 @@
             proficiencies_label.TabIndex = 10;
             proficiencies_label.Text = "Proficiencies:";
             // 
-            // richTextBox1
+            // proficiencies_textBox
             // 
-            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
-            richTextBox1.Location = new Point(488, 75);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(188, 44);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
+            proficiencies_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(proficiencies_textBox, 2);
+            proficiencies_textBox.Location = new Point(488, 75);
+            proficiencies_textBox.Name = "proficiencies_textBox";
+            proficiencies_textBox.Size = new Size(188, 44);
+            proficiencies_textBox.TabIndex = 11;
+            proficiencies_textBox.Text = "";
             // 
-            // richTextBox2
+            // equipment_textBox
             // 
-            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox2, 2);
-            richTextBox2.Location = new Point(100, 140);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(188, 44);
-            richTextBox2.TabIndex = 13;
-            richTextBox2.Text = "";
+            equipment_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(equipment_textBox, 2);
+            equipment_textBox.Location = new Point(100, 140);
+            equipment_textBox.Name = "equipment_textBox";
+            equipment_textBox.Size = new Size(188, 44);
+            equipment_textBox.TabIndex = 13;
+            equipment_textBox.Text = "";
             // 
             // equipment_label
             // 
@@ -317,6 +325,46 @@
             hp_textbox.Size = new Size(91, 22);
             hp_textbox.TabIndex = 19;
             // 
+            // maxhp_label
+            // 
+            maxhp_label.Anchor = AnchorStyles.Top;
+            maxhp_label.AutoSize = true;
+            maxhp_label.Font = new Font("Segoe UI", 12F);
+            maxhp_label.Location = new Point(403, 195);
+            maxhp_label.Name = "maxhp_label";
+            maxhp_label.Size = new Size(66, 21);
+            maxhp_label.TabIndex = 20;
+            maxhp_label.Text = "Max HP:";
+            // 
+            // maxhp_textBox
+            // 
+            maxhp_textBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            maxhp_textBox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maxhp_textBox.Location = new Point(488, 198);
+            maxhp_textBox.Name = "maxhp_textBox";
+            maxhp_textBox.Size = new Size(91, 22);
+            maxhp_textBox.TabIndex = 21;
+            // 
+            // ac_label
+            // 
+            ac_label.Anchor = AnchorStyles.Top;
+            ac_label.AutoSize = true;
+            ac_label.Font = new Font("Segoe UI", 12F);
+            ac_label.Location = new Point(614, 195);
+            ac_label.Name = "ac_label";
+            ac_label.Size = new Size(33, 21);
+            ac_label.TabIndex = 22;
+            ac_label.Text = "AC:";
+            // 
+            // textBox3
+            // 
+            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox3.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.Location = new Point(682, 198);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(98, 22);
+            textBox3.TabIndex = 23;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -346,15 +394,19 @@
         private Label basicInfo_label;
         private Label skill_label;
         private RichTextBox skill_textBox;
-        private RichTextBox richTextBox1;
+        private RichTextBox proficiencies_textBox;
         private Label proficiencies_label;
         private Label background_label;
-        private RichTextBox richTextBox3;
-        private RichTextBox richTextBox2;
+        private RichTextBox background_textBox;
+        private RichTextBox equipment_textBox;
         private Label equipment_label;
         private Label xp_label;
         private TextBox xp_textbox;
         private Label hp_label;
         private TextBox hp_textbox;
+        private Label ac_label;
+        private Label maxhp_label;
+        private TextBox maxhp_textBox;
+        private TextBox textBox3;
     }
 }
