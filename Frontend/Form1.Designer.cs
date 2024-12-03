@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            ac_label = new Label();
             background_label = new Label();
             background_textBox = new RichTextBox();
             skill_label = new Label();
@@ -44,16 +45,16 @@
             proficiencies_textBox = new RichTextBox();
             equipment_textBox = new RichTextBox();
             equipment_label = new Label();
-            character_title_label = new Label();
-            basicInfo_label = new Label();
-            xp_textbox = new TextBox();
             xp_label = new Label();
+            xp_textbox = new TextBox();
             hp_label = new Label();
             hp_textbox = new TextBox();
             maxhp_label = new Label();
             maxhp_textBox = new TextBox();
-            ac_label = new Label();
             textBox3 = new TextBox();
+            character_title_label = new Label();
+            basicInfo_label = new Label();
+            raceInfo_title = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +76,6 @@
             tableLayoutPanel1.Controls.Add(level_label, 5, 0);
             tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(sex_m_rButton, 3, 0);
             tableLayoutPanel1.Controls.Add(sex_f_button, 4, 0);
             tableLayoutPanel1.Controls.Add(character_name_label, 0, 0);
             tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 0);
@@ -91,6 +91,7 @@
             tableLayoutPanel1.Controls.Add(maxhp_label, 4, 3);
             tableLayoutPanel1.Controls.Add(maxhp_textBox, 5, 3);
             tableLayoutPanel1.Controls.Add(textBox3, 7, 3);
+            tableLayoutPanel1.Controls.Add(sex_m_rButton, 3, 0);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -100,6 +101,17 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Size = new Size(783, 263);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // ac_label
+            // 
+            ac_label.Anchor = AnchorStyles.Top;
+            ac_label.AutoSize = true;
+            ac_label.Font = new Font("Segoe UI", 12F);
+            ac_label.Location = new Point(614, 195);
+            ac_label.Name = "ac_label";
+            ac_label.Size = new Size(33, 21);
+            ac_label.TabIndex = 22;
+            ac_label.Text = "AC:";
             // 
             // background_label
             // 
@@ -168,10 +180,10 @@
             // 
             // sex_m_rButton
             // 
-            sex_m_rButton.Anchor = AnchorStyles.Top;
+            sex_m_rButton.Anchor = AnchorStyles.None;
             sex_m_rButton.AutoSize = true;
             sex_m_rButton.Font = new Font("Segoe UI", 12F);
-            sex_m_rButton.Location = new Point(308, 3);
+            sex_m_rButton.Location = new Point(308, 20);
             sex_m_rButton.Name = "sex_m_rButton";
             sex_m_rButton.Size = new Size(62, 25);
             sex_m_rButton.TabIndex = 5;
@@ -181,10 +193,10 @@
             // 
             // sex_f_button
             // 
-            sex_f_button.Anchor = AnchorStyles.Top;
+            sex_f_button.Anchor = AnchorStyles.None;
             sex_f_button.AutoSize = true;
             sex_f_button.Font = new Font("Segoe UI", 12F);
-            sex_f_button.Location = new Point(397, 3);
+            sex_f_button.Location = new Point(397, 20);
             sex_f_button.Name = "sex_f_button";
             sex_f_button.Size = new Size(78, 25);
             sex_f_button.TabIndex = 3;
@@ -267,33 +279,6 @@
             equipment_label.TabIndex = 12;
             equipment_label.Text = "Equipment:";
             // 
-            // character_title_label
-            // 
-            character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            character_title_label.Location = new Point(12, 9);
-            character_title_label.Name = "character_title_label";
-            character_title_label.Size = new Size(795, 40);
-            character_title_label.TabIndex = 1;
-            character_title_label.Text = "New Character";
-            // 
-            // basicInfo_label
-            // 
-            basicInfo_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            basicInfo_label.Location = new Point(12, 63);
-            basicInfo_label.Name = "basicInfo_label";
-            basicInfo_label.Size = new Size(795, 40);
-            basicInfo_label.TabIndex = 2;
-            basicInfo_label.Text = "Basic Info:";
-            // 
-            // xp_textbox
-            // 
-            xp_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            xp_textbox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            xp_textbox.Location = new Point(100, 198);
-            xp_textbox.Name = "xp_textbox";
-            xp_textbox.Size = new Size(91, 22);
-            xp_textbox.TabIndex = 17;
-            // 
             // xp_label
             // 
             xp_label.Anchor = AnchorStyles.Top;
@@ -304,6 +289,15 @@
             xp_label.Size = new Size(31, 21);
             xp_label.TabIndex = 16;
             xp_label.Text = "XP:";
+            // 
+            // xp_textbox
+            // 
+            xp_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            xp_textbox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            xp_textbox.Location = new Point(100, 198);
+            xp_textbox.Name = "xp_textbox";
+            xp_textbox.Size = new Size(91, 22);
+            xp_textbox.TabIndex = 17;
             // 
             // hp_label
             // 
@@ -345,17 +339,6 @@
             maxhp_textBox.Size = new Size(91, 22);
             maxhp_textBox.TabIndex = 21;
             // 
-            // ac_label
-            // 
-            ac_label.Anchor = AnchorStyles.Top;
-            ac_label.AutoSize = true;
-            ac_label.Font = new Font("Segoe UI", 12F);
-            ac_label.Location = new Point(614, 195);
-            ac_label.Name = "ac_label";
-            ac_label.Size = new Size(33, 21);
-            ac_label.TabIndex = 22;
-            ac_label.Text = "AC:";
-            // 
             // textBox3
             // 
             textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -365,11 +348,39 @@
             textBox3.Size = new Size(98, 22);
             textBox3.TabIndex = 23;
             // 
+            // character_title_label
+            // 
+            character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            character_title_label.Location = new Point(12, 9);
+            character_title_label.Name = "character_title_label";
+            character_title_label.Size = new Size(795, 40);
+            character_title_label.TabIndex = 1;
+            character_title_label.Text = "New Character";
+            // 
+            // basicInfo_label
+            // 
+            basicInfo_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            basicInfo_label.Location = new Point(12, 63);
+            basicInfo_label.Name = "basicInfo_label";
+            basicInfo_label.Size = new Size(795, 40);
+            basicInfo_label.TabIndex = 2;
+            basicInfo_label.Text = "Basic Info:";
+            // 
+            // raceInfo_title
+            // 
+            raceInfo_title.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            raceInfo_title.Location = new Point(12, 385);
+            raceInfo_title.Name = "raceInfo_title";
+            raceInfo_title.Size = new Size(795, 40);
+            raceInfo_title.TabIndex = 3;
+            raceInfo_title.Text = "Race Info:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 572);
+            ClientSize = new Size(807, 949);
+            Controls.Add(raceInfo_title);
             Controls.Add(basicInfo_label);
             Controls.Add(character_title_label);
             Controls.Add(tableLayoutPanel1);
@@ -408,5 +419,6 @@
         private Label maxhp_label;
         private TextBox maxhp_textBox;
         private TextBox textBox3;
+        private Label raceInfo_title;
     }
 }
