@@ -552,11 +552,11 @@
             // 
             // absb_textBox
             // 
-            absb_textBox.Anchor = AnchorStyles.Left;
+            absb_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel2.SetColumnSpan(absb_textBox, 2);
             absb_textBox.Location = new Point(558, 86);
             absb_textBox.Name = "absb_textBox";
-            absb_textBox.Size = new Size(188, 23);
+            absb_textBox.Size = new Size(222, 23);
             absb_textBox.TabIndex = 7;
             // 
             // classes_title
