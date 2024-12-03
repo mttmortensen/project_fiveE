@@ -82,9 +82,13 @@
             classname_comboBox = new ComboBox();
             hitdie_label = new Label();
             hitdie_comboBox = new ComboBox();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            next_button = new Button();
+            cancel_button = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -122,7 +126,7 @@
             tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 1);
             tableLayoutPanel1.Controls.Add(proficiencies_textBox, 4, 1);
             tableLayoutPanel1.Controls.Add(background_textBox, 4, 2);
-            tableLayoutPanel1.Location = new Point(12, 90);
+            tableLayoutPanel1.Location = new Point(15, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
@@ -431,7 +435,7 @@
             tableLayoutPanel2.Controls.Add(racefeatures_label, 3, 2);
             tableLayoutPanel2.Controls.Add(absb_textBox, 5, 1);
             tableLayoutPanel2.Controls.Add(racesize_label, 3, 0);
-            tableLayoutPanel2.Location = new Point(12, 412);
+            tableLayoutPanel2.Location = new Point(15, 416);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -606,7 +610,7 @@
             tableLayoutPanel3.Controls.Add(classname_comboBox, 1, 0);
             tableLayoutPanel3.Controls.Add(hitdie_label, 4, 0);
             tableLayoutPanel3.Controls.Add(hitdie_comboBox, 5, 0);
-            tableLayoutPanel3.Location = new Point(12, 663);
+            tableLayoutPanel3.Location = new Point(15, 677);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -739,11 +743,49 @@
             hitdie_comboBox.Size = new Size(210, 23);
             hitdie_comboBox.TabIndex = 5;
             // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(next_button, 1, 0);
+            tableLayoutPanel4.Controls.Add(cancel_button, 0, 0);
+            tableLayoutPanel4.Location = new Point(14, 947);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(785, 110);
+            tableLayoutPanel4.TabIndex = 7;
+            // 
+            // next_button
+            // 
+            next_button.Anchor = AnchorStyles.None;
+            next_button.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            next_button.FlatStyle = FlatStyle.Flat;
+            next_button.Location = new Point(513, 30);
+            next_button.Name = "next_button";
+            next_button.Size = new Size(150, 49);
+            next_button.TabIndex = 1;
+            next_button.Text = "Next";
+            next_button.UseVisualStyleBackColor = true;
+            // 
+            // cancel_button
+            // 
+            cancel_button.Anchor = AnchorStyles.None;
+            cancel_button.Location = new Point(121, 30);
+            cancel_button.Name = "cancel_button";
+            cancel_button.Size = new Size(150, 49);
+            cancel_button.TabIndex = 2;
+            cancel_button.Text = "Cancel";
+            cancel_button.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 949);
+            ClientSize = new Size(807, 1061);
+            Controls.Add(tableLayoutPanel4);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(classes_title);
             Controls.Add(tableLayoutPanel2);
@@ -759,6 +801,7 @@
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -818,5 +861,8 @@
         private Label classfeatures_label;
         private Label skillchoices_label;
         private ComboBox skillchoices_comboBox;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Button next_button;
+        private Button cancel_button;
     }
 }
