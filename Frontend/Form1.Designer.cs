@@ -56,18 +56,18 @@
             basicInfo_label = new Label();
             raceInfo_title = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            label3 = new Label();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
-            comboBox2 = new ComboBox();
+            racename_label = new Label();
+            r_speed_textBox = new TextBox();
+            speed_label = new Label();
+            racename_comboBox = new ComboBox();
+            racesize_label = new Label();
+            racesize_comboBox = new ComboBox();
             label4 = new Label();
-            textBox4 = new TextBox();
-            label5 = new Label();
-            richTextBox1 = new RichTextBox();
-            label6 = new Label();
-            richTextBox2 = new RichTextBox();
+            absb_textBox = new TextBox();
+            languages_label = new Label();
+            languages_textBox = new RichTextBox();
+            racefeatures_label = new Label();
+            r_features_textBox = new RichTextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -400,18 +400,18 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Controls.Add(textBox2, 1, 1);
-            tableLayoutPanel2.Controls.Add(label3, 0, 1);
-            tableLayoutPanel2.Controls.Add(comboBox1, 1, 0);
-            tableLayoutPanel2.Controls.Add(label2, 3, 0);
-            tableLayoutPanel2.Controls.Add(comboBox2, 4, 0);
+            tableLayoutPanel2.Controls.Add(racename_label, 0, 0);
+            tableLayoutPanel2.Controls.Add(r_speed_textBox, 1, 1);
+            tableLayoutPanel2.Controls.Add(speed_label, 0, 1);
             tableLayoutPanel2.Controls.Add(label4, 2, 1);
-            tableLayoutPanel2.Controls.Add(textBox4, 4, 1);
-            tableLayoutPanel2.Controls.Add(label5, 0, 2);
-            tableLayoutPanel2.Controls.Add(richTextBox1, 1, 2);
-            tableLayoutPanel2.Controls.Add(label6, 4, 2);
-            tableLayoutPanel2.Controls.Add(richTextBox2, 5, 2);
+            tableLayoutPanel2.Controls.Add(absb_textBox, 4, 1);
+            tableLayoutPanel2.Controls.Add(languages_label, 0, 2);
+            tableLayoutPanel2.Controls.Add(languages_textBox, 1, 2);
+            tableLayoutPanel2.Controls.Add(r_features_textBox, 5, 2);
+            tableLayoutPanel2.Controls.Add(racesize_comboBox, 5, 0);
+            tableLayoutPanel2.Controls.Add(racesize_label, 4, 0);
+            tableLayoutPanel2.Controls.Add(racename_comboBox, 2, 0);
+            tableLayoutPanel2.Controls.Add(racefeatures_label, 3, 2);
             tableLayoutPanel2.Location = new Point(12, 423);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
@@ -422,63 +422,64 @@
             tableLayoutPanel2.Size = new Size(783, 196);
             tableLayoutPanel2.TabIndex = 4;
             // 
-            // label1
+            // racename_label
             // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(22, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(52, 21);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            racename_label.Anchor = AnchorStyles.Top;
+            racename_label.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(racename_label, 2);
+            racename_label.Font = new Font("Segoe UI", 12F);
+            racename_label.Location = new Point(51, 0);
+            racename_label.Name = "racename_label";
+            racename_label.Size = new Size(92, 21);
+            racename_label.TabIndex = 0;
+            racename_label.Text = "Race Name:";
             // 
-            // textBox2
+            // r_speed_textBox
             // 
-            textBox2.Location = new Point(100, 68);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(91, 23);
-            textBox2.TabIndex = 5;
+            r_speed_textBox.Location = new Point(100, 68);
+            r_speed_textBox.Name = "r_speed_textBox";
+            r_speed_textBox.Size = new Size(91, 23);
+            r_speed_textBox.TabIndex = 5;
             // 
-            // label3
+            // speed_label
             // 
-            label3.Anchor = AnchorStyles.Top;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(22, 65);
-            label3.Name = "label3";
-            label3.Size = new Size(52, 21);
-            label3.TabIndex = 4;
-            label3.Text = "label3";
+            speed_label.Anchor = AnchorStyles.Top;
+            speed_label.AutoSize = true;
+            speed_label.Font = new Font("Segoe UI", 12F);
+            speed_label.Location = new Point(20, 65);
+            speed_label.Name = "speed_label";
+            speed_label.Size = new Size(56, 21);
+            speed_label.TabIndex = 4;
+            speed_label.Text = "Speed:";
             // 
-            // comboBox1
+            // racename_comboBox
             // 
-            tableLayoutPanel2.SetColumnSpan(comboBox1, 2);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(100, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(188, 23);
-            comboBox1.TabIndex = 1;
+            tableLayoutPanel2.SetColumnSpan(racename_comboBox, 2);
+            racename_comboBox.FormattingEnabled = true;
+            racename_comboBox.Location = new Point(197, 3);
+            racename_comboBox.Name = "racename_comboBox";
+            racename_comboBox.Size = new Size(188, 23);
+            racename_comboBox.TabIndex = 1;
             // 
-            // label2
+            // racesize_label
             // 
-            label2.Anchor = AnchorStyles.Top;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(313, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(52, 21);
-            label2.TabIndex = 2;
-            label2.Text = "label2";
+            racesize_label.Anchor = AnchorStyles.Top;
+            racesize_label.AutoSize = true;
+            racesize_label.Font = new Font("Segoe UI", 12F);
+            racesize_label.Location = new Point(397, 0);
+            racesize_label.Name = "racesize_label";
+            racesize_label.Size = new Size(78, 21);
+            racesize_label.TabIndex = 2;
+            racesize_label.Text = "Race Size:";
             // 
-            // comboBox2
+            // racesize_comboBox
             // 
-            tableLayoutPanel2.SetColumnSpan(comboBox2, 2);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(391, 3);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(188, 23);
-            comboBox2.TabIndex = 3;
+            tableLayoutPanel2.SetColumnSpan(racesize_comboBox, 2);
+            racesize_comboBox.FormattingEnabled = true;
+            racesize_comboBox.Location = new Point(488, 3);
+            racesize_comboBox.Name = "racesize_comboBox";
+            racesize_comboBox.Size = new Size(188, 23);
+            racesize_comboBox.TabIndex = 3;
             // 
             // label4
             // 
@@ -492,58 +493,56 @@
             label4.TabIndex = 6;
             label4.Text = "Ability Score Bonuses:";
             // 
-            // textBox4
+            // absb_textBox
             // 
-            tableLayoutPanel2.SetColumnSpan(textBox4, 2);
-            textBox4.Location = new Point(391, 68);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(188, 23);
-            textBox4.TabIndex = 7;
+            tableLayoutPanel2.SetColumnSpan(absb_textBox, 2);
+            absb_textBox.Location = new Point(391, 68);
+            absb_textBox.Name = "absb_textBox";
+            absb_textBox.Size = new Size(188, 23);
+            absb_textBox.TabIndex = 7;
             // 
-            // label5
+            // languages_label
             // 
-            label5.Anchor = AnchorStyles.Top;
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(24, 130);
-            label5.Name = "label5";
-            label5.Size = new Size(49, 21);
-            label5.TabIndex = 10;
-            label5.Text = "Skills:";
-            label5.Click += this.label5_Click;
+            languages_label.Anchor = AnchorStyles.Top;
+            languages_label.AutoSize = true;
+            languages_label.Font = new Font("Segoe UI", 12F);
+            languages_label.Location = new Point(4, 130);
+            languages_label.Name = "languages_label";
+            languages_label.Size = new Size(88, 21);
+            languages_label.TabIndex = 10;
+            languages_label.Text = "Languages:";
             // 
-            // richTextBox1
+            // languages_textBox
             // 
-            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.SetColumnSpan(richTextBox1, 2);
-            richTextBox1.Location = new Point(100, 141);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(188, 44);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
-            richTextBox1.TextChanged += this.richTextBox1_TextChanged;
+            languages_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.SetColumnSpan(languages_textBox, 2);
+            languages_textBox.Location = new Point(100, 141);
+            languages_textBox.Name = "languages_textBox";
+            languages_textBox.Size = new Size(188, 44);
+            languages_textBox.TabIndex = 11;
+            languages_textBox.Text = "";
             // 
-            // label6
+            // racefeatures_label
             // 
-            label6.Anchor = AnchorStyles.Top;
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(412, 130);
-            label6.Name = "label6";
-            label6.Size = new Size(49, 21);
-            label6.TabIndex = 12;
-            label6.Text = "Skills:";
-            label6.Click += label6_Click;
+            racefeatures_label.Anchor = AnchorStyles.Top;
+            racefeatures_label.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(racefeatures_label, 2);
+            racefeatures_label.Font = new Font("Segoe UI", 12F);
+            racefeatures_label.Location = new Point(329, 130);
+            racefeatures_label.Name = "racefeatures_label";
+            racefeatures_label.Size = new Size(117, 21);
+            racefeatures_label.TabIndex = 12;
+            racefeatures_label.Text = "Racial Features:";
             // 
-            // richTextBox2
+            // r_features_textBox
             // 
-            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.SetColumnSpan(richTextBox2, 2);
-            richTextBox2.Location = new Point(488, 141);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(188, 44);
-            richTextBox2.TabIndex = 13;
-            richTextBox2.Text = "";
+            r_features_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.SetColumnSpan(r_features_textBox, 2);
+            r_features_textBox.Location = new Point(488, 141);
+            r_features_textBox.Name = "r_features_textBox";
+            r_features_textBox.Size = new Size(188, 44);
+            r_features_textBox.TabIndex = 13;
+            r_features_textBox.Text = "";
             // 
             // Form1
             // 
@@ -594,17 +593,17 @@
         private TextBox textBox3;
         private Label raceInfo_title;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label label2;
-        private ComboBox comboBox2;
-        private Label label1;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
-        private Label label3;
+        private Label racesize_label;
+        private ComboBox racesize_comboBox;
+        private Label racename_label;
+        private ComboBox racename_comboBox;
+        private TextBox r_speed_textBox;
+        private Label speed_label;
         private Label label4;
-        private TextBox textBox4;
-        private Label label5;
-        private RichTextBox richTextBox1;
-        private Label label6;
-        private RichTextBox richTextBox2;
+        private TextBox absb_textBox;
+        private Label languages_label;
+        private RichTextBox languages_textBox;
+        private Label racefeatures_label;
+        private RichTextBox r_features_textBox;
     }
 }
