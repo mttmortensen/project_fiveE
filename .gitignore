@@ -15,4 +15,3 @@ bin/
 *.sln
 Frontend/*.csproj.user
 Frontend/*.resx
-Frontend/*.Designer.cs
