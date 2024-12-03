@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            background_label = new Label();
+            richTextBox3 = new RichTextBox();
             skill_label = new Label();
             level_label = new Label();
             sex_label = new Label();
@@ -40,12 +42,14 @@
             skill_textBox = new RichTextBox();
             proficiencies_label = new Label();
             richTextBox1 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
+            equipment_label = new Label();
             character_title_label = new Label();
             basicInfo_label = new Label();
-            equipment_label = new Label();
-            richTextBox2 = new RichTextBox();
-            background_label = new Label();
-            richTextBox3 = new RichTextBox();
+            xp_textbox = new TextBox();
+            xp_label = new Label();
+            hp_label = new Label();
+            hp_textbox = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,6 +79,10 @@
             tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
             tableLayoutPanel1.Controls.Add(richTextBox2, 1, 2);
             tableLayoutPanel1.Controls.Add(equipment_label, 0, 2);
+            tableLayoutPanel1.Controls.Add(xp_label, 0, 3);
+            tableLayoutPanel1.Controls.Add(xp_textbox, 1, 3);
+            tableLayoutPanel1.Controls.Add(hp_label, 2, 3);
+            tableLayoutPanel1.Controls.Add(hp_textbox, 3, 3);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -84,6 +92,28 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Size = new Size(783, 263);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // background_label
+            // 
+            background_label.Anchor = AnchorStyles.Top;
+            background_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(background_label, 2);
+            background_label.Font = new Font("Segoe UI", 12F);
+            background_label.Location = new Point(340, 130);
+            background_label.Name = "background_label";
+            background_label.Size = new Size(96, 21);
+            background_label.TabIndex = 14;
+            background_label.Text = "Background:";
+            // 
+            // richTextBox3
+            // 
+            richTextBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox3, 2);
+            richTextBox3.Location = new Point(488, 140);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(188, 44);
+            richTextBox3.TabIndex = 15;
+            richTextBox3.Text = "";
             // 
             // skill_label
             // 
@@ -208,6 +238,27 @@
             richTextBox1.TabIndex = 11;
             richTextBox1.Text = "";
             // 
+            // richTextBox2
+            // 
+            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox2, 2);
+            richTextBox2.Location = new Point(100, 140);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(188, 44);
+            richTextBox2.TabIndex = 13;
+            richTextBox2.Text = "";
+            // 
+            // equipment_label
+            // 
+            equipment_label.Anchor = AnchorStyles.Top;
+            equipment_label.AutoSize = true;
+            equipment_label.Font = new Font("Segoe UI", 12F);
+            equipment_label.Location = new Point(4, 130);
+            equipment_label.Name = "equipment_label";
+            equipment_label.Size = new Size(88, 21);
+            equipment_label.TabIndex = 12;
+            equipment_label.Text = "Equipment:";
+            // 
             // character_title_label
             // 
             character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -226,48 +277,45 @@
             basicInfo_label.TabIndex = 2;
             basicInfo_label.Text = "Basic Info:";
             // 
-            // equipment_label
+            // xp_textbox
             // 
-            equipment_label.Anchor = AnchorStyles.Top;
-            equipment_label.AutoSize = true;
-            equipment_label.Font = new Font("Segoe UI", 12F);
-            equipment_label.Location = new Point(4, 130);
-            equipment_label.Name = "equipment_label";
-            equipment_label.Size = new Size(88, 21);
-            equipment_label.TabIndex = 12;
-            equipment_label.Text = "Equipment:";
+            xp_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            xp_textbox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            xp_textbox.Location = new Point(100, 198);
+            xp_textbox.Name = "xp_textbox";
+            xp_textbox.Size = new Size(91, 22);
+            xp_textbox.TabIndex = 17;
             // 
-            // richTextBox2
+            // xp_label
             // 
-            richTextBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox2, 2);
-            richTextBox2.Location = new Point(100, 140);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(188, 44);
-            richTextBox2.TabIndex = 13;
-            richTextBox2.Text = "";
+            xp_label.Anchor = AnchorStyles.Top;
+            xp_label.AutoSize = true;
+            xp_label.Font = new Font("Segoe UI", 12F);
+            xp_label.Location = new Point(33, 195);
+            xp_label.Name = "xp_label";
+            xp_label.Size = new Size(31, 21);
+            xp_label.TabIndex = 16;
+            xp_label.Text = "XP:";
             // 
-            // background_label
+            // hp_label
             // 
-            background_label.Anchor = AnchorStyles.Top;
-            background_label.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(background_label, 2);
-            background_label.Font = new Font("Segoe UI", 12F);
-            background_label.Location = new Point(340, 130);
-            background_label.Name = "background_label";
-            background_label.Size = new Size(96, 21);
-            background_label.TabIndex = 14;
-            background_label.Text = "Background:";
+            hp_label.Anchor = AnchorStyles.Top;
+            hp_label.AutoSize = true;
+            hp_label.Font = new Font("Segoe UI", 12F);
+            hp_label.Location = new Point(226, 195);
+            hp_label.Name = "hp_label";
+            hp_label.Size = new Size(33, 21);
+            hp_label.TabIndex = 18;
+            hp_label.Text = "HP:";
             // 
-            // richTextBox3
+            // hp_textbox
             // 
-            richTextBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox3, 2);
-            richTextBox3.Location = new Point(488, 140);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(188, 44);
-            richTextBox3.TabIndex = 15;
-            richTextBox3.Text = "";
+            hp_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            hp_textbox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            hp_textbox.Location = new Point(294, 198);
+            hp_textbox.Name = "hp_textbox";
+            hp_textbox.Size = new Size(91, 22);
+            hp_textbox.TabIndex = 19;
             // 
             // Form1
             // 
@@ -304,5 +352,9 @@
         private RichTextBox richTextBox3;
         private RichTextBox richTextBox2;
         private Label equipment_label;
+        private Label xp_label;
+        private TextBox xp_textbox;
+        private Label hp_label;
+        private TextBox hp_textbox;
     }
 }
