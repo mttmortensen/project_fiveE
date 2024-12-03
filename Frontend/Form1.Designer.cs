@@ -38,10 +38,10 @@
             character_name_label = new Label();
             lvl_drop_drown = new ComboBox();
             skill_textBox = new RichTextBox();
+            richTextBox1 = new RichTextBox();
+            proficiencies_label = new Label();
             character_title_label = new Label();
             basicInfo_label = new Label();
-            proficiencies_label = new Label();
-            richTextBox1 = new RichTextBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,8 +66,8 @@
             tableLayoutPanel1.Controls.Add(character_name_label, 0, 0);
             tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 0);
             tableLayoutPanel1.Controls.Add(skill_textBox, 1, 1);
-            tableLayoutPanel1.Controls.Add(richTextBox1, 6, 1);
-            tableLayoutPanel1.Controls.Add(proficiencies_label, 4, 1);
+            tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 1);
+            tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -177,6 +177,28 @@
             skill_textBox.TabIndex = 9;
             skill_textBox.Text = "";
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
+            richTextBox1.Location = new Point(488, 53);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(188, 44);
+            richTextBox1.TabIndex = 11;
+            richTextBox1.Text = "";
+            // 
+            // proficiencies_label
+            // 
+            proficiencies_label.Anchor = AnchorStyles.Top;
+            proficiencies_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(proficiencies_label, 2);
+            proficiencies_label.Font = new Font("Segoe UI", 12F);
+            proficiencies_label.Location = new Point(338, 50);
+            proficiencies_label.Name = "proficiencies_label";
+            proficiencies_label.Size = new Size(100, 21);
+            proficiencies_label.TabIndex = 10;
+            proficiencies_label.Text = "Proficiencies:";
+            // 
             // character_title_label
             // 
             character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -194,28 +216,6 @@
             basicInfo_label.Size = new Size(795, 40);
             basicInfo_label.TabIndex = 2;
             basicInfo_label.Text = "Basic Info:";
-            // 
-            // proficiencies_label
-            // 
-            proficiencies_label.Anchor = AnchorStyles.Top;
-            proficiencies_label.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(proficiencies_label, 2);
-            proficiencies_label.Font = new Font("Segoe UI", 12F);
-            proficiencies_label.Location = new Point(435, 50);
-            proficiencies_label.Name = "proficiencies_label";
-            proficiencies_label.Size = new Size(100, 21);
-            proficiencies_label.TabIndex = 10;
-            proficiencies_label.Text = "Proficiencies:";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
-            richTextBox1.Location = new Point(585, 53);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(195, 44);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
             // 
             // Form1
             // 
