@@ -69,11 +69,12 @@
             tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(783, 189);
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.Size = new Size(783, 263);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // skill_label
@@ -81,7 +82,7 @@
             skill_label.Anchor = AnchorStyles.Top;
             skill_label.AutoSize = true;
             skill_label.Font = new Font("Segoe UI", 12F);
-            skill_label.Location = new Point(24, 63);
+            skill_label.Location = new Point(24, 65);
             skill_label.Name = "skill_label";
             skill_label.Size = new Size(49, 21);
             skill_label.TabIndex = 8;
@@ -171,7 +172,7 @@
             // 
             skill_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.SetColumnSpan(skill_textBox, 2);
-            skill_textBox.Location = new Point(100, 72);
+            skill_textBox.Location = new Point(100, 75);
             skill_textBox.Name = "skill_textBox";
             skill_textBox.Size = new Size(188, 44);
             skill_textBox.TabIndex = 9;
@@ -183,7 +184,7 @@
             proficiencies_label.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(proficiencies_label, 2);
             proficiencies_label.Font = new Font("Segoe UI", 12F);
-            proficiencies_label.Location = new Point(338, 63);
+            proficiencies_label.Location = new Point(338, 65);
             proficiencies_label.Name = "proficiencies_label";
             proficiencies_label.Size = new Size(100, 21);
             proficiencies_label.TabIndex = 10;
@@ -193,7 +194,7 @@
             // 
             richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
-            richTextBox1.Location = new Point(488, 72);
+            richTextBox1.Location = new Point(488, 75);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(188, 44);
             richTextBox1.TabIndex = 11;
