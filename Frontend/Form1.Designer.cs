@@ -34,6 +34,8 @@
             sex_m_rButton = new RadioButton();
             sex_f_button = new RadioButton();
             character_label = new Label();
+            level_label = new Label();
+            lvl_drop_drown = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,11 +51,13 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.Controls.Add(level_label, 5, 0);
             tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
             tableLayoutPanel1.Controls.Add(sex_m_rButton, 3, 0);
             tableLayoutPanel1.Controls.Add(sex_f_button, 4, 0);
             tableLayoutPanel1.Controls.Add(character_label, 0, 0);
+            tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 0);
             tableLayoutPanel1.Location = new Point(12, 119);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -118,6 +122,28 @@
             character_label.TabIndex = 0;
             character_label.Text = "Name:";
             // 
+            // level_label
+            // 
+            level_label.Anchor = AnchorStyles.Top;
+            level_label.AutoSize = true;
+            level_label.Font = new Font("Segoe UI", 12F);
+            level_label.Location = new Point(509, 0);
+            level_label.Name = "level_label";
+            level_label.Size = new Size(49, 21);
+            level_label.TabIndex = 6;
+            level_label.Text = "Level:";
+            // 
+            // lvl_drop_drown
+            // 
+            tableLayoutPanel1.SetColumnSpan(lvl_drop_drown, 2);
+            lvl_drop_drown.FormattingEnabled = true;
+            lvl_drop_drown.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            lvl_drop_drown.Location = new Point(585, 3);
+            lvl_drop_drown.Name = "lvl_drop_drown";
+            lvl_drop_drown.Size = new Size(195, 23);
+            lvl_drop_drown.TabIndex = 7;
+            lvl_drop_drown.Text = "1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -139,5 +165,7 @@
         private RadioButton sex_f_button;
         private TextBox textBox1;
         private RadioButton sex_m_rButton;
+        private Label level_label;
+        private ComboBox lvl_drop_drown;
     }
 }
