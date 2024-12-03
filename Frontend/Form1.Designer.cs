@@ -76,6 +76,10 @@
             hitdie_comboBox = new ComboBox();
             classname_label = new Label();
             classname_comboBox = new ComboBox();
+            savingthrow_label = new Label();
+            savingthrow_textBox = new TextBox();
+            classfeatures_textBox = new RichTextBox();
+            classfeatures_label = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -428,6 +432,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(783, 196);
             tableLayoutPanel2.TabIndex = 4;
             // 
@@ -582,10 +587,14 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.Controls.Add(primaryability_label, 0, 1);
             tableLayoutPanel3.Controls.Add(primaryability_textBox, 2, 1);
-            tableLayoutPanel3.Controls.Add(hitdie_label, 4, 0);
             tableLayoutPanel3.Controls.Add(hitdie_comboBox, 6, 0);
             tableLayoutPanel3.Controls.Add(classname_label, 0, 0);
             tableLayoutPanel3.Controls.Add(classname_comboBox, 2, 0);
+            tableLayoutPanel3.Controls.Add(hitdie_label, 5, 0);
+            tableLayoutPanel3.Controls.Add(savingthrow_label, 4, 1);
+            tableLayoutPanel3.Controls.Add(savingthrow_textBox, 5, 1);
+            tableLayoutPanel3.Controls.Add(classfeatures_textBox, 5, 2);
+            tableLayoutPanel3.Controls.Add(classfeatures_label, 4, 2);
             tableLayoutPanel3.Location = new Point(12, 686);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
@@ -620,9 +629,8 @@
             // 
             hitdie_label.Anchor = AnchorStyles.Left;
             hitdie_label.AutoSize = true;
-            tableLayoutPanel3.SetColumnSpan(hitdie_label, 2);
             hitdie_label.Font = new Font("Segoe UI", 12F);
-            hitdie_label.Location = new Point(391, 33);
+            hitdie_label.Location = new Point(488, 33);
             hitdie_label.Name = "hitdie_label";
             hitdie_label.Size = new Size(60, 21);
             hitdie_label.TabIndex = 4;
@@ -659,6 +667,47 @@
             classname_comboBox.Name = "classname_comboBox";
             classname_comboBox.Size = new Size(188, 23);
             classname_comboBox.TabIndex = 3;
+            // 
+            // savingthrow_label
+            // 
+            savingthrow_label.Anchor = AnchorStyles.Left;
+            savingthrow_label.AutoSize = true;
+            savingthrow_label.Font = new Font("Segoe UI", 12F);
+            savingthrow_label.Location = new Point(391, 109);
+            savingthrow_label.Name = "savingthrow_label";
+            savingthrow_label.Size = new Size(64, 42);
+            savingthrow_label.TabIndex = 10;
+            savingthrow_label.Text = "Saving Throws:";
+            // 
+            // savingthrow_textBox
+            // 
+            savingthrow_textBox.Anchor = AnchorStyles.Left;
+            tableLayoutPanel3.SetColumnSpan(savingthrow_textBox, 2);
+            savingthrow_textBox.Location = new Point(488, 119);
+            savingthrow_textBox.Name = "savingthrow_textBox";
+            savingthrow_textBox.Size = new Size(188, 23);
+            savingthrow_textBox.TabIndex = 11;
+            // 
+            // classfeatures_textBox
+            // 
+            classfeatures_textBox.Anchor = AnchorStyles.Left;
+            tableLayoutPanel3.SetColumnSpan(classfeatures_textBox, 2);
+            classfeatures_textBox.Location = new Point(488, 196);
+            classfeatures_textBox.Name = "classfeatures_textBox";
+            classfeatures_textBox.Size = new Size(188, 44);
+            classfeatures_textBox.TabIndex = 15;
+            classfeatures_textBox.Text = "";
+            // 
+            // classfeatures_label
+            // 
+            classfeatures_label.Anchor = AnchorStyles.Left;
+            classfeatures_label.AutoSize = true;
+            classfeatures_label.Font = new Font("Segoe UI", 12F);
+            classfeatures_label.Location = new Point(391, 197);
+            classfeatures_label.Name = "classfeatures_label";
+            classfeatures_label.Size = new Size(72, 42);
+            classfeatures_label.TabIndex = 14;
+            classfeatures_label.Text = "Class Features:";
             // 
             // Form1
             // 
@@ -733,5 +782,9 @@
         private ComboBox classname_comboBox;
         private Label primaryability_label;
         private TextBox primaryability_textBox;
+        private Label savingthrow_label;
+        private TextBox savingthrow_textBox;
+        private RichTextBox classfeatures_textBox;
+        private Label classfeatures_label;
     }
 }
