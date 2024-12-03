@@ -38,8 +38,8 @@
             character_name_label = new Label();
             lvl_drop_drown = new ComboBox();
             skill_textBox = new RichTextBox();
-            richTextBox1 = new RichTextBox();
             proficiencies_label = new Label();
+            richTextBox1 = new RichTextBox();
             character_title_label = new Label();
             basicInfo_label = new Label();
             tableLayoutPanel1.SuspendLayout();
@@ -47,7 +47,6 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 8;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.4995F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.4995F));
@@ -70,10 +69,11 @@
             tableLayoutPanel1.Controls.Add(richTextBox1, 5, 1);
             tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(783, 100);
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(783, 189);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // skill_label
@@ -81,7 +81,7 @@
             skill_label.Anchor = AnchorStyles.Top;
             skill_label.AutoSize = true;
             skill_label.Font = new Font("Segoe UI", 12F);
-            skill_label.Location = new Point(24, 50);
+            skill_label.Location = new Point(24, 63);
             skill_label.Name = "skill_label";
             skill_label.Size = new Size(49, 21);
             skill_label.TabIndex = 8;
@@ -171,21 +171,11 @@
             // 
             skill_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.SetColumnSpan(skill_textBox, 2);
-            skill_textBox.Location = new Point(100, 53);
+            skill_textBox.Location = new Point(100, 72);
             skill_textBox.Name = "skill_textBox";
             skill_textBox.Size = new Size(188, 44);
             skill_textBox.TabIndex = 9;
             skill_textBox.Text = "";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
-            richTextBox1.Location = new Point(488, 53);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(188, 44);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
             // 
             // proficiencies_label
             // 
@@ -193,11 +183,21 @@
             proficiencies_label.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(proficiencies_label, 2);
             proficiencies_label.Font = new Font("Segoe UI", 12F);
-            proficiencies_label.Location = new Point(338, 50);
+            proficiencies_label.Location = new Point(338, 63);
             proficiencies_label.Name = "proficiencies_label";
             proficiencies_label.Size = new Size(100, 21);
             proficiencies_label.TabIndex = 10;
             proficiencies_label.Text = "Proficiencies:";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(richTextBox1, 2);
+            richTextBox1.Location = new Point(488, 72);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(188, 44);
+            richTextBox1.TabIndex = 11;
+            richTextBox1.Text = "";
             // 
             // character_title_label
             // 
