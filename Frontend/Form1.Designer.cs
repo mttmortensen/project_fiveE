@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            skill_label = new Label();
+            level_label = new Label();
             sex_label = new Label();
             textBox1 = new TextBox();
             sex_m_rButton = new RadioButton();
             sex_f_button = new RadioButton();
-            character_label = new Label();
-            level_label = new Label();
+            character_name_label = new Label();
             lvl_drop_drown = new ComboBox();
+            skill_textBox = new RichTextBox();
+            character_title_label = new Label();
+            basicInfo_label = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,20 +55,44 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.Controls.Add(skill_label, 0, 1);
             tableLayoutPanel1.Controls.Add(level_label, 5, 0);
             tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
             tableLayoutPanel1.Controls.Add(sex_m_rButton, 3, 0);
             tableLayoutPanel1.Controls.Add(sex_f_button, 4, 0);
-            tableLayoutPanel1.Controls.Add(character_label, 0, 0);
+            tableLayoutPanel1.Controls.Add(character_name_label, 0, 0);
             tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 0);
-            tableLayoutPanel1.Location = new Point(12, 119);
+            tableLayoutPanel1.Controls.Add(skill_textBox, 1, 1);
+            tableLayoutPanel1.Location = new Point(12, 106);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(783, 100);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // skill_label
+            // 
+            skill_label.Anchor = AnchorStyles.Top;
+            skill_label.AutoSize = true;
+            skill_label.Font = new Font("Segoe UI", 12F);
+            skill_label.Location = new Point(24, 50);
+            skill_label.Name = "skill_label";
+            skill_label.Size = new Size(49, 21);
+            skill_label.TabIndex = 8;
+            skill_label.Text = "Skills:";
+            // 
+            // level_label
+            // 
+            level_label.Anchor = AnchorStyles.Top;
+            level_label.AutoSize = true;
+            level_label.Font = new Font("Segoe UI", 12F);
+            level_label.Location = new Point(509, 0);
+            level_label.Name = "level_label";
+            level_label.Size = new Size(49, 21);
+            level_label.TabIndex = 6;
+            level_label.Text = "Level:";
             // 
             // sex_label
             // 
@@ -89,9 +117,10 @@
             // 
             // sex_m_rButton
             // 
+            sex_m_rButton.Anchor = AnchorStyles.Top;
             sex_m_rButton.AutoSize = true;
             sex_m_rButton.Font = new Font("Segoe UI", 12F);
-            sex_m_rButton.Location = new Point(294, 3);
+            sex_m_rButton.Location = new Point(308, 3);
             sex_m_rButton.Name = "sex_m_rButton";
             sex_m_rButton.Size = new Size(62, 25);
             sex_m_rButton.TabIndex = 5;
@@ -101,9 +130,10 @@
             // 
             // sex_f_button
             // 
+            sex_f_button.Anchor = AnchorStyles.Top;
             sex_f_button.AutoSize = true;
             sex_f_button.Font = new Font("Segoe UI", 12F);
-            sex_f_button.Location = new Point(391, 3);
+            sex_f_button.Location = new Point(397, 3);
             sex_f_button.Name = "sex_f_button";
             sex_f_button.Size = new Size(78, 25);
             sex_f_button.TabIndex = 3;
@@ -111,27 +141,16 @@
             sex_f_button.Text = "Female";
             sex_f_button.UseVisualStyleBackColor = true;
             // 
-            // character_label
+            // character_name_label
             // 
-            character_label.Anchor = AnchorStyles.Top;
-            character_label.AutoSize = true;
-            character_label.Font = new Font("Segoe UI", 12F);
-            character_label.Location = new Point(21, 0);
-            character_label.Name = "character_label";
-            character_label.Size = new Size(55, 21);
-            character_label.TabIndex = 0;
-            character_label.Text = "Name:";
-            // 
-            // level_label
-            // 
-            level_label.Anchor = AnchorStyles.Top;
-            level_label.AutoSize = true;
-            level_label.Font = new Font("Segoe UI", 12F);
-            level_label.Location = new Point(509, 0);
-            level_label.Name = "level_label";
-            level_label.Size = new Size(49, 21);
-            level_label.TabIndex = 6;
-            level_label.Text = "Level:";
+            character_name_label.Anchor = AnchorStyles.Top;
+            character_name_label.AutoSize = true;
+            character_name_label.Font = new Font("Segoe UI", 12F);
+            character_name_label.Location = new Point(21, 0);
+            character_name_label.Name = "character_name_label";
+            character_name_label.Size = new Size(55, 21);
+            character_name_label.TabIndex = 0;
+            character_name_label.Text = "Name:";
             // 
             // lvl_drop_drown
             // 
@@ -144,11 +163,41 @@
             lvl_drop_drown.TabIndex = 7;
             lvl_drop_drown.Text = "1";
             // 
+            // skill_textBox
+            // 
+            skill_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(skill_textBox, 2);
+            skill_textBox.Location = new Point(100, 53);
+            skill_textBox.Name = "skill_textBox";
+            skill_textBox.Size = new Size(188, 44);
+            skill_textBox.TabIndex = 9;
+            skill_textBox.Text = "";
+            // 
+            // character_title_label
+            // 
+            character_title_label.Font = new Font("Segoe UI Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            character_title_label.Location = new Point(12, 9);
+            character_title_label.Name = "character_title_label";
+            character_title_label.Size = new Size(795, 40);
+            character_title_label.TabIndex = 1;
+            character_title_label.Text = "New Character";
+            // 
+            // basicInfo_label
+            // 
+            basicInfo_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            basicInfo_label.Location = new Point(12, 63);
+            basicInfo_label.Name = "basicInfo_label";
+            basicInfo_label.Size = new Size(795, 40);
+            basicInfo_label.TabIndex = 2;
+            basicInfo_label.Text = "Basic Info:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(807, 572);
+            Controls.Add(basicInfo_label);
+            Controls.Add(character_title_label);
             Controls.Add(tableLayoutPanel1);
             MinimumSize = new Size(823, 611);
             Name = "Form1";
@@ -160,12 +209,16 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Label character_label;
+        private Label character_name_label;
         private Label sex_label;
         private RadioButton sex_f_button;
         private TextBox textBox1;
         private RadioButton sex_m_rButton;
         private Label level_label;
         private ComboBox lvl_drop_drown;
+        private Label character_title_label;
+        private Label basicInfo_label;
+        private Label skill_label;
+        private RichTextBox skill_textBox;
     }
 }
