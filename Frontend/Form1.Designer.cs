@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            radioButton1 = new RadioButton();
+            sex_label = new Label();
             textBox1 = new TextBox();
-            radioButton2 = new RadioButton();
+            sex_m_rButton = new RadioButton();
+            sex_f_button = new RadioButton();
+            character_label = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,11 +45,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.9992F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.9992F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.0032F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            tableLayoutPanel1.Controls.Add(label2, 2, 0);
+            tableLayoutPanel1.Controls.Add(sex_label, 2, 0);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(radioButton2, 3, 0);
-            tableLayoutPanel1.Controls.Add(radioButton1, 4, 0);
+            tableLayoutPanel1.Controls.Add(sex_m_rButton, 3, 0);
+            tableLayoutPanel1.Controls.Add(sex_f_button, 4, 0);
+            tableLayoutPanel1.Controls.Add(character_label, 0, 0);
             tableLayoutPanel1.Location = new Point(12, 119);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -58,56 +58,60 @@
             tableLayoutPanel1.Size = new Size(783, 100);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // label1
+            // sex_label
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Courier New", 24F, FontStyle.Bold);
-            label1.Location = new Point(13, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(129, 36);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Font = new Font("Courier New", 24F, FontStyle.Bold);
-            label2.Location = new Point(325, 7);
-            label2.Name = "label2";
-            label2.Size = new Size(129, 36);
-            label2.TabIndex = 2;
-            label2.Text = "label2";
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(627, 3);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(94, 19);
-            radioButton1.TabIndex = 3;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
-            radioButton1.UseVisualStyleBackColor = true;
+            sex_label.Anchor = AnchorStyles.Top;
+            sex_label.AutoSize = true;
+            sex_label.Font = new Font("Courier New", 24F, FontStyle.Bold);
+            sex_label.Location = new Point(344, 0);
+            sex_label.Name = "sex_label";
+            sex_label.Size = new Size(91, 36);
+            sex_label.TabIndex = 2;
+            sex_label.Text = "Sex:";
             // 
             // textBox1
             // 
+            textBox1.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.Location = new Point(159, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 40);
+            textBox1.PlaceholderText = "First, Last";
+            textBox1.Size = new Size(150, 22);
             textBox1.TabIndex = 4;
             // 
-            // radioButton2
+            // sex_m_rButton
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(471, 3);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(94, 19);
-            radioButton2.TabIndex = 5;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
-            radioButton2.UseVisualStyleBackColor = true;
+            sex_m_rButton.AutoSize = true;
+            sex_m_rButton.Font = new Font("Courier New", 20.25F);
+            sex_m_rButton.Location = new Point(471, 3);
+            sex_m_rButton.Name = "sex_m_rButton";
+            sex_m_rButton.Size = new Size(95, 34);
+            sex_m_rButton.TabIndex = 5;
+            sex_m_rButton.TabStop = true;
+            sex_m_rButton.Text = "Male";
+            sex_m_rButton.UseVisualStyleBackColor = true;
+            // 
+            // sex_f_button
+            // 
+            sex_f_button.AutoSize = true;
+            sex_f_button.Font = new Font("Courier New", 20.25F);
+            sex_f_button.Location = new Point(627, 3);
+            sex_f_button.Name = "sex_f_button";
+            sex_f_button.Size = new Size(127, 34);
+            sex_f_button.TabIndex = 3;
+            sex_f_button.TabStop = true;
+            sex_f_button.Text = "Female";
+            sex_f_button.UseVisualStyleBackColor = true;
+            // 
+            // character_label
+            // 
+            character_label.Anchor = AnchorStyles.Top;
+            character_label.AutoSize = true;
+            character_label.Font = new Font("Courier New", 24F, FontStyle.Bold);
+            character_label.Location = new Point(23, 0);
+            character_label.Name = "character_label";
+            character_label.Size = new Size(110, 36);
+            character_label.TabIndex = 0;
+            character_label.Text = "Name:";
             // 
             // Form1
             // 
@@ -125,10 +129,10 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private Label label2;
-        private RadioButton radioButton1;
+        private Label character_label;
+        private Label sex_label;
+        private RadioButton sex_f_button;
         private TextBox textBox1;
-        private RadioButton radioButton2;
+        private RadioButton sex_m_rButton;
     }
 }
