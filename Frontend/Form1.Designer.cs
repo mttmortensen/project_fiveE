@@ -180,10 +180,10 @@
             // 
             // sex_m_rButton
             // 
-            sex_m_rButton.Anchor = AnchorStyles.None;
+            sex_m_rButton.Anchor = AnchorStyles.Top;
             sex_m_rButton.AutoSize = true;
             sex_m_rButton.Font = new Font("Segoe UI", 12F);
-            sex_m_rButton.Location = new Point(308, 20);
+            sex_m_rButton.Location = new Point(308, 3);
             sex_m_rButton.Name = "sex_m_rButton";
             sex_m_rButton.Size = new Size(62, 25);
             sex_m_rButton.TabIndex = 5;
@@ -193,10 +193,10 @@
             // 
             // sex_f_button
             // 
-            sex_f_button.Anchor = AnchorStyles.None;
+            sex_f_button.Anchor = AnchorStyles.Top;
             sex_f_button.AutoSize = true;
             sex_f_button.Font = new Font("Segoe UI", 12F);
-            sex_f_button.Location = new Point(397, 20);
+            sex_f_button.Location = new Point(397, 3);
             sex_f_button.Name = "sex_f_button";
             sex_f_button.Size = new Size(78, 25);
             sex_f_button.TabIndex = 3;
