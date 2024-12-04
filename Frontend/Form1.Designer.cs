@@ -34,7 +34,7 @@
             basicinfo_label = new Label();
             character_name_label = new Label();
             textBox1 = new TextBox();
-            sex_label = new Label();
+            gender_label = new Label();
             sex_f_button = new RadioButton();
             sex_m_rButton = new RadioButton();
             level_label = new Label();
@@ -55,34 +55,34 @@
             raceinfo_label = new Label();
             racename_label = new Label();
             racename_comboBox = new ComboBox();
-            racesize_label = new Label();
-            racesize_comboBox = new ComboBox();
             speed_label = new Label();
             r_speed_textBox = new TextBox();
-            label4 = new Label();
-            absb_textBox = new TextBox();
             languages_label = new Label();
-            racefeatures_label = new Label();
             languages_textBox = new RichTextBox();
-            r_features_textBox = new RichTextBox();
             classinfo_label = new Label();
             classname_label = new Label();
             classname_comboBox = new ComboBox();
-            hitdie_label = new Label();
-            hitdie_comboBox = new ComboBox();
             primaryability_label = new Label();
             primaryability_textBox = new TextBox();
-            savingthrow_label = new Label();
             skillchoices_label = new Label();
-            savingthrow_textBox = new TextBox();
             skillchoices_comboBox = new ComboBox();
-            classfeatures_label = new Label();
-            classfeatures_textBox = new RichTextBox();
             proficiencies_textBox = new RichTextBox();
             background_textBox = new RichTextBox();
             proficiencies_label = new Label();
             next_button = new Button();
             cancel_button = new Button();
+            racesize_comboBox = new ComboBox();
+            absb_textBox = new TextBox();
+            r_features_textBox = new RichTextBox();
+            racefeatures_label = new Label();
+            label4 = new Label();
+            racesize_label = new Label();
+            hitdie_label = new Label();
+            savingthrow_label = new Label();
+            savingthrow_textBox = new TextBox();
+            hitdie_comboBox = new ComboBox();
+            classfeatures_textBox = new RichTextBox();
+            classfeatures_label = new Label();
             rootScrollablePanel.SuspendLayout();
             rootTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -114,7 +114,7 @@
             rootTableLayoutPanel.Controls.Add(basicinfo_label, 0, 1);
             rootTableLayoutPanel.Controls.Add(character_name_label, 0, 2);
             rootTableLayoutPanel.Controls.Add(textBox1, 1, 2);
-            rootTableLayoutPanel.Controls.Add(sex_label, 2, 2);
+            rootTableLayoutPanel.Controls.Add(gender_label, 2, 2);
             rootTableLayoutPanel.Controls.Add(sex_f_button, 3, 2);
             rootTableLayoutPanel.Controls.Add(sex_m_rButton, 4, 2);
             rootTableLayoutPanel.Controls.Add(level_label, 5, 2);
@@ -230,16 +230,16 @@
             textBox1.Size = new Size(110, 22);
             textBox1.TabIndex = 31;
             // 
-            // sex_label
+            // gender_label
             // 
-            sex_label.Anchor = AnchorStyles.Right;
-            sex_label.AutoSize = true;
-            sex_label.Font = new Font("Segoe UI", 12F);
-            sex_label.Location = new Point(248, 137);
-            sex_label.Name = "sex_label";
-            sex_label.Size = new Size(37, 21);
-            sex_label.TabIndex = 29;
-            sex_label.Text = "Sex:";
+            gender_label.Anchor = AnchorStyles.Right;
+            gender_label.AutoSize = true;
+            gender_label.Font = new Font("Segoe UI", 12F);
+            gender_label.Location = new Point(221, 137);
+            gender_label.Name = "gender_label";
+            gender_label.Size = new Size(64, 21);
+            gender_label.TabIndex = 29;
+            gender_label.Text = "Gender:";
             // 
             // sex_f_button
             // 
@@ -457,28 +457,6 @@
             racename_comboBox.Size = new Size(182, 23);
             racename_comboBox.TabIndex = 52;
             // 
-            // racesize_label
-            // 
-            racesize_label.Anchor = AnchorStyles.Left;
-            racesize_label.AutoSize = true;
-            racesize_label.Font = new Font("Segoe UI", 12F);
-            racesize_label.Location = new Point(391, 490);
-            racesize_label.Name = "racesize_label";
-            racesize_label.Size = new Size(78, 21);
-            racesize_label.TabIndex = 53;
-            racesize_label.Text = "Race Size:";
-            racesize_label.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // racesize_comboBox
-            // 
-            racesize_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rootTableLayoutPanel.SetColumnSpan(racesize_comboBox, 2);
-            racesize_comboBox.FormattingEnabled = true;
-            racesize_comboBox.Location = new Point(491, 489);
-            racesize_comboBox.Name = "racesize_comboBox";
-            racesize_comboBox.Size = new Size(194, 23);
-            racesize_comboBox.TabIndex = 54;
-            // 
             // speed_label
             // 
             speed_label.Anchor = AnchorStyles.Left;
@@ -500,28 +478,6 @@
             r_speed_textBox.Size = new Size(182, 23);
             r_speed_textBox.TabIndex = 56;
             // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Right;
-            label4.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(label4, 2);
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(323, 536);
-            label4.Name = "label4";
-            label4.Size = new Size(162, 21);
-            label4.TabIndex = 57;
-            label4.Text = "Ability Score Bonuses:";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // absb_textBox
-            // 
-            absb_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rootTableLayoutPanel.SetColumnSpan(absb_textBox, 2);
-            absb_textBox.Location = new Point(491, 535);
-            absb_textBox.Name = "absb_textBox";
-            absb_textBox.Size = new Size(194, 23);
-            absb_textBox.TabIndex = 58;
-            // 
             // languages_label
             // 
             languages_label.Anchor = AnchorStyles.Left;
@@ -534,19 +490,6 @@
             languages_label.Text = "Languages:";
             languages_label.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // racefeatures_label
-            // 
-            racefeatures_label.Anchor = AnchorStyles.Right;
-            racefeatures_label.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(racefeatures_label, 2);
-            racefeatures_label.Font = new Font("Segoe UI", 12F);
-            racefeatures_label.Location = new Point(368, 613);
-            racefeatures_label.Name = "racefeatures_label";
-            racefeatures_label.Size = new Size(117, 21);
-            racefeatures_label.TabIndex = 61;
-            racefeatures_label.Text = "Racial Features:";
-            racefeatures_label.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // languages_textBox
             // 
             rootTableLayoutPanel.SetColumnSpan(languages_textBox, 2);
@@ -556,16 +499,6 @@
             languages_textBox.Size = new Size(182, 101);
             languages_textBox.TabIndex = 60;
             languages_textBox.Text = "";
-            // 
-            // r_features_textBox
-            // 
-            rootTableLayoutPanel.SetColumnSpan(r_features_textBox, 2);
-            r_features_textBox.Dock = DockStyle.Fill;
-            r_features_textBox.Location = new Point(491, 573);
-            r_features_textBox.Name = "r_features_textBox";
-            r_features_textBox.Size = new Size(194, 101);
-            r_features_textBox.TabIndex = 62;
-            r_features_textBox.Text = "";
             // 
             // classinfo_label
             // 
@@ -600,28 +533,6 @@
             classname_comboBox.Size = new Size(182, 23);
             classname_comboBox.TabIndex = 65;
             // 
-            // hitdie_label
-            // 
-            hitdie_label.Anchor = AnchorStyles.Right;
-            hitdie_label.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(hitdie_label, 2);
-            hitdie_label.Font = new Font("Segoe UI", 12F);
-            hitdie_label.Location = new Point(425, 733);
-            hitdie_label.Name = "hitdie_label";
-            hitdie_label.Size = new Size(60, 21);
-            hitdie_label.TabIndex = 66;
-            hitdie_label.Text = "Hit Die:";
-            // 
-            // hitdie_comboBox
-            // 
-            hitdie_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rootTableLayoutPanel.SetColumnSpan(hitdie_comboBox, 2);
-            hitdie_comboBox.FormattingEnabled = true;
-            hitdie_comboBox.Location = new Point(491, 732);
-            hitdie_comboBox.Name = "hitdie_comboBox";
-            hitdie_comboBox.Size = new Size(194, 23);
-            hitdie_comboBox.TabIndex = 67;
-            // 
             // primaryability_label
             // 
             primaryability_label.Anchor = AnchorStyles.Left;
@@ -642,18 +553,6 @@
             primaryability_textBox.Size = new Size(182, 23);
             primaryability_textBox.TabIndex = 69;
             // 
-            // savingthrow_label
-            // 
-            savingthrow_label.Anchor = AnchorStyles.Right;
-            savingthrow_label.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(savingthrow_label, 2);
-            savingthrow_label.Font = new Font("Segoe UI", 12F);
-            savingthrow_label.Location = new Point(370, 774);
-            savingthrow_label.Name = "savingthrow_label";
-            savingthrow_label.Size = new Size(115, 21);
-            savingthrow_label.TabIndex = 70;
-            savingthrow_label.Text = "Saving Throws:";
-            // 
             // skillchoices_label
             // 
             skillchoices_label.Anchor = AnchorStyles.Left;
@@ -665,15 +564,6 @@
             skillchoices_label.TabIndex = 74;
             skillchoices_label.Text = "Skill Choices:";
             // 
-            // savingthrow_textBox
-            // 
-            savingthrow_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rootTableLayoutPanel.SetColumnSpan(savingthrow_textBox, 2);
-            savingthrow_textBox.Location = new Point(491, 773);
-            savingthrow_textBox.Name = "savingthrow_textBox";
-            savingthrow_textBox.Size = new Size(194, 23);
-            savingthrow_textBox.TabIndex = 71;
-            // 
             // skillchoices_comboBox
             // 
             skillchoices_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -683,28 +573,6 @@
             skillchoices_comboBox.Name = "skillchoices_comboBox";
             skillchoices_comboBox.Size = new Size(182, 23);
             skillchoices_comboBox.TabIndex = 75;
-            // 
-            // classfeatures_label
-            // 
-            classfeatures_label.Anchor = AnchorStyles.Right;
-            classfeatures_label.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(classfeatures_label, 2);
-            classfeatures_label.Font = new Font("Segoe UI", 12F);
-            classfeatures_label.Location = new Point(373, 848);
-            classfeatures_label.Name = "classfeatures_label";
-            classfeatures_label.Size = new Size(112, 21);
-            classfeatures_label.TabIndex = 72;
-            classfeatures_label.Text = "Class Features:";
-            // 
-            // classfeatures_textBox
-            // 
-            rootTableLayoutPanel.SetColumnSpan(classfeatures_textBox, 2);
-            classfeatures_textBox.Dock = DockStyle.Fill;
-            classfeatures_textBox.Location = new Point(491, 808);
-            classfeatures_textBox.Name = "classfeatures_textBox";
-            classfeatures_textBox.Size = new Size(194, 101);
-            classfeatures_textBox.TabIndex = 73;
-            classfeatures_textBox.Text = "";
             // 
             // proficiencies_textBox
             // 
@@ -762,6 +630,138 @@
             cancel_button.Text = "Cancel";
             cancel_button.UseVisualStyleBackColor = true;
             // 
+            // racesize_comboBox
+            // 
+            racesize_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rootTableLayoutPanel.SetColumnSpan(racesize_comboBox, 2);
+            racesize_comboBox.FormattingEnabled = true;
+            racesize_comboBox.Location = new Point(491, 489);
+            racesize_comboBox.Name = "racesize_comboBox";
+            racesize_comboBox.Size = new Size(194, 23);
+            racesize_comboBox.TabIndex = 54;
+            // 
+            // absb_textBox
+            // 
+            absb_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rootTableLayoutPanel.SetColumnSpan(absb_textBox, 2);
+            absb_textBox.Location = new Point(491, 535);
+            absb_textBox.Name = "absb_textBox";
+            absb_textBox.Size = new Size(194, 23);
+            absb_textBox.TabIndex = 58;
+            // 
+            // r_features_textBox
+            // 
+            rootTableLayoutPanel.SetColumnSpan(r_features_textBox, 2);
+            r_features_textBox.Dock = DockStyle.Fill;
+            r_features_textBox.Location = new Point(491, 573);
+            r_features_textBox.Name = "r_features_textBox";
+            r_features_textBox.Size = new Size(194, 101);
+            r_features_textBox.TabIndex = 62;
+            r_features_textBox.Text = "";
+            // 
+            // racefeatures_label
+            // 
+            racefeatures_label.Anchor = AnchorStyles.Right;
+            racefeatures_label.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(racefeatures_label, 2);
+            racefeatures_label.Font = new Font("Segoe UI", 12F);
+            racefeatures_label.Location = new Point(368, 613);
+            racefeatures_label.Name = "racefeatures_label";
+            racefeatures_label.Size = new Size(117, 21);
+            racefeatures_label.TabIndex = 61;
+            racefeatures_label.Text = "Racial Features:";
+            racefeatures_label.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Right;
+            label4.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(label4, 2);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(323, 536);
+            label4.Name = "label4";
+            label4.Size = new Size(162, 21);
+            label4.TabIndex = 57;
+            label4.Text = "Ability Score Bonuses:";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // racesize_label
+            // 
+            racesize_label.Anchor = AnchorStyles.Left;
+            racesize_label.AutoSize = true;
+            racesize_label.Font = new Font("Segoe UI", 12F);
+            racesize_label.Location = new Point(391, 490);
+            racesize_label.Name = "racesize_label";
+            racesize_label.Size = new Size(78, 21);
+            racesize_label.TabIndex = 53;
+            racesize_label.Text = "Race Size:";
+            racesize_label.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // hitdie_label
+            // 
+            hitdie_label.Anchor = AnchorStyles.Right;
+            hitdie_label.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(hitdie_label, 2);
+            hitdie_label.Font = new Font("Segoe UI", 12F);
+            hitdie_label.Location = new Point(425, 733);
+            hitdie_label.Name = "hitdie_label";
+            hitdie_label.Size = new Size(60, 21);
+            hitdie_label.TabIndex = 66;
+            hitdie_label.Text = "Hit Die:";
+            // 
+            // savingthrow_label
+            // 
+            savingthrow_label.Anchor = AnchorStyles.Right;
+            savingthrow_label.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(savingthrow_label, 2);
+            savingthrow_label.Font = new Font("Segoe UI", 12F);
+            savingthrow_label.Location = new Point(370, 774);
+            savingthrow_label.Name = "savingthrow_label";
+            savingthrow_label.Size = new Size(115, 21);
+            savingthrow_label.TabIndex = 70;
+            savingthrow_label.Text = "Saving Throws:";
+            // 
+            // savingthrow_textBox
+            // 
+            savingthrow_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rootTableLayoutPanel.SetColumnSpan(savingthrow_textBox, 2);
+            savingthrow_textBox.Location = new Point(491, 773);
+            savingthrow_textBox.Name = "savingthrow_textBox";
+            savingthrow_textBox.Size = new Size(194, 23);
+            savingthrow_textBox.TabIndex = 71;
+            // 
+            // hitdie_comboBox
+            // 
+            hitdie_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rootTableLayoutPanel.SetColumnSpan(hitdie_comboBox, 2);
+            hitdie_comboBox.FormattingEnabled = true;
+            hitdie_comboBox.Location = new Point(491, 732);
+            hitdie_comboBox.Name = "hitdie_comboBox";
+            hitdie_comboBox.Size = new Size(194, 23);
+            hitdie_comboBox.TabIndex = 67;
+            // 
+            // classfeatures_textBox
+            // 
+            rootTableLayoutPanel.SetColumnSpan(classfeatures_textBox, 2);
+            classfeatures_textBox.Dock = DockStyle.Fill;
+            classfeatures_textBox.Location = new Point(491, 808);
+            classfeatures_textBox.Name = "classfeatures_textBox";
+            classfeatures_textBox.Size = new Size(194, 101);
+            classfeatures_textBox.TabIndex = 73;
+            classfeatures_textBox.Text = "";
+            // 
+            // classfeatures_label
+            // 
+            classfeatures_label.Anchor = AnchorStyles.Right;
+            classfeatures_label.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(classfeatures_label, 2);
+            classfeatures_label.Font = new Font("Segoe UI", 12F);
+            classfeatures_label.Location = new Point(373, 848);
+            classfeatures_label.Name = "classfeatures_label";
+            classfeatures_label.Size = new Size(112, 21);
+            classfeatures_label.TabIndex = 72;
+            classfeatures_label.Text = "Class Features:";
+            // 
             // rootForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -802,7 +802,7 @@
         private RichTextBox background_textBox;
         private Label character_name_label;
         private TextBox textBox1;
-        private Label sex_label;
+        private Label gender_label;
         private RadioButton sex_f_button;
         private RadioButton sex_m_rButton;
         private Label level_label;
