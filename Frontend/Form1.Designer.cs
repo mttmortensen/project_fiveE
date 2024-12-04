@@ -1,6 +1,6 @@
 ﻿namespace Frontend
 {
-    partial class Form1
+    partial class RootForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            scrollablePanel = new Panel();
+            mainTableLayoutPanel = new TableLayoutPanel();
             newcharacter_title = new Label();
             basicinfo_label = new Label();
             character_name_label = new Label();
@@ -41,12 +41,9 @@
             lvl_drop_drown = new ComboBox();
             skill_label = new Label();
             skill_textBox = new RichTextBox();
-            proficiencies_label = new Label();
-            proficiencies_textBox = new RichTextBox();
             equipment_label = new Label();
             background_label = new Label();
             equipment_textBox = new RichTextBox();
-            background_textBox = new RichTextBox();
             xp_label = new Label();
             hp_label = new Label();
             xp_textbox = new TextBox();
@@ -69,128 +66,130 @@
             languages_textBox = new RichTextBox();
             r_features_textBox = new RichTextBox();
             classinfo_label = new Label();
-            skillchoices_label = new Label();
-            primaryability_label = new Label();
             classname_label = new Label();
-            savingthrow_label = new Label();
-            savingthrow_textBox = new TextBox();
-            classfeatures_textBox = new RichTextBox();
-            classfeatures_label = new Label();
-            skillchoices_comboBox = new ComboBox();
-            primaryability_textBox = new TextBox();
             classname_comboBox = new ComboBox();
             hitdie_label = new Label();
             hitdie_comboBox = new ComboBox();
-            next_button = new Button();
+            primaryability_label = new Label();
+            primaryability_textBox = new TextBox();
+            savingthrow_label = new Label();
+            skillchoices_label = new Label();
+            savingthrow_textBox = new TextBox();
+            skillchoices_comboBox = new ComboBox();
+            classfeatures_label = new Label();
+            classfeatures_textBox = new RichTextBox();
             cancel_button = new Button();
-            panel1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            next_button = new Button();
+            proficiencies_textBox = new RichTextBox();
+            background_textBox = new RichTextBox();
+            proficiencies_label = new Label();
+            scrollablePanel.SuspendLayout();
+            mainTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // scrollablePanel
             // 
-            panel1.AutoScroll = true;
-            panel1.Controls.Add(tableLayoutPanel1);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(807, 1061);
-            panel1.TabIndex = 0;
+            scrollablePanel.Controls.Add(mainTableLayoutPanel);
+            scrollablePanel.Dock = DockStyle.Fill;
+            scrollablePanel.Location = new Point(0, 0);
+            scrollablePanel.Name = "scrollablePanel";
+            scrollablePanel.Size = new Size(807, 1061);
+            scrollablePanel.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // mainTableLayoutPanel
             // 
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel1.ColumnCount = 8;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.Controls.Add(newcharacter_title, 0, 0);
-            tableLayoutPanel1.Controls.Add(basicinfo_label, 0, 1);
-            tableLayoutPanel1.Controls.Add(character_name_label, 0, 2);
-            tableLayoutPanel1.Controls.Add(textBox1, 1, 2);
-            tableLayoutPanel1.Controls.Add(sex_label, 2, 2);
-            tableLayoutPanel1.Controls.Add(sex_f_button, 3, 2);
-            tableLayoutPanel1.Controls.Add(sex_m_rButton, 4, 2);
-            tableLayoutPanel1.Controls.Add(level_label, 5, 2);
-            tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 2);
-            tableLayoutPanel1.Controls.Add(skill_label, 0, 3);
-            tableLayoutPanel1.Controls.Add(skill_textBox, 1, 3);
-            tableLayoutPanel1.Controls.Add(equipment_label, 0, 4);
-            tableLayoutPanel1.Controls.Add(background_label, 2, 4);
-            tableLayoutPanel1.Controls.Add(equipment_textBox, 1, 4);
-            tableLayoutPanel1.Controls.Add(xp_label, 0, 5);
-            tableLayoutPanel1.Controls.Add(hp_label, 2, 5);
-            tableLayoutPanel1.Controls.Add(xp_textbox, 1, 5);
-            tableLayoutPanel1.Controls.Add(hp_textbox, 3, 5);
-            tableLayoutPanel1.Controls.Add(maxhp_label, 4, 5);
-            tableLayoutPanel1.Controls.Add(maxhp_textBox, 5, 5);
-            tableLayoutPanel1.Controls.Add(ac_label, 6, 5);
-            tableLayoutPanel1.Controls.Add(textBox3, 7, 5);
-            tableLayoutPanel1.Controls.Add(raceinfo_label, 0, 6);
-            tableLayoutPanel1.Controls.Add(racename_label, 0, 7);
-            tableLayoutPanel1.Controls.Add(racename_comboBox, 1, 7);
-            tableLayoutPanel1.Controls.Add(racesize_label, 2, 7);
-            tableLayoutPanel1.Controls.Add(racesize_comboBox, 3, 7);
-            tableLayoutPanel1.Controls.Add(speed_label, 0, 8);
-            tableLayoutPanel1.Controls.Add(r_speed_textBox, 1, 8);
-            tableLayoutPanel1.Controls.Add(label4, 2, 8);
-            tableLayoutPanel1.Controls.Add(absb_textBox, 3, 8);
-            tableLayoutPanel1.Controls.Add(languages_label, 0, 9);
-            tableLayoutPanel1.Controls.Add(racefeatures_label, 2, 9);
-            tableLayoutPanel1.Controls.Add(languages_textBox, 1, 9);
-            tableLayoutPanel1.Controls.Add(r_features_textBox, 3, 9);
-            tableLayoutPanel1.Controls.Add(classinfo_label, 0, 10);
-            tableLayoutPanel1.Controls.Add(classname_label, 0, 11);
-            tableLayoutPanel1.Controls.Add(classname_comboBox, 1, 11);
-            tableLayoutPanel1.Controls.Add(hitdie_label, 2, 11);
-            tableLayoutPanel1.Controls.Add(hitdie_comboBox, 3, 11);
-            tableLayoutPanel1.Controls.Add(primaryability_label, 0, 12);
-            tableLayoutPanel1.Controls.Add(primaryability_textBox, 1, 12);
-            tableLayoutPanel1.Controls.Add(savingthrow_label, 2, 12);
-            tableLayoutPanel1.Controls.Add(skillchoices_label, 0, 13);
-            tableLayoutPanel1.Controls.Add(savingthrow_textBox, 3, 12);
-            tableLayoutPanel1.Controls.Add(skillchoices_comboBox, 1, 13);
-            tableLayoutPanel1.Controls.Add(classfeatures_label, 2, 13);
-            tableLayoutPanel1.Controls.Add(classfeatures_textBox, 3, 13);
-            tableLayoutPanel1.Controls.Add(cancel_button, 3, 14);
-            tableLayoutPanel1.Controls.Add(next_button, 4, 14);
-            tableLayoutPanel1.Controls.Add(proficiencies_textBox, 4, 3);
-            tableLayoutPanel1.Controls.Add(background_textBox, 4, 4);
-            tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 3);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 15;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(807, 1061);
-            tableLayoutPanel1.TabIndex = 0;
+            mainTableLayoutPanel.AutoSize = true;
+            mainTableLayoutPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            mainTableLayoutPanel.ColumnCount = 8;
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            mainTableLayoutPanel.Controls.Add(newcharacter_title, 0, 0);
+            mainTableLayoutPanel.Controls.Add(basicinfo_label, 0, 1);
+            mainTableLayoutPanel.Controls.Add(character_name_label, 0, 2);
+            mainTableLayoutPanel.Controls.Add(textBox1, 1, 2);
+            mainTableLayoutPanel.Controls.Add(sex_label, 2, 2);
+            mainTableLayoutPanel.Controls.Add(sex_f_button, 3, 2);
+            mainTableLayoutPanel.Controls.Add(sex_m_rButton, 4, 2);
+            mainTableLayoutPanel.Controls.Add(level_label, 5, 2);
+            mainTableLayoutPanel.Controls.Add(lvl_drop_drown, 6, 2);
+            mainTableLayoutPanel.Controls.Add(skill_label, 0, 3);
+            mainTableLayoutPanel.Controls.Add(skill_textBox, 1, 3);
+            mainTableLayoutPanel.Controls.Add(equipment_label, 0, 4);
+            mainTableLayoutPanel.Controls.Add(background_label, 2, 4);
+            mainTableLayoutPanel.Controls.Add(equipment_textBox, 1, 4);
+            mainTableLayoutPanel.Controls.Add(xp_label, 0, 5);
+            mainTableLayoutPanel.Controls.Add(hp_label, 2, 5);
+            mainTableLayoutPanel.Controls.Add(xp_textbox, 1, 5);
+            mainTableLayoutPanel.Controls.Add(hp_textbox, 3, 5);
+            mainTableLayoutPanel.Controls.Add(maxhp_label, 4, 5);
+            mainTableLayoutPanel.Controls.Add(maxhp_textBox, 5, 5);
+            mainTableLayoutPanel.Controls.Add(ac_label, 6, 5);
+            mainTableLayoutPanel.Controls.Add(textBox3, 7, 5);
+            mainTableLayoutPanel.Controls.Add(raceinfo_label, 0, 6);
+            mainTableLayoutPanel.Controls.Add(racename_label, 0, 7);
+            mainTableLayoutPanel.Controls.Add(racename_comboBox, 1, 7);
+            mainTableLayoutPanel.Controls.Add(racesize_label, 2, 7);
+            mainTableLayoutPanel.Controls.Add(racesize_comboBox, 3, 7);
+            mainTableLayoutPanel.Controls.Add(speed_label, 0, 8);
+            mainTableLayoutPanel.Controls.Add(r_speed_textBox, 1, 8);
+            mainTableLayoutPanel.Controls.Add(label4, 2, 8);
+            mainTableLayoutPanel.Controls.Add(absb_textBox, 3, 8);
+            mainTableLayoutPanel.Controls.Add(languages_label, 0, 9);
+            mainTableLayoutPanel.Controls.Add(racefeatures_label, 2, 9);
+            mainTableLayoutPanel.Controls.Add(languages_textBox, 1, 9);
+            mainTableLayoutPanel.Controls.Add(r_features_textBox, 3, 9);
+            mainTableLayoutPanel.Controls.Add(classinfo_label, 0, 10);
+            mainTableLayoutPanel.Controls.Add(classname_label, 0, 11);
+            mainTableLayoutPanel.Controls.Add(classname_comboBox, 1, 11);
+            mainTableLayoutPanel.Controls.Add(hitdie_label, 2, 11);
+            mainTableLayoutPanel.Controls.Add(hitdie_comboBox, 3, 11);
+            mainTableLayoutPanel.Controls.Add(primaryability_label, 0, 12);
+            mainTableLayoutPanel.Controls.Add(primaryability_textBox, 1, 12);
+            mainTableLayoutPanel.Controls.Add(savingthrow_label, 2, 12);
+            mainTableLayoutPanel.Controls.Add(skillchoices_label, 0, 13);
+            mainTableLayoutPanel.Controls.Add(savingthrow_textBox, 3, 12);
+            mainTableLayoutPanel.Controls.Add(skillchoices_comboBox, 1, 13);
+            mainTableLayoutPanel.Controls.Add(classfeatures_label, 2, 13);
+            mainTableLayoutPanel.Controls.Add(classfeatures_textBox, 3, 13);
+            mainTableLayoutPanel.Controls.Add(cancel_button, 3, 14);
+            mainTableLayoutPanel.Controls.Add(next_button, 4, 14);
+            mainTableLayoutPanel.Controls.Add(proficiencies_textBox, 4, 3);
+            mainTableLayoutPanel.Controls.Add(background_textBox, 4, 4);
+            mainTableLayoutPanel.Controls.Add(proficiencies_label, 3, 3);
+            mainTableLayoutPanel.Dock = DockStyle.Fill;
+            mainTableLayoutPanel.Location = new Point(0, 0);
+            mainTableLayoutPanel.Name = "mainTableLayoutPanel";
+            mainTableLayoutPanel.RowCount = 15;
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
+            mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            mainTableLayoutPanel.Size = new Size(807, 1061);
+            mainTableLayoutPanel.TabIndex = 0;
             // 
             // newcharacter_title
             // 
             newcharacter_title.Anchor = AnchorStyles.Left;
             newcharacter_title.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(newcharacter_title, 8);
+            mainTableLayoutPanel.SetColumnSpan(newcharacter_title, 8);
             newcharacter_title.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             newcharacter_title.Location = new Point(3, 12);
             newcharacter_title.Name = "newcharacter_title";
@@ -202,7 +201,7 @@
             // 
             basicinfo_label.Anchor = AnchorStyles.Left;
             basicinfo_label.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(basicinfo_label, 8);
+            mainTableLayoutPanel.SetColumnSpan(basicinfo_label, 8);
             basicinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             basicinfo_label.Location = new Point(3, 89);
             basicinfo_label.Name = "basicinfo_label";
@@ -303,34 +302,13 @@
             // 
             // skill_textBox
             // 
-            tableLayoutPanel1.SetColumnSpan(skill_textBox, 2);
+            mainTableLayoutPanel.SetColumnSpan(skill_textBox, 2);
             skill_textBox.Dock = DockStyle.Fill;
             skill_textBox.Location = new Point(103, 213);
             skill_textBox.Name = "skill_textBox";
             skill_textBox.Size = new Size(194, 64);
             skill_textBox.TabIndex = 36;
             skill_textBox.Text = "";
-            // 
-            // proficiencies_label
-            // 
-            proficiencies_label.Anchor = AnchorStyles.Left;
-            proficiencies_label.AutoSize = true;
-            proficiencies_label.Font = new Font("Segoe UI", 12F);
-            proficiencies_label.Location = new Point(303, 224);
-            proficiencies_label.Name = "proficiencies_label";
-            proficiencies_label.Size = new Size(90, 42);
-            proficiencies_label.TabIndex = 37;
-            proficiencies_label.Text = "Proficiencies:";
-            // 
-            // proficiencies_textBox
-            // 
-            tableLayoutPanel1.SetColumnSpan(proficiencies_textBox, 2);
-            proficiencies_textBox.Dock = DockStyle.Fill;
-            proficiencies_textBox.Location = new Point(403, 213);
-            proficiencies_textBox.Name = "proficiencies_textBox";
-            proficiencies_textBox.Size = new Size(194, 64);
-            proficiencies_textBox.TabIndex = 38;
-            proficiencies_textBox.Text = "";
             // 
             // equipment_label
             // 
@@ -356,23 +334,13 @@
             // 
             // equipment_textBox
             // 
-            tableLayoutPanel1.SetColumnSpan(equipment_textBox, 2);
+            mainTableLayoutPanel.SetColumnSpan(equipment_textBox, 2);
             equipment_textBox.Dock = DockStyle.Fill;
             equipment_textBox.Location = new Point(103, 283);
             equipment_textBox.Name = "equipment_textBox";
             equipment_textBox.Size = new Size(194, 64);
             equipment_textBox.TabIndex = 40;
             equipment_textBox.Text = "";
-            // 
-            // background_textBox
-            // 
-            tableLayoutPanel1.SetColumnSpan(background_textBox, 2);
-            background_textBox.Dock = DockStyle.Fill;
-            background_textBox.Location = new Point(403, 283);
-            background_textBox.Name = "background_textBox";
-            background_textBox.Size = new Size(194, 64);
-            background_textBox.TabIndex = 42;
-            background_textBox.Text = "";
             // 
             // xp_label
             // 
@@ -458,7 +426,7 @@
             // 
             raceinfo_label.Anchor = AnchorStyles.Left;
             raceinfo_label.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(raceinfo_label, 8);
+            mainTableLayoutPanel.SetColumnSpan(raceinfo_label, 8);
             raceinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             raceinfo_label.Location = new Point(3, 439);
             raceinfo_label.Name = "raceinfo_label";
@@ -594,35 +562,13 @@
             // 
             classinfo_label.Anchor = AnchorStyles.Left;
             classinfo_label.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(classinfo_label, 8);
+            mainTableLayoutPanel.SetColumnSpan(classinfo_label, 8);
             classinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             classinfo_label.Location = new Point(3, 719);
             classinfo_label.Name = "classinfo_label";
             classinfo_label.Size = new Size(132, 32);
             classinfo_label.TabIndex = 76;
             classinfo_label.Text = "Class Info:";
-            // 
-            // skillchoices_label
-            // 
-            skillchoices_label.Anchor = AnchorStyles.Left;
-            skillchoices_label.AutoSize = true;
-            skillchoices_label.Font = new Font("Segoe UI", 12F);
-            skillchoices_label.Location = new Point(3, 924);
-            skillchoices_label.Name = "skillchoices_label";
-            skillchoices_label.Size = new Size(67, 42);
-            skillchoices_label.TabIndex = 74;
-            skillchoices_label.Text = "Skill Choices:";
-            // 
-            // primaryability_label
-            // 
-            primaryability_label.Anchor = AnchorStyles.Left;
-            primaryability_label.AutoSize = true;
-            primaryability_label.Font = new Font("Segoe UI", 12F);
-            primaryability_label.Location = new Point(3, 854);
-            primaryability_label.Name = "primaryability_label";
-            primaryability_label.Size = new Size(69, 42);
-            primaryability_label.TabIndex = 68;
-            primaryability_label.Text = "Primary Ability:";
             // 
             // classname_label
             // 
@@ -634,62 +580,6 @@
             classname_label.Size = new Size(55, 42);
             classname_label.TabIndex = 64;
             classname_label.Text = "Class Name:";
-            // 
-            // savingthrow_label
-            // 
-            savingthrow_label.Anchor = AnchorStyles.Left;
-            savingthrow_label.AutoSize = true;
-            savingthrow_label.Font = new Font("Segoe UI", 12F);
-            savingthrow_label.Location = new Point(203, 854);
-            savingthrow_label.Name = "savingthrow_label";
-            savingthrow_label.Size = new Size(64, 42);
-            savingthrow_label.TabIndex = 70;
-            savingthrow_label.Text = "Saving Throws:";
-            // 
-            // savingthrow_textBox
-            // 
-            savingthrow_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            savingthrow_textBox.Location = new Point(303, 863);
-            savingthrow_textBox.Name = "savingthrow_textBox";
-            savingthrow_textBox.Size = new Size(94, 23);
-            savingthrow_textBox.TabIndex = 71;
-            // 
-            // classfeatures_textBox
-            // 
-            classfeatures_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            classfeatures_textBox.Location = new Point(303, 940);
-            classfeatures_textBox.Name = "classfeatures_textBox";
-            classfeatures_textBox.Size = new Size(94, 10);
-            classfeatures_textBox.TabIndex = 73;
-            classfeatures_textBox.Text = "";
-            // 
-            // classfeatures_label
-            // 
-            classfeatures_label.Anchor = AnchorStyles.Left;
-            classfeatures_label.AutoSize = true;
-            classfeatures_label.Font = new Font("Segoe UI", 12F);
-            classfeatures_label.Location = new Point(203, 924);
-            classfeatures_label.Name = "classfeatures_label";
-            classfeatures_label.Size = new Size(72, 42);
-            classfeatures_label.TabIndex = 72;
-            classfeatures_label.Text = "Class Features:";
-            // 
-            // skillchoices_comboBox
-            // 
-            skillchoices_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            skillchoices_comboBox.FormattingEnabled = true;
-            skillchoices_comboBox.Location = new Point(103, 933);
-            skillchoices_comboBox.Name = "skillchoices_comboBox";
-            skillchoices_comboBox.Size = new Size(94, 23);
-            skillchoices_comboBox.TabIndex = 75;
-            // 
-            // primaryability_textBox
-            // 
-            primaryability_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            primaryability_textBox.Location = new Point(103, 863);
-            primaryability_textBox.Name = "primaryability_textBox";
-            primaryability_textBox.Size = new Size(94, 23);
-            primaryability_textBox.TabIndex = 69;
             // 
             // classname_comboBox
             // 
@@ -720,6 +610,94 @@
             hitdie_comboBox.Size = new Size(94, 23);
             hitdie_comboBox.TabIndex = 67;
             // 
+            // primaryability_label
+            // 
+            primaryability_label.Anchor = AnchorStyles.Left;
+            primaryability_label.AutoSize = true;
+            primaryability_label.Font = new Font("Segoe UI", 12F);
+            primaryability_label.Location = new Point(3, 854);
+            primaryability_label.Name = "primaryability_label";
+            primaryability_label.Size = new Size(69, 42);
+            primaryability_label.TabIndex = 68;
+            primaryability_label.Text = "Primary Ability:";
+            // 
+            // primaryability_textBox
+            // 
+            primaryability_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            primaryability_textBox.Location = new Point(103, 863);
+            primaryability_textBox.Name = "primaryability_textBox";
+            primaryability_textBox.Size = new Size(94, 23);
+            primaryability_textBox.TabIndex = 69;
+            // 
+            // savingthrow_label
+            // 
+            savingthrow_label.Anchor = AnchorStyles.Left;
+            savingthrow_label.AutoSize = true;
+            savingthrow_label.Font = new Font("Segoe UI", 12F);
+            savingthrow_label.Location = new Point(203, 854);
+            savingthrow_label.Name = "savingthrow_label";
+            savingthrow_label.Size = new Size(64, 42);
+            savingthrow_label.TabIndex = 70;
+            savingthrow_label.Text = "Saving Throws:";
+            // 
+            // skillchoices_label
+            // 
+            skillchoices_label.Anchor = AnchorStyles.Left;
+            skillchoices_label.AutoSize = true;
+            skillchoices_label.Font = new Font("Segoe UI", 12F);
+            skillchoices_label.Location = new Point(3, 924);
+            skillchoices_label.Name = "skillchoices_label";
+            skillchoices_label.Size = new Size(67, 42);
+            skillchoices_label.TabIndex = 74;
+            skillchoices_label.Text = "Skill Choices:";
+            // 
+            // savingthrow_textBox
+            // 
+            savingthrow_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            savingthrow_textBox.Location = new Point(303, 863);
+            savingthrow_textBox.Name = "savingthrow_textBox";
+            savingthrow_textBox.Size = new Size(94, 23);
+            savingthrow_textBox.TabIndex = 71;
+            // 
+            // skillchoices_comboBox
+            // 
+            skillchoices_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            skillchoices_comboBox.FormattingEnabled = true;
+            skillchoices_comboBox.Location = new Point(103, 933);
+            skillchoices_comboBox.Name = "skillchoices_comboBox";
+            skillchoices_comboBox.Size = new Size(94, 23);
+            skillchoices_comboBox.TabIndex = 75;
+            // 
+            // classfeatures_label
+            // 
+            classfeatures_label.Anchor = AnchorStyles.Left;
+            classfeatures_label.AutoSize = true;
+            classfeatures_label.Font = new Font("Segoe UI", 12F);
+            classfeatures_label.Location = new Point(203, 924);
+            classfeatures_label.Name = "classfeatures_label";
+            classfeatures_label.Size = new Size(72, 42);
+            classfeatures_label.TabIndex = 72;
+            classfeatures_label.Text = "Class Features:";
+            // 
+            // classfeatures_textBox
+            // 
+            classfeatures_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            classfeatures_textBox.Location = new Point(303, 940);
+            classfeatures_textBox.Name = "classfeatures_textBox";
+            classfeatures_textBox.Size = new Size(94, 10);
+            classfeatures_textBox.TabIndex = 73;
+            classfeatures_textBox.Text = "";
+            // 
+            // cancel_button
+            // 
+            cancel_button.Anchor = AnchorStyles.None;
+            cancel_button.Location = new Point(329, 996);
+            cancel_button.Name = "cancel_button";
+            cancel_button.Size = new Size(41, 49);
+            cancel_button.TabIndex = 78;
+            cancel_button.Text = "Cancel";
+            cancel_button.UseVisualStyleBackColor = true;
+            // 
             // next_button
             // 
             next_button.Anchor = AnchorStyles.None;
@@ -732,36 +710,57 @@
             next_button.Text = "Next";
             next_button.UseVisualStyleBackColor = true;
             // 
-            // cancel_button
+            // proficiencies_textBox
             // 
-            cancel_button.Anchor = AnchorStyles.None;
-            cancel_button.Location = new Point(329, 996);
-            cancel_button.Name = "cancel_button";
-            cancel_button.Size = new Size(41, 49);
-            cancel_button.TabIndex = 78;
-            cancel_button.Text = "Cancel";
-            cancel_button.UseVisualStyleBackColor = true;
+            mainTableLayoutPanel.SetColumnSpan(proficiencies_textBox, 2);
+            proficiencies_textBox.Dock = DockStyle.Fill;
+            proficiencies_textBox.Location = new Point(403, 213);
+            proficiencies_textBox.Name = "proficiencies_textBox";
+            proficiencies_textBox.Size = new Size(194, 64);
+            proficiencies_textBox.TabIndex = 38;
+            proficiencies_textBox.Text = "";
             // 
-            // Form1
+            // background_textBox
+            // 
+            mainTableLayoutPanel.SetColumnSpan(background_textBox, 2);
+            background_textBox.Dock = DockStyle.Fill;
+            background_textBox.Location = new Point(403, 283);
+            background_textBox.Name = "background_textBox";
+            background_textBox.Size = new Size(194, 64);
+            background_textBox.TabIndex = 42;
+            background_textBox.Text = "";
+            // 
+            // proficiencies_label
+            // 
+            proficiencies_label.Anchor = AnchorStyles.Left;
+            proficiencies_label.AutoSize = true;
+            proficiencies_label.Font = new Font("Segoe UI", 12F);
+            proficiencies_label.Location = new Point(303, 224);
+            proficiencies_label.Name = "proficiencies_label";
+            proficiencies_label.Size = new Size(90, 42);
+            proficiencies_label.TabIndex = 37;
+            proficiencies_label.Text = "Proficiencies:";
+            // 
+            // RootForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(807, 1061);
-            Controls.Add(panel1);
-            Name = "Form1";
+            Controls.Add(scrollablePanel);
+            Name = "RootForm";
             StartPosition = FormStartPosition.CenterScreen;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            scrollablePanel.ResumeLayout(false);
+            scrollablePanel.PerformLayout();
+            mainTableLayoutPanel.ResumeLayout(false);
+            mainTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel1;
+        private Panel scrollablePanel;
+        private TableLayoutPanel mainTableLayoutPanel;
         private Label newcharacter_title;
         private Label basicinfo_label;
         private Label ac_label;

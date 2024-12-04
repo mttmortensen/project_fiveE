@@ -1,9 +1,9 @@
 namespace Frontend
 {
-    public partial class Form1 : Form
+    public partial class RootForm : Form
     {
 
-        public Form1()
+        public RootForm()
         {
             InitializeComponent();
         }
