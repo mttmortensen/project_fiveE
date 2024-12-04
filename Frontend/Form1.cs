@@ -2,11 +2,15 @@ namespace Frontend
 {
     public partial class Form1 : Form
     {
+
+        VScrollBar vScroller = new VScrollBar();
+
         public Form1()
         {
             InitializeComponent();
 
             this.Load += ScreenForm_Load;
+            this.Controls.Add(this.vScroller);
         }
 
         private void ScreenForm_Load(object sender, EventArgs e)
