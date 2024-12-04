@@ -81,6 +81,8 @@
             classname_comboBox = new ComboBox();
             hitdie_label = new Label();
             hitdie_comboBox = new ComboBox();
+            next_button = new Button();
+            cancel_button = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -108,16 +110,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.Controls.Add(skillchoices_label, 2, 0);
-            tableLayoutPanel1.Controls.Add(primaryability_label, 3, 0);
-            tableLayoutPanel1.Controls.Add(savingthrow_label, 5, 0);
-            tableLayoutPanel1.Controls.Add(savingthrow_textBox, 6, 0);
-            tableLayoutPanel1.Controls.Add(classfeatures_textBox, 7, 0);
-            tableLayoutPanel1.Controls.Add(classfeatures_label, 1, 1);
-            tableLayoutPanel1.Controls.Add(skillchoices_comboBox, 2, 1);
-            tableLayoutPanel1.Controls.Add(primaryability_textBox, 3, 1);
-            tableLayoutPanel1.Controls.Add(hitdie_label, 5, 1);
-            tableLayoutPanel1.Controls.Add(hitdie_comboBox, 6, 1);
             tableLayoutPanel1.Controls.Add(newcharacter_title, 0, 0);
             tableLayoutPanel1.Controls.Add(basicinfo_label, 0, 1);
             tableLayoutPanel1.Controls.Add(character_name_label, 0, 2);
@@ -129,12 +121,9 @@
             tableLayoutPanel1.Controls.Add(lvl_drop_drown, 6, 2);
             tableLayoutPanel1.Controls.Add(skill_label, 0, 3);
             tableLayoutPanel1.Controls.Add(skill_textBox, 1, 3);
-            tableLayoutPanel1.Controls.Add(proficiencies_label, 2, 3);
-            tableLayoutPanel1.Controls.Add(proficiencies_textBox, 3, 3);
             tableLayoutPanel1.Controls.Add(equipment_label, 0, 4);
             tableLayoutPanel1.Controls.Add(background_label, 2, 4);
             tableLayoutPanel1.Controls.Add(equipment_textBox, 1, 4);
-            tableLayoutPanel1.Controls.Add(background_textBox, 3, 4);
             tableLayoutPanel1.Controls.Add(xp_label, 0, 5);
             tableLayoutPanel1.Controls.Add(hp_label, 2, 5);
             tableLayoutPanel1.Controls.Add(xp_textbox, 1, 5);
@@ -159,6 +148,21 @@
             tableLayoutPanel1.Controls.Add(classinfo_label, 0, 10);
             tableLayoutPanel1.Controls.Add(classname_label, 0, 11);
             tableLayoutPanel1.Controls.Add(classname_comboBox, 1, 11);
+            tableLayoutPanel1.Controls.Add(hitdie_label, 2, 11);
+            tableLayoutPanel1.Controls.Add(hitdie_comboBox, 3, 11);
+            tableLayoutPanel1.Controls.Add(primaryability_label, 0, 12);
+            tableLayoutPanel1.Controls.Add(primaryability_textBox, 1, 12);
+            tableLayoutPanel1.Controls.Add(savingthrow_label, 2, 12);
+            tableLayoutPanel1.Controls.Add(skillchoices_label, 0, 13);
+            tableLayoutPanel1.Controls.Add(savingthrow_textBox, 3, 12);
+            tableLayoutPanel1.Controls.Add(skillchoices_comboBox, 1, 13);
+            tableLayoutPanel1.Controls.Add(classfeatures_label, 2, 13);
+            tableLayoutPanel1.Controls.Add(classfeatures_textBox, 3, 13);
+            tableLayoutPanel1.Controls.Add(cancel_button, 3, 14);
+            tableLayoutPanel1.Controls.Add(next_button, 4, 14);
+            tableLayoutPanel1.Controls.Add(proficiencies_textBox, 4, 3);
+            tableLayoutPanel1.Controls.Add(background_textBox, 4, 4);
+            tableLayoutPanel1.Controls.Add(proficiencies_label, 3, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -186,10 +190,11 @@
             // 
             newcharacter_title.Anchor = AnchorStyles.Left;
             newcharacter_title.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(newcharacter_title, 8);
             newcharacter_title.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            newcharacter_title.Location = new Point(3, 0);
+            newcharacter_title.Location = new Point(3, 12);
             newcharacter_title.Name = "newcharacter_title";
-            newcharacter_title.Size = new Size(92, 70);
+            newcharacter_title.Size = new Size(261, 45);
             newcharacter_title.TabIndex = 27;
             newcharacter_title.Text = "New Character:";
             // 
@@ -197,10 +202,11 @@
             // 
             basicinfo_label.Anchor = AnchorStyles.Left;
             basicinfo_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(basicinfo_label, 8);
             basicinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            basicinfo_label.Location = new Point(3, 73);
+            basicinfo_label.Location = new Point(3, 89);
             basicinfo_label.Name = "basicinfo_label";
-            basicinfo_label.Size = new Size(79, 64);
+            basicinfo_label.Size = new Size(133, 32);
             basicinfo_label.TabIndex = 26;
             basicinfo_label.Text = "Basic Info:";
             // 
@@ -297,10 +303,11 @@
             // 
             // skill_textBox
             // 
-            skill_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            skill_textBox.Location = new Point(103, 240);
+            tableLayoutPanel1.SetColumnSpan(skill_textBox, 2);
+            skill_textBox.Dock = DockStyle.Fill;
+            skill_textBox.Location = new Point(103, 213);
             skill_textBox.Name = "skill_textBox";
-            skill_textBox.Size = new Size(94, 10);
+            skill_textBox.Size = new Size(194, 64);
             skill_textBox.TabIndex = 36;
             skill_textBox.Text = "";
             // 
@@ -309,7 +316,7 @@
             proficiencies_label.Anchor = AnchorStyles.Left;
             proficiencies_label.AutoSize = true;
             proficiencies_label.Font = new Font("Segoe UI", 12F);
-            proficiencies_label.Location = new Point(203, 224);
+            proficiencies_label.Location = new Point(303, 224);
             proficiencies_label.Name = "proficiencies_label";
             proficiencies_label.Size = new Size(90, 42);
             proficiencies_label.TabIndex = 37;
@@ -317,10 +324,11 @@
             // 
             // proficiencies_textBox
             // 
-            proficiencies_textBox.Anchor = AnchorStyles.Left;
-            proficiencies_textBox.Location = new Point(303, 240);
+            tableLayoutPanel1.SetColumnSpan(proficiencies_textBox, 2);
+            proficiencies_textBox.Dock = DockStyle.Fill;
+            proficiencies_textBox.Location = new Point(403, 213);
             proficiencies_textBox.Name = "proficiencies_textBox";
-            proficiencies_textBox.Size = new Size(10, 10);
+            proficiencies_textBox.Size = new Size(194, 64);
             proficiencies_textBox.TabIndex = 38;
             proficiencies_textBox.Text = "";
             // 
@@ -340,7 +348,7 @@
             background_label.Anchor = AnchorStyles.Left;
             background_label.AutoSize = true;
             background_label.Font = new Font("Segoe UI", 12F);
-            background_label.Location = new Point(203, 294);
+            background_label.Location = new Point(303, 294);
             background_label.Name = "background_label";
             background_label.Size = new Size(93, 42);
             background_label.TabIndex = 41;
@@ -348,19 +356,21 @@
             // 
             // equipment_textBox
             // 
-            equipment_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            equipment_textBox.Location = new Point(103, 314);
+            tableLayoutPanel1.SetColumnSpan(equipment_textBox, 2);
+            equipment_textBox.Dock = DockStyle.Fill;
+            equipment_textBox.Location = new Point(103, 283);
             equipment_textBox.Name = "equipment_textBox";
-            equipment_textBox.Size = new Size(94, 1);
+            equipment_textBox.Size = new Size(194, 64);
             equipment_textBox.TabIndex = 40;
             equipment_textBox.Text = "";
             // 
             // background_textBox
             // 
-            background_textBox.Anchor = AnchorStyles.Left;
-            background_textBox.Location = new Point(303, 314);
+            tableLayoutPanel1.SetColumnSpan(background_textBox, 2);
+            background_textBox.Dock = DockStyle.Fill;
+            background_textBox.Location = new Point(403, 283);
             background_textBox.Name = "background_textBox";
-            background_textBox.Size = new Size(16, 1);
+            background_textBox.Size = new Size(194, 64);
             background_textBox.TabIndex = 42;
             background_textBox.Text = "";
             // 
@@ -448,10 +458,11 @@
             // 
             raceinfo_label.Anchor = AnchorStyles.Left;
             raceinfo_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(raceinfo_label, 8);
             raceinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            raceinfo_label.Location = new Point(3, 423);
+            raceinfo_label.Location = new Point(3, 439);
             raceinfo_label.Name = "raceinfo_label";
-            raceinfo_label.Size = new Size(75, 64);
+            raceinfo_label.Size = new Size(129, 32);
             raceinfo_label.TabIndex = 63;
             raceinfo_label.Text = "Race Info:";
             // 
@@ -583,10 +594,11 @@
             // 
             classinfo_label.Anchor = AnchorStyles.Left;
             classinfo_label.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(classinfo_label, 8);
             classinfo_label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            classinfo_label.Location = new Point(3, 703);
+            classinfo_label.Location = new Point(3, 719);
             classinfo_label.Name = "classinfo_label";
-            classinfo_label.Size = new Size(78, 64);
+            classinfo_label.Size = new Size(132, 32);
             classinfo_label.TabIndex = 76;
             classinfo_label.Text = "Class Info:";
             // 
@@ -595,7 +607,7 @@
             skillchoices_label.Anchor = AnchorStyles.Left;
             skillchoices_label.AutoSize = true;
             skillchoices_label.Font = new Font("Segoe UI", 12F);
-            skillchoices_label.Location = new Point(203, 14);
+            skillchoices_label.Location = new Point(3, 924);
             skillchoices_label.Name = "skillchoices_label";
             skillchoices_label.Size = new Size(67, 42);
             skillchoices_label.TabIndex = 74;
@@ -606,7 +618,7 @@
             primaryability_label.Anchor = AnchorStyles.Left;
             primaryability_label.AutoSize = true;
             primaryability_label.Font = new Font("Segoe UI", 12F);
-            primaryability_label.Location = new Point(303, 14);
+            primaryability_label.Location = new Point(3, 854);
             primaryability_label.Name = "primaryability_label";
             primaryability_label.Size = new Size(69, 42);
             primaryability_label.TabIndex = 68;
@@ -628,7 +640,7 @@
             savingthrow_label.Anchor = AnchorStyles.Left;
             savingthrow_label.AutoSize = true;
             savingthrow_label.Font = new Font("Segoe UI", 12F);
-            savingthrow_label.Location = new Point(503, 14);
+            savingthrow_label.Location = new Point(203, 854);
             savingthrow_label.Name = "savingthrow_label";
             savingthrow_label.Size = new Size(64, 42);
             savingthrow_label.TabIndex = 70;
@@ -637,7 +649,7 @@
             // savingthrow_textBox
             // 
             savingthrow_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            savingthrow_textBox.Location = new Point(603, 23);
+            savingthrow_textBox.Location = new Point(303, 863);
             savingthrow_textBox.Name = "savingthrow_textBox";
             savingthrow_textBox.Size = new Size(94, 23);
             savingthrow_textBox.TabIndex = 71;
@@ -645,9 +657,9 @@
             // classfeatures_textBox
             // 
             classfeatures_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            classfeatures_textBox.Location = new Point(703, 30);
+            classfeatures_textBox.Location = new Point(303, 940);
             classfeatures_textBox.Name = "classfeatures_textBox";
-            classfeatures_textBox.Size = new Size(101, 10);
+            classfeatures_textBox.Size = new Size(94, 10);
             classfeatures_textBox.TabIndex = 73;
             classfeatures_textBox.Text = "";
             // 
@@ -656,7 +668,7 @@
             classfeatures_label.Anchor = AnchorStyles.Left;
             classfeatures_label.AutoSize = true;
             classfeatures_label.Font = new Font("Segoe UI", 12F);
-            classfeatures_label.Location = new Point(103, 84);
+            classfeatures_label.Location = new Point(203, 924);
             classfeatures_label.Name = "classfeatures_label";
             classfeatures_label.Size = new Size(72, 42);
             classfeatures_label.TabIndex = 72;
@@ -666,7 +678,7 @@
             // 
             skillchoices_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             skillchoices_comboBox.FormattingEnabled = true;
-            skillchoices_comboBox.Location = new Point(203, 93);
+            skillchoices_comboBox.Location = new Point(103, 933);
             skillchoices_comboBox.Name = "skillchoices_comboBox";
             skillchoices_comboBox.Size = new Size(94, 23);
             skillchoices_comboBox.TabIndex = 75;
@@ -674,7 +686,7 @@
             // primaryability_textBox
             // 
             primaryability_textBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            primaryability_textBox.Location = new Point(303, 93);
+            primaryability_textBox.Location = new Point(103, 863);
             primaryability_textBox.Name = "primaryability_textBox";
             primaryability_textBox.Size = new Size(94, 23);
             primaryability_textBox.TabIndex = 69;
@@ -693,7 +705,7 @@
             hitdie_label.Anchor = AnchorStyles.Left;
             hitdie_label.AutoSize = true;
             hitdie_label.Font = new Font("Segoe UI", 12F);
-            hitdie_label.Location = new Point(503, 94);
+            hitdie_label.Location = new Point(203, 794);
             hitdie_label.Name = "hitdie_label";
             hitdie_label.Size = new Size(60, 21);
             hitdie_label.TabIndex = 66;
@@ -703,10 +715,32 @@
             // 
             hitdie_comboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             hitdie_comboBox.FormattingEnabled = true;
-            hitdie_comboBox.Location = new Point(603, 93);
+            hitdie_comboBox.Location = new Point(303, 793);
             hitdie_comboBox.Name = "hitdie_comboBox";
             hitdie_comboBox.Size = new Size(94, 23);
             hitdie_comboBox.TabIndex = 67;
+            // 
+            // next_button
+            // 
+            next_button.Anchor = AnchorStyles.None;
+            next_button.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            next_button.FlatStyle = FlatStyle.Flat;
+            next_button.Location = new Point(429, 996);
+            next_button.Name = "next_button";
+            next_button.Size = new Size(41, 49);
+            next_button.TabIndex = 77;
+            next_button.Text = "Next";
+            next_button.UseVisualStyleBackColor = true;
+            // 
+            // cancel_button
+            // 
+            cancel_button.Anchor = AnchorStyles.None;
+            cancel_button.Location = new Point(329, 996);
+            cancel_button.Name = "cancel_button";
+            cancel_button.Size = new Size(41, 49);
+            cancel_button.TabIndex = 78;
+            cancel_button.Text = "Cancel";
+            cancel_button.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -779,5 +813,7 @@
         private Label hitdie_label;
         private ComboBox hitdie_comboBox;
         private Label classinfo_label;
+        private Button cancel_button;
+        private Button next_button;
     }
 }
