@@ -796,6 +796,7 @@
             Controls.Add(tableLayoutPanel4);
             MinimumSize = new Size(823, 611);
             Name = "Form1";
+            Load += ScreenForm_Load;
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
