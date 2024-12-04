@@ -1,6 +1,6 @@
 ﻿namespace Frontend
 {
-    partial class RootForm
+    partial class rootForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            scrollablePanel = new Panel();
+            rootScrollablePanel = new Panel();
             rootTableLayoutPanel = new TableLayoutPanel();
             newcharacter_title = new Label();
             basicinfo_label = new Label();
@@ -83,19 +83,19 @@
             proficiencies_textBox = new RichTextBox();
             background_textBox = new RichTextBox();
             proficiencies_label = new Label();
-            scrollablePanel.SuspendLayout();
+            rootScrollablePanel.SuspendLayout();
             rootTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // scrollablePanel
+            // rootScrollablePanel
             // 
-            scrollablePanel.AutoScroll = true;
-            scrollablePanel.Controls.Add(rootTableLayoutPanel);
-            scrollablePanel.Dock = DockStyle.Fill;
-            scrollablePanel.Location = new Point(0, 0);
-            scrollablePanel.Name = "scrollablePanel";
-            scrollablePanel.Size = new Size(807, 461);
-            scrollablePanel.TabIndex = 0;
+            rootScrollablePanel.AutoScroll = true;
+            rootScrollablePanel.Controls.Add(rootTableLayoutPanel);
+            rootScrollablePanel.Dock = DockStyle.Fill;
+            rootScrollablePanel.Location = new Point(0, 0);
+            rootScrollablePanel.Name = "rootScrollablePanel";
+            rootScrollablePanel.Size = new Size(807, 461);
+            rootScrollablePanel.TabIndex = 0;
             // 
             // rootTableLayoutPanel
             // 
@@ -742,17 +742,17 @@
             proficiencies_label.TabIndex = 37;
             proficiencies_label.Text = "Proficiencies:";
             // 
-            // RootForm
+            // rootForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(807, 461);
-            Controls.Add(scrollablePanel);
-            Name = "RootForm";
+            Controls.Add(rootScrollablePanel);
+            Name = "rootForm";
             StartPosition = FormStartPosition.CenterScreen;
-            scrollablePanel.ResumeLayout(false);
-            scrollablePanel.PerformLayout();
+            rootScrollablePanel.ResumeLayout(false);
+            rootScrollablePanel.PerformLayout();
             rootTableLayoutPanel.ResumeLayout(false);
             rootTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
@@ -760,7 +760,7 @@
 
         #endregion
 
-        private Panel scrollablePanel;
+        private Panel rootScrollablePanel;
         private TableLayoutPanel rootTableLayoutPanel;
         private Label newcharacter_title;
         private Label basicinfo_label;
