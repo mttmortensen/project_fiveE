@@ -1,6 +1,6 @@
 ﻿namespace Frontend
 {
-    partial class rootForm
+    partial class rootForm_step1
     {
         /// <summary>
         ///  Required designer variable.
@@ -61,8 +61,6 @@
             xp_textbox = new TextBox();
             hp_label = new Label();
             hp_textbox = new TextBox();
-            maxhp_label = new Label();
-            maxhp_textBox = new TextBox();
             lvl_drop_drown = new ComboBox();
             racename_comboBox = new ComboBox();
             r_speed_textBox = new TextBox();
@@ -81,6 +79,8 @@
             hitdie_comboBox = new ComboBox();
             proficiencies_label = new Label();
             background_label = new Label();
+            maxhp_label = new Label();
+            maxhp_textBox = new TextBox();
             ac_label = new Label();
             textBox3 = new TextBox();
             rootScrollablePanel.SuspendLayout();
@@ -534,27 +534,6 @@
             hp_textbox.Size = new Size(67, 22);
             hp_textbox.TabIndex = 46;
             // 
-            // maxhp_label
-            // 
-            maxhp_label.Anchor = AnchorStyles.Left;
-            maxhp_label.AutoSize = true;
-            maxhp_label.Font = new Font("Segoe UI", 12F);
-            maxhp_label.Location = new Point(357, 395);
-            maxhp_label.Name = "maxhp_label";
-            maxhp_label.Padding = new Padding(5, 0, 0, 0);
-            maxhp_label.Size = new Size(71, 21);
-            maxhp_label.TabIndex = 47;
-            maxhp_label.Text = "Max HP:";
-            // 
-            // maxhp_textBox
-            // 
-            maxhp_textBox.Anchor = AnchorStyles.Left;
-            maxhp_textBox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            maxhp_textBox.Location = new Point(446, 394);
-            maxhp_textBox.Name = "maxhp_textBox";
-            maxhp_textBox.Size = new Size(62, 22);
-            maxhp_textBox.TabIndex = 48;
-            // 
             // lvl_drop_drown
             // 
             lvl_drop_drown.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -759,6 +738,27 @@
             background_label.TabIndex = 41;
             background_label.Text = "Background:";
             // 
+            // maxhp_label
+            // 
+            maxhp_label.Anchor = AnchorStyles.Left;
+            maxhp_label.AutoSize = true;
+            maxhp_label.Font = new Font("Segoe UI", 12F);
+            maxhp_label.Location = new Point(357, 395);
+            maxhp_label.Name = "maxhp_label";
+            maxhp_label.Padding = new Padding(5, 0, 0, 0);
+            maxhp_label.Size = new Size(71, 21);
+            maxhp_label.TabIndex = 47;
+            maxhp_label.Text = "Max HP:";
+            // 
+            // maxhp_textBox
+            // 
+            maxhp_textBox.Anchor = AnchorStyles.Left;
+            maxhp_textBox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maxhp_textBox.Location = new Point(446, 394);
+            maxhp_textBox.Name = "maxhp_textBox";
+            maxhp_textBox.Size = new Size(62, 22);
+            maxhp_textBox.TabIndex = 48;
+            // 
             // ac_label
             // 
             ac_label.Anchor = AnchorStyles.Left;
@@ -779,15 +779,16 @@
             textBox3.Size = new Size(56, 22);
             textBox3.TabIndex = 50;
             // 
-            // rootForm
+            // rootForm_step1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(807, 711);
             Controls.Add(rootScrollablePanel);
-            Name = "rootForm";
+            Name = "rootForm_step1";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Step 1: Create a New Character";
             rootScrollablePanel.ResumeLayout(false);
             rootScrollablePanel.PerformLayout();
             rootTableLayoutPanel.ResumeLayout(false);
