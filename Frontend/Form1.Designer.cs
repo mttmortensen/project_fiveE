@@ -59,7 +59,6 @@
             background_textBox = new RichTextBox();
             xp_label = new Label();
             xp_textbox = new TextBox();
-            background_label = new Label();
             hp_label = new Label();
             hp_textbox = new TextBox();
             maxhp_label = new Label();
@@ -83,6 +82,7 @@
             savingthrow_textBox = new TextBox();
             hitdie_comboBox = new ComboBox();
             proficiencies_label = new Label();
+            background_label = new Label();
             rootScrollablePanel.SuspendLayout();
             rootTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -134,8 +134,8 @@
             rootTableLayoutPanel.Controls.Add(primaryability_label, 0, 12);
             rootTableLayoutPanel.Controls.Add(skillchoices_label, 0, 13);
             rootTableLayoutPanel.Controls.Add(proficiencies_textBox, 6, 3);
-            rootTableLayoutPanel.Controls.Add(next_button, 5, 14);
-            rootTableLayoutPanel.Controls.Add(cancel_button, 1, 14);
+            rootTableLayoutPanel.Controls.Add(next_button, 5, 16);
+            rootTableLayoutPanel.Controls.Add(cancel_button, 1, 16);
             rootTableLayoutPanel.Controls.Add(r_features_textBox, 6, 9);
             rootTableLayoutPanel.Controls.Add(classfeatures_textBox, 6, 13);
             rootTableLayoutPanel.Controls.Add(textBox1, 1, 2);
@@ -146,8 +146,6 @@
             rootTableLayoutPanel.Controls.Add(hp_textbox, 3, 5);
             rootTableLayoutPanel.Controls.Add(maxhp_label, 5, 5);
             rootTableLayoutPanel.Controls.Add(maxhp_textBox, 6, 5);
-            rootTableLayoutPanel.Controls.Add(ac_label, 8, 5);
-            rootTableLayoutPanel.Controls.Add(textBox3, 9, 5);
             rootTableLayoutPanel.Controls.Add(lvl_drop_drown, 8, 2);
             rootTableLayoutPanel.Controls.Add(racename_comboBox, 1, 7);
             rootTableLayoutPanel.Controls.Add(r_speed_textBox, 1, 8);
@@ -166,10 +164,12 @@
             rootTableLayoutPanel.Controls.Add(hitdie_comboBox, 6, 11);
             rootTableLayoutPanel.Controls.Add(proficiencies_label, 4, 3);
             rootTableLayoutPanel.Controls.Add(background_label, 4, 4);
+            rootTableLayoutPanel.Controls.Add(ac_label, 7, 5);
+            rootTableLayoutPanel.Controls.Add(textBox3, 8, 5);
             rootTableLayoutPanel.Dock = DockStyle.Top;
             rootTableLayoutPanel.Location = new Point(0, 0);
             rootTableLayoutPanel.Name = "rootTableLayoutPanel";
-            rootTableLayoutPanel.RowCount = 15;
+            rootTableLayoutPanel.RowCount = 17;
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 8.515704F));
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5.08698368F));
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5.313593F));
@@ -184,8 +184,10 @@
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 4.567804F));
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 4.567804F));
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6653471F));
+            rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             rootTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            rootTableLayoutPanel.Size = new Size(790, 959);
+            rootTableLayoutPanel.Size = new Size(790, 999);
             rootTableLayoutPanel.TabIndex = 0;
             // 
             // skill_textBox
@@ -432,7 +434,7 @@
             next_button.Dock = DockStyle.Fill;
             next_button.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             next_button.FlatStyle = FlatStyle.Flat;
-            next_button.Location = new Point(441, 907);
+            next_button.Location = new Point(441, 947);
             next_button.Name = "next_button";
             next_button.Size = new Size(146, 49);
             next_button.TabIndex = 77;
@@ -443,7 +445,7 @@
             // 
             rootTableLayoutPanel.SetColumnSpan(cancel_button, 2);
             cancel_button.Dock = DockStyle.Fill;
-            cancel_button.Location = new Point(125, 907);
+            cancel_button.Location = new Point(125, 947);
             cancel_button.Name = "cancel_button";
             cancel_button.Size = new Size(153, 49);
             cancel_button.TabIndex = 78;
@@ -511,18 +513,6 @@
             xp_textbox.Size = new Size(98, 22);
             xp_textbox.TabIndex = 44;
             // 
-            // background_label
-            // 
-            background_label.Anchor = AnchorStyles.Left;
-            background_label.AutoSize = true;
-            rootTableLayoutPanel.SetColumnSpan(background_label, 2);
-            background_label.Font = new Font("Segoe UI", 12F);
-            background_label.Location = new Point(357, 319);
-            background_label.Name = "background_label";
-            background_label.Size = new Size(96, 21);
-            background_label.TabIndex = 41;
-            background_label.Text = "Background:";
-            // 
             // hp_label
             // 
             hp_label.Anchor = AnchorStyles.Left;
@@ -558,11 +548,10 @@
             // maxhp_textBox
             // 
             maxhp_textBox.Anchor = AnchorStyles.Left;
-            rootTableLayoutPanel.SetColumnSpan(maxhp_textBox, 2);
             maxhp_textBox.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             maxhp_textBox.Location = new Point(525, 394);
             maxhp_textBox.Name = "maxhp_textBox";
-            maxhp_textBox.Size = new Size(140, 22);
+            maxhp_textBox.Size = new Size(62, 22);
             maxhp_textBox.TabIndex = 48;
             // 
             // ac_label
@@ -570,7 +559,7 @@
             ac_label.Anchor = AnchorStyles.Left;
             ac_label.AutoSize = true;
             ac_label.Font = new Font("Segoe UI", 12F);
-            ac_label.Location = new Point(671, 395);
+            ac_label.Location = new Point(593, 395);
             ac_label.Name = "ac_label";
             ac_label.Size = new Size(33, 21);
             ac_label.TabIndex = 49;
@@ -580,9 +569,9 @@
             // 
             textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox3.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(710, 394);
+            textBox3.Location = new Point(648, 394);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(35, 22);
+            textBox3.Size = new Size(56, 22);
             textBox3.TabIndex = 50;
             // 
             // lvl_drop_drown
@@ -591,9 +580,9 @@
             rootTableLayoutPanel.SetColumnSpan(lvl_drop_drown, 2);
             lvl_drop_drown.FormattingEnabled = true;
             lvl_drop_drown.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
-            lvl_drop_drown.Location = new Point(671, 135);
+            lvl_drop_drown.Location = new Point(648, 135);
             lvl_drop_drown.Name = "lvl_drop_drown";
-            lvl_drop_drown.Size = new Size(74, 23);
+            lvl_drop_drown.Size = new Size(97, 23);
             lvl_drop_drown.TabIndex = 34;
             lvl_drop_drown.Text = "1";
             // 
@@ -768,6 +757,18 @@
             proficiencies_label.Size = new Size(100, 21);
             proficiencies_label.TabIndex = 37;
             proficiencies_label.Text = "Proficiencies:";
+            // 
+            // background_label
+            // 
+            background_label.Anchor = AnchorStyles.Left;
+            background_label.AutoSize = true;
+            rootTableLayoutPanel.SetColumnSpan(background_label, 2);
+            background_label.Font = new Font("Segoe UI", 12F);
+            background_label.Location = new Point(357, 319);
+            background_label.Name = "background_label";
+            background_label.Size = new Size(96, 21);
+            background_label.TabIndex = 41;
+            background_label.Text = "Background:";
             // 
             // rootForm
             // 
