@@ -55,6 +55,25 @@
             string updatedCharacterQuery = _queries.UpdateCharacterWithAbilityId;
             _database.InsertRawDataIntoDatabase(updatedCharacterQuery, updateCharacterData);
 
+            // Step 3A: Update the Character with the SubclassId
+            var subclassData = _mapper.MapSubclassToDictionary(newCharacter.Subclass);
+            subclassData["@CharacterID"] = characterId;
+            subclassData["@ClassID"] = newCharacter.ClassID;
+
+            string subclassInsertQuery = _queries.AddingNewSubclassForCharacter;
+            int subclassId = _database.InsertRawDataIntoDatabase(subclassInsertQuery, subclassData);
+
+            // Step 3B: Update the Character with the new SubclassId
+            newCharacter.SubclassID = subclassId;
+            var updateSubclassData = new Dictionary<string, object>
+            {
+                {"@SubclassID", subclassId },
+                {"@CharacterID", characterId},
+            };
+
+            string updatedSubclassQuery = _queries.UpdateCharacterWithSubclassId;
+            _database.InsertRawDataIntoDatabase(updatedSubclassQuery, updateSubclassData);
+
             return characterId;
         }
     }
