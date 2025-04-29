@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Backend.Classes;
+using Newtonsoft.Json;
 
 namespace Backend
 {
@@ -175,6 +176,17 @@ namespace Backend
                 RacialFeatures = row.ContainsKey("RacialFeatures") ? MapList(row["RacialFeatures"].ToString(), ';') : new List<string>(),
                 RacialProficiencies = row.ContainsKey("RacialProficiencies") ? MapList(row["RacialProficiencies"].ToString(), ';') : new List<string>(),
                 Darkvision = row.ContainsKey("Darkvision") ? Convert.ToInt32(row["Darkvision"]) : 0
+            };
+        }
+
+        private Subclass MapSubclassData(Dictionary<string, object> row)
+        {
+            return new Subclass
+            {
+                SubclassID = row.ContainsKey("SubclassID") ? Convert.ToInt32(row["SubclassID"]) : 0,
+                SubclassName = row.ContainsKey("SubclassName") ? row["SubclassName"].ToString() : null,
+                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                SubclassFeatures = row.ContainsKey("SubclassFeatures") ? MapList(row["SubclassFeatures"].ToString(), ';') : new List<string>()
             };
         }
 

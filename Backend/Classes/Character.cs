@@ -1,4 +1,6 @@
-﻿namespace Backend
+﻿using Backend.Classes;
+
+namespace Backend
 {
     public class Character
     {
@@ -19,6 +21,7 @@
         public Race Race { get; set; }
         public Classes Classes { get; set; }
         public AbilityScores AbilityScores { get; set; }
+        public Subclass Subclass { get; set; }
 
         // Combat Stats
         public int HP { get; set; }

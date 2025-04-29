@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Classes
 {
-    internal class Subclass
+    public class Subclass
     {
         public int SubclassID { get; set; }
         public int ClassID { get; set; } // FK to Classes
