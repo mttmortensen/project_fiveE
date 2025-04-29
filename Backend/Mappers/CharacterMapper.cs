@@ -120,8 +120,22 @@ namespace Backend
             };
         }
 
+        // Converts the Subclass object into a dictionary of subclass data for database insertion
+        public Dictionary<string, object> MapSubclassToDictionary(Subclass subclass)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@SubclassName", subclass.SubclassName ?? (object)DBNull.Value },
+                { "@ClassID", subclass.ClassID },
+                { "@SubclassFeatures", string.Join(";", subclass.SubclassFeatures) ?? (object)DBNull.Value },
+                { "@EntryLevel", subclass.EntryLevel },
+                { "@BonusProficiencies", string.Join(";", subclass.BonusProficiencies) ?? (object)DBNull.Value },
+                { "@BonusSpells", string.Join(";", subclass.BonusSpells) ?? (object)DBNull.Value }
+            };
+        }
+
         /************************************************************************/
-                                       /*HELPERS*/
+        /*HELPERS*/
         /************************************************************************/
 
         // Maps raw database rows to an AbilityScores object
