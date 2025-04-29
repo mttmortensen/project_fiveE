@@ -148,7 +148,7 @@
             WHERE CharacterID = @CharacterID;
         ";
 
-        public string AddingNewSubclassEntry => @"
+        public string AddingNewSubclassForCharacter => @"
             INSERT INTO Subclasses 
             (
                 ClassID,
