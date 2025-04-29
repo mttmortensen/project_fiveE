@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            rootScrollablePanel = new Panel();
+            rootScrollablePanel_step1 = new Panel();
             rootTableLayoutPanel = new TableLayoutPanel();
             skill_textBox = new RichTextBox();
             equipment_textBox = new RichTextBox();
@@ -83,19 +83,19 @@
             maxhp_textBox = new TextBox();
             ac_label = new Label();
             textBox3 = new TextBox();
-            rootScrollablePanel.SuspendLayout();
+            rootScrollablePanel_step1.SuspendLayout();
             rootTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // rootScrollablePanel
+            // rootScrollablePanel_step1
             // 
-            rootScrollablePanel.AutoScroll = true;
-            rootScrollablePanel.Controls.Add(rootTableLayoutPanel);
-            rootScrollablePanel.Dock = DockStyle.Fill;
-            rootScrollablePanel.Location = new Point(0, 0);
-            rootScrollablePanel.Name = "rootScrollablePanel";
-            rootScrollablePanel.Size = new Size(807, 711);
-            rootScrollablePanel.TabIndex = 0;
+            rootScrollablePanel_step1.AutoScroll = true;
+            rootScrollablePanel_step1.Controls.Add(rootTableLayoutPanel);
+            rootScrollablePanel_step1.Dock = DockStyle.Fill;
+            rootScrollablePanel_step1.Location = new Point(0, 0);
+            rootScrollablePanel_step1.Name = "rootScrollablePanel_step1";
+            rootScrollablePanel_step1.Size = new Size(807, 711);
+            rootScrollablePanel_step1.TabIndex = 0;
             // 
             // rootTableLayoutPanel
             // 
@@ -785,12 +785,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(807, 711);
-            Controls.Add(rootScrollablePanel);
+            Controls.Add(rootScrollablePanel_step1);
             Name = "rootForm_step1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Step 1: Create a New Character";
-            rootScrollablePanel.ResumeLayout(false);
-            rootScrollablePanel.PerformLayout();
+            rootScrollablePanel_step1.ResumeLayout(false);
+            rootScrollablePanel_step1.PerformLayout();
             rootTableLayoutPanel.ResumeLayout(false);
             rootTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
@@ -798,7 +798,7 @@
 
         #endregion
 
-        private Panel rootScrollablePanel;
+        private Panel rootScrollablePanel_step1;
         private TableLayoutPanel rootTableLayoutPanel;
         private TextBox r_speed_textBox;
         private Label speed_label;
