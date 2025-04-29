@@ -148,5 +148,26 @@
             WHERE CharacterID = @CharacterID;
         ";
 
+        public string AddingNewSubclassEntry => @"
+            INSERT INTO Subclasses 
+            (
+                ClassID,
+                SubclassName,
+                EntryLevel,
+                SubclassFeatures,
+                BonusProficiencies,
+                BonusSpells
+            )
+            VALUES 
+            (
+                @ClassID,
+                @SubclassName,
+                @EntryLevel,
+                @SubclassFeatures,
+                @BonusProficiencies,
+                @BonusSpells
+            );
+            SELECT SCOPE_IDENTITY();
+        ";
     }
 }
