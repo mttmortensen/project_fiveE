@@ -1,0 +1,79 @@
+{
+  "Name": "Garrett Wyrmcaller",
+  "Sex": "Male",
+  "Level": 5,
+  "RaceID": 1,
+  "ClassID": 1,
+  "Background": "Haunted One",
+  "Alignment": "Neutral Good",
+  "ExperiencePoints": 0,
+
+  "HP": 39,
+  "MaxHP": 39,
+  "TempHP": 0,
+  "AC": 11,
+  "Speed": 30,
+  "InitiativeBonus": 1,
+  "HitDice": 5,
+  "DeathSavesSuccess": 0,
+  "DeathSavesFailure": 0,
+
+  "AbilityScores": {
+    "Strength": 13,
+    "Dexterity": 13,
+    "Constitution": 12,
+    "Intelligence": 12,
+    "Wisdom": 15,
+    "Charisma": 12
+  },
+
+  "Subclass": {
+    "SubclassName": "Hunter",
+    "EntryLevel": 3,
+    "SubclassFeatures": [
+      "Hunter's Prey (Colossus Slayer)"
+    ],
+    "BonusProficiencies": [],
+    "BonusSpells": []
+  },
+
+  "SavingThrows": ["Strength", "Dexterity"],
+  "Skills": [
+    "Survival", "Perception", "Insight", "Athletics",
+    "Stealth", "Animal Handling", "Acrobatics"
+  ],
+
+  "ArmorProficiencies": ["Light Armor", "Medium Armor", "Shields"],
+  "WeaponProficiencies": ["Simple Weapons", "Martial Weapons"],
+  "ToolProficiencies": [],
+
+  "Languages": ["Common", "Undercommon", "Draconic", "Abyssal"],
+  "Equipment": [
+    "Dagger", "Dagger", "Longsword", "Longbow", "Arrows (20)",
+    "Stake (Wooden) x9", "Holy Symbol", "Chest", "Clothes, Common",
+    "Crowbar", "Hammer", "Holy Water (Flask)", "Manacles",
+    "Mirror, Steel", "Oil (Flask)", "Tinderbox", "Torch x3"
+  ],
+
+  "SpellsKnown": [
+    "Cure Wounds", "Speak with Animals", "Locate Object", "Find Traps"
+  ],
+
+  "FeaturesAndTraits": [
+    "Favored Enemy", "Natural Explorer", "Fighting Style (Dueling)",
+    "Spellcasting", "Hunter Archetype", "Primeval Awareness"
+  ],
+
+  "PassivePerception": 13,
+  "PassiveInsight": 12,
+  "PassiveInvestigation": 10,
+
+  "PersonalityTraits": "Refuses to become a victim, distrusts divine beings.",
+  "Ideals": "Redemption through hunting monsters.",
+  "Bonds": "Protects the innocent from darkness.",
+  "Flaws": "Struggles with addiction, haunted by the past.",
+  "CharacterAppearance": "Hooded, grim, piercing stare. Scarred hands.",
+  "AlliesAndOrganizations": "None yet, travels alone.",
+  "CharacterBackstory": "Garrett Wyrmcaller survived a tragedy caused by supernatural forces and now hunts the monsters that haunt others.",
+  "AdditionalNotes": "Carries the weight of lives he couldn't save. Sleeps lightly. Always alert."
+}
