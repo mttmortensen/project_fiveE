@@ -41,14 +41,12 @@ namespace Backend
                     ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? ParseList(row["ArmorProficiencies"].ToString()) : new List<string>(),
                     WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? ParseList(row["WeaponProficiencies"].ToString()) : new List<string>(),
                     ToolProficiencies = row.ContainsKey("ToolProficiencies") ? ParseList(row["ToolProficiencies"].ToString()) : new List<string>(),
-                    
                     FeaturesAndTraits = row.ContainsKey("FeaturesAndTraits") ? ParseList(row["FeaturesAndTraits"].ToString()) : new List<string>(),
                     SpellsKnown = row.ContainsKey("SpellsKnown") ? ParseList(row["SpellsKnown"].ToString()) : new List<string>(),
                     PassivePerception = row.ContainsKey("PassivePerception") ? Convert.ToInt32(row["PassivePerception"]) : 10,
                     PassiveInsight = row.ContainsKey("PassiveInsight") ? Convert.ToInt32(row["PassiveInsight"]) : 10,
                     PassiveInvestigation = row.ContainsKey("PassiveInvestigation") ? Convert.ToInt32(row["PassiveInvestigation"]) : 10,
                     PersonalityTraits = row.ContainsKey("PersonalityTraits") ? row["PersonalityTraits"].ToString() : null,
-
                     Ideals = row.ContainsKey("Ideals") ? row["Ideals"].ToString() : null,
                     Bonds = row.ContainsKey("Bonds") ? row["Bonds"].ToString() : null,
                     Flaws = row.ContainsKey("Flaws") ? row["Flaws"].ToString() : null,
@@ -98,7 +96,6 @@ namespace Backend
                 { "@PassiveInsight", character.PassiveInsight },
                 { "@PassiveInvestigation", character.PassiveInvestigation },
                 { "@PersonalityTraits", character.PersonalityTraits ?? (object)DBNull.Value },
-
                 { "@Ideals", character.Ideals ?? (object)DBNull.Value },
                 { "@Bonds", character.Bonds ?? (object)DBNull.Value },
                 { "@Flaws", character.Flaws ?? (object)DBNull.Value },
