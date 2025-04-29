@@ -41,10 +41,93 @@
 
         // Needing to get the CharacterID first before creating the Ability query 
         public string AddingNewCharacterWithoutAbilityId => @"
-            INSERT INTO Characters (Name, Level, HP, RaceID, ClassID, Sex, XP, MaxHP, Speed, AC, Background, Alignment)
-            VALUES (@Name, @Level, @HP, @RaceID, @ClassID, @Sex, @XP, @MaxHP, @Speed, @AC, @Background, @Alignment);
+            INSERT INTO Characters 
+            (
+                Name,
+                Sex,
+                Level,
+                RaceID,
+                ClassID,
+                SubclassID,
+                AbilityID,
+                Background,
+                Alignment,
+                ExperiencePoints,
+                HP,
+                MaxHP,
+                TempHP,
+                AC,
+                Speed,
+                InitiativeBonus,
+                PassivePerception,
+                PassiveInsight,
+                PassiveInvestigation,
+                HitDice,
+                DeathSavesSuccess,
+                DeathSavesFailure,
+                Skills,
+                SavingThrows,
+                ArmorProficiencies,
+                WeaponProficiencies,
+                ToolProficiencies,
+                Languages,
+                FeaturesAndTraits,
+                Equipment,
+                SpellsKnown,
+                PersonalityTraits,
+                Ideals,
+                Bonds,
+                Flaws,
+                CharacterAppearance,
+                AlliesAndOrganizations,
+                CharacterBackstory,
+                AdditionalNotes
+            )
+            VALUES 
+            (
+                @Name,
+                @Sex,
+                @Level,
+                @RaceID,
+                @ClassID,
+                @SubclassID,
+                @AbilityID,
+                @Background,
+                @Alignment,
+                @ExperiencePoints,
+                @HP,
+                @MaxHP,
+                @TempHP,
+                @AC,
+                @Speed,
+                @InitiativeBonus,
+                @PassivePerception,
+                @PassiveInsight,
+                @PassiveInvestigation,
+                @HitDice,
+                @DeathSavesSuccess,
+                @DeathSavesFailure,
+                @Skills,
+                @SavingThrows,
+                @ArmorProficiencies,
+                @WeaponProficiencies,
+                @ToolProficiencies,
+                @Languages,
+                @FeaturesAndTraits,
+                @Equipment,
+                @SpellsKnown,
+                @PersonalityTraits,
+                @Ideals,
+                @Bonds,
+                @Flaws,
+                @CharacterAppearance,
+                @AlliesAndOrganizations,
+                @CharacterBackstory,
+                @AdditionalNotes
+            );
             SELECT SCOPE_IDENTITY();
-        "; // Returns the ID of the new row
+        ";
+        // Returns the ID of the new row
 
         public string AddingNewAbilityScoresForCharacter => @"
             INSERT INTO Abilities (CharacterID, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
