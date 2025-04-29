@@ -75,7 +75,7 @@ namespace Backend
                 { "@Sex", character.Sex ?? (object)DBNull.Value },
                 { "@Level", character.Level },
                 { "@HP", character.HP },
-                { "@XP", character.ExperiencePoints },
+                { "@ExperiencePoints", character.ExperiencePoints },
                 { "@MaxHP", character.MaxHP },
                 { "@Speed", character.Speed },
                 { "@AC", character.AC },
@@ -85,8 +85,13 @@ namespace Backend
                 { "@RaceID", character.RaceID },
                 { "@AbilityID", character.AbilityID },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
-                { "@Proficiencies", string.Join(";", character.Proficiencies) ?? (object)DBNull.Value },
-                { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value }
+                { "@SavingThrows", string.Join(";", character.SavingThrows) ?? (object)DBNull.Value },
+                { "@ArmorProficiencies", string.Join(";", character.ArmorProficiencies) ?? (object)DBNull.Value },
+                { "@WeaponProficiencies", string.Join(";", character.WeaponProficiencies) ?? (object)DBNull.Value },
+                { "@ToolProficiencies", string.Join(";", character.ToolProficiencies) ?? (object)DBNull.Value },
+                { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value },
+                { "@Languages", string.Join(";", character.Languages) ?? (object)DBNull.Value },
+
             };
         }
 
