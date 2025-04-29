@@ -13,5 +13,9 @@ namespace Backend.Classes
         public string SubclassName { get; set; }
         public int EntryLevel { get; set; } = 3; // Most subclasses kick in at level 3
 
+        public List<string> SubclassFeatures { get; set; } = new List<string>();
+        public List<string> BonusProficiencies { get; set; } = new List<string>();
+        public List<string> BonusSpells { get; set; } = new List<string>(); // Optional for casters
+
     }
 }
