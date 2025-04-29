@@ -34,7 +34,13 @@ namespace Backend
                     TempHP = row.ContainsKey("TempHP") ? Convert.ToInt32(row["TempHP"]) : 0,
                     Speed = row.ContainsKey("Speed") ? Convert.ToInt32(row["Speed"]) : 0,
                     AC = row.ContainsKey("AC") ? Convert.ToInt32(row["AC"]) : 0,
+                    InitiativeBonus = row.ContainsKey("InitiativeBonus") ? Convert.ToInt32(row["InitiativeBonus"]) : 0,
                     ExperiencePoints = row.ContainsKey("ExperiencePoints") ? Convert.ToInt32(row["ExperiencePoints"]) : 0,
+                    SavingThrows = row.ContainsKey("SavingThrows") ? ParseList(row["SavingThrows"].ToString()) : new List<string>(),
+                    ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? ParseList(row["ArmorProficiencies"].ToString()) : new List<string>(),
+                    WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? ParseList(row["WeaponProficiencies"].ToString()) : new List<string>(),
+                    ToolProficiencies = row.ContainsKey("ToolProficiencies") ? ParseList(row["ToolProficiencies"].ToString()) : new List<string>(),
+
                     Classes = MapClassData(row),
                     Race = MapRaceData(row),
                     AbilityScores = MapAbilityScores(row)
