@@ -9,6 +9,7 @@
         public int RaceID { get; set; }
         public int ClassID { get; set; }
         public int SubclassID { get; set; }
+        public int AbilityID { get; set; }
         public string Background { get; set; }
         public string Alignment { get; set; }
         public int Level { get; set; }
