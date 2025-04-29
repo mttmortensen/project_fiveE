@@ -63,6 +63,9 @@
             string subclassInsertQuery = _queries.AddingNewSubclassForCharacter;
             int subclassId = _database.InsertRawDataIntoDatabase(subclassInsertQuery, subclassData);
 
+            //Debug
+            Console.WriteLine("Generated Subclass ID: " + subclassId);
+
             // Step 3B: Update the Character with the new SubclassId
             newCharacter.SubclassID = subclassId;
             var updateSubclassData = new Dictionary<string, object>
