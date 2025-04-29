@@ -26,6 +26,11 @@
                 cl.WeaponProficiencies,
                 cl.ToolProficiencies,
                 cl.SpellcastingAbilityModifier,
+                sc.SubclassName,
+                sc.EntryLevel,
+                sc.SubclassFeatures,
+                sc.BonusProficiencies,
+                sc.BonusSpells,
                 a.Strength, 
                 a.Dexterity, 
                 a.Constitution, 
@@ -35,6 +40,7 @@
             FROM Characters c
             LEFT JOIN Races r ON c.RaceID = r.RaceID
             LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
+            LEFT JOIN Subclasses sc ON c.SubclassID = sc.SubclassID
             LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
         ";
 
