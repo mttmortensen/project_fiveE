@@ -91,7 +91,20 @@ namespace Backend
                 { "@ToolProficiencies", string.Join(";", character.ToolProficiencies) ?? (object)DBNull.Value },
                 { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value },
                 { "@Languages", string.Join(";", character.Languages) ?? (object)DBNull.Value },
+                { "@FeaturesAndTraits", string.Join(";", character.FeaturesAndTraits) ?? (object)DBNull.Value },
+                { "@SpellsKnown", string.Join(";", character.SpellsKnown) ?? (object)DBNull.Value },
+                { "@PassivePerception", character.PassivePerception },
+                { "@PassiveInsight", character.PassiveInsight },
+                { "@PassiveInvestigation", character.PassiveInvestigation },
+                { "@PersonalityTraits", character.PersonalityTraits ?? (object)DBNull.Value },
 
+                { "@Ideals", character.Ideals ?? (object)DBNull.Value },
+                { "@Bonds", character.Bonds ?? (object)DBNull.Value },
+                { "@Flaws", character.Flaws ?? (object)DBNull.Value },
+                { "@CharacterAppearance", character.CharacterAppearance ?? (object)DBNull.Value },
+                { "@AlliesAndOrganizations", character.AlliesAndOrganizations ?? (object)DBNull.Value },
+                { "@CharacterBackstory", character.CharacterBackstory ?? (object)DBNull.Value },
+                { "@AdditionalNotes", character.AdditionalNotes ?? (object)DBNull.Value }
             };
         }
 
