@@ -169,5 +169,11 @@
             );
             SELECT SCOPE_IDENTITY();
         ";
+
+        public string UpdateCharacterWithSubclassId => @"
+            UPDATE Characters
+            SET SubclassID = @SubclassID
+            WHERE CharacterID = @CharacterID;
+        ";
     }
 }
