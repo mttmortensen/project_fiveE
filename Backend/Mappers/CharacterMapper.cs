@@ -1,5 +1,4 @@
-﻿using Backend.Classes;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Backend
 {
@@ -60,7 +59,8 @@ namespace Backend
 
                     Classes = MapClassData(row),
                     Race = MapRaceData(row),
-                    AbilityScores = MapAbilityScores(row)
+                    AbilityScores = MapAbilityScores(row),
+                    Subclass = MapSubclassData(row)
                 });
             }
             return characters;
@@ -186,7 +186,10 @@ namespace Backend
                 SubclassID = row.ContainsKey("SubclassID") ? Convert.ToInt32(row["SubclassID"]) : 0,
                 SubclassName = row.ContainsKey("SubclassName") ? row["SubclassName"].ToString() : null,
                 ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
-                SubclassFeatures = row.ContainsKey("SubclassFeatures") ? MapList(row["SubclassFeatures"].ToString(), ';') : new List<string>()
+                SubclassFeatures = row.ContainsKey("SubclassFeatures") ? MapList(row["SubclassFeatures"].ToString(), ';') : new List<string>(),
+                EntryLevel = row.ContainsKey("EntryLevel") ? Convert.ToInt32(row["EntryLevel"]) : 3,
+                BonusProficiencies = row.ContainsKey("BonusProficiencies") ? MapList(row["BonusProficiencies"].ToString(), ';') : new List<string>(),
+                BonusSpells = row.ContainsKey("BonusSpells") ? MapList(row["BonusSpells"].ToString(), ';') : new List<string>()
             };
         }
 

@@ -1,6 +1,4 @@
-﻿using Backend.Classes;
-
-namespace Backend
+﻿namespace Backend
 {
     public class Character
     {
