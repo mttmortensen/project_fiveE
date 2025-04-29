@@ -153,7 +153,11 @@ namespace Backend
                 PrimaryAbility = row.ContainsKey("PrimaryAbility") ? row["PrimaryAbility"].ToString() : null,
                 SavingThrows = row.ContainsKey("SavingThrows") ? MapList(row["SavingThrows"].ToString(), ',') : new List<string>(),
                 SkillChoices = row.ContainsKey("SkillChoices") ? MapList(row["SkillChoices"].ToString(), ';') : new List<string>(),
-                ClassFeatures = row.ContainsKey("ClassFeatures") ? MapList(row["ClassFeatures"].ToString(), ';') : new List<string>()
+                ClassFeatures = row.ContainsKey("ClassFeatures") ? MapList(row["ClassFeatures"].ToString(), ';') : new List<string>(),
+                ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? MapList(row["ArmorProficiencies"].ToString(), ';') : new List<string>(),
+                WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? MapList(row["WeaponProficiencies"].ToString(), ';') : new List<string>(),
+                ToolProficiencies = row.ContainsKey("ToolProficiencies") ? MapList(row["ToolProficiencies"].ToString(), ';') : new List<string>(),
+                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? Convert.ToInt32(row["SpellcastingAbilityModifier"]) : 0
             };
         }
 
