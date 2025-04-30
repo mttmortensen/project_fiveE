@@ -4,8 +4,12 @@ namespace Backend
 {
     public class CharacterMapper
     {
+        private int SafeInt(object val) => val != DBNull.Value ? Convert.ToInt32(val) : 0;
+        private string SafeString(object val) => val != DBNull.Value ? val.ToString() : null;
+        private List<string> SafeList(object val) => val != DBNull.Value ? ParseList(val.ToString()) : new List<string>();
+
         /************************************************************************/
-                                    /*MAIN METHODS*/
+        /*MAIN METHODS*/
         /************************************************************************/
 
         // Converts raw database rows into a list of Character objects
@@ -17,37 +21,37 @@ namespace Backend
             {
                 characters.Add(new Character
                 {
-                    CharacterID = Convert.ToInt32(row["CharacterID"]),
-                    Name = row["Name"].ToString(),
-                    Sex = row.ContainsKey("Sex") ? row["Sex"].ToString() : null,
-                    ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
-                    RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
-                    AbilityID = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
-                    SubclassID = row.ContainsKey("SubclassID") ? Convert.ToInt32(row["SubclassID"]) : 0,
-                    Equipment = row.ContainsKey("Equipment") ? ParseList(row["Equipment"].ToString()) : new List<string>(),
-                    Background = row.ContainsKey("Background") ? row["Background"].ToString() : null,
-                    Alignment = row.ContainsKey("Alignment") ? row["Alignment"].ToString() : null,
-                    Level = Convert.ToInt32(row["Level"]),
-                    HP = Convert.ToInt32(row["HP"]),
-                    MaxHP = row.ContainsKey("MaxHP") ? Convert.ToInt32(row["MaxHP"]) : 0,
-                    TempHP = row.ContainsKey("TempHP") ? Convert.ToInt32(row["TempHP"]) : 0,
-                    Speed = row.ContainsKey("Speed") ? Convert.ToInt32(row["Speed"]) : 0,
-                    AC = row.ContainsKey("AC") ? Convert.ToInt32(row["AC"]) : 0,
-                    InitiativeBonus = row.ContainsKey("InitiativeBonus") ? Convert.ToInt32(row["InitiativeBonus"]) : 0,
-                    ExperiencePoints = row.ContainsKey("ExperiencePoints") ? Convert.ToInt32(row["ExperiencePoints"]) : 0,
-                    FeaturesAndTraits = row.ContainsKey("FeaturesAndTraits") ? ParseList(row["FeaturesAndTraits"].ToString()) : new List<string>(),
-                    SpellsKnown = row.ContainsKey("SpellsKnown") ? ParseList(row["SpellsKnown"].ToString()) : new List<string>(),
-                    PassivePerception = row.ContainsKey("PassivePerception") ? Convert.ToInt32(row["PassivePerception"]) : 10,
-                    PassiveInsight = row.ContainsKey("PassiveInsight") ? Convert.ToInt32(row["PassiveInsight"]) : 10,
-                    PassiveInvestigation = row.ContainsKey("PassiveInvestigation") ? Convert.ToInt32(row["PassiveInvestigation"]) : 10,
-                    PersonalityTraits = row.ContainsKey("PersonalityTraits") ? row["PersonalityTraits"].ToString() : null,
-                    Ideals = row.ContainsKey("Ideals") ? row["Ideals"].ToString() : null,
-                    Bonds = row.ContainsKey("Bonds") ? row["Bonds"].ToString() : null,
-                    Flaws = row.ContainsKey("Flaws") ? row["Flaws"].ToString() : null,
-                    CharacterAppearance = row.ContainsKey("CharacterAppearance") ? row["CharacterAppearance"].ToString() : null,
-                    AlliesAndOrganizations = row.ContainsKey("AlliesAndOrganizations") ? row["AlliesAndOrganizations"].ToString() : null,
-                    CharacterBackstory = row.ContainsKey("CharacterBackstory") ? row["CharacterBackstory"].ToString() : null,
-                    AdditionalNotes = row.ContainsKey("AdditionalNotes") ? row["AdditionalNotes"].ToString() : null,
+                    CharacterID = SafeInt(row["CharacterID"]),
+                    Name = SafeString(row["Name"]),
+                    Sex = row.ContainsKey("Sex") ? SafeString(row["Sex"]) : null,
+                    ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
+                    RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
+                    AbilityID = row.ContainsKey("AbilityID") ? SafeInt(row["AbilityID"]) : 0,
+                    SubclassID = row.ContainsKey("SubclassID") ? SafeInt(row["SubclassID"]) : 0,
+                    Equipment = row.ContainsKey("Equipment") ? SafeList(row["Equipment"]) : new List<string>(),
+                    Background = row.ContainsKey("Background") ? SafeString(row["Background"]) : null,
+                    Alignment = row.ContainsKey("Alignment") ? SafeString(row["Alignment"]) : null,
+                    Level = row.ContainsKey("Level") ? SafeInt(row["Level"]) : 1,
+                    HP = row.ContainsKey("HP") ? SafeInt(row["HP"]) : 0,
+                    MaxHP = row.ContainsKey("MaxHP") ? SafeInt(row["MaxHP"]) : 0,
+                    TempHP = row.ContainsKey("TempHP") ? SafeInt(row["TempHP"]) : 0,
+                    Speed = row.ContainsKey("Speed") ? SafeInt(row["Speed"]) : 0,
+                    AC = row.ContainsKey("AC") ? SafeInt(row["AC"]) : 0,
+                    InitiativeBonus = row.ContainsKey("InitiativeBonus") ? SafeInt(row["InitiativeBonus"]) : 0,
+                    ExperiencePoints = row.ContainsKey("ExperiencePoints") ? SafeInt(row["ExperiencePoints"]) : 0,
+                    FeaturesAndTraits = row.ContainsKey("FeaturesAndTraits") ? SafeList(row["FeaturesAndTraits"]) : new List<string>(),
+                    SpellsKnown = row.ContainsKey("SpellsKnown") ? SafeList(row["SpellsKnown"]) : new List<string>(),
+                    PassivePerception = row.ContainsKey("PassivePerception") ? SafeInt(row["PassivePerception"]) : 10,
+                    PassiveInsight = row.ContainsKey("PassiveInsight") ? SafeInt(row["PassiveInsight"]) : 10,
+                    PassiveInvestigation = row.ContainsKey("PassiveInvestigation") ? SafeInt(row["PassiveInvestigation"]) : 10,
+                    PersonalityTraits = row.ContainsKey("PersonalityTraits") ? SafeString(row["PersonalityTraits"]) : null,
+                    Ideals = row.ContainsKey("Ideals") ? SafeString(row["Ideals"]) : null,
+                    Bonds = row.ContainsKey("Bonds") ? SafeString(row["Bonds"]) : null,
+                    Flaws = row.ContainsKey("Flaws") ? SafeString(row["Flaws"]) : null,
+                    CharacterAppearance = row.ContainsKey("CharacterAppearance") ? SafeString(row["CharacterAppearance"]) : null,
+                    AlliesAndOrganizations = row.ContainsKey("AlliesAndOrganizations") ? SafeString(row["AlliesAndOrganizations"]) : null,
+                    CharacterBackstory = row.ContainsKey("CharacterBackstory") ? SafeString(row["CharacterBackstory"]) : null,
+                    AdditionalNotes = row.ContainsKey("AdditionalNotes") ? SafeString(row["AdditionalNotes"]) : null,
 
                     Classes = MapClassData(row),
                     Race = MapRaceData(row),
@@ -55,6 +59,7 @@ namespace Backend
                     Subclass = MapSubclassData(row)
                 });
             }
+
             return characters;
         }
 
