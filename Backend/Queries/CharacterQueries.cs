@@ -147,33 +147,5 @@
             SET AbilityID = @AbilityID
             WHERE CharacterID = @CharacterID;
         ";
-
-        public string AddingNewSubclassForCharacter => @"
-            INSERT INTO Subclasses 
-            (
-                ClassID,
-                SubclassName,
-                EntryLevel,
-                SubclassFeatures,
-                BonusProficiencies,
-                BonusSpells
-            )
-            VALUES 
-            (
-                @ClassID,
-                @SubclassName,
-                @EntryLevel,
-                @SubclassFeatures,
-                @BonusProficiencies,
-                @BonusSpells
-            );
-            SELECT SCOPE_IDENTITY();
-        ";
-
-        public string UpdateCharacterWithSubclassId => @"
-            UPDATE Characters
-            SET SubclassID = @SubclassID
-            WHERE CharacterID = @CharacterID;
-        ";
     }
 }
