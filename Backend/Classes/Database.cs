@@ -30,7 +30,7 @@ namespace Backend
             AddParameter(command, parameters);
 
             // Execute the command and return the ID of the newly inserted row
-            return SafeInt(command.ExecuteScalar());
+            return Convert.ToInt32(command.ExecuteScalar());
         }
 
         /************************************************************************/
