@@ -4,7 +4,7 @@ namespace Backend
 {
     public class CharacterMapper
     {
-        private int SafeInt(object val) => val != DBNull.Value ? Convert.ToInt32(val) : 0;
+        private int SafeInt(object val) => val != DBNull.Value ? SafeInt(val) : 0;
         private string SafeString(object val) => val != DBNull.Value ? val.ToString() : null;
         private List<string> SafeList(object val) => val != DBNull.Value ? ParseList(val.ToString()) : new List<string>();
 
@@ -143,14 +143,14 @@ namespace Backend
         {
             return new AbilityScores
             {
-                AbilityID = row.ContainsKey("AbilityID") ? Convert.ToInt32(row["AbilityID"]) : 0,
-                CharacterID = row.ContainsKey("CharacterID") ? Convert.ToInt32(row["CharacterID"]) : 0,
-                Strength = row.ContainsKey("Strength") ? Convert.ToInt32(row["Strength"]) : 0,
-                Dexterity = row.ContainsKey("Dexterity") ? Convert.ToInt32(row["Dexterity"]) : 0,
-                Constitution = row.ContainsKey("Constitution") ? Convert.ToInt32(row["Constitution"]) : 0,
-                Intelligence = row.ContainsKey("Intelligence") ? Convert.ToInt32(row["Intelligence"]) : 0,
-                Wisdom = row.ContainsKey("Wisdom") ? Convert.ToInt32(row["Wisdom"]) : 0,
-                Charisma = row.ContainsKey("Charisma") ? Convert.ToInt32(row["Charisma"]) : 0
+                AbilityID = row.ContainsKey("AbilityID") ? SafeInt(row["AbilityID"]) : 0,
+                CharacterID = row.ContainsKey("CharacterID") ? SafeInt(row["CharacterID"]) : 0,
+                Strength = row.ContainsKey("Strength") ? SafeInt(row["Strength"]) : 0,
+                Dexterity = row.ContainsKey("Dexterity") ? SafeInt(row["Dexterity"]) : 0,
+                Constitution = row.ContainsKey("Constitution") ? SafeInt(row["Constitution"]) : 0,
+                Intelligence = row.ContainsKey("Intelligence") ? SafeInt(row["Intelligence"]) : 0,
+                Wisdom = row.ContainsKey("Wisdom") ? SafeInt(row["Wisdom"]) : 0,
+                Charisma = row.ContainsKey("Charisma") ? SafeInt(row["Charisma"]) : 0
             };
         }
 
@@ -159,7 +159,7 @@ namespace Backend
         {
             return new Classes
             {
-                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
                 ClassName = row.ContainsKey("ClassName") ? row["ClassName"].ToString() : null,
                 HitDie = row.ContainsKey("HitDie") ? row["HitDie"].ToString() : null,
                 PrimaryAbility = row.ContainsKey("PrimaryAbility") ? row["PrimaryAbility"].ToString() : null,
@@ -169,7 +169,7 @@ namespace Backend
                 ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? MapList(row["ArmorProficiencies"].ToString(), ';') : new List<string>(),
                 WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? MapList(row["WeaponProficiencies"].ToString(), ';') : new List<string>(),
                 ToolProficiencies = row.ContainsKey("ToolProficiencies") ? MapList(row["ToolProficiencies"].ToString(), ';') : new List<string>(),
-                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? Convert.ToInt32(row["SpellcastingAbilityModifier"]) : 0
+                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? SafeInt(row["SpellcastingAbilityModifier"]) : 0
             };
         }
 
@@ -178,15 +178,15 @@ namespace Backend
         {
             return new Race
             {
-                RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
+                RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
                 RaceName = row.ContainsKey("RaceName") ? row["RaceName"].ToString() : null,
                 RaceSize = row.ContainsKey("RaceSize") ? row["RaceSize"].ToString() : null,
-                Speed = row.ContainsKey("RaceSpeed") ? Convert.ToInt32(row["RaceSpeed"]) : 0,
+                Speed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
                 AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(row["AbilityScoreBonuses"].ToString()) : new List<string>(),
                 Languages = row.ContainsKey("Languages") ? MapList(row["Languages"].ToString(), ';') : new List<string>(),
                 RacialFeatures = row.ContainsKey("RacialFeatures") ? MapList(row["RacialFeatures"].ToString(), ';') : new List<string>(),
                 RacialProficiencies = row.ContainsKey("RacialProficiencies") ? MapList(row["RacialProficiencies"].ToString(), ';') : new List<string>(),
-                Darkvision = row.ContainsKey("Darkvision") ? Convert.ToInt32(row["Darkvision"]) : 0
+                Darkvision = row.ContainsKey("Darkvision") ? SafeInt(row["Darkvision"]) : 0
             };
         }
 
@@ -194,11 +194,11 @@ namespace Backend
         {
             return new Subclass
             {
-                SubclassID = row.ContainsKey("SubclassID") ? Convert.ToInt32(row["SubclassID"]) : 0,
+                SubclassID = row.ContainsKey("SubclassID") ? SafeInt(row["SubclassID"]) : 0,
                 SubclassName = row.ContainsKey("SubclassName") ? row["SubclassName"].ToString() : null,
-                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
+                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
                 SubclassFeatures = row.ContainsKey("SubclassFeatures") ? MapList(row["SubclassFeatures"].ToString(), ';') : new List<string>(),
-                EntryLevel = row.ContainsKey("EntryLevel") ? Convert.ToInt32(row["EntryLevel"]) : 3,
+                EntryLevel = row.ContainsKey("EntryLevel") ? SafeInt(row["EntryLevel"]) : 3,
                 BonusProficiencies = row.ContainsKey("BonusProficiencies") ? MapList(row["BonusProficiencies"].ToString(), ';') : new List<string>(),
                 BonusSpells = row.ContainsKey("BonusSpells") ? MapList(row["BonusSpells"].ToString(), ';') : new List<string>()
             };
