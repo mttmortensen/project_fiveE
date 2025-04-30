@@ -95,7 +95,8 @@ namespace Backend
                 { "@InitiativeBonus", character.InitiativeBonus },
                 { "@HitDice", character.HitDice },
                 { "@DeathSavesSuccess", character.DeathSavesSuccess },
-                { "@DeathSavesFailure", character.DeathSavesFailure }
+                { "@DeathSavesFailure", character.DeathSavesFailure },
+                { "@Equipment", string.Join(";", character.Equipment) ?? (object)DBNull.Value}
             };
         }
 
