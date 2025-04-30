@@ -4,15 +4,10 @@ namespace Backend
 {
     public class CharacterMapper
     {
-        private int SafeInt(object value)
-        {
-            return value == DBNull.Value ? 0 : Convert.ToInt32(value);
-        }
-        private string SafeString(object value)
-        {
-            return value == DBNull.Value ? null : value.ToString();
-        }
-        private List<string> SafeList(object val) => val != DBNull.Value ? ParseList(val.ToString()) : new List<string>();
+        private int SafeInt(object value) => value == DBNull.Value ? 0 : Convert.ToInt32(value);
+        private string SafeString(object value) => value == DBNull.Value ? null : value.ToString();
+        private List<string> SafeList(object value) => value != DBNull.Value ? ParseList(value.ToString()) : new List<string>();
+
 
         /************************************************************************/
         /*MAIN METHODS*/
@@ -175,50 +170,54 @@ namespace Backend
         {
             return new Classes
             {
-                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
-                ClassName = row.ContainsKey("ClassName") ? row["ClassName"].ToString() : null,
-                HitDie = row.ContainsKey("HitDie") ? row["HitDie"].ToString() : null,
-                PrimaryAbility = row.ContainsKey("PrimaryAbility") ? row["PrimaryAbility"].ToString() : null,
-                SavingThrows = row.ContainsKey("SavingThrows") ? MapList(row["SavingThrows"].ToString(), ',') : new List<string>(),
-                SkillChoices = row.ContainsKey("SkillChoices") ? MapList(row["SkillChoices"].ToString(), ';') : new List<string>(),
-                ClassFeatures = row.ContainsKey("ClassFeatures") ? MapList(row["ClassFeatures"].ToString(), ';') : new List<string>(),
-                ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? MapList(row["ArmorProficiencies"].ToString(), ';') : new List<string>(),
-                WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? MapList(row["WeaponProficiencies"].ToString(), ';') : new List<string>(),
-                ToolProficiencies = row.ContainsKey("ToolProficiencies") ? MapList(row["ToolProficiencies"].ToString(), ';') : new List<string>(),
-                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? Convert.ToInt32(row["SpellcastingAbilityModifier"]) : 0
+                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
+                ClassName = row.ContainsKey("ClassName") ? SafeString(row["ClassName"]) : null,
+                HitDie = row.ContainsKey("HitDie") ? SafeString(row["HitDie"]) : null,
+                PrimaryAbility = row.ContainsKey("PrimaryAbility") ? SafeString(row["PrimaryAbility"]) : null,
+                SavingThrows = row.ContainsKey("SavingThrows") ? SafeList(row["SavingThrows"]) : new List<string>(),
+                SkillChoices = row.ContainsKey("SkillChoices") ? SafeList(row["SkillChoices"]) : new List<string>(),
+                ClassFeatures = row.ContainsKey("ClassFeatures") ? SafeList(row["ClassFeatures"]) : new List<string>(),
+                ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? SafeList(row["ArmorProficiencies"]) : new List<string>(),
+                WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? SafeList(row["WeaponProficiencies"]) : new List<string>(),
+                ToolProficiencies = row.ContainsKey("ToolProficiencies") ? SafeList(row["ToolProficiencies"]) : new List<string>(),
+                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? SafeInt(row["SpellcastingAbilityModifier"]) : 0
             };
         }
+
 
         // Maps raw database rows to a Race object
         private Race MapRaceData(Dictionary<string, object> row)
         {
             return new Race
             {
-                RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
-                RaceName = row.ContainsKey("RaceName") ? row["RaceName"].ToString() : null,
-                RaceSize = row.ContainsKey("RaceSize") ? row["RaceSize"].ToString() : null,
-                Speed = row.ContainsKey("RaceSpeed") ? Convert.ToInt32(row["RaceSpeed"]) : 0,
-                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(row["AbilityScoreBonuses"].ToString()) : new List<string>(),
-                Languages = row.ContainsKey("Languages") ? MapList(row["Languages"].ToString(), ';') : new List<string>(),
-                RacialFeatures = row.ContainsKey("RacialFeatures") ? MapList(row["RacialFeatures"].ToString(), ';') : new List<string>(),
-                RacialProficiencies = row.ContainsKey("RacialProficiencies") ? MapList(row["RacialProficiencies"].ToString(), ';') : new List<string>(),
-                Darkvision = row.ContainsKey("Darkvision") ? Convert.ToInt32(row["Darkvision"]) : 0
+                RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
+                RaceName = row.ContainsKey("RaceName") ? SafeString(row["RaceName"]) : null,
+                RaceSize = row.ContainsKey("RaceSize") ? SafeString(row["RaceSize"]) : null,
+                Speed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
+                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(SafeString(row["AbilityScoreBonuses"])) : new List<string>(),
+                Languages = row.ContainsKey("Languages") ? SafeList(row["Languages"]) : new List<string>(),
+                RacialFeatures = row.ContainsKey("RacialFeatures") ? SafeList(row["RacialFeatures"]) : new List<string>(),
+                RacialProficiencies = row.ContainsKey("RacialProficiencies") ? SafeList(row["RacialProficiencies"]) : new List<string>(),
+                Darkvision = row.ContainsKey("Darkvision") ? SafeInt(row["Darkvision"]) : 0
             };
         }
 
+
+        // Maps raw database rows to a Subclass object
         private Subclass MapSubclassData(Dictionary<string, object> row)
         {
             return new Subclass
             {
-                SubclassID = row.ContainsKey("SubclassID") ? Convert.ToInt32(row["SubclassID"]) : 0,
-                SubclassName = row.ContainsKey("SubclassName") ? row["SubclassName"].ToString() : null,
-                ClassID = row.ContainsKey("ClassID") ? Convert.ToInt32(row["ClassID"]) : 0,
-                SubclassFeatures = row.ContainsKey("SubclassFeatures") ? MapList(row["SubclassFeatures"].ToString(), ';') : new List<string>(),
-                EntryLevel = row.ContainsKey("EntryLevel") ? Convert.ToInt32(row["EntryLevel"]) : 3,
-                BonusProficiencies = row.ContainsKey("BonusProficiencies") ? MapList(row["BonusProficiencies"].ToString(), ';') : new List<string>(),
-                BonusSpells = row.ContainsKey("BonusSpells") ? MapList(row["BonusSpells"].ToString(), ';') : new List<string>()
+                SubclassID = row.ContainsKey("SubclassID") ? SafeInt(row["SubclassID"]) : 0,
+                SubclassName = row.ContainsKey("SubclassName") ? SafeString(row["SubclassName"]) : null,
+                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
+                SubclassFeatures = row.ContainsKey("SubclassFeatures") ? SafeList(row["SubclassFeatures"]) : new List<string>(),
+                EntryLevel = row.ContainsKey("EntryLevel") ? SafeInt(row["EntryLevel"]) : 3,
+                BonusProficiencies = row.ContainsKey("BonusProficiencies") ? SafeList(row["BonusProficiencies"]) : new List<string>(),
+                BonusSpells = row.ContainsKey("BonusSpells") ? SafeList(row["BonusSpells"]) : new List<string>()
             };
         }
+
 
         // Lists out the bonuses a race would get in a sting made to look like an object
         private List<string> MapAbilityScoreBonuses(string json)
