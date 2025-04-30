@@ -76,6 +76,7 @@ namespace Backend
                 { "@HP", character.HP },
                 { "@ExperiencePoints", character.ExperiencePoints },
                 { "@MaxHP", character.MaxHP },
+                { "@TempHP", character.TempHP },
                 { "@Speed", character.Speed },
                 { "@AC", character.AC },
                 { "@Background", character.Background ?? (object)DBNull.Value },
@@ -103,7 +104,11 @@ namespace Backend
                 { "@CharacterAppearance", character.CharacterAppearance ?? (object)DBNull.Value },
                 { "@AlliesAndOrganizations", character.AlliesAndOrganizations ?? (object)DBNull.Value },
                 { "@CharacterBackstory", character.CharacterBackstory ?? (object)DBNull.Value },
-                { "@AdditionalNotes", character.AdditionalNotes ?? (object)DBNull.Value }
+                { "@AdditionalNotes", character.AdditionalNotes ?? (object)DBNull.Value },
+                { "@InitiativeBonus", character.InitiativeBonus },
+                { "@HitDice", character.HitDice },
+                { "@DeathSavesSuccess", character.DeathSavesSuccess },
+                { "@DeathSavesFailure", character.DeathSavesFailure }
             };
         }
 
