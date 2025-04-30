@@ -83,6 +83,7 @@ namespace Backend
                 { "@ClassID", character.ClassID },
                 { "@RaceID", character.RaceID },
                 { "@AbilityID", character.AbilityID },
+                { "@SubclassID", character.SubclassID },
                 { "@Skills", string.Join(";", character.Skills) ?? (object)DBNull.Value },
                 { "@SavingThrows", string.Join(";", character.SavingThrows) ?? (object)DBNull.Value },
                 { "@ArmorProficiencies", string.Join(";", character.ArmorProficiencies) ?? (object)DBNull.Value },
@@ -125,6 +126,7 @@ namespace Backend
         {
             return new Dictionary<string, object>
             {
+                { "@SubclassID", subclass.SubclassID },
                 { "@SubclassName", subclass.SubclassName ?? (object)DBNull.Value },
                 { "@ClassID", subclass.ClassID },
                 { "@SubclassFeatures", string.Join(";", subclass.SubclassFeatures) ?? (object)DBNull.Value },
