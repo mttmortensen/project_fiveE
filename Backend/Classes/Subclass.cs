@@ -10,6 +10,7 @@ namespace Backend
     {
         public int SubclassID { get; set; }
         public int ClassID { get; set; } // FK to Classes
+
         public string SubclassName { get; set; }
         public int EntryLevel { get; set; } = 3; // Most subclasses kick in at level 3
 
