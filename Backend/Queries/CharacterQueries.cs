@@ -152,6 +152,15 @@
             WHERE CharacterID = @CharacterID;
         ";
 
+        // This is the query to update a character's data
+        public string GeneratePartialUpdateQuery(IEnumerable<string> fields)
+        {
+            var setClauses = fields.Select(f => $"{f} = @{f}");
+            string setStatement = string.Join(", ", setClauses);
+            return $"UPDATE Characters SET {setStatement} WHERE CharacterID = @CharacterID;";
+        }
+
+
         // This is the query to delete a character from the Character table and any linked data
         public string DeleteCharacterAndLinkedData => @"
             DELETE FROM Characters WHERE CharacterID = @CharacterID;

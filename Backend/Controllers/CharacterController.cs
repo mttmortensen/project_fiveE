@@ -72,6 +72,17 @@
             return characterId;
         }
 
+        public object PartiallyUpdateCharacter(int characterId, Dictionary<string, object> patchData)
+        {
+            // Use patchData to build a dynamic UPDATE query
+            string updateQuery = _queries.GeneratePartialUpdateQuery(patchData.Keys);
+            patchData["@CharacterID"] = characterId;
+
+            _database.UpdateRawDataInDatabase(updateQuery, patchData);
+
+            return new { Message = "Character partially updated", Id = characterId };
+        }
+
         public bool DeleteCharacterById(int characterId)
         {
             var query = _queries.DeleteCharacterAndLinkedData;
