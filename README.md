@@ -14,7 +14,7 @@
 ## API Routes
 
 ### 1. **Get All Characters**
-**Endpoint:** `GET /api/characters`  
+**Endpoint:** `GET /characters`  
 **Description:** Retrieve a list of all D&D characters.  
 **Response Example:**  
 ```json
@@ -86,7 +86,7 @@
 ```
 
 ### 2. **Get a Single Character**
-**Endpoint:** `GET /api/characters/{id}`  
+**Endpoint:** `GET /characters/{id}`  
 **Description:** Retrieve detailed information about a single character by their ID.  
 **Response Example:**  
 ```json
@@ -105,7 +105,7 @@
 }
 ```
 ### 3. **Create a New Character**
-**Endpoint:** `POST /api/characters`  
+**Endpoint:** `POST /characters`  
 **Description:** Create a new character by sending their data in the request body.  
 **Request Example:**  
 ```json
@@ -133,6 +133,9 @@
   "Message": "Character created successfully"
 }
 ```
+
+### 4. **Update an Existing Character**
+**Endpoint:** `PATCH /characters/{id}`
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
