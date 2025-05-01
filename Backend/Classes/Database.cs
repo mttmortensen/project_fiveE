@@ -42,8 +42,23 @@ namespace Backend
             return Convert.ToInt32(command.ExecuteScalar());
         }
 
+        // Updating Raw Data in the Database
+        public void UpdateRawDataInDatabase(string query, Dictionary<string, object> parameters)
+        {
+            using var connection = OpenConnection();
+            using var command = CreateCommand(query, connection);
+
+            foreach (var param in parameters)
+            {
+                command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+            }
+
+            command.ExecuteNonQuery();
+        }
+
+
         /************************************************************************/
-                                    /*HELPERS*/
+        /*HELPERS*/
         /************************************************************************/
 
         // Open a database connection
