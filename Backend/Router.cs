@@ -82,6 +82,19 @@ namespace Backend
                 }
             }
 
+            // Handle PUT request to update an existing character
+            if (request.HttpMethod == "PUT" && request.Url.AbsolutePath.StartsWith("/characters/"))
+            {
+                int id = int.Parse(request.Url.AbsolutePath.Split('/')[2]);
+                using var reader = new StreamReader(request.InputStream);
+                var requestBody = reader.ReadToEnd();
+                var updatedCharacter = JsonSerializer.Deserialize<Character>(requestBody);
+
+                var response = controller.UpdateCharacter(id, updatedCharacter);
+                return JsonSerializer.Serialize(response);
+            }
+
+
             // Handle DELETE request to remove a character
             if (request.HttpMethod == "DELETE" && request.Url.AbsolutePath.StartsWith("/characters/"))
             {
@@ -94,8 +107,6 @@ namespace Backend
 
                 return "400 Bad Request: Invalid ID format.";
             }
-
-
 
             return "404 not found";
         }
