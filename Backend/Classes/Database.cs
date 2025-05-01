@@ -91,11 +91,19 @@ namespace Backend
             return results;
         }
 
-        // Execute a non-query command (E.G. INSERT, UPDATE, DELETE)
-        private static int ExecuteNonQuery(SqlCommand command) 
+        public int ExecuteNonQuery(string query, Dictionary<string, object> parameters)
         {
+            using var connection = OpenConnection();
+            using var command = CreateCommand(query, connection);
+
+            foreach (var param in parameters)
+            {
+                command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+            }
+
             return command.ExecuteNonQuery();
         }
+
 
     }
 }
