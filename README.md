@@ -66,7 +66,7 @@
 }
 ```
 ### 3. **Create a New Character**
-**Endpoint:** `POST /characters`  
+**Endpoint:** `POST /characters`
 **Description:** Create a new character by sending their data in the request body.  
 **Request Example:**  
 ```json
