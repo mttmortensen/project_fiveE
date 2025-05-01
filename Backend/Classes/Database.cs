@@ -7,19 +7,28 @@ namespace Backend
         private static readonly string connectionString = "Server=MORTENSENS-MPC\\SQLEXPRESS;Database=DNDCharacterDB;Trusted_Connection=True;;TrustServerCertificate=True;";
 
         /************************************************************************/
-                                    /*MAIN METHODS*/
+        /*MAIN METHODS*/
         /************************************************************************/
 
         // Putting it all together to get the actual raw data
-        public List<Dictionary<string, object>> GetRawDataFromDatabase(string query)
+        public List<Dictionary<string, object>> GetRawDataFromDatabase(string query, Dictionary<string, object>? parameters = null)
         {
             using var connection = OpenConnection();
             using var command = CreateCommand(query, connection);
+
+            // Add parameters if any
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                {
+                    command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                }
+            }
+
             using var reader = ExecuteReader(command);
-
             return ReadRows(reader);
-
         }
+
 
         // Putting it all togther to insert/post actual raw data
         public int InsertRawDataIntoDatabase(string query, Dictionary<string, object> parameters)
