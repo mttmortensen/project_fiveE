@@ -26,6 +26,20 @@
             return _mapper.MapToCharacterClass(rawData);
         }
 
+        public Character GetCharacterById(int characterId) 
+        {
+            // Step 1A: Bring in the query for _database to use
+            var query = _queries.GetSingleCharacterAndRelatedData;
+            var parameters = new Dictionary<string, object>
+            {
+                { "@CharacterID", characterId }
+            };
+
+            var rawData = _database.GetRawDataFromDatabase(query, parameters);
+            return rawData.Count > 0 ? _mapper.MapToCharacterClass(rawData).FirstOrDefault() : null;
+
+        }
+
         public int AddCharacter(Character newCharacter)
         {
             // Step 1: Insert the Character (without AbilityId) and get the CharacterId
