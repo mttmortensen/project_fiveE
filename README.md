@@ -66,7 +66,7 @@
 }
 ```
 ### 3. **Create a New Character**
-**Endpoint:** `POST /characters`
+**Endpoint:** `POST /characters`  
 **Description:** Create a new character by sending their data in the request body.  
 **Request Example:**  
 ```json
@@ -96,7 +96,7 @@
 ```
 
 ### 4. **Update an Existing Character**
-**Endpoint:** `PATCH /characters/{id}`
+**Endpoint:** `PATCH /characters/{id}`  
 **Description:** Does a partial update to an existing character by sending the updated data in the request body.  
 **Request Example:**  
 ```json
@@ -111,7 +111,7 @@ Character 15 updated successfully!
 ```
 
 ### 5. **Delete an Existing Character**
-**Endpoint:** `DELETE /characters/{id}`
+**Endpoint:** `DELETE /characters/{id}`  
 **Description:** Removes an exisiting Character from the  DB.  
 **Request Example:**  
 ```json
