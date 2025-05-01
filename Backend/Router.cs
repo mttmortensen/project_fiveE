@@ -10,7 +10,8 @@ namespace Backend
         {
             var controller = new CharacterController(new Database(), new CharacterMapper());
 
-            // Check the request's path 
+            // Check the request's path
+            // Handle GET request to get all characters
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/characters") 
             {
                 // 1. Get controller ready to get all the characters 
@@ -19,6 +20,38 @@ namespace Backend
                 // 2. Wrap the response in a JSON string 
                 return JsonSerializer.Serialize(characters);
             }
+
+            // Handle GET request to get a specific character by ID
+            if (request.HttpMethod == "GET" && request.Url.AbsolutePath.StartsWith("/characters/"))
+            {
+                try
+                {
+                    // Extract ID from URL
+                    string[] segments = request.Url.AbsolutePath.Split('/');
+                    if (segments.Length == 3 && int.TryParse(segments[2], out int characterId))
+                    {
+                        var character = controller.GetCharacterById(characterId);
+
+                        if (character != null)
+                        {
+                            return JsonSerializer.Serialize(character);
+                        }
+                        else
+                        {
+                            return "404 Not Found: Character not found.";
+                        }
+                    }
+                    else
+                    {
+                        return "400 Bad Request: Invalid character ID.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return $"500 Internal Server Error: {ex.Message}";
+                }
+            }
+
 
             // Handle POST request to add a new character
             if (request.HttpMethod == "POST" && request.Url.AbsolutePath == "/characters")
