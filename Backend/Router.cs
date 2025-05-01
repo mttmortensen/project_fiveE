@@ -90,8 +90,9 @@ namespace Backend
                 var requestBody = reader.ReadToEnd();
                 var patchData = JsonSerializer.Deserialize<Dictionary<string, object>>(requestBody);
 
-                var response = controller.PartiallyUpdateCharacter(id, patchData);
-                return JsonSerializer.Serialize(response);
+                controller.PartiallyUpdateCharacter(id, patchData);
+                return $"Character {id} updated successfully!";
+
             }
 
 

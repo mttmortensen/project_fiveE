@@ -1,4 +1,6 @@
-﻿namespace Backend
+﻿using System.Text.Json;
+
+namespace Backend
 {
     public class CharacterController
     {
@@ -72,16 +74,55 @@
             return characterId;
         }
 
-        public object PartiallyUpdateCharacter(int characterId, Dictionary<string, object> patchData)
+        public void PartiallyUpdateCharacter(int id, Dictionary<string, object> patchData)
         {
-            // Use patchData to build a dynamic UPDATE query
-            string updateQuery = _queries.GeneratePartialUpdateQuery(patchData.Keys);
-            patchData["@CharacterID"] = characterId;
+            // Convert JsonElements to their raw values
+            var convertedData = new Dictionary<string, object>();
 
-            _database.UpdateRawDataInDatabase(updateQuery, patchData);
+            foreach (var kvp in patchData)
+            {
+                var key = kvp.Key;
+                var value = kvp.Value;
 
-            return new { Message = "Character partially updated", Id = characterId };
+                if (value is JsonElement jsonElement)
+                {
+                    switch (jsonElement.ValueKind)
+                    {
+                        case JsonValueKind.String:
+                            convertedData[key] = jsonElement.GetString();
+                            break;
+                        case JsonValueKind.Number:
+                            if (jsonElement.TryGetInt32(out int intVal))
+                                convertedData[key] = intVal;
+                            else if (jsonElement.TryGetDouble(out double doubleVal))
+                                convertedData[key] = doubleVal;
+                            break;
+                        case JsonValueKind.True:
+                        case JsonValueKind.False:
+                            convertedData[key] = jsonElement.GetBoolean();
+                            break;
+                        default:
+                            // Null, Undefined, or Object/Array: ignore or handle differently
+                            convertedData[key] = null;
+                            break;
+                    }
+                }
+                else
+                {
+                    convertedData[key] = value;
+                }
+            }
+
+            // Include the CharacterID so the query can find the row
+            convertedData["@CharacterID"] = id;
+
+            // Build dynamic update query from keys
+            var updateQuery = _queries.GeneratePartialUpdateQuery(convertedData.Keys.Where(k => k != "@CharacterID"));
+
+            // Run the update
+            _database.UpdateRawDataInDatabase(updateQuery, convertedData);
         }
+
 
         public bool DeleteCharacterById(int characterId)
         {
