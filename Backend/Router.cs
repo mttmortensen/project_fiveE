@@ -82,17 +82,18 @@ namespace Backend
                 }
             }
 
-            // Handle PUT request to update an existing character
-            if (request.HttpMethod == "PUT" && request.Url.AbsolutePath.StartsWith("/characters/"))
+            // Handle PATCH request to update an existing character
+            if (request.HttpMethod == "PATCH" && request.Url.AbsolutePath.StartsWith("/characters/"))
             {
                 int id = int.Parse(request.Url.AbsolutePath.Split('/')[2]);
                 using var reader = new StreamReader(request.InputStream);
                 var requestBody = reader.ReadToEnd();
-                var updatedCharacter = JsonSerializer.Deserialize<Character>(requestBody);
+                var patchData = JsonSerializer.Deserialize<Dictionary<string, object>>(requestBody);
 
-                var response = controller.UpdateCharacter(id, updatedCharacter);
+                var response = controller.PartiallyUpdateCharacter(id, patchData);
                 return JsonSerializer.Serialize(response);
             }
+
 
 
             // Handle DELETE request to remove a character
