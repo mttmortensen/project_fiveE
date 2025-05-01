@@ -8,6 +8,8 @@
 - Retrieve a list of all characters.
 - Get detailed information about a specific character.
 - Create new characters by sending their details in a POST request.
+- Update existing character with updated values
+- Remove a character
 
 ---
 
@@ -104,7 +106,7 @@
 }
 ```
 **Response Example:**
-```json
+```text
 Character 15 updated successfully!
 ```
 
