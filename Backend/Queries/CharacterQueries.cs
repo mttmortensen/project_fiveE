@@ -151,5 +151,12 @@
             SET AbilityID = @AbilityID
             WHERE CharacterID = @CharacterID;
         ";
+
+        // This is the query to delete a character from the Character table and any linked data
+        public string DeleteCharacterAndLinkedData => @"
+            DELETE FROM Abilities WHERE CharacterID = @CharacterID;
+            DELETE FROM Characters WHERE CharacterID = @CharacterID;
+        ";
+
     }
 }
