@@ -82,6 +82,20 @@ namespace Backend
                 }
             }
 
+            // Handle DELETE request to remove a character
+            if (request.HttpMethod == "DELETE" && request.Url.AbsolutePath.StartsWith("/characters/"))
+            {
+                var idString = request.Url.AbsolutePath.Replace("/characters/", "");
+                if (int.TryParse(idString, out int characterId))
+                {
+                    var success = controller.DeleteCharacterById(characterId);
+                    return JsonSerializer.Serialize(new { Message = success ? "Character deleted" : "Character not found" });
+                }
+
+                return "400 Bad Request: Invalid ID format.";
+            }
+
+
 
             return "404 not found";
         }
