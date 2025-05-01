@@ -41,7 +41,7 @@
     "WeaponProficiencies": [ "Simple Weapons", "Shortswords" ],
     "ToolProficiencies": [ "Calligrapher's Supplies" ],
     "Languages": [ "Common", "Elvish", "Draconic" ],
-    "HitDice": "4d8",
+    "HitDice": 4,
     "DeathSavesSuccess": 0,
     "DeathSavesFailure": 0,
     "Equipment": [ "Quarterstaff", "Explorer's Pack", "Calligrapher's Supplies" ]
