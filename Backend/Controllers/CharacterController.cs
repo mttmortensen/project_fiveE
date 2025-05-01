@@ -71,5 +71,18 @@
 
             return characterId;
         }
+
+        public bool DeleteCharacterById(int characterId)
+        {
+            var query = _queries.DeleteCharacterAndLinkedData;
+            var parameters = new Dictionary<string, object>
+            {
+                { "@CharacterID", characterId }
+            };
+
+            int rowsAffected = _database.ExecuteNonQuery(query, parameters);
+            return rowsAffected > 0;
+        }
+
     }
 }
