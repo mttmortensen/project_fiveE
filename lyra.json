@@ -46,8 +46,13 @@
     "Equipment": [ "Crystal focus", "Arcane robe", "Explorer's Pack" ],
     "Spells": [
         { "SpellID": 1 },
+        { "SpellID": 3 },
         { "SpellID": 4 },
-        { "SpellID": 10 },
-        { "SpellID": 31 }
+        { "SpellID": 5 },
+        { "SpellID": 6 },
+        { "SpellID": 7 },
+        { "SpellID": 8 },
+        { "SpellID": 9 },
+        { "SpellID": 10 }
     ]
 }
