@@ -53,7 +53,7 @@
         public Classes Classes { get; set; }
         public AbilityScores AbilityScores { get; set; }
         public Subclass Subclass { get; set; }
-        public Spell Spell { get; set; }
+        public List<Spell> Spells { get; set; } = new List<Spell>();
 
     }
 }
