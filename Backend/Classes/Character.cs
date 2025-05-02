@@ -36,8 +36,6 @@
         // Flavor and Notes
         public List<string> FeaturesAndTraits { get; set; } = new List<string>();
         public List<string> Equipment { get; set; } = new List<string>();
-        public List<string> SpellsKnown { get; set; } = new List<string>();
-
         public string PersonalityTraits { get; set; }
         public string Ideals { get; set; }
         public string Bonds { get; set; }
