@@ -218,6 +218,34 @@ namespace Backend
             };
         }
 
+        // Maps Spells raw database rows to Character object
+        private List<Spell> MapSpellsData(List<Dictionary<string, object>> rows)
+        {
+            var spells = new List<Spell>();
+
+            foreach (var row in rows)
+            {
+                spells.Add(new Spell
+                {
+                    SpellID = SafeInt(row["SpellID"]),
+                    Name = SafeString(row["Name"]),
+                    Level = SafeInt(row["Level"]),
+                    School = SafeString(row["School"]),
+                    CastingTime = SafeString(row["CastingTime"]),
+                    Range = SafeString(row["Range"]),
+                    Components = MapList(SafeString(row["Components"]), ';'),
+                    Duration = SafeString(row["Duration"]),
+                    Description = SafeString(row["Description"]),
+                    IsRitual = row["IsRitual"] != DBNull.Value && (bool)row["IsRitual"],
+                    RequiresConcentration = row["RequiresConcentration"] != DBNull.Value && (bool)row["RequiresConcentration"],
+                    Classes = MapList(SafeString(row["Classes"]), ';')
+                });
+            }
+
+            return spells;
+        }
+
+
 
         // Lists out the bonuses a race would get in a sting made to look like an object
         private List<string> MapAbilityScoreBonuses(string json)
@@ -246,5 +274,6 @@ namespace Backend
                 ? new List<string>()
                 : listData.Split(',').Select(item => item.Trim()).ToList();
         }
+
     }
 }
