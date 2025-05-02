@@ -167,6 +167,21 @@
             DELETE FROM Abilities WHERE CharacterID = @CharacterID;
         ";
 
+        // Getting spells from a Character ID
+        public string GetSpellsByCharacterId => @"
+            SELECT s.*
+            FROM CharacterSpells cs
+            INNER JOIN Spells s ON cs.SpellID = s.SpellID
+            WHERE cs.CharacterID = @CharacterID;
+        ";
+
+        // Linking Spells to a Character
+        public string LinkSpellToCharacter => @"
+            INSERT INTO CharacterSpells (CharacterID, SpellID)
+            VALUES (@CharacterID, @SpellID);
+        ";
+
+
 
     }
 }
