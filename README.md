@@ -8,85 +8,46 @@
 - Retrieve a list of all characters.
 - Get detailed information about a specific character.
 - Create new characters by sending their details in a POST request.
+- Update existing character with updated values
+- Remove a character
 
 ---
 
 ## API Routes
 
 ### 1. **Get All Characters**
-**Endpoint:** `GET /api/characters`  
+**Endpoint:** `GET /characters`  
 **Description:** Retrieve a list of all D&D characters.  
 **Response Example:**  
 ```json
 [
   {
-    "CharacterID": 1,
-    "Name": "Arthas",
+    "CharacterID": 15,
+    "Name": "Garrett Wyrmcaller",
     "Sex": "Male",
-    "ClassID": 1,
-    "Classes": {
-      "ClassId": 1,
-      "ClassName": "Fighter",
-      "HitDie": "d10",
-      "PrimaryAbility": "Strength",
-      "SavingThrows": [
-        "Strength",
-        "Constitution"
-      ],
-      "SkillChoices": [
-        "Athletics",
-        "Survival"
-      ],
-      "ClassFeatures": [
-        "Second Wind",
-        "Action Surge"
-      ]
-    },
-    "RaceID": 1,
+    "Level": 5,
     "Race": {
-      "RaceId": 1,
       "RaceName": "Human",
-      "RaceSize": "Medium",
       "Speed": 30,
-      "AbilityScoreBonuses": {
-        "Strength": 1,
-        "Dexterity": 1
-      },
-      "Languages": [
-        "Common"
-      ],
-      "RacialFeatures": [
-        "Versatility"
-      ]
+      "Languages": ["Common"],
+      "RacialFeatures": ["Versatility"]
     },
-    "AbilityID": 1,
+    "Classes": {
+      "ClassName": "Ranger",
+      "HitDie": "d10",
+      "SkillChoices": ["Survival", "Nature"]
+    },
     "AbilityScores": {
-      "AbilityId": 1,
-      "CharacterID": 1,
-      "Strength": 15,
-      "Dexterity": 12,
-      "Constitution": 14,
-      "Intelligence": 10,
-      "Wisdom": 13,
-      "Charisma": 8
-    },
-    "Skills": [],
-    "Proficiencies": [],
-    "Equipment": [],
-    "Background": "Soldier",
-    "Alignment": "Lawful Good",
-    "Level": 1,
-    "HP": 12,
-    "XP": 0,
-    "MaxHP": 12,
-    "Speed": 30,
-    "AC": 18
+      "Strength": 13,
+      "Dexterity": 18,
+      "Constitution": 12
+    }
   }
 ]
 ```
 
 ### 2. **Get a Single Character**
-**Endpoint:** `GET /api/characters/{id}`  
+**Endpoint:** `GET /characters/{id}`  
 **Description:** Retrieve detailed information about a single character by their ID.  
 **Response Example:**  
 ```json
@@ -105,7 +66,7 @@
 }
 ```
 ### 3. **Create a New Character**
-**Endpoint:** `POST /api/characters`  
+**Endpoint:** `POST /characters`  
 **Description:** Create a new character by sending their data in the request body.  
 **Request Example:**  
 ```json
@@ -133,6 +94,42 @@
   "Message": "Character created successfully"
 }
 ```
+
+### 4. **Update an Existing Character**
+**Endpoint:** `PATCH /characters/{id}`  
+**Description:** Does a partial update to an existing character by sending the updated data in the request body.  
+**Request Example:**  
+```json
+{
+  "HP": "25",
+  "Speed": "15"
+}
+```
+**Response Example:**
+```text
+Character 15 updated successfully!
+```
+
+### 5. **Delete an Existing Character**
+**Endpoint:** `DELETE /characters/{id}`  
+**Description:** Removes an exisiting Character from the  DB.  
+**Request Example:**  
+```json
+{
+  "CharacterId": "15"
+}
+```
+**Response Example:**
+```json
+{
+  "Message": "Character deleted"
+}
+```
+
+## 🧙‍♂️ Notes
+- Reference data like Races, Classes, and Subclasses must be pre-seeded in the DB. Characters reference them by ID.
+- POST automatically inserts the related AbilityScores, then ties them back via foreign key.
+- PATCH supports any number of partial fields for basic character fields (like HP, XP, name, etc).
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
