@@ -15,18 +15,30 @@ namespace Backend
             _queries = new CharacterQueries();
         }
 
-        public List<Character> GetAllCharacters() 
+        public List<Character> GetAllCharacters()
         {
-
-            // Step 1A: Bring in the query for _database to use
+            // Step 1: Get all character base data
             var query = _queries.GetAllCharacterAndItsRelatedData;
-
-            // Step 1B: Query raw data from Database 
             var rawData = _database.GetRawDataFromDatabase(query);
 
-            // Step 2: Map raw data to the Character objects 
-            return _mapper.MapToCharacterClass(rawData);
+            // Step 2: Map raw data into Character objects
+            var characters = _mapper.MapToCharacterClass(rawData);
+
+            // Step 3: For each character, fetch their spells
+            foreach (var character in characters)
+            {
+                var spellParams = new Dictionary<string, object>
+                {
+                    { "@CharacterID", character.CharacterID }
+                };
+
+                var spellData = _database.GetRawDataFromDatabase(_queries.GetSpellsByCharacterId, spellParams);
+                character.Spells = _mapper.MapSpellsData(spellData);
+            }
+
+            return characters;
         }
+
 
         public Character GetCharacterById(int characterId)
         {
