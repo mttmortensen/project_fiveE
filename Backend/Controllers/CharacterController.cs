@@ -28,7 +28,7 @@ namespace Backend
             return _mapper.MapToCharacterClass(rawData);
         }
 
-        public Character GetCharacterById(int characterId) 
+        public Character GetCharacterById(int characterId)
         {
             // Step 1A: Bring in the query for _database to use
             var query = _queries.GetSingleCharacterAndRelatedData;
@@ -37,10 +37,20 @@ namespace Backend
                 { "@CharacterID", characterId }
             };
 
+            // Step 1B: Grab base character data
             var rawData = _database.GetRawDataFromDatabase(query, parameters);
-            return rawData.Count > 0 ? _mapper.MapToCharacterClass(rawData).FirstOrDefault() : null;
+            var character = rawData.Count > 0 ? _mapper.MapToCharacterClass(rawData).FirstOrDefault() : null;
 
+            // Step 2: Grab spell data for that character and attach it
+            if (character != null)
+            {
+                var spellData = _database.GetRawDataFromDatabase(_queries.GetSpellsByCharacterId, parameters);
+                character.Spells = _mapper.MapSpellsData(spellData);
+            }
+
+            return character;
         }
+
 
         public int AddCharacter(Character newCharacter)
         {

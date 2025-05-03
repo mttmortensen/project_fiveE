@@ -202,7 +202,7 @@ namespace Backend
         }
 
         // Maps Spells raw database rows to Character object
-        private List<Spell> MapSpellsData(List<Dictionary<string, object>> rows)
+        public List<Spell> MapSpellsData(List<Dictionary<string, object>> rows)
         {
             var spells = new List<Spell>();
 
