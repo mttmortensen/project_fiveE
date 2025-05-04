@@ -61,8 +61,6 @@
             WHERE c.CharacterID = @CharacterID;
         ";
 
-
-
         // Needing to get the CharacterID first before creating the Ability query 
         public string AddingNewCharacterWithoutAbilityId => @"
             INSERT INTO Characters 
@@ -135,8 +133,8 @@
             );
             SELECT SCOPE_IDENTITY();
         ";
-        // Returns the ID of the new row
 
+        // Returns the ID of the new row
         public string AddingNewAbilityScoresForCharacter => @"
             INSERT INTO Abilities (CharacterID, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
             VALUES (@CharacterID, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
@@ -158,7 +156,6 @@
             return $"UPDATE Characters SET {setStatement} WHERE CharacterID = @CharacterID;";
         }
 
-
         // This is the query to delete a character from the Character table and any linked data
         public string DeleteCharacterAndLinkedData => @"
             DELETE FROM Characters WHERE CharacterID = @CharacterID;
@@ -177,6 +174,21 @@
         public string LinkSpellToCharacter => @"
             INSERT INTO CharacterSpells (CharacterID, SpellID)
             VALUES (@CharacterID, @SpellID);
+        ";
+
+        // Getting CharacterRace info from a Character ID
+        // This includes also the columns from Race table (helpful for GET)
+        public string GetCharacterRaceById => @"
+            SELECT 
+                cr.*, 
+                r.RaceName, 
+                r.RaceSize, 
+                r.Speed, 
+                r.Languages, 
+                r.RacialFeatures
+            FROM CharacterRace cr
+            INNER JOIN Races r ON cr.RaceID = r.RaceID
+            WHERE cr.CharacterID = @CharacterID;
         ";
 
 
