@@ -134,12 +134,12 @@
             SELECT SCOPE_IDENTITY();
         ";
 
-        // Returns the ID of the new row
+        // Returns the ID of the new AbilityScores row
         public string AddingNewAbilityScoresForCharacter => @"
             INSERT INTO Abilities (CharacterID, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
             VALUES (@CharacterID, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma);
             SELECT SCOPE_IDENTITY();
-        "; // Returns the ID of the new AbilityScores row
+        "; 
 
         // Now that the AbilityID has been created, update it back to the Character table
         public string UpdateCharacterWithAbilityId => @"
@@ -214,6 +214,28 @@
             INNER JOIN Classes cl ON cc.ClassID = cl.ClassID
             WHERE cc.CharacterID = @CharacterID;
         ";
+
+        // Linking class-specific data to a character
+        public string LinkCharacterClass => @"
+            INSERT INTO CharacterClass (
+                CharacterID,
+                ClassID,
+                ArmorProficiencies,
+                WeaponProficiencies,
+                ToolProficiencies,
+                SpellcastingAbilityModifier,
+                SkillChoices
+            ) VALUES (
+                @CharacterID,
+                @ClassID,
+                @ArmorProficiencies,
+                @WeaponProficiencies,
+                @ToolProficiencies,
+                @SpellcastingAbilityModifier,
+                @SkillChoices
+            );
+        ";
+
 
     }
 }
