@@ -236,6 +236,32 @@
             );
         ";
 
+        // Getting CharacterSubclass info from a Character ID
+        // Includes static data from Subclasses table
+        public string GetCharacterSubclassById => @"
+            SELECT 
+                csc.*, 
+                sc.SubclassName, 
+                sc.EntryLevel, 
+                sc.SubclassFeatures
+            FROM CharacterSubclass csc
+            INNER JOIN Subclasses sc ON csc.SubclassID = sc.SubclassID
+            WHERE csc.CharacterID = @CharacterID;
+        ";
 
+        // Linking subclass-specific data to a character
+        public string LinkCharacterSubclass => @"
+            INSERT INTO CharacterSubclass (
+                CharacterID,
+                SubclassID,
+                BonusProficiencies,
+                BonusSpells
+            ) VALUES (
+                @CharacterID,
+                @SubclassID,
+                @BonusProficiencies,
+                @BonusSpells
+            );
+        ";
     }
 }
