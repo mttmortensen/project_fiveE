@@ -191,7 +191,14 @@
             WHERE cr.CharacterID = @CharacterID;
         ";
 
-
+        // Link race-specific data to a specific character via the CharacterRace relation table
+        public string LinkCharacterRace => @"
+            INSERT INTO CharacterRace (
+                CharacterID, RaceID, RacialProficiencies, Darkvision, AbilityScoreBonuses
+            ) VALUES (
+                @CharacterID, @RaceID, @RacialProficiencies, @Darkvision, @AbilityScoreBonuses
+            );
+        ";
 
     }
 }
