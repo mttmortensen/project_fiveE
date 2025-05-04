@@ -94,8 +94,11 @@ namespace Backend
             _database.InsertRawDataIntoDatabase(updatedCharacterQuery, updateCharacterData);
 
             // Step 3: Insert the SpellIds with the CharacterId to CharacterSpells table
-
-
+            var spellLinkData = _mapper.MapCharacterSpellsData(characterId, newCharacter.Spells);
+            foreach(var paramSet in spellLinkData) 
+            {
+                _database.ExecuteNonQuery(_queries.LinkSpellToCharacter, paramSet);
+            }
 
             return characterId;
         }
