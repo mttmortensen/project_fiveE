@@ -94,17 +94,7 @@ namespace Backend
             _database.InsertRawDataIntoDatabase(updatedCharacterQuery, updateCharacterData);
 
             // Step 3: Insert the SpellIds with the CharacterId to CharacterSpells table
-            foreach (int spellId in newCharacter.Spells.Select(s => s.SpellID))
-            {
-                var spellLinkParams = new Dictionary<string, object>
-                {
-                    { "@CharacterID", characterId },
-                    { "@SpellID", spellId }
-                };
 
-                string spellLinkQuery = _queries.LinkSpellToCharacter;
-                _database.ExecuteNonQuery(spellLinkQuery, spellLinkParams);
-            }
 
 
             return characterId;

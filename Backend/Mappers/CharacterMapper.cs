@@ -228,6 +228,15 @@ namespace Backend
             return spells;
         }
 
+        public List<Dictionary<string, object>> MapCharacterSpellsData(int characterID, List<Spell> spells)
+        {
+            return spells.Select(spell => new Dictionary<string, object>
+            {
+                { "@CharacterID", characterID },
+                { "@SpellID", spell.SpellID  }
+            }).ToList();
+        }
+
 
 
         // Lists out the bonuses a race would get in a sting made to look like an object
