@@ -200,5 +200,20 @@
             );
         ";
 
+        // Getting CharacterClass info from a Character ID
+        // Includes static data from Classes table
+        public string GetCharacterClassById => @"
+            SELECT 
+                cc.*, 
+                cl.ClassName, 
+                cl.HitDie, 
+                cl.PrimaryAbility, 
+                cl.SavingThrows, 
+                cl.ClassFeatures
+            FROM CharacterClass cc
+            INNER JOIN Classes cl ON cc.ClassID = cl.ClassID
+            WHERE cc.CharacterID = @CharacterID;
+        ";
+
     }
 }
