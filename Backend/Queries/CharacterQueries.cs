@@ -8,39 +8,21 @@
         public string GetAllCharacterAndItsRelatedData => @"
             SELECT 
                 c.*, 
-                r.RaceName, 
-                r.RaceSize, 
-                r.Speed AS RaceSpeed, 
-                r.AbilityScoreBonuses, 
-                r.Languages, 
-                r.RacialFeatures,
-                r.RacialProficiencies,
-                r.Darkvision,
-                cl.ClassName, 
-                cl.HitDie, 
-                cl.PrimaryAbility, 
-                cl.SavingThrows, 
-                cl.SkillChoices, 
-                cl.ClassFeatures,
-                cl.ArmorProficiencies,
-                cl.WeaponProficiencies,
-                cl.ToolProficiencies,
-                cl.SpellcastingAbilityModifier,
-                sc.SubclassName,
-                sc.EntryLevel,
-                sc.SubclassFeatures,
-                sc.BonusProficiencies,
-                sc.BonusSpells,
-                a.Strength, 
-                a.Dexterity, 
-                a.Constitution, 
-                a.Intelligence, 
-                a.Wisdom, 
-                a.Charisma
+                r.RaceName, r.RaceSize, r.Speed AS RaceSpeed, 
+                cr.RacialProficiencies, cr.Darkvision, cr.AbilityScoreBonuses,
+                cl.ClassName, cl.HitDie, cl.PrimaryAbility, cl.SavingThrows, 
+                cc.ArmorProficiencies, cc.WeaponProficiencies, cc.ToolProficiencies,
+                cc.SpellcastingAbilityModifier, cc.SkillChoices,
+                sc.SubclassName, sc.EntryLevel, sc.SubclassFeatures,
+                cs.BonusProficiencies, cs.BonusSpells,
+                a.Strength, a.Dexterity, a.Constitution, a.Intelligence, a.Wisdom, a.Charisma
             FROM Characters c
-            LEFT JOIN Races r ON c.RaceID = r.RaceID
-            LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
-            LEFT JOIN Subclasses sc ON c.SubclassID = sc.SubclassID
+            LEFT JOIN CharacterRace cr ON c.CharacterID = cr.CharacterID
+            LEFT JOIN Races r ON cr.RaceID = r.RaceID
+            LEFT JOIN CharacterClass cc ON c.CharacterID = cc.CharacterID
+            LEFT JOIN Classes cl ON cc.ClassID = cl.ClassID
+            LEFT JOIN CharacterSubclass cs ON c.CharacterID = cs.CharacterID
+            LEFT JOIN Subclasses sc ON cs.SubclassID = sc.SubclassID
             LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
         ";
 
@@ -48,17 +30,21 @@
             SELECT 
                 c.*, 
                 r.RaceName, r.RaceSize, r.Speed AS RaceSpeed, 
-                r.AbilityScoreBonuses, r.Languages, r.RacialFeatures, r.RacialProficiencies, r.Darkvision,
-                cl.ClassName, cl.HitDie, cl.PrimaryAbility, cl.SavingThrows, cl.SkillChoices, cl.ClassFeatures, 
-                cl.ArmorProficiencies, cl.WeaponProficiencies, cl.ToolProficiencies, cl.SpellcastingAbilityModifier,
-                sc.SubclassName, sc.EntryLevel, sc.SubclassFeatures, sc.BonusProficiencies, sc.BonusSpells,
+                cr.RacialProficiencies, cr.Darkvision, cr.AbilityScoreBonuses,
+                cl.ClassName, cl.HitDie, cl.PrimaryAbility, cl.SavingThrows, 
+                cc.ArmorProficiencies, cc.WeaponProficiencies, cc.ToolProficiencies,
+                cc.SpellcastingAbilityModifier, cc.SkillChoices,
+                sc.SubclassName, sc.EntryLevel, sc.SubclassFeatures,
+                cs.BonusProficiencies, cs.BonusSpells,
                 a.Strength, a.Dexterity, a.Constitution, a.Intelligence, a.Wisdom, a.Charisma
             FROM Characters c
-            LEFT JOIN Races r ON c.RaceID = r.RaceID
-            LEFT JOIN Classes cl ON c.ClassID = cl.ClassID
-            LEFT JOIN Subclasses sc ON c.SubclassID = sc.SubclassID
-            LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID
-            WHERE c.CharacterID = @CharacterID;
+            LEFT JOIN CharacterRace cr ON c.CharacterID = cr.CharacterID
+            LEFT JOIN Races r ON cr.RaceID = r.RaceID
+            LEFT JOIN CharacterClass cc ON c.CharacterID = cc.CharacterID
+            LEFT JOIN Classes cl ON cc.ClassID = cl.ClassID
+            LEFT JOIN CharacterSubclass cs ON c.CharacterID = cs.CharacterID
+            LEFT JOIN Subclasses sc ON cs.SubclassID = sc.SubclassID
+            LEFT JOIN Abilities a ON c.AbilityID = a.AbilityID;
         ";
 
         // Needing to get the CharacterID first before creating the Ability query 
