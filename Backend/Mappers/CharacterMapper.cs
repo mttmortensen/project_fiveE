@@ -142,29 +142,66 @@ namespace Backend
         public Dictionary<string, object> MapCharacterRaceToDictionary(Character character)
         {
             return new Dictionary<string, object>
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@RaceID", character.RaceID },
+
+                { "@RacialProficiencies",
+                    character.Race?.RacialProficiencies != null
+                        ? string.Join(",", character.Race.RacialProficiencies)
+                        : (object)DBNull.Value
+                },
+
+                { "@Darkvision", character.Race?.Darkvision ?? 0 },
+
+                { "@AbilityScoreBonuses",
+                    character.Race?.AbilityScoreBonuses != null
+                        ? JsonConvert.SerializeObject(
+                            character.Race.AbilityScoreBonuses
+                                .Select(s => s.Split(':'))
+                                .ToDictionary(split => split[0].Trim(), split => int.Parse(split[1].Trim()))
+                          )
+                        : (object)DBNull.Value
+                }
+            };
+        }
+
+        // Maps a list of class and character IDs as well as specific class properties to a dictionary for database insertion
+        public Dictionary<string, object> MapCharacterClassToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
     {
         { "@CharacterID", character.CharacterID },
-        { "@RaceID", character.RaceID },
+        { "@ClassID", character.ClassID },
 
-        { "@RacialProficiencies",
-            character.Race?.RacialProficiencies != null
-                ? string.Join(",", character.Race.RacialProficiencies)
+        { "@ArmorProficiencies",
+            character.Classes?.ArmorProficiencies != null
+                ? string.Join(",", character.Classes.ArmorProficiencies)
                 : (object)DBNull.Value
         },
 
-        { "@Darkvision", character.Race?.Darkvision ?? 0 },
+        { "@WeaponProficiencies",
+            character.Classes?.WeaponProficiencies != null
+                ? string.Join(",", character.Classes.WeaponProficiencies)
+                : (object)DBNull.Value
+        },
 
-        { "@AbilityScoreBonuses",
-            character.Race?.AbilityScoreBonuses != null
-                ? JsonConvert.SerializeObject(
-                    character.Race.AbilityScoreBonuses
-                        .Select(s => s.Split(':'))
-                        .ToDictionary(split => split[0].Trim(), split => int.Parse(split[1].Trim()))
-                  )
+        { "@ToolProficiencies",
+            character.Classes?.ToolProficiencies != null
+                ? string.Join(",", character.Classes.ToolProficiencies)
+                : (object)DBNull.Value
+        },
+
+        { "@SpellcastingAbilityModifier", character.Classes?.SpellcastingAbilityModifier ?? 0 },
+
+        { "@SkillChoices",
+            character.Classes?.SkillChoices != null
+                ? string.Join(",", character.Classes.SkillChoices)
                 : (object)DBNull.Value
         }
     };
         }
+
 
 
         /************************************************************************/
