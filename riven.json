@@ -1,0 +1,65 @@
+{
+    "Name": "Riven Duskstep",
+    "Sex": "Male",
+    "Level": 4,
+    "ClassID": 25,
+    "RaceID": 18,
+    "SubclassID": 20,
+    "AbilityScores": {
+        "Strength": 13,
+        "Dexterity": 16,
+        "Constitution": 14,
+        "Intelligence": 12,
+        "Wisdom": 10,
+        "Charisma": 8
+    },
+    "HP": 32,
+    "MaxHP": 32,
+    "TempHP": 0,
+    "AC": 15,
+    "Speed": 30,
+    "InitiativeBonus": 3,
+    "ExperiencePoints": 2700,
+    "HitDice": 4,
+    "DeathSavesSuccess": 0,
+    "DeathSavesFailure": 0,
+    "Background": "Soldier",
+    "Alignment": "Chaotic Neutral",
+    "FeaturesAndTraits": [ "Second Wind", "Action Surge", "Fighting Style: Defense" ],
+    "PassivePerception": 11,
+    "PassiveInsight": 10,
+    "PassiveInvestigation": 12,
+    "PersonalityTraits": "Quiet and observant, speaks only when necessary.",
+    "Ideals": "Freedom through strength.",
+    "Bonds": "Owes everything to the commander who trained him.",
+    "Flaws": "Has a tendency to act without thinking.",
+    "CharacterAppearance": "Wears battered armor and carries a longsword. Piercing gray eyes.",
+    "AlliesAndOrganizations": "Former soldier in the Ember Guard",
+    "CharacterBackstory": "A deserter from a kingdom at war, Riven wanders the world seeking redemption.",
+    "AdditionalNotes": "Carries a red ribbon from a fallen comrade.",
+    "Equipment": [ "Longsword", "Shield", "Chain Mail", "Explorer's Pack" ],
+    "Spells": [
+        { "SpellID": 2 },
+        { "SpellID": 4 },
+        { "SpellID": 5 }
+    ],
+
+    "Race": {
+        "RacialProficiencies": [ "Perception" ],
+        "Darkvision": 60,
+        "AbilityScoreBonuses": [ "Dexterity: 2", "Wisdom: 1" ]
+    },
+
+    "Classes": {
+        "ArmorProficiencies": [ "All armor", "Shields" ],
+        "WeaponProficiencies": [ "Simple weapons", "Martial weapons" ],
+        "ToolProficiencies": [ "Smith's tools" ],
+        "SpellcastingAbilityModifier": 0,
+        "SkillChoices": [ "Athletics", "Survival" ]
+    },
+
+    "Subclass": {
+        "BonusProficiencies": [ "Arcana" ],
+        "BonusSpells": [ "Shield", "Magic Missile" ]
+    }
+}
