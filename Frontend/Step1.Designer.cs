@@ -32,13 +32,13 @@
             // 
             // rootForm_step1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            ClientSize = new Size(807, 711);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(284, 261);
+            Font = new Font("Microsoft Sans Serif", 8.25F);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "rootForm_step1";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Step 1: Create a New Character";
+            Text = "D&D Character Creator Wizard";
             ResumeLayout(false);
         }
 
