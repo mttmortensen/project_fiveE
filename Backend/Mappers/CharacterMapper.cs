@@ -246,7 +246,7 @@ namespace Backend
         }
 
         // Maps raw database rows to a Classes object
-        private Classes MapClassData(Dictionary<string, object> row)
+        public Classes MapClassData(Dictionary<string, object> row)
         {
             return new Classes
             {
@@ -266,7 +266,7 @@ namespace Backend
 
 
         // Maps raw database rows to a Race object
-        private Race MapRaceData(Dictionary<string, object> row)
+        public Race MapRaceData(Dictionary<string, object> row)
         {
             return new Race
             {
@@ -287,7 +287,7 @@ namespace Backend
 
 
         // Maps raw database rows to a Subclass object
-        private Subclass MapSubclassData(Dictionary<string, object> row)
+        public Subclass MapSubclassData(Dictionary<string, object> row)
         {
             return new Subclass
             {
