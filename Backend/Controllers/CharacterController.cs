@@ -100,6 +100,10 @@ namespace Backend
                 _database.ExecuteNonQuery(_queries.LinkSpellToCharacter, paramSet);
             }
 
+            // Step 4: Insert the Race character specific props to CharacterRace table
+            var raceInsert = _mapper.MapCharacterRaceToDictionary(newCharacter);
+            _database.ExecuteNonQuery(_queries.LinkCharacterRace, raceInsert);
+
             return characterId;
         }
 

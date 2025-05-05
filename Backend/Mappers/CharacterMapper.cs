@@ -128,6 +128,7 @@ namespace Backend
             };
         }
 
+        // Maps a list of spells and character IDs to a dictionary for database insertion
         public List<Dictionary<string, object>> MapCharacterSpellsToDictionary(int characterID, List<Spell> spells)
         {
             return spells.Select(spell => new Dictionary<string, object>
@@ -136,6 +137,35 @@ namespace Backend
                 { "@SpellID", spell.SpellID  }
             }).ToList();
         }
+
+        // Maps a list of race and character IDs as well as specific racial properties to a dictionary for database insertion
+        public Dictionary<string, object> MapCharacterRaceToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
+    {
+        { "@CharacterID", character.CharacterID },
+        { "@RaceID", character.RaceID },
+
+        { "@RacialProficiencies",
+            character.Race?.RacialProficiencies != null
+                ? string.Join(",", character.Race.RacialProficiencies)
+                : (object)DBNull.Value
+        },
+
+        { "@Darkvision", character.Race?.Darkvision ?? 0 },
+
+        { "@AbilityScoreBonuses",
+            character.Race?.AbilityScoreBonuses != null
+                ? JsonConvert.SerializeObject(
+                    character.Race.AbilityScoreBonuses
+                        .Select(s => s.Split(':'))
+                        .ToDictionary(split => split[0].Trim(), split => int.Parse(split[1].Trim()))
+                  )
+                : (object)DBNull.Value
+        }
+    };
+        }
+
 
         /************************************************************************/
         /*HELPERS*/
@@ -182,13 +212,16 @@ namespace Backend
         {
             return new Race
             {
+                // Static reference data from Races table
                 RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
                 RaceName = row.ContainsKey("RaceName") ? SafeString(row["RaceName"]) : null,
                 RaceSize = row.ContainsKey("RaceSize") ? SafeString(row["RaceSize"]) : null,
                 Speed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
-                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(SafeString(row["AbilityScoreBonuses"])) : new List<string>(),
                 Languages = row.ContainsKey("Languages") ? SafeList(row["Languages"]) : new List<string>(),
                 RacialFeatures = row.ContainsKey("RacialFeatures") ? SafeList(row["RacialFeatures"]) : new List<string>(),
+
+                // Dynamic, character-specific data from CharacterRace
+                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(SafeString(row["AbilityScoreBonuses"])) : new List<string>(),
                 RacialProficiencies = row.ContainsKey("RacialProficiencies") ? SafeList(row["RacialProficiencies"]) : new List<string>(),
                 Darkvision = row.ContainsKey("Darkvision") ? SafeInt(row["Darkvision"]) : 0
             };
