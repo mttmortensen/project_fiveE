@@ -49,30 +49,42 @@ namespace Backend
             return characters;
         }
 
-
-
         public Character GetCharacterById(int characterId)
         {
-            // Step 1A: Bring in the query for _database to use
             var query = _queries.GetSingleCharacterAndRelatedData;
             var parameters = new Dictionary<string, object>
             {
                 { "@CharacterID", characterId }
             };
 
-            // Step 1B: Grab base character data
             var rawData = _database.GetRawDataFromDatabase(query, parameters);
             var character = rawData.Count > 0 ? _mapper.MapToCharacterClass(rawData).FirstOrDefault() : null;
 
-            // Step 2: Grab spell data for that character and attach it
             if (character != null)
             {
+                // Spells
                 var spellData = _database.GetRawDataFromDatabase(_queries.GetSpellsByCharacterId, parameters);
                 character.Spells = _mapper.MapSpellsData(spellData);
+
+                // Race (dynamic + static)
+                var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, parameters);
+                if (raceData.Count > 0)
+                    character.Race = _mapper.MapRaceData(raceData.First());
+
+                // Class (dynamic + static)
+                var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, parameters);
+                if (classData.Count > 0)
+                    character.Classes = _mapper.MapClassData(classData.First());
+
+                // Subclass (dynamic + static)
+                var subclassData = _database.GetRawDataFromDatabase(_queries.GetCharacterSubclassById, parameters);
+                if (subclassData.Count > 0)
+                    character.Subclass = _mapper.MapSubclassData(subclassData.First());
             }
 
             return character;
         }
+
 
 
         public int AddCharacter(Character newCharacter)
