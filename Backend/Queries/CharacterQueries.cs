@@ -144,9 +144,14 @@
 
         // This is the query to delete a character from the Character table and any linked data
         public string DeleteCharacterAndLinkedData => @"
-            DELETE FROM Characters WHERE CharacterID = @CharacterID;
+            DELETE FROM CharacterSpells WHERE CharacterID = @CharacterID;
+            DELETE FROM CharacterRace WHERE CharacterID = @CharacterID;
+            DELETE FROM CharacterClass WHERE CharacterID = @CharacterID;
+            DELETE FROM CharacterSubclass WHERE CharacterID = @CharacterID;
             DELETE FROM Abilities WHERE CharacterID = @CharacterID;
+            DELETE FROM Characters WHERE CharacterID = @CharacterID;
         ";
+
 
         // Getting spells from a Character ID
         public string GetSpellsByCharacterId => @"
