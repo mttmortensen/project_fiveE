@@ -144,6 +144,11 @@
 
         // This is the query to delete a character from the Character table and any linked data
         public string DeleteCharacterAndLinkedData => @"
+            -- Remove FK reference first
+            UPDATE Characters
+            SET AbilityID = NULL
+            WHERE CharacterID = @CharacterID;
+
             DELETE FROM CharacterSpells WHERE CharacterID = @CharacterID;
             DELETE FROM CharacterRace WHERE CharacterID = @CharacterID;
             DELETE FROM CharacterClass WHERE CharacterID = @CharacterID;
