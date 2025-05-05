@@ -17,27 +17,38 @@ namespace Backend
 
         public List<Character> GetAllCharacters()
         {
-            // Step 1: Get all character base data
             var query = _queries.GetAllCharacterAndItsRelatedData;
             var rawData = _database.GetRawDataFromDatabase(query);
 
-            // Step 2: Map raw data into Character objects
             var characters = _mapper.MapToCharacterClass(rawData);
 
-            // Step 3: For each character, fetch their spells
             foreach (var character in characters)
             {
-                var spellParams = new Dictionary<string, object>
-                {
-                    { "@CharacterID", character.CharacterID }
-                };
+                var param = new Dictionary<string, object> { { "@CharacterID", character.CharacterID } };
 
-                var spellData = _database.GetRawDataFromDatabase(_queries.GetSpellsByCharacterId, spellParams);
+                // Load spells
+                var spellData = _database.GetRawDataFromDatabase(_queries.GetSpellsByCharacterId, param);
                 character.Spells = _mapper.MapSpellsData(spellData);
+
+                // Load dynamic RACE info
+                var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, param);
+                if (raceData.Count > 0)
+                    character.Race = _mapper.MapRaceData(raceData.First());
+
+                // Load dynamic CLASS info
+                var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, param);
+                if (classData.Count > 0)
+                    character.Classes = _mapper.MapClassData(classData.First());
+
+                // Load dynamic SUBCLASS info
+                var subclassData = _database.GetRawDataFromDatabase(_queries.GetCharacterSubclassById, param);
+                if (subclassData.Count > 0)
+                    character.Subclass = _mapper.MapSubclassData(subclassData.First());
             }
 
             return characters;
         }
+
 
 
         public Character GetCharacterById(int characterId)
