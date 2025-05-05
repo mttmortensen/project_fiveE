@@ -16,5 +16,13 @@ namespace Frontend
         {
             InitializeComponent();
         }
+        private void cmbRace_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Placeholder logic
+            lblDarkvision.Text = "Darkvision: [API DATA]";
+            lblProficiencies.Text = "Proficiencies: [API DATA]";
+            lblBonuses.Text = "Bonuses: [API DATA]";
+        }
+
     }
 }
