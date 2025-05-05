@@ -140,52 +140,56 @@ namespace Backend
 
         public void PartiallyUpdateCharacter(int id, Dictionary<string, object> patchData)
         {
-            // Convert JsonElements to their raw values
             var convertedData = new Dictionary<string, object>();
 
             foreach (var kvp in patchData)
             {
                 var key = kvp.Key;
                 var value = kvp.Value;
+                object parsedValue = null;
 
                 if (value is JsonElement jsonElement)
                 {
                     switch (jsonElement.ValueKind)
                     {
                         case JsonValueKind.String:
-                            convertedData[key] = jsonElement.GetString();
+                            parsedValue = jsonElement.GetString();
                             break;
                         case JsonValueKind.Number:
                             if (jsonElement.TryGetInt32(out int intVal))
-                                convertedData[key] = intVal;
+                                parsedValue = intVal;
                             else if (jsonElement.TryGetDouble(out double doubleVal))
-                                convertedData[key] = doubleVal;
+                                parsedValue = doubleVal;
                             break;
                         case JsonValueKind.True:
                         case JsonValueKind.False:
-                            convertedData[key] = jsonElement.GetBoolean();
+                            parsedValue = jsonElement.GetBoolean();
                             break;
                         default:
-                            // Null, Undefined, or Object/Array: ignore or handle differently
-                            convertedData[key] = null;
+                            parsedValue = null;
                             break;
                     }
                 }
                 else
                 {
-                    convertedData[key] = value;
+                    parsedValue = value;
                 }
+
+                // Add with @ prefix
+                convertedData[$"@{key}"] = parsedValue ?? DBNull.Value;
             }
 
-            // Include the CharacterID so the query can find the row
+            // Include CharacterID for WHERE clause
             convertedData["@CharacterID"] = id;
 
-            // Build dynamic update query from keys
-            var updateQuery = _queries.GeneratePartialUpdateQuery(convertedData.Keys.Where(k => k != "@CharacterID"));
+            // Build SQL using un-prefixed names
+            var updateQuery = _queries.GeneratePartialUpdateQuery(
+                patchData.Keys.Where(k => !string.IsNullOrWhiteSpace(k))
+            );
 
-            // Run the update
             _database.UpdateRawDataInDatabase(updateQuery, convertedData);
         }
+
 
 
         public bool DeleteCharacterById(int characterId)
