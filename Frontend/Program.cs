@@ -8,10 +8,22 @@ namespace Frontend
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Step1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Wrap Step2 in a basic Form
+            Form testForm = new Form
+            {
+                Text = "Test: Step 2",
+                Width = 400,
+                Height = 400
+            };
+
+            var step2 = new Step2();
+            step2.Dock = DockStyle.Fill;
+
+            testForm.Controls.Add(step2);
+            Application.Run(testForm);
         }
     }
 }
