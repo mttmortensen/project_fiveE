@@ -2,90 +2,85 @@
 {
     partial class Step2
     {
+        private System.ComponentModel.IContainer components = null;
+        private Label lblRace;
         private ComboBox cmbRace;
-        private Label lblSelectRace;
-        private GroupBox grpRaceDetails;
-        private Label lblDarkvision;
+        private CheckBox chkDarkvision;
         private Label lblProficiencies;
-        private Label lblBonuses;
+        private CheckedListBox lstProficiencies;
+        private Label lblBonusStat1;
+        private ComboBox cmbBonusStat1;
+        private Label lblBonusStat2;
+        private ComboBox cmbBonusStat2;
 
         private void InitializeComponent()
         {
-            cmbRace = new ComboBox();
-            lblSelectRace = new Label();
-            grpRaceDetails = new GroupBox();
-            lblDarkvision = new Label();
-            lblProficiencies = new Label();
-            lblBonuses = new Label();
-            grpRaceDetails.SuspendLayout();
-            SuspendLayout();
-            // 
-            // cmbRace
-            // 
-            cmbRace.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbRace.Location = new Point(120, 20);
-            cmbRace.Name = "cmbRace";
-            cmbRace.Size = new Size(180, 23);
-            cmbRace.TabIndex = 1;
-            cmbRace.SelectedIndexChanged += cmbRace_SelectedIndexChanged;
-            // 
-            // lblSelectRace
-            // 
-            lblSelectRace.Location = new Point(20, 20);
-            lblSelectRace.Name = "lblSelectRace";
-            lblSelectRace.Size = new Size(100, 23);
-            lblSelectRace.TabIndex = 0;
-            lblSelectRace.Text = "Select a Race:";
-            // 
-            // grpRaceDetails
-            // 
-            grpRaceDetails.Controls.Add(lblDarkvision);
-            grpRaceDetails.Controls.Add(lblProficiencies);
-            grpRaceDetails.Controls.Add(lblBonuses);
-            grpRaceDetails.Location = new Point(20, 60);
-            grpRaceDetails.Name = "grpRaceDetails";
-            grpRaceDetails.Size = new Size(280, 120);
-            grpRaceDetails.TabIndex = 2;
-            grpRaceDetails.TabStop = false;
-            grpRaceDetails.Text = "Race Details";
-            // 
-            // lblDarkvision
-            // 
-            lblDarkvision.AutoSize = true;
-            lblDarkvision.Location = new Point(10, 25);
-            lblDarkvision.Name = "lblDarkvision";
-            lblDarkvision.Size = new Size(126, 15);
-            lblDarkvision.TabIndex = 0;
-            lblDarkvision.Text = "Darkvision: [API DATA]";
-            // 
-            // lblProficiencies
-            // 
-            lblProficiencies.AutoSize = true;
-            lblProficiencies.Location = new Point(10, 50);
-            lblProficiencies.Name = "lblProficiencies";
-            lblProficiencies.Size = new Size(138, 15);
-            lblProficiencies.TabIndex = 1;
-            lblProficiencies.Text = "Proficiencies: [API DATA]";
-            // 
-            // lblBonuses
-            // 
-            lblBonuses.AutoSize = true;
-            lblBonuses.Location = new Point(10, 75);
-            lblBonuses.Name = "lblBonuses";
-            lblBonuses.Size = new Size(115, 15);
-            lblBonuses.TabIndex = 2;
-            lblBonuses.Text = "Bonuses: [API DATA]";
-            // 
-            // Step2
-            // 
-            ClientSize = new Size(324, 161);
-            Controls.Add(lblSelectRace);
-            Controls.Add(cmbRace);
-            Controls.Add(grpRaceDetails);
-            Name = "Step2";
-            grpRaceDetails.ResumeLayout(false);
-            grpRaceDetails.PerformLayout();
-            ResumeLayout(false);
+            this.lblRace = new Label();
+            this.cmbRace = new ComboBox();
+            this.chkDarkvision = new CheckBox();
+            this.lblProficiencies = new Label();
+            this.lstProficiencies = new CheckedListBox();
+            this.lblBonusStat1 = new Label();
+            this.cmbBonusStat1 = new ComboBox();
+            this.lblBonusStat2 = new Label();
+            this.cmbBonusStat2 = new ComboBox();
+
+            this.SuspendLayout();
+
+            // Label: Race
+            this.lblRace.Text = "Select Race:";
+            this.lblRace.Location = new System.Drawing.Point(20, 20);
+
+            // ComboBox: Race
+            this.cmbRace.Location = new System.Drawing.Point(120, 20);
+            this.cmbRace.Width = 180;
+            this.cmbRace.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // CheckBox: Darkvision
+            this.chkDarkvision.Text = "Darkvision";
+            this.chkDarkvision.Location = new System.Drawing.Point(20, 60);
+
+            // Label: Proficiencies
+            this.lblProficiencies.Text = "Racial Proficiencies:";
+            this.lblProficiencies.Location = new System.Drawing.Point(20, 100);
+
+            // CheckedListBox: Proficiencies
+            this.lstProficiencies.Location = new System.Drawing.Point(20, 125);
+            this.lstProficiencies.Size = new System.Drawing.Size(280, 60);
+            this.lstProficiencies.CheckOnClick = true;
+
+            // Label: Ability Bonus 1
+            this.lblBonusStat1.Text = "Select +2 Bonus:";
+            this.lblBonusStat1.Location = new System.Drawing.Point(20, 200);
+
+            // ComboBox: Bonus Stat 1
+            this.cmbBonusStat1.Location = new System.Drawing.Point(140, 200);
+            this.cmbBonusStat1.Width = 160;
+            this.cmbBonusStat1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Label: Ability Bonus 2
+            this.lblBonusStat2.Text = "Select +1 Bonus:";
+            this.lblBonusStat2.Location = new System.Drawing.Point(20, 240);
+
+            // ComboBox: Bonus Stat 2
+            this.cmbBonusStat2.Location = new System.Drawing.Point(140, 240);
+            this.cmbBonusStat2.Width = 160;
+            this.cmbBonusStat2.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Add controls to UserControl
+            this.Controls.Add(this.lblRace);
+            this.Controls.Add(this.cmbRace);
+            this.Controls.Add(this.chkDarkvision);
+            this.Controls.Add(this.lblProficiencies);
+            this.Controls.Add(this.lstProficiencies);
+            this.Controls.Add(this.lblBonusStat1);
+            this.Controls.Add(this.cmbBonusStat1);
+            this.Controls.Add(this.lblBonusStat2);
+            this.Controls.Add(this.cmbBonusStat2);
+
+            // Set UserControl size
+            this.Size = new System.Drawing.Size(340, 300);
+            this.ResumeLayout(false);
         }
     }
 }
