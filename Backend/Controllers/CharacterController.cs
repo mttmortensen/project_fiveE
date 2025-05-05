@@ -108,6 +108,9 @@ namespace Backend
             var classInsert = _mapper.MapCharacterClassToDictionary(newCharacter);
             _database.ExecuteNonQuery(_queries.LinkCharacterClass, classInsert);
 
+            // Step 6: Insert dynamic subclass-specific data into CharacterSubclass table
+            var subclassInsert = _mapper.MapCharacterSubclassToDictionary(newCharacter);
+            _database.ExecuteNonQuery(_queries.LinkCharacterSubclass, subclassInsert);
 
             return characterId;
         }

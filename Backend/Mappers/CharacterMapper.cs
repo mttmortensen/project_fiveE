@@ -170,38 +170,59 @@ namespace Backend
         public Dictionary<string, object> MapCharacterClassToDictionary(Character character)
         {
             return new Dictionary<string, object>
-    {
-        { "@CharacterID", character.CharacterID },
-        { "@ClassID", character.ClassID },
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@ClassID", character.ClassID },
 
-        { "@ArmorProficiencies",
-            character.Classes?.ArmorProficiencies != null
-                ? string.Join(",", character.Classes.ArmorProficiencies)
-                : (object)DBNull.Value
-        },
+                { "@ArmorProficiencies",
+                    character.Classes?.ArmorProficiencies != null
+                        ? string.Join(",", character.Classes.ArmorProficiencies)
+                        : (object)DBNull.Value
+                },
 
-        { "@WeaponProficiencies",
-            character.Classes?.WeaponProficiencies != null
-                ? string.Join(",", character.Classes.WeaponProficiencies)
-                : (object)DBNull.Value
-        },
+                { "@WeaponProficiencies",
+                    character.Classes?.WeaponProficiencies != null
+                        ? string.Join(",", character.Classes.WeaponProficiencies)
+                        : (object)DBNull.Value
+                },
 
-        { "@ToolProficiencies",
-            character.Classes?.ToolProficiencies != null
-                ? string.Join(",", character.Classes.ToolProficiencies)
-                : (object)DBNull.Value
-        },
+                { "@ToolProficiencies",
+                    character.Classes?.ToolProficiencies != null
+                        ? string.Join(",", character.Classes.ToolProficiencies)
+                        : (object)DBNull.Value
+                },
 
-        { "@SpellcastingAbilityModifier", character.Classes?.SpellcastingAbilityModifier ?? 0 },
+                { "@SpellcastingAbilityModifier", character.Classes?.SpellcastingAbilityModifier ?? 0 },
 
-        { "@SkillChoices",
-            character.Classes?.SkillChoices != null
-                ? string.Join(",", character.Classes.SkillChoices)
-                : (object)DBNull.Value
+                { "@SkillChoices",
+                    character.Classes?.SkillChoices != null
+                        ? string.Join(",", character.Classes.SkillChoices)
+                        : (object)DBNull.Value
+                }
+            };
         }
-    };
-        }
 
+        // Maps a list of subclass and character IDs as well as specific subclass properties to a dictionary for database insertion
+        public Dictionary<string, object> MapCharacterSubclassToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@SubclassID", character.SubclassID },
+
+                { "@BonusProficiencies",
+                    character.Subclass?.BonusProficiencies != null
+                        ? string.Join(",", character.Subclass.BonusProficiencies)
+                        : (object)DBNull.Value
+                },
+
+                { "@BonusSpells",
+                    character.Subclass?.BonusSpells != null
+                        ? string.Join(",", character.Subclass.BonusSpells)
+                        : (object)DBNull.Value
+                }
+            };
+        }
 
 
         /************************************************************************/
