@@ -9,7 +9,7 @@ namespace Backend
     public class RaceQueries
     {
         public string GetAllRaces => @"
-            SELECT RaceID, RaceName, Description
+            SELECT RaceID, RaceName, RaceSize, Speed, Languages, RacialFeatures, Description
             FROM Races
             ORDER By RaceName;
         ";
