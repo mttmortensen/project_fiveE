@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend
 {
-    internal class ClassMapper
+    public class ClassMapper
     {
         public List<Classes> MapToClassList(List<Dictionary<string, object>> rawData) 
         {
