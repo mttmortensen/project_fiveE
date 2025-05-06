@@ -8,14 +8,15 @@ namespace Backend
     {
         public static string HandleRequest(HttpListenerRequest request) 
         {
-            var controller = new CharacterController(new Database(), new CharacterMapper());
+            var charController = new CharacterController(new Database(), new CharacterMapper());
+            var raceController = new RaceController(new Database());
 
             // Check the request's path
             // Handle GET request to get all characters
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/characters") 
             {
                 // 1. Get controller ready to get all the characters 
-                var characters = controller.GetAllCharacters();
+                var characters = charController.GetAllCharacters();
 
                 // 2. Wrap the response in a JSON string 
                 return JsonSerializer.Serialize(characters);
@@ -30,7 +31,7 @@ namespace Backend
                     string[] segments = request.Url.AbsolutePath.Split('/');
                     if (segments.Length == 3 && int.TryParse(segments[2], out int characterId))
                     {
-                        var character = controller.GetCharacterById(characterId);
+                        var character = charController.GetCharacterById(characterId);
 
                         if (character != null)
                         {
@@ -69,7 +70,7 @@ namespace Backend
                     }
 
                     // 2. Add the character to the database
-                    var newCharacterId = controller.AddCharacter(newCharacter);
+                    var newCharacterId = charController.AddCharacter(newCharacter);
 
                     // 3. Return the ID of the newly created character
                     var response = new { Message = "Character created successfully", Id = newCharacterId };
@@ -90,7 +91,7 @@ namespace Backend
                 var requestBody = reader.ReadToEnd();
                 var patchData = JsonSerializer.Deserialize<Dictionary<string, object>>(requestBody);
 
-                controller.PartiallyUpdateCharacter(id, patchData);
+                charController.PartiallyUpdateCharacter(id, patchData);
                 return $"Character {id} updated successfully!";
 
             }
@@ -103,11 +104,21 @@ namespace Backend
                 var idString = request.Url.AbsolutePath.Replace("/characters/", "");
                 if (int.TryParse(idString, out int characterId))
                 {
-                    var success = controller.DeleteCharacterById(characterId);
+                    var success = charController.DeleteCharacterById(characterId);
                     return JsonSerializer.Serialize(new { Message = success ? "Character deleted" : "Character not found" });
                 }
 
                 return "400 Bad Request: Invalid ID format.";
+            }
+
+            // Handle GET request to get all race data+
+            if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/races")
+            {
+                // 1. Get controller ready to get all the races 
+                var races = raceController.GetAllRaces();
+
+                // 2. Wrap the response in a JSON string 
+                return JsonSerializer.Serialize(races);
             }
 
             return "404 not found";
