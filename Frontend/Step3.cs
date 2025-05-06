@@ -1,52 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace Frontend
 {
     public partial class Step3 : UserControl
     {
-        // Placeholder for Class → Subclass map
-        private Dictionary<string, List<string>> classToSubclass = new();
+        private List<Step3ClassModel> classList = new();
 
         public Step3()
         {
             InitializeComponent();
-            LoadClassData();
+            LoadClassDataFromApi();
         }
 
-        private void LoadClassData()
+        private async void LoadClassDataFromApi()
         {
-            // Mock classes
-            cmbClass.Items.AddRange(new object[] { "Fighter", "Wizard", "Cleric" });
+            try
+            {
+                using var client = new HttpClient();
+                var response = await client.GetAsync("http://localhost:5000/classes");
+                response.EnsureSuccessStatusCode();
 
-            // Mock subclasses
-            classToSubclass["Fighter"] = new List<string> { "Champion", "Battle Master", "Eldritch Knight" };
-            classToSubclass["Wizard"] = new List<string> { "Evocation", "Illusion", "Necromancy" };
-            classToSubclass["Cleric"] = new List<string> { "Life Domain", "War Domain", "Trickery Domain" };
+                var json = await response.Content.ReadAsStringAsync();
+                classList = JsonSerializer.Deserialize<List<Step3ClassModel>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                cmbClass.DataSource = classList;
+                cmbClass.DisplayMember = "ClassName";
+                cmbClass.ValueMember = "ClassID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading classes:\n" + ex.Message);
+            }
         }
 
         private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbSubclass.Items.Clear();
-
-            if (cmbClass.SelectedItem is string selectedClass &&
-                classToSubclass.TryGetValue(selectedClass, out var subclasses))
+            if (cmbClass.SelectedItem is Step3ClassModel selected)
             {
-                cmbSubclass.Items.AddRange(subclasses.ToArray());
-                if (cmbSubclass.Items.Count > 0)
-                    cmbSubclass.SelectedIndex = 0;
+                lblHitDie.Text = $"Hit Die: {selected.HitDie}";
+                lblPrimaryAbility.Text = $"Primary Ability: {selected.PrimaryAbility}";
+                lblSavingThrows.Text = selected.SavingThrows != null
+                    ? $"Saving Throws: {string.Join(", ", selected.SavingThrows)}"
+                    : "Saving Throws: None";
+
+                lblFeatures.Text = selected.ClassFeatures != null
+                    ? $"Features: {string.Join(", ", selected.ClassFeatures)}"
+                    : "Features: None";
             }
         }
 
-        // Pull the selected IDs (for now using name indexes as stand-ins)
-        public int SelectedClassID => cmbClass.SelectedIndex + 1;
-        public int SelectedSubclassID => cmbSubclass.SelectedIndex + 1;
+        public int SelectedClassID =>
+            cmbClass.SelectedItem is Step3ClassModel selected ? selected.ClassID : -1;
     }
 }
