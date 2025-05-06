@@ -1,0 +1,2 @@
+ALTER TABLE Races
+ADD Description VARCHAR(MAX);
