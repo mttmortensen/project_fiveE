@@ -63,16 +63,26 @@ namespace Frontend
 
         private void ShowRaceDetails(Step2RaceModel race)
         {
-            // You’ll want to bind these to labels or a preview box in the Designer
-            MessageBox.Show(
-                $"Race: {race.RaceName}\n" +
-                $"Size: {race.RaceSize}\n" +
-                $"Speed: {race.Speed}\n" +
-                $"Languages: {string.Join(", ", race.Languages)}\n" +
-                $"Features: {string.Join(", ", race.RacialFeatures)}\n\n" +
-                $"{race.Description}"
-            );
+            if (race == null)
+                return;
+
+            // Fill each label and description field
+            lblSize.Text = $"Size: {race.RaceSize}";
+            lblSpeed.Text = $"Speed: {race.Speed} ft";
+
+            lblLanguages.Text = race.Languages != null && race.Languages.Count > 0
+                ? $"Languages: {string.Join(", ", race.Languages)}"
+                : "Languages: None";
+
+            lblFeatures.Text = race.RacialFeatures != null && race.RacialFeatures.Count > 0
+                ? $"Features: {string.Join(", ", race.RacialFeatures)}"
+                : "Features: None";
+
+            txtDescription.Text = !string.IsNullOrWhiteSpace(race.Description)
+                ? race.Description
+                : "No description available.";
         }
+
 
 
 
