@@ -10,6 +10,7 @@ namespace Backend
         {
             var charController = new CharacterController(new Database(), new CharacterMapper());
             var raceController = new RaceController(new Database());
+            var classController = new ClassController(new Database());
 
             // Check the request's path
             // Handle GET request to get all characters
@@ -111,7 +112,7 @@ namespace Backend
                 return "400 Bad Request: Invalid ID format.";
             }
 
-            // Handle GET request to get all race data+
+            // Handle GET request to get all race data
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/races")
             {
                 // 1. Get controller ready to get all the races 
@@ -119,6 +120,16 @@ namespace Backend
 
                 // 2. Wrap the response in a JSON string 
                 return JsonSerializer.Serialize(races);
+            }
+
+            // Handle GET request to get all classes data
+            if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/classes")
+            {
+                // 1. Get controller ready to get all the classes 
+                var classes = classController.GetAllClasses();
+
+                // 2. Wrap the response in a JSON string 
+                return JsonSerializer.Serialize(classes);
             }
 
             return "404 not found";
