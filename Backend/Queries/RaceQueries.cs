@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Backend.Queries
+{
+    public class RaceQueries
+    {
+        public string GetAllRaces => @"
+            SELECT RaceID, RaceName, Description 
+            FROM Races
+            ORDER By RaceName;
+        ";
+    }
+}
