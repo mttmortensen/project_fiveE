@@ -11,18 +11,18 @@ namespace Frontend
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Wrap Step2 in a basic Form
+            // Wrap Steps in a basic Form
             Form testForm = new Form
             {
-                Text = "Test: Step 2",
+                Text = "Test: Step 1",
                 Width = 400,
                 Height = 400
             };
 
-            var step2 = new Step2();
-            step2.Dock = DockStyle.Fill;
+            var step1 = new Step1();
+            step1.Dock = DockStyle.Fill;
 
-            testForm.Controls.Add(step2);
+            testForm.Controls.Add(step1);
             Application.Run(testForm);
         }
     }
