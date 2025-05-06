@@ -11,19 +11,41 @@ namespace Frontend
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Wrap Steps in a basic Form
             Form testForm = new Form
             {
-                Text = "Test: Step 3",
+                Text = "D&D Character Creator",
                 Width = 400,
-                Height = 400
+                Height = 450
             };
 
-            var step = new Step3();
-            step.Dock = DockStyle.Fill;
+            Panel container = new Panel
+            {
+                Dock = DockStyle.Fill
+            };
 
-            testForm.Controls.Add(step);
+            Button btnNext = new Button
+            {
+                Text = "Next",
+                Dock = DockStyle.Bottom
+            };
+
+            Button btnBack = new Button
+            {
+                Text = "Back",
+                Dock = DockStyle.Bottom
+            };
+
+            testForm.Controls.Add(container);
+            testForm.Controls.Add(btnNext);
+            testForm.Controls.Add(btnBack);
+
+            var wizard = new WizardController(container);
+
+            btnNext.Click += (s, e) => wizard.NextStep();
+            btnBack.Click += (s, e) => wizard.PreviousStep();
+
             Application.Run(testForm);
+
         }
     }
 }
