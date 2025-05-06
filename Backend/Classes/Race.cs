@@ -6,6 +6,8 @@
         public string RaceName { get; set; }
         public string RaceSize { get; set; }
         public int Speed { get; set; }
+        public string Description { get; set; }
+
 
         public List<string> AbilityScoreBonuses { get; set; }
         public List<string> Languages { get; set; }

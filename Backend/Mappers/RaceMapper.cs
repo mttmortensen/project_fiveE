@@ -13,7 +13,8 @@ namespace Backend
             return rawData.Select(row => new Race
             {
                 RaceID = Convert.ToInt32(row["RaceID"]),
-                RaceName = row["RaceName"].ToString()
+                RaceName = row["RaceName"].ToString(),
+                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null,
             }).ToList();
         }
     }
