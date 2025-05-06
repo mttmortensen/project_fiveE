@@ -14,15 +14,15 @@ namespace Frontend
             // Wrap Steps in a basic Form
             Form testForm = new Form
             {
-                Text = "Test: Step 1",
+                Text = "Test: Step 3",
                 Width = 400,
                 Height = 400
             };
 
-            var step1 = new Step1();
-            step1.Dock = DockStyle.Fill;
+            var step = new Step3();
+            step.Dock = DockStyle.Fill;
 
-            testForm.Controls.Add(step1);
+            testForm.Controls.Add(step);
             Application.Run(testForm);
         }
     }
