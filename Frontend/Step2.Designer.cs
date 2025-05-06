@@ -58,7 +58,7 @@
             // 
             // chkDarkvision
             // 
-            chkDarkvision.Location = new Point(10, 16);
+            chkDarkvision.Location = new Point(20, 257);
             chkDarkvision.Name = "chkDarkvision";
             chkDarkvision.Size = new Size(104, 24);
             chkDarkvision.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // lblProficiencies
             // 
-            lblProficiencies.Location = new Point(20, 227);
+            lblProficiencies.Location = new Point(20, 231);
             lblProficiencies.Name = "lblProficiencies";
             lblProficiencies.Size = new Size(100, 23);
             lblProficiencies.TabIndex = 3;
@@ -75,14 +75,14 @@
             // lstProficiencies
             // 
             lstProficiencies.CheckOnClick = true;
-            lstProficiencies.Location = new Point(20, 252);
+            lstProficiencies.Location = new Point(20, 287);
             lstProficiencies.Name = "lstProficiencies";
             lstProficiencies.Size = new Size(280, 58);
             lstProficiencies.TabIndex = 4;
             // 
             // lblBonusStat1
             // 
-            lblBonusStat1.Location = new Point(20, 327);
+            lblBonusStat1.Location = new Point(20, 353);
             lblBonusStat1.Name = "lblBonusStat1";
             lblBonusStat1.Size = new Size(100, 23);
             lblBonusStat1.TabIndex = 5;
@@ -91,14 +91,14 @@
             // cmbBonusStat1
             // 
             cmbBonusStat1.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbBonusStat1.Location = new Point(140, 327);
+            cmbBonusStat1.Location = new Point(140, 353);
             cmbBonusStat1.Name = "cmbBonusStat1";
             cmbBonusStat1.Size = new Size(160, 23);
             cmbBonusStat1.TabIndex = 6;
             // 
             // lblBonusStat2
             // 
-            lblBonusStat2.Location = new Point(20, 367);
+            lblBonusStat2.Location = new Point(20, 393);
             lblBonusStat2.Name = "lblBonusStat2";
             lblBonusStat2.Size = new Size(100, 23);
             lblBonusStat2.TabIndex = 7;
@@ -107,7 +107,7 @@
             // cmbBonusStat2
             // 
             cmbBonusStat2.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbBonusStat2.Location = new Point(140, 367);
+            cmbBonusStat2.Location = new Point(140, 393);
             cmbBonusStat2.Name = "cmbBonusStat2";
             cmbBonusStat2.Size = new Size(160, 23);
             cmbBonusStat2.TabIndex = 8;
@@ -116,7 +116,6 @@
             // 
             grpRaceDetails.Controls.Add(lblSize);
             grpRaceDetails.Controls.Add(lblSpeed);
-            grpRaceDetails.Controls.Add(chkDarkvision);
             grpRaceDetails.Controls.Add(lblLanguages);
             grpRaceDetails.Controls.Add(lblFeatures);
             grpRaceDetails.Controls.Add(txtDescription);
@@ -177,6 +176,7 @@
             // 
             Controls.Add(lblRace);
             Controls.Add(cmbRace);
+            Controls.Add(chkDarkvision);
             Controls.Add(lblProficiencies);
             Controls.Add(lstProficiencies);
             Controls.Add(lblBonusStat1);
