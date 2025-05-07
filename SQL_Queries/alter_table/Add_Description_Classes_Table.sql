@@ -1,0 +1,2 @@
+ALTER TABLE Classes
+ADD Description VARCHAR(MAX);
