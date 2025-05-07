@@ -2,6 +2,7 @@
 {
     partial class Step3
     {
+        private TextBox txtClassDescription;
         private System.ComponentModel.IContainer components = null;
         private Label lblClass;
         private ComboBox cmbClass;
@@ -58,16 +59,26 @@
             this.lblFeatures.Location = new System.Drawing.Point(10, 80);
             this.lblFeatures.AutoSize = true;
 
+            // TextBox: Class Description
+            this.txtClassDescription = new TextBox();
+            this.txtClassDescription.Multiline = true;
+            this.txtClassDescription.ReadOnly = true;
+            this.txtClassDescription.ScrollBars = ScrollBars.Vertical;
+            this.txtClassDescription.Location = new System.Drawing.Point(10, 100);
+            this.txtClassDescription.Size = new System.Drawing.Size(275, 40);
+
             this.grpClassDetails.Controls.Add(this.lblHitDie);
             this.grpClassDetails.Controls.Add(this.lblPrimaryAbility);
             this.grpClassDetails.Controls.Add(this.lblSavingThrows);
             this.grpClassDetails.Controls.Add(this.lblFeatures);
+            this.grpClassDetails.Controls.Add(this.txtClassDescription);
+            this.grpClassDetails.Size = new System.Drawing.Size(300, 160);
 
             this.Controls.Add(this.lblClass);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.grpClassDetails);
 
-            this.Size = new System.Drawing.Size(340, 240);
+            this.Size = new System.Drawing.Size(340, 260);
             this.ResumeLayout(false);
         }
     }

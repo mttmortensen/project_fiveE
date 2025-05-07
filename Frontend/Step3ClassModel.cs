@@ -14,6 +14,7 @@ namespace Frontend
         public string PrimaryAbility { get; set; }
         public List<string> SavingThrows { get; set; }
         public List<string> ClassFeatures { get; set; }
+        public string Descriptions { get; set; }
 
         public override string ToString()
         {

@@ -53,6 +53,10 @@ namespace Frontend
                 lblFeatures.Text = selected.ClassFeatures != null
                     ? $"Features: {string.Join(", ", selected.ClassFeatures)}"
                     : "Features: None";
+
+                txtClassDescription.Text = !string.IsNullOrWhiteSpace(selected.Descriptions)
+                    ? selected.Descriptions
+                    : "No description available.";
             }
         }
 
