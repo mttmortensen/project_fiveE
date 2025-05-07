@@ -10,6 +10,7 @@
         public List<string> SavingThrows { get; set; }
         public List<string> SkillChoices { get; set; }
         public List<string> ClassFeatures { get; set; }
+        public string Descriptions { get; set; }
 
         public List<string> ArmorProficiencies { get; set; } = new List<string>();
         public List<string> WeaponProficiencies { get; set; } = new List<string>();

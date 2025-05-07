@@ -20,6 +20,7 @@ namespace Backend
                 PrimaryAbility = row["PrimaryAbility"].ToString(),
                 SavingThrows = JsonSerializer.Deserialize<List<string>>(row["SavingThrows"].ToString()),
                 ClassFeatures = JsonSerializer.Deserialize<List<string>>(row["ClassFeatures"].ToString()),
+                Descriptions = row["Description"].ToString()
             }).ToList();
         }
     }

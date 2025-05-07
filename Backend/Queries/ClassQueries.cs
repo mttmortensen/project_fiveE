@@ -9,7 +9,7 @@ namespace Backend
     public class ClassQueries
     {
         public string GetAllClasses => @"
-            SELECT ClassID, ClassName, HitDie, PrimaryAbility, SavingThrows, ClassFeatures
+            SELECT ClassID, ClassName, HitDie, PrimaryAbility, SavingThrows, ClassFeatures, Description
             FROM Classes
             ORDER BY ClassName;
         ";
