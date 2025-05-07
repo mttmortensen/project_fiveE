@@ -11,9 +11,9 @@ namespace Frontend
         public int SubclassID { get; set; }
         public int ClassID { get; set; }
         public string SubclassName { get; set; }
-        public List<string> BonusSpells { get; set; }
-        public List<string> BonusProficiencies { get; set; }
-        public string Description { get; set; }
+        public int EntryLevel { get; set; }
+        public List<string> SubclassFeatures { get; set; }
+        public string Descriptions { get; set; }
 
         public override string ToString()
         {
