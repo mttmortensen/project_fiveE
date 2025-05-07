@@ -14,8 +14,8 @@ namespace Frontend
             Form testForm = new Form
             {
                 Text = "D&D Character Creator",
-                Width = 400,
-                Height = 450
+                Width = 550,
+                Height = 650
             };
 
             Panel container = new Panel
