@@ -11,6 +11,7 @@ namespace Backend
             var charController = new CharacterController(new Database(), new CharacterMapper());
             var raceController = new RaceController(new Database());
             var classController = new ClassController(new Database());
+            var subclassController = new SubclassController(new Database());
 
             // Check the request's path
             // Handle GET request to get all characters
@@ -131,6 +132,20 @@ namespace Backend
                 // 2. Wrap the response in a JSON string 
                 return JsonSerializer.Serialize(classes);
             }
+            else if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/subclasses")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["classId"], out int classId))
+                {
+                    var subclasses = subclassController.GetSubclassesByClassId(classId);
+                    return JsonSerializer.Serialize(subclasses);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid classId parameter." });
+                }
+            }
+
 
             return "404 not found";
         }
