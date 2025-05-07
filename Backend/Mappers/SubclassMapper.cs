@@ -18,7 +18,8 @@ namespace Backend
                 ClassID = Convert.ToInt32(row["ClassID"]),
                 SubclassName = row["SubclassName"].ToString(),
                 EntryLevel = Convert.ToInt32(row["EntryLevel"]),
-                SubclassFeatures = JsonSerializer.Deserialize<List<string>>(row["SubclassFeatures"].ToString()) ?? null
+                SubclassFeatures = JsonSerializer.Deserialize<List<string>>(row["SubclassFeatures"].ToString()) ?? null,
+                Descriptions = row["Descriptions"].ToString(),
             }).ToList();
         }
     }

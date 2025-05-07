@@ -9,7 +9,7 @@ namespace Backend
     public class SubclassQueries
     {
         public string GetSubclassesByClassId => @"
-            SELECT SubclassID, ClassID, SubclassName, EntryLevel, SubclassFeatures
+            SELECT SubclassID, ClassID, SubclassName, EntryLevel, SubclassFeatures, Description
             FROM Subclasses
             WHERE ClassID = @ClassID
             ORDER BY SubclassName;
