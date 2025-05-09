@@ -7,12 +7,14 @@ namespace Backend
         private readonly Database _database;
         private readonly CharacterMapper _mapper;
         private readonly CharacterQueries _queries;
+        private readonly RaceController _raceController;
 
         public CharacterController(Database database, CharacterMapper mapper)
         {
             _database = database;
             _mapper = mapper;
             _queries = new CharacterQueries();
+            _raceController = new RaceController(database);
         }
 
         public List<Character> GetAllCharacters()
@@ -33,7 +35,7 @@ namespace Backend
                 // Load dynamic RACE info
                 var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, param);
                 if (raceData.Count > 0)
-                    character.Race = _mapper.MapRaceData(raceData.First());
+                    character.Race = _raceController.GetCharacterRaceByCharacterID(character.CharacterID);
 
                 // Load dynamic CLASS info
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, param);
@@ -69,7 +71,7 @@ namespace Backend
                 // Race (dynamic + static)
                 var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, parameters);
                 if (raceData.Count > 0)
-                    character.Race = _mapper.MapRaceData(raceData.First());
+                    character.Race = _raceController.GetCharacterRaceByCharacterID(character.CharacterID);
 
                 // Class (dynamic + static)
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, parameters);
@@ -123,9 +125,9 @@ namespace Backend
                 _database.ExecuteNonQuery(_queries.LinkSpellToCharacter, paramSet);
             }
 
-            // Step 4: Insert the Race character specific props to CharacterRace table
-            var raceInsert = _mapper.MapCharacterRaceToDictionary(newCharacter);
-            _database.ExecuteNonQuery(_queries.LinkCharacterRace, raceInsert);
+            // Step 4: Insert the Race character specific props to CharacterRace and CharacterRaceSelection table
+            _raceController.InsertCharacterRace(newCharacter);
+            _raceController.InsertCharacterRaceSelection(newCharacter);
 
             // Step 5: Insert dynamic class-specific data into CharacterClass table
             var classInsert = _mapper.MapCharacterClassToDictionary(newCharacter);
