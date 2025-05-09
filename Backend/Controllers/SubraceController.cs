@@ -18,11 +18,11 @@ namespace Backend
             _mapper = new SubraceMapper();
         }
 
-        public List<Subrace> GetSubclassesByClassId(int classId)
+        public List<Subrace> GetSubracesByRaceId(int raceId)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "@ClassID", classId }
+                { "@RaceID", raceId }
             };
             var rawData = _database.GetRawDataFromDatabase(_queries.GetSubracesByRaceId, parameters);
             return _mapper.MapToSubraceList(rawData);
