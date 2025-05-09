@@ -10,18 +10,26 @@ namespace Backend
 {
     public class RaceMapper
     {
-        public List<Race> MapToRaceList(List<Dictionary<string, object>> rawData) 
+        public List<Race> MapToRaceList(List<Dictionary<string, object>> rawData)
         {
             return rawData.Select(row => new Race
             {
                 RaceID = Convert.ToInt32(row["RaceID"]),
                 RaceName = row["RaceName"].ToString(),
+                RaceCreatureType = row["RaceCreatureType"].ToString(),
                 RaceSize = row["RaceSize"].ToString(),
-                Speed = Convert.ToInt32(row["Speed"]),
-                Languages = JsonSerializer.Deserialize<List<string>>(row["Languages"].ToString()),
-                RacialFeatures = JsonSerializer.Deserialize<List<string>>(row["RacialFeatures"].ToString()),
+                RaceSpeed = Convert.ToInt32(row["RaceSpeed"]),
                 Description = row.ContainsKey("Description") ? row["Description"].ToString() : null,
             }).ToList();
+        }
+
+        // For GET /characters/:id - builds full Race object from JOIN
+        public Race MapRaceData(Dictionary<string, object> row) 
+        {
+            return new Race
+            {
+
+            }
         }
     }
 }
