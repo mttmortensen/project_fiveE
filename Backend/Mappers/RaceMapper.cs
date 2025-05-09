@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,38 @@ namespace Backend
             };
         }
 
+        // Maps static, always-granted racial traits assigned to the character
+        public CharacterRace MapCharacterRace(Dictionary<string, object> row)
+        {
+            return new CharacterRace
+            {
+                CharRaceID = row.ContainsKey("CharRaceID") ? SafeInt(row["CharRaceID"]) : 0,
+                CharacterID = SafeInt(row["CharacterID"]),
+                RaceID = SafeInt(row["RaceID"]),
+                Traits = row.ContainsKey("Traits") ? SafeList(row["Traits"]) : new List<string>()
+            };
+        }
+
+        // Maps player-selected racial options (languages, ASIs, proficiencies, etc.)
+        public CharacterRaceSelection MapCharacterRaceSelection(Dictionary<string, object> row)
+        {
+            return new CharacterRaceSelection
+            {
+                CharRaceSelectID = row.ContainsKey("CharRaceSelectID") ? SafeInt(row["CharRaceSelectID"]) : 0,
+                CharacterID = SafeInt(row["CharacterID"]),
+                RaceID = SafeInt(row["RaceID"]),
+                SubRaceID = row.ContainsKey("SubRaceID") ? SafeInt(row["SubRaceID"]) : null,
+                Languages = row.ContainsKey("Languages") ? SafeList(row["Languages"]) : new List<string>(),
+                SelectedTraits = row.ContainsKey("SelectedTraits") ? SafeList(row["SelectedTraits"]) : new List<string>(),
+                SelectedProficiencies = row.ContainsKey("SelectedProficiencies") ? SafeList(row["SelectedProficiencies"]) : new List<string>(),
+                SelectedSpells = row.ContainsKey("SelectedSpells") ? SafeList(row["SelectedSpells"]) : new List<string>(),
+                SelectedAbilityScoreBonuses = row.ContainsKey("SelectedAbilityScoreBonuses") && row["SelectedAbilityScoreBonuses"] != DBNull.Value
+                    ? JsonConvert.DeserializeObject<Dictionary<string, int>>(row["SelectedAbilityScoreBonuses"].ToString())
+                    : new Dictionary<string, int>()
+            };
+        }
+
+
         // For POST /characters -> insert into CharacterRace
         public Dictionary<string, object> MapCharacterRaceToDictionary(Character character)
         {
@@ -53,8 +86,28 @@ namespace Backend
             };
         }
 
+        // For POST /characters → insert into CharacterRaceSelection
+        public Dictionary<string, object> MapCharacterRaceSelectionToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@RaceID", character.RaceID },
+                { "@SubraceID", character.Race?.SubraceID ?? (object)DBNull.Value },
+                { "@Languages", character.CharacterRaceSelection?.Languages != null ? string.Join(",", character.CharacterRaceSelection.Languages) : (object)DBNull.Value },
+                { "@SelectedTraits", character.CharacterRaceSelection?.SelectedTraits != null ? string.Join(",", character.CharacterRaceSelection.SelectedTraits) : (object)DBNull.Value },
+                { "@SelectedProficiencies", character.CharacterRaceSelection?.SelectedProficiencies != null ? string.Join(",", character.CharacterRaceSelection.SelectedProficiencies) : (object)DBNull.Value },
+                { "@SelectedSpells", character.CharacterRaceSelection?.SelectedSpells != null ? string.Join(",", character.CharacterRaceSelection.SelectedSpells) : (object)DBNull.Value },
+                { "@SelectedAbilityScoreBonuses", character.CharacterRaceSelection?.SelectedAbilityScoreBonuses != null
+                    ? JsonConvert.SerializeObject(character.CharacterRaceSelection.SelectedAbilityScoreBonuses)
+                    : (object)DBNull.Value }
+            };
+        }
+
         // Helpers
         private int SafeInt(object value) => value == DBNull.Value ? 0 : Convert.ToInt32(value);
         private string SafeString(object value) => value == DBNull.Value ? null : value.ToString();
-    }
+        private List<string> SafeList(object value) =>
+            value != DBNull.Value ? value.ToString().Split(',').Select(s => s.Trim()).ToList() : new List<string>();
+        }
 }

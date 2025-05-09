@@ -17,6 +17,7 @@ namespace Backend
         public List<Character> MapToCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
+            var raceMapper = new RaceMapper(); // Handles Race + CharacterRace + Selection mapping
 
             foreach (var row in dataDictionaryRows)
             {
@@ -38,11 +39,9 @@ namespace Backend
                         HP = SafeInt(row["HP"]),
                         MaxHP = SafeInt(row["MaxHP"]),
                         TempHP = SafeInt(row["TempHP"]),
-                        Speed = SafeInt(row["Speed"]),
                         AC = SafeInt(row["AC"]),
                         InitiativeBonus = SafeInt(row["InitiativeBonus"]),
                         ExperiencePoints = SafeInt(row["ExperiencePoints"]),
-                        FeaturesAndTraits = ParseList(SafeString(row["FeaturesAndTraits"])),
                         PassivePerception = SafeInt(row["PassivePerception"]),
                         PassiveInsight = SafeInt(row["PassiveInsight"]),
                         PassiveInvestigation = SafeInt(row["PassiveInvestigation"]),
@@ -55,10 +54,16 @@ namespace Backend
                         CharacterBackstory = SafeString(row["CharacterBackstory"]),
                         AdditionalNotes = SafeString(row["AdditionalNotes"]),
 
+                        // Linked objects
                         Classes = MapClassData(row),
-                        Race = MapRaceData(row),
+                        Subclass = MapSubclassData(row),
                         AbilityScores = MapAbilityScores(row),
-                        Subclass = MapSubclassData(row)
+                        Spells = new List<Spell>(),
+
+                        // Race Mappings (static + assigned + selected)
+                        Race = raceMapper.MapRaceData(row),
+                        CharacterRace = raceMapper.MapCharacterRace(row),
+                        CharacterRaceSelection = raceMapper.MapCharacterRaceSelection(row)
                     };
 
                     characters.Add(character);
@@ -86,7 +91,6 @@ namespace Backend
                 { "@ExperiencePoints", character.ExperiencePoints },
                 { "@MaxHP", character.MaxHP },
                 { "@TempHP", character.TempHP },
-                { "@Speed", character.Speed },
                 { "@AC", character.AC },
                 { "@Background", character.Background ?? (object)DBNull.Value },
                 { "@Alignment", character.Alignment ?? (object)DBNull.Value },
@@ -94,7 +98,6 @@ namespace Backend
                 { "@RaceID", character.RaceID },
                 { "@AbilityID", character.AbilityID },
                 { "@SubclassID", character.SubclassID },
-                { "@FeaturesAndTraits", string.Join(";", character.FeaturesAndTraits) ?? (object)DBNull.Value },
                 { "@PassivePerception", character.PassivePerception },
                 { "@PassiveInsight", character.PassiveInsight },
                 { "@PassiveInvestigation", character.PassiveInvestigation },
@@ -136,34 +139,6 @@ namespace Backend
                 { "@CharacterID", characterID },
                 { "@SpellID", spell.SpellID  }
             }).ToList();
-        }
-
-        // Maps a list of race and character IDs as well as specific racial properties to a dictionary for database insertion
-        public Dictionary<string, object> MapCharacterRaceToDictionary(Character character)
-        {
-            return new Dictionary<string, object>
-            {
-                { "@CharacterID", character.CharacterID },
-                { "@RaceID", character.RaceID },
-
-                { "@RacialProficiencies",
-                    character.Race?.RacialProficiencies != null
-                        ? string.Join(",", character.Race.RacialProficiencies)
-                        : (object)DBNull.Value
-                },
-
-                { "@Darkvision", character.Race?.Darkvision ?? 0 },
-
-                { "@AbilityScoreBonuses",
-                    character.Race?.AbilityScoreBonuses != null
-                        ? JsonConvert.SerializeObject(
-                            character.Race.AbilityScoreBonuses
-                                .Select(s => s.Split(':'))
-                                .ToDictionary(split => split[0].Trim(), split => int.Parse(split[1].Trim()))
-                          )
-                        : (object)DBNull.Value
-                }
-            };
         }
 
         // Maps a list of class and character IDs as well as specific class properties to a dictionary for database insertion
@@ -263,28 +238,6 @@ namespace Backend
                 SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? SafeInt(row["SpellcastingAbilityModifier"]) : 0
             };
         }
-
-
-        // Maps raw database rows to a Race object
-        public Race MapRaceData(Dictionary<string, object> row)
-        {
-            return new Race
-            {
-                // Static reference data from Races table
-                RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
-                RaceName = row.ContainsKey("RaceName") ? SafeString(row["RaceName"]) : null,
-                RaceSize = row.ContainsKey("RaceSize") ? SafeString(row["RaceSize"]) : null,
-                Speed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
-                Languages = row.ContainsKey("Languages") ? SafeList(row["Languages"]) : new List<string>(),
-                RacialFeatures = row.ContainsKey("RacialFeatures") ? SafeList(row["RacialFeatures"]) : new List<string>(),
-
-                // Dynamic, character-specific data from CharacterRace
-                AbilityScoreBonuses = row.ContainsKey("AbilityScoreBonuses") ? MapAbilityScoreBonuses(SafeString(row["AbilityScoreBonuses"])) : new List<string>(),
-                RacialProficiencies = row.ContainsKey("RacialProficiencies") ? SafeList(row["RacialProficiencies"]) : new List<string>(),
-                Darkvision = row.ContainsKey("Darkvision") ? SafeInt(row["Darkvision"]) : 0
-            };
-        }
-
 
         // Maps raw database rows to a Subclass object
         public Subclass MapSubclassData(Dictionary<string, object> row)
