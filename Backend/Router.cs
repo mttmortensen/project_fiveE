@@ -12,6 +12,7 @@ namespace Backend
             var raceController = new RaceController(new Database());
             var classController = new ClassController(new Database());
             var subclassController = new SubclassController(new Database());
+            var subraceController = new SubraceController(new Database());
 
             // Check the request's path
             // Handle GET request to get all characters
@@ -121,6 +122,19 @@ namespace Backend
 
                 // 2. Wrap the response in a JSON string 
                 return JsonSerializer.Serialize(races);
+            }
+            else if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/subraces")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["raceId"], out int raceId))
+                {
+                    var subraces = subraceController.GetSubracesByRaceId(raceId);
+                    return JsonSerializer.Serialize(subraces);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid raceId parameter." });
+                }
             }
 
             // Handle GET request to get all classes data
