@@ -1,18 +1,16 @@
 ﻿namespace Backend
 {
     public class Race 
-    { 
+    {
         public int RaceID { get; set; }
         public string RaceName { get; set; }
-        public string RaceSize { get; set; }
-        public int Speed { get; set; }
+        // e.g., Humanoid, Fey, etc.
+        public string RaceCreatureType { get; set; }  
+        // Small, Medium, etc.
+        public string RaceSize { get; set; }          
+        // Base walking speed
+        public int RaceSpeed { get; set; }            
+
         public string Description { get; set; }
-
-
-        public List<string> AbilityScoreBonuses { get; set; }
-        public List<string> Languages { get; set; }
-        public List<string> RacialFeatures { get; set; }
-        public List<string> RacialProficiencies { get; set; } = new List<string>();
-        public int Darkvision { get; set; } = 0;
     }
 }
