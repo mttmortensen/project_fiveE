@@ -11,7 +11,7 @@ namespace Backend
         public int CharRaceSelectID { get; set; }
         public int CharacterID { get; set; }
         public int RaceID { get; set; }
-        public int SubRaceID { get; set; }
+        public int? SubRaceID { get; set; }
 
         public List<string> Languages { get; set; } = new();
         public List<string> SelectedTraits { get; set; } = new();
