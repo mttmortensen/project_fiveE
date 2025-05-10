@@ -40,9 +40,9 @@ namespace Backend
         }
 
         // Maps static, always-granted racial traits assigned to the character
-        public CharacterRaceOptions MapCharacterRace(Dictionary<string, object> row)
+        public CharacterRace MapCharacterRace(Dictionary<string, object> row)
         {
-            return new CharacterRaceOptions
+            return new CharacterRace
             {
                 CharRaceID = row.ContainsKey("CharRaceID") ? SafeInt(row["CharRaceID"]) : 0,
                 CharacterID = SafeInt(row["CharacterID"]),
