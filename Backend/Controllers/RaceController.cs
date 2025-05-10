@@ -25,17 +25,23 @@ namespace Backend
             return _mapper.MapToRaceList(rawData);
         }
 
-        public Race GetCharacterRaceByCharacterID(int characterId)
+        public Race GetRaceByCharacterId(int characterId)
+        {
+            var parameters = new Dictionary<string, object> { { "@CharacterID", characterId } };
+            var rawData = _database.GetRawDataFromDatabase(_queries.GetRaceByCharacterId, parameters);
+
+            if (rawData.Count > 0)
+                return _mapper.MapToRaceList(rawData).First();
+
+            return null;
+        }
+
+
+        public CharacterRaceSelection GetCharacterRaceSelectionByCharacterID(int characterId)
         {
             var param = new Dictionary<string, object> { { "@CharacterID", characterId } };
             var data = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, param);
-            return data.Count > 0 ? _mapper.MapRaceData(data.First()) : null;
-        }
-
-        public void InsertCharacterRace(Character character)
-        {
-            var data = _mapper.MapCharacterRaceToDictionary(character);
-            _database.ExecuteNonQuery(_queries.LinkCharacterRace, data);
+            return data.Count > 0 ? _mapper.MapCharacterRaceSelection(data.First()) : null;
         }
 
         public void InsertCharacterRaceSelection(Character character)

@@ -15,21 +15,32 @@ namespace Backend
             ORDER BY RaceName;
         ";
 
-        // GET: Race + CharacterRace data for a single character
+        // GET: Race + CharacterRaceSelection data for a single character
         public string GetCharacterRaceById => @"
             SELECT 
-                cr.CharRaceID,
-                cr.CharacterID,
-                cr.RaceID,
-                cr.Traits,
+                crs.CharRaceID,
+                crs.CharacterID,
+                crs.RaceID,
+                crs.AvailableTraits,
+                crs.AvailableLanguages,
+                crs.AvailableProficiencies,
+                crs.AvailableRaceSpells,
+                crs.AvailableAbilityScoreBonuses,
                 r.RaceName,
                 r.RaceCreatureType,
                 r.RaceSize,
                 r.RaceSpeed,
                 r.Description
-            FROM CharacterRace cr
-            INNER JOIN Races r ON cr.RaceID = r.RaceID
-            WHERE cr.CharacterID = @CharacterID;
+            FROM CharacterRaceSelection crs
+            INNER JOIN Races r ON crs.RaceID = r.RaceID
+            WHERE crs.CharacterID = @CharacterID;
+        ";
+
+        public string GetRaceByCharacterId => @"
+            SELECT r.RaceID, r.RaceName, r.RaceCreatureType, r.RaceSize, r.RaceSpeed, r.Description
+            FROM Races r
+            INNER JOIN CharacterRaceSelection crs ON r.RaceID = crs.RaceID
+            WHERE crs.CharacterID = @CharacterID;
         ";
 
         // GET: CharacterRaceSelection for a character
@@ -46,12 +57,6 @@ namespace Backend
                 SelectedAbilityScoreBonuses
             FROM CharacterRaceSelection
             WHERE CharacterID = @CharacterID;
-        ";
-
-        // POST: Insert CharacterRace
-        public string LinkCharacterRace => @"
-            INSERT INTO CharacterRace (CharacterID, RaceID, Traits)
-            VALUES (@CharacterID, @RaceID, @Traits);
         ";
 
         // POST: Insert CharacterRaceSelection

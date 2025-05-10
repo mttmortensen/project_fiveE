@@ -35,7 +35,8 @@ namespace Backend
                 // Load dynamic RACE info
                 var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, param);
                 if (raceData.Count > 0)
-                    character.Race = _raceController.GetCharacterRaceByCharacterID(character.CharacterID);
+                    character.Race = _raceController.GetRaceByCharacterId(character.CharacterID);
+                    character.CharacterRaceSelection = _raceController.GetCharacterRaceSelectionByCharacterID(character.CharacterID);
 
                 // Load dynamic CLASS info
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, param);
@@ -71,7 +72,8 @@ namespace Backend
                 // Race (dynamic + static)
                 var raceData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceById, parameters);
                 if (raceData.Count > 0)
-                    character.Race = _raceController.GetCharacterRaceByCharacterID(character.CharacterID);
+                    character.Race = _raceController.GetRaceByCharacterId(character.CharacterID);
+                    character.CharacterRaceSelection = _raceController.GetCharacterRaceSelectionByCharacterID(character.CharacterID);
 
                 // Class (dynamic + static)
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, parameters);
@@ -126,7 +128,6 @@ namespace Backend
             }
 
             // Step 4: Insert the Race character specific props to CharacterRace and CharacterRaceSelection table
-            _raceController.InsertCharacterRace(newCharacter);
             _raceController.InsertCharacterRaceSelection(newCharacter);
 
             // Step 5: Insert dynamic class-specific data into CharacterClass table
