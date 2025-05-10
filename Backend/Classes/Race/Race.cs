@@ -12,7 +12,8 @@
         public string RaceSize { get; set; }          
         // Base walking speed
         public int RaceSpeed { get; set; }            
-
         public string Description { get; set; }
+        // This will help when display all spell data back to the user during creation
+        public bool SpellsAvailable { get; set; } = false;
     }
 }
