@@ -49,7 +49,6 @@
         // Linked Tables (Composition over Duplication)
         public Race Race { get; set; }
         public Subrace Subrace { get; set; }  
-        public CharacterRaceOptions CharacterRace { get; set; }
         public CharacterRaceSelection CharacterRaceSelection { get; set; }
 
         public Classes Classes { get; set; }
