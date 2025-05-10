@@ -2,16 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace Backend
 {
     public class RaceMapper
     {
-        // Used for GET /races
+        /************************************************************************/
+        /*                          GET METHODS                                 */
+        /************************************************************************/
+
+        // GET /races → Maps raw data from Races table into Race objects (no spells shown)
         public List<Race> MapToRaceList(List<Dictionary<string, object>> rawData)
         {
             return rawData.Select(row => new Race
@@ -21,37 +21,46 @@ namespace Backend
                 RaceCreatureType = row["RaceCreatureType"].ToString(),
                 RaceSize = row["RaceSize"].ToString(),
                 RaceSpeed = Convert.ToInt32(row["RaceSpeed"]),
-                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null,
+                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null
+                // Intentionally excluding SpellsAvailable here (used only in internal flow)
             }).ToList();
         }
 
-        // For GET /characters/:id - builds full Race object from JOIN
-        public Race MapRaceData(Dictionary<string, object> row) 
+        // GET (internal use in GET /characters/:id) → Maps a single joined row from Character to a Race object
+        // To be used later when viewing all of the character data on the frontend
+        public Race MapRaceData(Dictionary<string, object> row)
         {
             return new Race
             {
-                RaceID = row.ContainsKey("RaceID") ? Convert.ToInt32(row["RaceID"]) : 0,
+                RaceID = row.ContainsKey("RaceID") ? SafeInt(row["RaceID"]) : 0,
                 RaceName = SafeString(row["RaceName"]),
                 RaceCreatureType = SafeString(row["RaceCreatureType"]),
                 RaceSize = SafeString(row["RaceSize"]),
                 RaceSpeed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
-                Description = SafeString(row["Description"]),
+                Description = SafeString(row["Description"])
             };
         }
 
-        // Maps static, always-granted racial traits assigned to the character
-        public CharacterRaceOptions MapCharacterRace(Dictionary<string, object> row)
+        // GET /character-race-options/:characterId → Maps CharacterRaceOptions from DB rows into objects for the Frontend to use
+        public List<CharacterRaceOptions> MapToCharacterRaceOptionsList(List<Dictionary<string, object>> rawData)
         {
-            return new CharacterRaceOptions
+            return rawData.Select(row => new CharacterRaceOptions
             {
-                CharRaceID = row.ContainsKey("CharRaceID") ? SafeInt(row["CharRaceID"]) : 0,
+                CharRaceID = SafeInt(row["CharRaceID"]),
                 CharacterID = SafeInt(row["CharacterID"]),
                 RaceID = SafeInt(row["RaceID"]),
-                Traits = row.ContainsKey("Traits") ? SafeList(row["Traits"]) : new List<string>()
-            };
+                AvailableTraits = row.ContainsKey("AvailableTraits") ? SafeList(row["AvailableTraits"]) : new List<string>(),
+                AvailableLanguages = row.ContainsKey("AvailableLanguages") ? SafeList(row["AvailableLanguages"]) : new List<string>(),
+                AvailableProficiencies = row.ContainsKey("AvailableProficiencies") ? SafeList(row["AvailableProficiencies"]) : new List<string>(),
+                AvailableRaceSpells = row.ContainsKey("AvailableRaceSpells") ? SafeList(row["AvailableRaceSpells"]) : new List<string>(),
+                AbilityScoreBonuses = row.ContainsKey("AvailableAbilityScoreBonuses") && row["AvailableAbilityScoreBonuses"] != DBNull.Value
+                    ? JsonConvert.DeserializeObject<Dictionary<string, int>>(row["AvailableAbilityScoreBonuses"].ToString())
+                    : new Dictionary<string, int>()
+            }).ToList();
         }
 
-        // Maps player-selected racial options (languages, ASIs, proficiencies, etc.)
+        // GET /character-race-selection/:characterId → Maps selected Race data for this character
+        // To be used later when viewing all of the character data on the frontend
         public CharacterRaceSelection MapCharacterRaceSelection(Dictionary<string, object> row)
         {
             return new CharacterRaceSelection
@@ -60,54 +69,23 @@ namespace Backend
                 CharacterID = SafeInt(row["CharacterID"]),
                 RaceID = SafeInt(row["RaceID"]),
                 SubRaceID = row.ContainsKey("SubRaceID") ? SafeInt(row["SubRaceID"]) : null,
-                SelectedLanguages = row.ContainsKey("Languages") ? SafeList(row["Languages"]) : new List<string>(),
+                SelectedLanguages = row.ContainsKey("SelectedLanguages") ? SafeList(row["SelectedLanguages"]) : new List<string>(),
                 SelectedTraits = row.ContainsKey("SelectedTraits") ? SafeList(row["SelectedTraits"]) : new List<string>(),
                 SelectedProficiencies = row.ContainsKey("SelectedProficiencies") ? SafeList(row["SelectedProficiencies"]) : new List<string>(),
-                SelectedSpells = row.ContainsKey("SelectedSpells") ? SafeList(row["SelectedSpells"]) : new List<string>(),
+                SelectedSpells = row.ContainsKey("SelectedRaceSpells") ? SafeList(row["SelectedRaceSpells"]) : new List<string>(),
                 SelectedAbilityScoreBonuses = row.ContainsKey("SelectedAbilityScoreBonuses") && row["SelectedAbilityScoreBonuses"] != DBNull.Value
                     ? JsonConvert.DeserializeObject<Dictionary<string, int>>(row["SelectedAbilityScoreBonuses"].ToString())
                     : new Dictionary<string, int>()
             };
         }
 
+        /************************************************************************/
+        /*                          HELPERS                                     */
+        /************************************************************************/
 
-        // For POST /characters -> insert into CharacterRace
-        public Dictionary<string, object> MapCharacterRaceToDictionary(Character character)
-        {
-            return new Dictionary<string, object>
-            {
-                { "@CharacterID", character.CharacterID },
-                { "@RaceID", character.RaceID },
-                { "@Traits",
-                    character.CharacterRace?.Traits != null
-                        ? string.Join(",", character.CharacterRace.Traits)
-                        : (object)DBNull.Value
-                }
-            };
-        }
-
-        // For POST /characters → insert into CharacterRaceSelection
-        public Dictionary<string, object> MapCharacterRaceSelectionToDictionary(Character character)
-        {
-            return new Dictionary<string, object>
-            {
-                { "@CharacterID", character.CharacterID },
-                { "@RaceID", character.RaceID },
-                { "@SubraceID", character.Race?.SubraceID ?? (object)DBNull.Value },
-                { "@Languages", character.CharacterRaceSelection?.SelectedLanguages != null ? string.Join(",", character.CharacterRaceSelection.SelectedLanguages) : (object)DBNull.Value },
-                { "@SelectedTraits", character.CharacterRaceSelection?.SelectedTraits != null ? string.Join(",", character.CharacterRaceSelection.SelectedTraits) : (object)DBNull.Value },
-                { "@SelectedProficiencies", character.CharacterRaceSelection?.SelectedProficiencies != null ? string.Join(",", character.CharacterRaceSelection.SelectedProficiencies) : (object)DBNull.Value },
-                { "@SelectedSpells", character.CharacterRaceSelection?.SelectedSpells != null ? string.Join(",", character.CharacterRaceSelection.SelectedSpells) : (object)DBNull.Value },
-                { "@SelectedAbilityScoreBonuses", character.CharacterRaceSelection?.SelectedAbilityScoreBonuses != null
-                    ? JsonConvert.SerializeObject(character.CharacterRaceSelection.SelectedAbilityScoreBonuses)
-                    : (object)DBNull.Value }
-            };
-        }
-
-        // Helpers
         private int SafeInt(object value) => value == DBNull.Value ? 0 : Convert.ToInt32(value);
         private string SafeString(object value) => value == DBNull.Value ? null : value.ToString();
         private List<string> SafeList(object value) =>
             value != DBNull.Value ? value.ToString().Split(',').Select(s => s.Trim()).ToList() : new List<string>();
-        }
+    }
 }
