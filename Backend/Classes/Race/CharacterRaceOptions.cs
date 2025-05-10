@@ -12,7 +12,7 @@ namespace Backend
         public int CharacterID { get; set; }
         public int RaceID { get; set; }
 
-        // Passive racial features (Trance, Lucky, etc.)
+        // These are avaiable options for the character to select from during character creation
         public List<string> AvailableTraits { get; set; } = new();  
         public List<string> AvailableLanguages { get; set; } = new();
         public List<string> AvailableProficiencies { get; set; } = new();

@@ -5,7 +5,7 @@
         public int RaceID { get; set; }
         public string RaceName { get; set; }
         // FK to Subrace table, if applicable
-        public int SubraceID { get; set; } = 0; 
+        public int? SubraceID { get; set; } = 0; 
         // e.g., Humanoid, Fey, etc.
         public string RaceCreatureType { get; set; }  
         // Small, Medium, etc.
