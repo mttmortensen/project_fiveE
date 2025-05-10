@@ -13,7 +13,7 @@ namespace Backend
         public int RaceID { get; set; }
         public int? SubRaceID { get; set; }
 
-        public List<string> Languages { get; set; } = new();
+        public List<string> SelectedLanguages { get; set; } = new();
         public List<string> SelectedTraits { get; set; } = new();
         public List<string> SelectedProficiencies { get; set; } = new();
         public List<string> SelectedSpells { get; set; } = new();
