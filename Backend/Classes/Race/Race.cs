@@ -14,5 +14,6 @@
         public int RaceSpeed { get; set; }            
 
         public string Description { get; set; }
+        public bool SpellsAvaiable { get; set; } = false;
     }
 }
