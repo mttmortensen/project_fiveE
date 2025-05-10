@@ -80,6 +80,42 @@ namespace Backend
         }
 
         /************************************************************************/
+        /*                          POST METHODS                                */
+        /************************************************************************/
+
+        // POST: Insert selected race options chosen by the player
+        public Dictionary<string, object> MapCharacterRaceSelectionToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@RaceID", character.RaceID },
+                { "@SubRaceID", character.CharacterRaceSelection?.SubRaceID ?? (object)DBNull.Value },
+
+                { "@SelectedLanguages", character.CharacterRaceSelection?.SelectedLanguages != null
+                    ? string.Join(",", character.CharacterRaceSelection.SelectedLanguages)
+                    : (object)DBNull.Value },
+
+                { "@SelectedTraits", character.CharacterRaceSelection?.SelectedTraits != null
+                    ? string.Join(",", character.CharacterRaceSelection.SelectedTraits)
+                    : (object)DBNull.Value },
+
+                { "@SelectedProficiencies", character.CharacterRaceSelection?.SelectedProficiencies != null
+                    ? string.Join(",", character.CharacterRaceSelection.SelectedProficiencies)
+                    : (object)DBNull.Value },
+
+                { "@SelectedRaceSpells", character.CharacterRaceSelection?.SelectedSpells != null
+                    ? string.Join(",", character.CharacterRaceSelection.SelectedSpells)
+                    : (object)DBNull.Value },
+
+                { "@SelectedAbilityScoreBonuses", character.CharacterRaceSelection?.SelectedAbilityScoreBonuses != null
+                    ? JsonConvert.SerializeObject(character.CharacterRaceSelection.SelectedAbilityScoreBonuses)
+                    : (object)DBNull.Value }
+            };
+        }
+
+
+        /************************************************************************/
         /*                          HELPERS                                     */
         /************************************************************************/
 

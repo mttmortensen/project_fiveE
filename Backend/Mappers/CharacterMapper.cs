@@ -62,7 +62,6 @@ namespace Backend
 
                         // Race Mappings (static + assigned + selected)
                         Race = raceMapper.MapRaceData(row),
-                        CharacterRace = raceMapper.MapCharacterRace(row),
                         CharacterRaceSelection = raceMapper.MapCharacterRaceSelection(row)
                     };
 
