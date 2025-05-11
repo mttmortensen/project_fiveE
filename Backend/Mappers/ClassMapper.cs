@@ -67,6 +67,19 @@ namespace Backend
             }).ToList();
         }
 
+        // GET /character-class-selection/:characterId
+        public CharacterClassSelection MapCharacterClassSelection(Dictionary<string, object> row)
+        {
+            return new CharacterClassSelection
+            {
+                CharClassSelectID = row.ContainsKey("CharClassSelectID") ? SafeInt(row["CharClassSelectID"]) : 0,
+                CharacterID = SafeInt(row["CharacterID"]),
+                ClassID = SafeInt(row["ClassID"]),
+                SelectedWeaponProficiencies = row.ContainsKey("SelectedWeaponProficiencies") ? SafeList(row["SelectedWeaponProficiencies"]) : new List<string>(),
+                SelectedClassPaths = row.ContainsKey("SelectedClassPaths") ? SafeList(row["SelectedClassPaths"]) : new List<string>()
+            };
+        }
+
 
         /************************************************************************/
         /*                          HELPERS                                     */
