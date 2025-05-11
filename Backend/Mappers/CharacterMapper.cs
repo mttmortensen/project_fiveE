@@ -17,7 +17,8 @@ namespace Backend
         public List<Character> MapToCharacterClass(List<Dictionary<string, object>> dataDictionaryRows)
         {
             var characters = new List<Character>();
-            var raceMapper = new RaceMapper(); // Handles Race + CharacterRace + Selection mapping
+            var raceMapper = new RaceMapper(); // Handles Race + CharacterRaceSelection mapping
+            var classMapper = new ClassMapper(); // Handles Class + CharacterClassSelection mapping
 
             foreach (var row in dataDictionaryRows)
             {
@@ -55,14 +56,16 @@ namespace Backend
                         AdditionalNotes = SafeString(row["AdditionalNotes"]),
 
                         // Linked objects
-                        Classes = MapClassData(row),
                         Subclass = MapSubclassData(row),
                         AbilityScores = MapAbilityScores(row),
                         Spells = new List<Spell>(),
 
                         // Race Mappings (static + assigned + selected)
                         Race = raceMapper.MapRaceData(row),
-                        CharacterRaceSelection = raceMapper.MapCharacterRaceSelection(row)
+                        CharacterRaceSelection = raceMapper.MapCharacterRaceSelection(row),
+
+                        Classes = classMapper.MapClassData(row),
+                        CharacterClassSelection = classMapper.MapCharacterClassSelection(row)
                     };
 
                     characters.Add(character);
@@ -140,42 +143,6 @@ namespace Backend
             }).ToList();
         }
 
-        // Maps a list of class and character IDs as well as specific class properties to a dictionary for database insertion
-        public Dictionary<string, object> MapCharacterClassToDictionary(Character character)
-        {
-            return new Dictionary<string, object>
-            {
-                { "@CharacterID", character.CharacterID },
-                { "@ClassID", character.ClassID },
-
-                { "@ArmorProficiencies",
-                    character.Classes?.ArmorProficiencies != null
-                        ? string.Join(",", character.Classes.ArmorProficiencies)
-                        : (object)DBNull.Value
-                },
-
-                { "@WeaponProficiencies",
-                    character.Classes?.WeaponProficiencies != null
-                        ? string.Join(",", character.Classes.WeaponProficiencies)
-                        : (object)DBNull.Value
-                },
-
-                { "@ToolProficiencies",
-                    character.Classes?.ToolProficiencies != null
-                        ? string.Join(",", character.Classes.ToolProficiencies)
-                        : (object)DBNull.Value
-                },
-
-                { "@SpellcastingAbilityModifier", character.Classes?.SpellcastingAbilityModifier ?? 0 },
-
-                { "@SkillChoices",
-                    character.Classes?.SkillChoices != null
-                        ? string.Join(",", character.Classes.SkillChoices)
-                        : (object)DBNull.Value
-                }
-            };
-        }
-
         // Maps a list of subclass and character IDs as well as specific subclass properties to a dictionary for database insertion
         public Dictionary<string, object> MapCharacterSubclassToDictionary(Character character)
         {
@@ -219,24 +186,6 @@ namespace Backend
             };
         }
 
-        // Maps raw database rows to a Classes object
-        public Classes MapClassData(Dictionary<string, object> row)
-        {
-            return new Classes
-            {
-                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
-                ClassName = row.ContainsKey("ClassName") ? SafeString(row["ClassName"]) : null,
-                HitDie = row.ContainsKey("HitDie") ? SafeString(row["HitDie"]) : null,
-                PrimaryAbility = row.ContainsKey("PrimaryAbility") ? SafeString(row["PrimaryAbility"]) : null,
-                SavingThrows = row.ContainsKey("SavingThrows") ? SafeList(row["SavingThrows"]) : new List<string>(),
-                SkillChoices = row.ContainsKey("SkillChoices") ? SafeList(row["SkillChoices"]) : new List<string>(),
-                ClassFeatures = row.ContainsKey("ClassFeatures") ? SafeList(row["ClassFeatures"]) : new List<string>(),
-                ArmorProficiencies = row.ContainsKey("ArmorProficiencies") ? SafeList(row["ArmorProficiencies"]) : new List<string>(),
-                WeaponProficiencies = row.ContainsKey("WeaponProficiencies") ? SafeList(row["WeaponProficiencies"]) : new List<string>(),
-                ToolProficiencies = row.ContainsKey("ToolProficiencies") ? SafeList(row["ToolProficiencies"]) : new List<string>(),
-                SpellcastingAbilityModifier = row.ContainsKey("SpellcastingAbilityModifier") ? SafeInt(row["SpellcastingAbilityModifier"]) : 0
-            };
-        }
 
         // Maps raw database rows to a Subclass object
         public Subclass MapSubclassData(Dictionary<string, object> row)
