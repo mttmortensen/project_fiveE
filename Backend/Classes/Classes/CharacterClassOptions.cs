@@ -13,6 +13,7 @@ namespace Backend
         public int ClassID { get; set; }
 
         public List<string> AvailableWeaponProficiencies { get; set; } = new();
+        public List<string> AvailableArmorProficiencies { get; set; } = new();
 
         // Will evolve into ClassPath object
         public List<string> AvailableClassPaths { get; set; } = new(); 
