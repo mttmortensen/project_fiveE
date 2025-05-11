@@ -52,6 +52,7 @@
         public CharacterRaceSelection CharacterRaceSelection { get; set; }
 
         public Classes Classes { get; set; }
+        public CharacterClassSelection CharacterClassSelection { get; set; } = new();
         public Subclass Subclass { get; set; }
 
         public AbilityScores AbilityScores { get; set; }

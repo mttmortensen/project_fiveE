@@ -80,6 +80,28 @@ namespace Backend
             };
         }
 
+        /************************************************************************/
+        /*                          POST METHODS                                */
+        /************************************************************************/
+
+        // POST: Insert selected class data for a character
+        public Dictionary<string, object> MapCharacterClassSelectionToDictionary(Character character)
+        {
+            return new Dictionary<string, object>
+            {
+                { "@CharacterID", character.CharacterID },
+                { "@ClassID", character.ClassID },
+
+                { "@SelectedWeaponProficiencies", character.CharacterClassSelection?.SelectedWeaponProficiencies != null
+                    ? string.Join(",", character.CharacterClassSelection.SelectedWeaponProficiencies)
+                    : (object)DBNull.Value },
+
+                { "@SelectedClassPaths", character.CharacterClassSelection?.SelectedClassPaths != null
+                    ? string.Join(",", character.CharacterClassSelection.SelectedClassPaths)
+                    : (object)DBNull.Value }
+            };
+        }
+
 
         /************************************************************************/
         /*                          HELPERS                                     */
