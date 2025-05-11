@@ -19,10 +19,24 @@ namespace Backend
             _mapper = new ClassMapper();
         }
 
+
+        /************************************************************************/
+        /*                            STATIC CLASSES                            */
+        /************************************************************************/
+
         public List<Classes> GetAllClasses()
         {
             var rawData = _database.GetRawDataFromDatabase(_queries.GetAllClasses);
             return _mapper.MapToClassList(rawData);
         }
+
+        public Classes GetClassByCharacterId(int characterId)
+        {
+            var param = new Dictionary<string, object> { { "@CharacterID", characterId } };
+            var rawData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassByCharacterId, param);
+
+            return rawData.Count > 0 ? _mapper.MapClassData(rawData.First()) : null;
+        }
+
     }
 }
