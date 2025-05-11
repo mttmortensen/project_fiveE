@@ -10,18 +10,37 @@ namespace Backend
 {
     public class ClassMapper
     {
-        public List<Classes> MapToClassList(List<Dictionary<string, object>> rawData) 
+        /************************************************************************/
+        /*                          GET METHODS                                 */
+        /************************************************************************/
+
+        // GET /classes → Returns all base class data
+        public List<Classes> MapToClassList(List<Dictionary<string, object>> rawData)
         {
             return rawData.Select(row => new Classes
             {
                 ClassID = Convert.ToInt32(row["ClassID"]),
                 ClassName = row["ClassName"].ToString(),
                 HitDie = row["HitDie"].ToString(),
+                MaxHitPoints = row.ContainsKey("MaxHitPoints") ? SafeInt(row["MaxHitPoints"]) : 0,
+                Level = row.ContainsKey("Level") ? SafeInt(row["Level"]) : 0,
                 PrimaryAbility = row["PrimaryAbility"].ToString(),
-                SavingThrows = JsonSerializer.Deserialize<List<string>>(row["SavingThrows"].ToString()),
-                ClassFeatures = JsonSerializer.Deserialize<List<string>>(row["ClassFeatures"].ToString()),
-                Descriptions = row["Description"].ToString()
+                SavingThrows = SafeList(row["Saves"]),
+                ClassTraits = SafeList(row["ClassTraits"]),
+                SpellsAvailable = row.ContainsKey("SpellsAvailable") && row["SpellsAvailable"] != DBNull.Value
+                    ? Convert.ToBoolean(row["SpellsAvailable"])
+                    : false,
+                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null
             }).ToList();
         }
+
+        /************************************************************************/
+        /*                          HELPERS                                     */
+        /************************************************************************/
+
+        private int SafeInt(object value) => value == DBNull.Value ? 0 : Convert.ToInt32(value);
+        private string SafeString(object value) => value == DBNull.Value ? null : value.ToString();
+        private List<string> SafeList(object value) =>
+            value != DBNull.Value ? value.ToString().Split(',').Select(s => s.Trim()).ToList() : new List<string>();
     }
 }
