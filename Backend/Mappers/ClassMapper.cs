@@ -25,7 +25,7 @@ namespace Backend
                 MaxHitPoints = row.ContainsKey("MaxHitPoints") ? SafeInt(row["MaxHitPoints"]) : 0,
                 Level = row.ContainsKey("Level") ? SafeInt(row["Level"]) : 0,
                 PrimaryAbility = row["PrimaryAbility"].ToString(),
-                SavingThrows = SafeList(row["Saves"]),
+                SavingThrows = SafeList(row["SavingThrows"]),
                 ClassTraits = SafeList(row["ClassTraits"]),
                 SpellsAvailable = row.ContainsKey("SpellsAvailable") && row["SpellsAvailable"] != DBNull.Value
                     ? Convert.ToBoolean(row["SpellsAvailable"])
@@ -33,6 +33,40 @@ namespace Backend
                 Description = row.ContainsKey("Description") ? row["Description"].ToString() : null
             }).ToList();
         }
+
+        // Internal use for CharacterMapper → Maps row from joined character/class data to full class object
+        public Classes MapClassData(Dictionary<string, object> row)
+        {
+            return new Classes
+            {
+                ClassID = row.ContainsKey("ClassID") ? SafeInt(row["ClassID"]) : 0,
+                ClassName = SafeString(row["ClassName"]),
+                HitDie = SafeString(row["HitDie"]),
+                MaxHitPoints = row.ContainsKey("MaxHitPoints") ? SafeInt(row["MaxHitPoints"]) : 0,
+                Level = row.ContainsKey("Level") ? SafeInt(row["Level"]) : 0,
+                PrimaryAbility = SafeString(row["PrimaryAbility"]),
+                SavingThrows = row.ContainsKey("SavingThrows") ? SafeList(row["SavingThrows"]) : new List<string>(),
+                ClassTraits = row.ContainsKey("ClassTraits") ? SafeList(row["ClassTraits"]) : new List<string>(),
+                SpellsAvailable = row.ContainsKey("SpellsAvailable") && row["SpellsAvailable"] != DBNull.Value
+                    ? Convert.ToBoolean(row["SpellsAvailable"])
+                    : false,
+                Description = SafeString(row["Description"])
+            };
+        }
+
+        // GET /character-class-options/:characterId
+        public List<CharacterClassOptions> MapToCharacterClassOptionsList(List<Dictionary<string, object>> rawData)
+        {
+            return rawData.Select(row => new CharacterClassOptions
+            {
+                CharClassOpID = SafeInt(row["CharClassOpID"]),
+                CharacterID = SafeInt(row["CharacterID"]),
+                ClassID = SafeInt(row["ClassID"]),
+                AvailableWeaponProficiencies = row.ContainsKey("AvailableWeaponProficiencies") ? SafeList(row["AvailableWeaponProficiencies"]) : new List<string>(),
+                AvailableClassPaths = row.ContainsKey("AvailableClassPaths") ? SafeList(row["AvailableClassPaths"]) : new List<string>()
+            }).ToList();
+        }
+
 
         /************************************************************************/
         /*                          HELPERS                                     */
