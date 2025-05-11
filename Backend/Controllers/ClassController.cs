@@ -38,5 +38,16 @@ namespace Backend
             return rawData.Count > 0 ? _mapper.MapClassData(rawData.First()) : null;
         }
 
+        /************************************************************************/
+        /*                          CLASS OPTIONS (MENU)                        */
+        /************************************************************************/
+
+        public List<CharacterClassOptions> GetClassOptionsByCharacterId(int characterId)
+        {
+            var param = new Dictionary<string, object> { { "@CharacterID", characterId } };
+            var rawData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassOptionsById, param);
+            return _mapper.MapToCharacterClassOptionsList(rawData);
+        }
+
     }
 }
