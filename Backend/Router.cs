@@ -159,6 +159,50 @@ namespace Backend
                     return JsonSerializer.Serialize(new { error = "Missing or invalid classId parameter." });
                 }
             }
+            
+            if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/character-class-options")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["characterId"], out int characterId))
+                {
+                    var options = classController.GetClassOptionsByCharacterId(characterId);
+                    return JsonSerializer.Serialize(options);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid characterId parameter." });
+                }
+            }
+            else if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/character-class-selection")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["characterId"], out int characterId))
+                {
+                    var selection = classController.GetCharacterClassSelectionByCharacterId(characterId);
+                    return JsonSerializer.Serialize(selection);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid characterId parameter." });
+                }
+            }
+
+            if (request.HttpMethod == "POST" && request.Url.AbsolutePath == "/character-class-selection")
+            {
+                using var reader = new StreamReader(request.InputStream);
+                var requestBody = reader.ReadToEnd();
+                var character = JsonSerializer.Deserialize<Character>(requestBody);
+
+                if (character == null)
+                {
+                    return "400 Bad Request: Invalid character data.";
+                }
+
+                classController.InsertCharacterClassSelection(character);
+                return JsonSerializer.Serialize(new { Message = "Character class selection saved." });
+            }
+
+
 
 
             return "404 not found";
