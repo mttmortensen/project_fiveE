@@ -43,6 +43,21 @@ namespace Backend
             WHERE crs.CharacterID = @CharacterID;
         ";
 
+        // GET: ChacterRaceOptions data for a single character during creation
+        public string GetCharacterRaceOptionsById => @"
+            SELECT 
+                CharRaceID,
+                RaceID,
+                CharacterID,
+                AvailableTraits,
+                AvailableLanguages,
+                AvailableProficiencies,
+                AvailableRaceSpells,
+                AvailableAbilityScoreBonuses
+            FROM CharacterClassOptions
+            WHERE CharacterID = @CharacterID;
+        ";
+
         // GET: CharacterRaceSelection for a character
         public string GetCharacterRaceSelectionById => @"
             SELECT 
@@ -50,7 +65,7 @@ namespace Backend
                 CharacterID,
                 RaceID,
                 SubraceID,
-                Languages,
+                SelectedLanguages,
                 SelectedTraits,
                 SelectedProficiencies,
                 SelectedSpells,
