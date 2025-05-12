@@ -10,7 +10,7 @@ namespace Backend
     {
         // GET: All static race data
         public string GetAllRaces => @"
-            SELECT RaceID, RaceName, RaceCreatureType, RaceSize, RaceSpeed, Description
+            SELECT RaceID, RaceName, RaceCreatureType, RaceSize, RaceSpeed, Description, Darkvision
             FROM Races
             ORDER BY RaceName;
         ";
@@ -30,14 +30,15 @@ namespace Backend
                 r.RaceCreatureType,
                 r.RaceSize,
                 r.RaceSpeed,
-                r.Description
+                r.Description,
+                r.Darkvision
             FROM CharacterRaceSelection crs
             INNER JOIN Races r ON crs.RaceID = r.RaceID
             WHERE crs.CharacterID = @CharacterID;
         ";
 
         public string GetRaceByCharacterId => @"
-            SELECT r.RaceID, r.RaceName, r.RaceCreatureType, r.RaceSize, r.RaceSpeed, r.Description
+            SELECT r.RaceID, r.RaceName, r.RaceCreatureType, r.RaceSize, r.RaceSpeed, r.Description, r.Darkvision
             FROM Races r
             INNER JOIN CharacterRaceSelection crs ON r.RaceID = crs.RaceID
             WHERE crs.CharacterID = @CharacterID;
