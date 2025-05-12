@@ -49,7 +49,6 @@ namespace Backend
             SELECT 
                 CharRaceID,
                 RaceID,
-                CharacterID,
                 AvailableTraits,
                 AvailableLanguages,
                 AvailableProficiencies,

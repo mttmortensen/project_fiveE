@@ -49,7 +49,6 @@ namespace Backend
             return rawData.Select(row => new CharacterRaceOptions
             {
                 CharRaceID = SafeInt(row["CharRaceID"]),
-                CharacterID = SafeInt(row["CharacterID"]),
                 RaceID = SafeInt(row["RaceID"]),
                 AvailableTraits = row.ContainsKey("AvailableTraits") ? SafeList(row["AvailableTraits"]) : new List<string>(),
                 AvailableLanguages = row.ContainsKey("AvailableLanguages") ? SafeList(row["AvailableLanguages"]) : new List<string>(),
