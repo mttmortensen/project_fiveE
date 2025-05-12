@@ -49,5 +49,23 @@ namespace Backend
             return _mapper.MapToCharacterClassOptionsList(rawData);
         }
 
+        /************************************************************************/
+        /*                          CLASS SELECTION (FINAL)                    */
+        /************************************************************************/
+
+        public CharacterClassSelection GetCharacterClassSelectionByCharacterId(int characterId)
+        {
+            var param = new Dictionary<string, object> { { "@CharacterID", characterId } };
+            var rawData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassSelectionById, param);
+            return rawData.Count > 0 ? _mapper.MapCharacterClassSelection(rawData.First()) : null;
+        }
+
+        public void InsertCharacterClassSelection(Character character)
+        {
+            var data = _mapper.MapCharacterClassSelectionToDictionary(character);
+            _database.ExecuteNonQuery(_queries.LinkCharacterClassSelection, data);
+        }
     }
+
+
 }
