@@ -32,5 +32,45 @@ namespace Backend
             INNER JOIN Classes c ON ccs.ClassID = c.ClassID
             WHERE ccs.CharacterID = @CharacterID;
         ";
+
+        // GET: ChacterClassOptions data for a single character during creation
+        public string GetCharacterClassOptionsById => @"
+            SELECT 
+                CharClassOpID,
+                CharacterID,
+                ClassID,
+                AvailableWeaponProficiencies,
+                AvailableClassPaths
+            FROM CharacterClassOptions
+            WHERE CharacterID = @CharacterID;
+        ";
+
+        // GET: CharacterClassSelection data for a single character
+        public string GetCharacterClassSelectionById => @"
+            SELECT 
+                CharClassSelectID,
+                CharacterID,
+                ClassID,
+                SelectedWeaponProficiencies,
+                SelectedClassPaths
+            FROM CharacterClassSelection
+            WHERE CharacterID = @CharacterID;
+        ";
+
+        // POST: Inserts a new row into CharacterClassSelection with user's picks
+        public string LinkCharacterClassSelection => @"
+            INSERT INTO CharacterClassSelection (
+                CharacterID,
+                ClassID,
+                SelectedWeaponProficiencies,
+                SelectedClassPaths
+            ) VALUES (
+                @CharacterID,
+                @ClassID,
+                @SelectedWeaponProficiencies,
+                @SelectedClassPaths
+            );
+        ";
+
     }
 }
