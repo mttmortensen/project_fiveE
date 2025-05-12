@@ -8,6 +8,7 @@ namespace Backend
         private readonly CharacterMapper _mapper;
         private readonly CharacterQueries _queries;
         private readonly RaceController _raceController;
+        private readonly ClassController _classController;
 
         public CharacterController(Database database, CharacterMapper mapper)
         {
@@ -15,6 +16,7 @@ namespace Backend
             _mapper = mapper;
             _queries = new CharacterQueries();
             _raceController = new RaceController(database);
+            _classController = new ClassController(database);
         }
 
         public List<Character> GetAllCharacters()
@@ -41,7 +43,8 @@ namespace Backend
                 // Load dynamic CLASS info
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, param);
                 if (classData.Count > 0)
-                    character.Classes = _mapper.MapClassData(classData.First());
+                    character.Classes = _classController.GetClassByCharacterId(character.CharacterID);
+                    character.CharacterClassSelection = _classController.GetCharacterClassSelectionByCharacterId(character.CharacterID);
 
                 // Load dynamic SUBCLASS info
                 var subclassData = _database.GetRawDataFromDatabase(_queries.GetCharacterSubclassById, param);
@@ -78,7 +81,8 @@ namespace Backend
                 // Class (dynamic + static)
                 var classData = _database.GetRawDataFromDatabase(_queries.GetCharacterClassById, parameters);
                 if (classData.Count > 0)
-                    character.Classes = _mapper.MapClassData(classData.First());
+                    character.Classes = _classController.GetClassByCharacterId(character.CharacterID);
+                    character.CharacterClassSelection = _classController.GetCharacterClassSelectionByCharacterId(character.CharacterID);
 
                 // Subclass (dynamic + static)
                 var subclassData = _database.GetRawDataFromDatabase(_queries.GetCharacterSubclassById, parameters);
@@ -127,12 +131,11 @@ namespace Backend
                 _database.ExecuteNonQuery(_queries.LinkSpellToCharacter, paramSet);
             }
 
-            // Step 4: Insert the Race character specific props to CharacterRace and CharacterRaceSelection table
+            // Step 4: Insert the Race character specific props CharacterRaceSelection table
             _raceController.InsertCharacterRaceSelection(newCharacter);
 
-            // Step 5: Insert dynamic class-specific data into CharacterClass table
-            var classInsert = _mapper.MapCharacterClassToDictionary(newCharacter);
-            _database.ExecuteNonQuery(_queries.LinkCharacterClass, classInsert);
+            // Step 5: Insert the Class character specific props CharacterRaceSelection table
+            _classController.InsertCharacterClassSelection(newCharacter);
 
             // Step 6: Insert dynamic subclass-specific data into CharacterSubclass table
             var subclassInsert = _mapper.MapCharacterSubclassToDictionary(newCharacter);
