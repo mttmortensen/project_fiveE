@@ -11,8 +11,9 @@
         // Small, Medium, etc.
         public string RaceSize { get; set; }          
         // Base walking speed
-        public int RaceSpeed { get; set; }            
-
+        public int RaceSpeed { get; set; }
+        // e.g., 60ft, 120ft, etc.
+        public int Darkvision { get; set; } = 0; 
         public string Description { get; set; }
         public bool SpellsAvaiable { get; set; } = false;
     }

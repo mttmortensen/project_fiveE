@@ -21,7 +21,8 @@ namespace Backend
                 RaceCreatureType = row["RaceCreatureType"].ToString(),
                 RaceSize = row["RaceSize"].ToString(),
                 RaceSpeed = Convert.ToInt32(row["RaceSpeed"]),
-                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null
+                Description = row.ContainsKey("Description") ? row["Description"].ToString() : null,
+                Darkvision = row.ContainsKey("Darkvision") ? Convert.ToInt32(row["Darkvision"]) : 0,
                 // Intentionally excluding SpellsAvailable here (used only in internal flow)
             }).ToList();
         }
@@ -37,7 +38,8 @@ namespace Backend
                 RaceCreatureType = SafeString(row["RaceCreatureType"]),
                 RaceSize = SafeString(row["RaceSize"]),
                 RaceSpeed = row.ContainsKey("RaceSpeed") ? SafeInt(row["RaceSpeed"]) : 0,
-                Description = SafeString(row["Description"])
+                Description = SafeString(row["Description"]),
+                Darkvision = row.ContainsKey("Darkvision") ? SafeInt(row["Darkvision"]) : 0,
             };
         }
 
