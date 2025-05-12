@@ -14,6 +14,10 @@ namespace Backend
             var subclassController = new SubclassController(new Database());
             var subraceController = new SubraceController(new Database());
 
+            /************************************************************************/
+            /****************************** CHARACTERS ******************************/
+            /************************************************************************/
+
             // Check the request's path
             // Handle GET request to get all characters
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/characters") 
@@ -99,8 +103,6 @@ namespace Backend
 
             }
 
-
-
             // Handle DELETE request to remove a character
             if (request.HttpMethod == "DELETE" && request.Url.AbsolutePath.StartsWith("/characters/"))
             {
@@ -113,6 +115,10 @@ namespace Backend
 
                 return "400 Bad Request: Invalid ID format.";
             }
+
+            /************************************************************************/
+            /******************************* RACES ********************************/
+            /************************************************************************/
 
             // Handle GET request to get all race data
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/races")
@@ -136,6 +142,53 @@ namespace Backend
                     return JsonSerializer.Serialize(new { error = "Missing or invalid raceId parameter." });
                 }
             }
+
+            if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/character-race-options")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["characterId"], out int characterId))
+                {
+                    var options = raceController.GetRaceOptionsByCharacterId(characterId);
+                    return JsonSerializer.Serialize(options);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid characterId parameter." });
+                }
+            }
+            else if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/character-race-selection")
+            {
+                var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
+                if (int.TryParse(query["characterId"], out int characterId))
+                {
+                    var selection = raceController.GetCharacterRaceSelectionByCharacterID(characterId);
+                    return JsonSerializer.Serialize(selection);
+                }
+                else
+                {
+                    return JsonSerializer.Serialize(new { error = "Missing or invalid characterId parameter." });
+                }
+            }
+
+            if (request.HttpMethod == "POST" && request.Url.AbsolutePath == "/character-race-selection")
+            {
+                using var reader = new StreamReader(request.InputStream);
+                var requestBody = reader.ReadToEnd();
+                var character = JsonSerializer.Deserialize<Character>(requestBody);
+
+                if (character == null)
+                {
+                    return "400 Bad Request: Invalid character data.";
+                }
+
+                raceController.InsertCharacterRaceSelection(character);
+                return JsonSerializer.Serialize(new { Message = "Character class selection saved." });
+            }
+
+
+            /************************************************************************/
+            /******************************* CLASSES ********************************/
+            /************************************************************************/
 
             // Handle GET request to get all classes data
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/classes")
