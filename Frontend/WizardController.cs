@@ -25,8 +25,8 @@ namespace Frontend
             // Having steps here in order
             steps.Add(new Step1());
             steps.Add(new Step2());
-            steps.Add(new Step3());
-            steps.Add(new Step4());
+            //steps.Add(new Step3());
+            //steps.Add(new Step4());
         }
 
         public void NextStep()
