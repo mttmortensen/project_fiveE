@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Net.Http;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace Frontend
 {
@@ -19,6 +14,7 @@ namespace Frontend
             InitializeComponent();
             LoadRaceDataFromApi();
         }
+
         private async void LoadRaceDataFromApi()
         {
             try
@@ -36,80 +32,103 @@ namespace Frontend
                 cmbRace.DataSource = raceList;
                 cmbRace.DisplayMember = "RaceName";
                 cmbRace.ValueMember = "RaceID";
-
-                cmbRace.SelectedIndexChanged += (s, e) =>
-                {
-                    if (cmbRace.SelectedItem is Step2RaceModel selectedRace)
-                    {
-                        ShowRaceDetails(selectedRace);
-                    }
-                };
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load races:\n" + ex.Message);
             }
 
-            // Still load static ability bonus and proficiencies
-            string[] stats = { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-            cmbBonusStat1.Items.AddRange(stats);
-            cmbBonusStat2.Items.AddRange(stats);
+            cmbRace.SelectedIndexChanged += CmbRace_SelectedIndexChanged;
+        }
 
-            lstProficiencies.Items.AddRange(new object[]
+        private void CmbRace_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbRace.SelectedItem is Step2RaceModel selectedRace)
             {
-                "Perception", "History", "Nature", "Athletics" // Temporary until API provides them per race
-            });
+                ShowRaceDetails(selectedRace);
+                LoadRaceOptions(selectedRace.RaceID);
+            }
         }
 
         private void ShowRaceDetails(Step2RaceModel race)
         {
-            if (race == null)
-                return;
-
-            // Fill each label and description field
             lblSize.Text = $"Size: {race.RaceSize}";
-            lblSpeed.Text = $"Speed: {race.Speed} ft";
-
-            lblLanguages.Text = race.Languages != null && race.Languages.Count > 0
-                ? $"Languages: {string.Join(", ", race.Languages)}"
-                : "Languages: None";
-
-            lblFeatures.Text = race.RacialFeatures != null && race.RacialFeatures.Count > 0
-                ? $"Features: {string.Join(", ", race.RacialFeatures)}"
-                : "Features: None";
-
-            txtDescription.Text = !string.IsNullOrWhiteSpace(race.Description)
-                ? race.Description
-                : "No description available.";
+            lblSpeed.Text = $"Speed: {race.RaceSpeed} ft";
+            lblCreatureType.Text = $"Type: {string.Join(", ", race.RaceCreatureType)}";
+            lblDarkvision.Text = $"Darkvision: {race.DarkVision}";
+            lblDescription.Text = $"Description: {race.Description}";
         }
 
-
-
-
-        // Property to build CharacterRace object for backend
-        public CharacterRaceModel GetCharacterRace()
+        private async void LoadRaceOptions(int raceId)
         {
-            var selectedRace = cmbRace.SelectedItem as Step2RaceModel;
-
-            return new CharacterRaceModel
+            try
             {
-                RaceID = selectedRace?.RaceID ?? -1,
-                Darkvision = chkDarkvision.Checked,
-                RacialProficiencies = new List<string>(lstProficiencies.CheckedItems.Cast<string>()),
-                AbilityScoreBonuses = new List<string>
+                using var client = new HttpClient();
+                var response = await client.GetAsync($"http://localhost:5000/character-race-options?raceId={raceId}");
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var options = JsonSerializer.Deserialize<List<CharacterRaceOptionsModel>>(json, new JsonSerializerOptions
                 {
-                    $"{cmbBonusStat1.SelectedItem}:2",
-                    $"{cmbBonusStat2.SelectedItem}:1"
+                    PropertyNameCaseInsensitive = true
+                })?.FirstOrDefault();
+
+                if (options != null)
+                {
+                    lstTraits.Items.Clear();
+                    foreach (var trait in options.AvailableTraits)
+                        lstTraits.Items.Add(trait);
+
+                    lstLanguages.Items.Clear();
+                    foreach (var lang in options.AvailableLanguages)
+                        lstLanguages.Items.Add(lang);
+
+                    lstProficiencies.Items.Clear();
+                    foreach (var prof in options.AvailableProficiencies)
+                        lstProficiencies.Items.Add(prof);
+
+                    cmbBonusStat1.Items.Clear();
+                    cmbBonusStat2.Items.Clear();
+
+                    if (options.AvailableAbilityScoreBonuses != null)
+                    {
+                        foreach (var stat in options.AvailableAbilityScoreBonuses)
+                        {
+                            cmbBonusStat1.Items.Add(stat);
+                            cmbBonusStat2.Items.Add(stat);
+                        }
+                    }
+
+                    cmbBonusStat1.SelectedIndex = -1;
+                    cmbBonusStat2.SelectedIndex = -1;
                 }
-            };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load race options:\n" + ex.Message);
+            }
         }
-        public class CharacterRaceModel
-        {
-            public int RaceID { get; set; }
-            public bool Darkvision { get; set; }
-            public List<string> RacialProficiencies { get; set; }
-            public List<string> AbilityScoreBonuses { get; set; }
-        }
+
+    }
+
+    public class Step2RaceModel
+    {
+        public int RaceID { get; set; }
+        public string RaceName { get; set; }
+        public string RaceSize { get; set; }
+        public int RaceSpeed { get; set; }
+        public string Description { get; set; }
+        public string RaceCreatureType { get; set; }
+        public int DarkVision { get; set; }
+    }
+
+    public class CharacterRaceOptionsModel
+    {
+        public int CharRaceID { get; set; }
+        public int RaceID { get; set; }
+        public List<string> AvailableTraits { get; set; }
+        public List<string> AvailableLanguages { get; set; }
+        public List<string> AvailableProficiencies { get; set; }
+        public List<string> AvailableAbilityScoreBonuses { get; set; }
     }
 }
-
