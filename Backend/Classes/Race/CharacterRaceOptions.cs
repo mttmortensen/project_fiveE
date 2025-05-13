@@ -13,6 +13,11 @@ namespace Backend
         public int RaceID { get; set; }
 
         // These are avaiable options for the character to select from during character creation
+
+        // The ID's are used to get the actual subrace object from the database to send over to AvailableSubraces
+        public List<int> AvailableSubRaceIDs { get; set; } = new();
+        // This prop is needed to actually display back the subraces to the user over the FE
+        public List<Subrace> AvaiableSubraces { get; set; } = new();
         public List<string> AvailableTraits { get; set; } = new();  
         public List<string> AvailableLanguages { get; set; } = new();
         public List<string> AvailableProficiencies { get; set; } = new();
