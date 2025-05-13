@@ -146,9 +146,9 @@ namespace Backend
             if (request.HttpMethod == "GET" && request.Url.AbsolutePath == "/character-race-options")
             {
                 var query = System.Web.HttpUtility.ParseQueryString(request.Url.Query);
-                if (int.TryParse(query["characterId"], out int characterId))
+                if (int.TryParse(query["raceId"], out int raceId))
                 {
-                    var options = raceController.GetRaceOptionsByCharacterId(characterId);
+                    var options = raceController.GetRaceOptionsByRaceId(raceId);
                     return JsonSerializer.Serialize(options);
                 }
                 else

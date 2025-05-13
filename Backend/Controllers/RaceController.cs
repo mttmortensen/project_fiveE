@@ -36,10 +36,10 @@ namespace Backend
             return null;
         }
 
-        public List<CharacterRaceOptions> GetRaceOptionsByCharacterId(int characterId)
+        public List<CharacterRaceOptions> GetRaceOptionsByRaceId(int raceId)
         {
-            var param = new Dictionary<string, object> { { "@CharacterID", characterId } };
-            var rawData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceOptionsById, param);
+            var param = new Dictionary<string, object> { { "@RaceID", raceId } };
+            var rawData = _database.GetRawDataFromDatabase(_queries.GetCharacterRaceOptionsByRaceId, param);
             return _mapper.MapToCharacterRaceOptionsList(rawData);
         }
 

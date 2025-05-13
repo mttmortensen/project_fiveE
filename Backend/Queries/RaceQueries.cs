@@ -45,7 +45,7 @@ namespace Backend
         ";
 
         // GET: ChacterRaceOptions data for a single character during creation
-        public string GetCharacterRaceOptionsById => @"
+        public string GetCharacterRaceOptionsByRaceId => @"
             SELECT 
                 CharRaceID,
                 RaceID,
@@ -54,8 +54,8 @@ namespace Backend
                 AvailableProficiencies,
                 AvailableRaceSpells,
                 AvailableAbilityScoreBonuses
-            FROM CharacterClassOptions
-            WHERE CharacterID = @CharacterID;
+            FROM CharacterRaceOptions
+            WHERE RaceID = @RaceID;
         ";
 
         // GET: CharacterRaceSelection for a character
